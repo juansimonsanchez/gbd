@@ -522,72 +522,39 @@
 
 
 <p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
-<table>
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 82%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Unidad Didáctica</strong></th>
-<th>Unidad Didáctica 8: Programación de bases de datos: Procedimientos, funciones y triggers en MySQL</th>
-</tr>
-<tr class="odd">
-<th><strong>Resultados de Aprendizaje</strong></th>
-<th><strong>RA6:</strong> Programa procedimientos almacenados, funciones y disparadores (triggers) analizando su funcionamiento e integrando lógica procedimental en el SGBD para garantizar la automatización, integridad y rendimiento de los datos.</th>
-</tr>
-<tr class="header">
-<th><strong>Criterios de Evaluación</strong></th>
-<th><p><strong>CE6.a</strong> (Se han identificado los lenguajes de programación disponibles),</p>
-<p><strong>CE6.b</strong> (Se han definido procedimientos con paso de parámetros),</p>
-<p><strong>CE6.c</strong> (Se han creado funciones),</p>
-<p><strong>CE6.d</strong> (Se han utilizado estructuras de control de flujo),</p>
-<p><strong>CE6.e</strong> (Se han utilizado cursores),</p>
-<p><strong>CE6.f</strong> (Se ha realizado el control de excepciones),</p>
-<p><strong>CE6.g</strong> (Se han creado disparadores),</p>
-<p><strong>CE6.h</strong> (Se han depurado y probado los subprogramas creados).</p></th>
-</tr>
-<tr class="odd">
-<th><strong>Tiempo Estimado</strong></th>
-<th>24 Horas (Distribuidas en 4 semanas de sesiones teórico-prácticas orientadas a la optimización de la lógica del servidor).</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
+<p>[TABLE]</p>
 <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
-<p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
-<p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
+<p><a href="#"><em>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</em></a></p>
+<p><a href="#"><em>2. PROCEDIMIENTOS ALMACENADOS</em></a></p>
 <blockquote>
-<p><a href="#"><u>2.1 Sintaxis general y uso de DELIMITER</u></a></p>
-<p><a href="#"><u>2.2 Gestión de Parámetros: IN, OUT y INOUT</u></a></p>
-<p><a href="#"><u>2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</u></a></p>
+<p><a href="#"><em>2.1 Sintaxis general y uso de DELIMITER</em></a></p>
+<p><a href="#"><em>2.2 Gestión de Parámetros: IN, OUT y INOUT</em></a></p>
+<p><a href="#"><em>2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</em></a></p>
 </blockquote>
-<p><a href="#"><u>3. FUNCIONES ALMACENADAS</u></a></p>
+<p><a href="#"><em>3. FUNCIONES ALMACENADAS</em></a></p>
 <blockquote>
-<p><a href="#"><u>3.1 Diferencias con procedimientos y restricciones de retorno</u></a></p>
-<p><a href="#"><u>3.2 Modificadores de comportamiento de funciones en MySQL</u></a></p>
+<p><a href="#"><em>3.1 Diferencias con procedimientos y restricciones de retorno</em></a></p>
+<p><a href="#"><em>3.2 Modificadores de comportamiento de funciones en MySQL</em></a></p>
 </blockquote>
-<p><a href="#"><u>4. ESTRUCTURAS DE CONTROL DE FLUJO</u></a></p>
+<p><a href="#"><em>4. ESTRUCTURAS DE CONTROL DE FLUJO</em></a></p>
 <blockquote>
-<p><a href="#"><u>4.1 Condicionales (IF-THEN-ELSE y CASE)</u></a></p>
-<p><a href="#"><u>4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)</u></a></p>
+<p><a href="#"><em>4.1 Condicionales (IF-THEN-ELSE y CASE)</em></a></p>
+<p><a href="#"><em>4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)</em></a></p>
 </blockquote>
-<p><a href="#"><u>5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL</u></a></p>
+<p><a href="#"><em>5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL</em></a></p>
 <blockquote>
-<p><a href="#"><u>5.1 El uso de DECLARE... HANDLER</u></a></p>
+<p><a href="#"><em>5.1 El uso de DECLARE... HANDLER</em></a></p>
 </blockquote>
-<p><a href="#"><u>6. CURSORES</u></a></p>
+<p><a href="#"><em>6. CURSORES</em></a></p>
 <blockquote>
-<p><a href="#"><u>6.1 Ciclo de vida de un cursor</u></a></p>
+<p><a href="#"><em>6.1 Ciclo de vida de un cursor</em></a></p>
 </blockquote>
-<p><a href="#"><u>7. DISPARADORES (TRIGGERS)</u></a></p>
+<p><a href="#"><em>7. DISPARADORES (TRIGGERS)</em></a></p>
 <blockquote>
-<p><a href="#"><u>7.1 Lógica de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</u></a></p>
-<p><a href="#"><u>7.2 Pseudotablas OLD y NEW y su aplicación en la integridad de datos</u></a></p>
+<p><a href="#"><em>7.1 Lógica de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</em></a></p>
+<p><a href="#"><em>7.2 Pseudotablas OLD y NEW y su aplicación en la integridad de datos</em></a></p>
 </blockquote>
-<p><a href="#"><u>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL</u></a></p>
+<p><a href="#"><em>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL</em></a></p>
 <h1 id="1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</h1>
 <p>La administración moderna de bases de datos a nivel de infraestructura no se limita a ejecutar consultas DML de manera interactiva. Para garantizar la eficiencia de los sistemas de red, la seguridad de la información y la automatización de procesos, los administradores de sistemas deben ser capaces de almacenar lógica programada directamente en el servidor SGBD.</p>
 <p>Esta unidad se conecta directamente con:</p>
@@ -1053,19 +1020,19 @@
 <p>Para profundizar en la sintaxis procedimental avanzada, gestión de pilas de llamadas y optimización de ejecución del motor de rutinas almacenadas en MySQL 8.0, consulta los siguientes recursos del manual técnico oficial:</p>
 <ul>
 <li>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><u>MySQL 8.0 Reference Manual: Stored Objects (Procedures &amp; Functions)</u></a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><em>MySQL 8.0 Reference Manual: Stored Objects (Procedures &amp; Functions)</em></a></p>
 </li>
 <li>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><u>MySQL 8.0 Reference Manual: Trigger Syntax and Examples</u></a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><em>MySQL 8.0 Reference Manual: Trigger Syntax and Examples</em></a></p>
 </li>
 <li>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><u>MySQL 8.0 Reference Manual: Flow Control Statements</u></a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><em>MySQL 8.0 Reference Manual: Flow Control Statements</em></a></p>
 </li>
 <li>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><u>MySQL 8.0 Reference Manual: Cursors implementation</u></a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><em>MySQL 8.0 Reference Manual: Cursors implementation</em></a></p>
 </li>
 <li>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL 8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><em>MySQL 8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</em></a></p>
 </li>
 </ul>
 

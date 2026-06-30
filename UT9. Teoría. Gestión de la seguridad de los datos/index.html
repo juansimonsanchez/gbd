@@ -1026,7 +1026,7 @@
 <p>-- Forzar el volcado de buffers a disco y la rotación de logs</p>
 <p>FLUSH LOGS;</p>
 <p></p>
-<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><u>MySQL Reference Manual - Server Logs</u></a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><em>MySQL Reference Manual - Server Logs</em></a>.</p>
 <h2 id="_1"></h2>
 <h2 id="33-la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog</h2>
 <p>Dado que el registro binario se escribe en formato binario no legible, los SysAdmins deben utilizar la herramienta de terminal nativa <strong>mysqlbinlog</strong> para auditar o aplicar los cambios almacenados.</p>
@@ -1054,7 +1054,7 @@
 <p># Ejemplo 2: Aplicar de forma directa las instrucciones del binlog para recuperar datos</p>
 <p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 | mysql -u root -p</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><u>MySQL Manual - mysqlbinlog Utility</u></a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><em>MySQL Manual - mysqlbinlog Utility</em></a></h5>
 <h1 id="4-mantenimiento-y-reparacion-de-tablas">4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</h1>
 <p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo, índices que no coinciden con los datos reales tras un apagón eléctrico), disponemos de utilidades de línea de comandos y sentencias SQL específicas.</p>
 <h2 id="41-herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas Externas: myisamchk y mysqlcheck</h2>
@@ -1070,7 +1070,7 @@
 <p># Analizar y reparar automáticamente todas las tablas del esquema 'practica_dml'</p>
 <p>mysqlcheck -u root -p --auto-repair --check practica_dml</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-tool">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><u>MySQL Manual - mysqlcheck Tool</u></a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-tool">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><em>MySQL Manual - mysqlcheck Tool</em></a></h5>
 <h2 id="42-sentencias-sql-de-optimizacion-e-integridad">4.2 Sentencias SQL de Optimización e Integridad</h2>
 <p>Estas instrucciones se ejecutan directamente en un cliente interactivo o script SQL:</p>
 <h5 id="check-table">CHECK TABLE</h5>
@@ -1092,7 +1092,7 @@
 <p>Sintaxis SQL para intentar la reparación inmediata de tablas corruptas de tipo MyISAM (no compatible con InnoDB).</p>
 <p>REPAIR TABLE fabricante QUICK;</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statements">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><u>MySQL Manual - Table Maintenance Statements</u></a>.</h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statements">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><em>MySQL Manual - Table Maintenance Statements</em></a>.</h5>
 <h1 id="5-politicas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE SEGURIDAD</h1>
 <h2 id="51-clasificacion-tecnica-de-los-backups">5.1 Clasificación Técnica de los Backups</h2>
 <p>Podemos realizar diferentes clasificaciones de las estrategias de respaldo:</p>
@@ -1200,7 +1200,7 @@
 <p>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de cada definición de tabla. Evita errores de duplicados al restaurar bases de datos ya existentes.</p>
 </li>
 </ul>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><u>MySQL Manual - mysqldump Utility</u></a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><em>MySQL Manual - mysqldump Utility</em></a></h5>
 <p><strong>3. La Utilidad mysqlimport</strong></p>
 <p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en la tabla correspondiente, la cual debe llamarse exactamente igual que el nombre base del archivo físico a importar.</p>
 <p># Importar el fichero 'empleado.txt' en la tabla 'empleado' del esquema 'practica_dml'</p>
