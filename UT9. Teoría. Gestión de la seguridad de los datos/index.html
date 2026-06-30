@@ -1,0 +1,1353 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>UT9 Seguridad - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT9 Seguridad
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-tabs__link">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link md-tabs__link--active">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-nav__link">
+        Programación
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT4.%20Teor%C3%ADa.%20DDL/" class="md-nav__link">
+        UT4 DDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-nav__link">
+        UT7 Transaccionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-nav__link">
+        UT8 Programación SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UT9 Seguridad
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UT9 Seguridad
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-nav__link">
+    FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-contenidos" class="md-nav__link">
+    ÍNDICE DE CONTENIDOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    1. INTRODUCCIÓN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-diagnostico-y-origen-de-fallos-en-un-sgbd" class="md-nav__link">
+    2. DIAGNÓSTICO Y ORIGEN DE FALLOS EN UN SGBD
+  </a>
+  
+    <nav class="md-nav" aria-label="2. DIAGNÓSTICO Y ORIGEN DE FALLOS EN UN SGBD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tipologias-de-fallo-comunes" class="md-nav__link">
+    2.1 Tipologías de Fallo Comunes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-elementos-en-un-plan-de-recuperacion-de-desastres-drp" class="md-nav__link">
+    2.2 Elementos en un Plan de Recuperación de Desastres (DRP)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ficheros-de-registro-log-de-mysql" class="md-nav__link">
+    3. FICHEROS DE REGISTRO LOG DE MYSQL
+  </a>
+  
+    <nav class="md-nav" aria-label="3. FICHEROS DE REGISTRO LOG DE MYSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-arquitectura-de-almacenamiento-fisico-en-disco" class="md-nav__link">
+    3.1 Arquitectura de Almacenamiento Físico en Disco
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-anatomia-y-configuracion-de-los-logs-del-motor" class="md-nav__link">
+    3.2 Anatomía y Configuración de los Logs del Motor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-la-utilidad-mysqlbinlog" class="md-nav__link">
+    3.3 La Utilidad mysqlbinlog
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 La Utilidad mysqlbinlog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utilityunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqlbinlog Utility]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mantenimiento-y-reparacion-de-tablas" class="md-nav__link">
+    4. MANTENIMIENTO Y REPARACIÓN DE TABLAS
+  </a>
+  
+    <nav class="md-nav" aria-label="4. MANTENIMIENTO Y REPARACIÓN DE TABLAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-herramientas-externas-myisamchk-y-mysqlcheck" class="md-nav__link">
+    4.1 Herramientas Externas: myisamchk y mysqlcheck
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Herramientas Externas: myisamchk y mysqlcheck">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-toolunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqlcheck Tool]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sentencias-sql-de-optimizacion-e-integridad" class="md-nav__link">
+    4.2 Sentencias SQL de Optimización e Integridad
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Sentencias SQL de Optimización e Integridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-table" class="md-nav__link">
+    CHECK TABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-table" class="md-nav__link">
+    ANALYZE TABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-table" class="md-nav__link">
+    OPTIMIZE TABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repair-table" class="md-nav__link">
+    REPAIR TABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statementsunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [MySQL Manual - Table Maintenance Statements]{.underline}.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-politicas-de-copias-de-seguridad" class="md-nav__link">
+    5. POLÍTICAS DE COPIAS DE SEGURIDAD
+  </a>
+  
+    <nav class="md-nav" aria-label="5. POLÍTICAS DE COPIAS DE SEGURIDAD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-clasificacion-tecnica-de-los-backups" class="md-nav__link">
+    5.1 Clasificación Técnica de los Backups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-copias-fisicas-o-binarias-innodb-myisam" class="md-nav__link">
+    5.2 Copias Físicas o Binarias (InnoDB &amp; MyISAM)
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Copias Físicas o Binarias (InnoDB &amp; MyISAM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algoritmo-de-respaldo-fisico-transporte-de-tablespaces-con-practica_dmlproducto" class="md-nav__link">
+    Algoritmo de Respaldo Físico (Transporte de Tablespaces con practica_dml.producto)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algoritmo-de-restauracion-fisica-en-el-servidor-de-destino" class="md-nav__link">
+    Algoritmo de Restauración Física en el Servidor de Destino
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-copias-logicas-o-textuales-dumping" class="md-nav__link">
+    5.3 Copias Lógicas o Textuales (Dumping)
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Copias Lógicas o Textuales (Dumping)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utilityunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqldump Utility]{.underline}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-escenario-de-produccion-plan-de-respaldo-incremental-y-recuperacion-point-in-time" class="md-nav__link">
+    6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME
+  </a>
+  
+    <nav class="md-nav" aria-label="6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caso-practico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo" class="md-nav__link">
+    Caso Práctico: Respaldo Incremental de practica_dml en un Entorno Corporativo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-herramientas-graficas-y-migracion-entre-sgbd" class="md-nav__link">
+    7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-documentacion-de-politicas-de-seguridad-y-cumplimiento-normativo-rgpd" class="md-nav__link">
+    8. DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO (RGPD)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_tareas_pr%C3%A1cticas%2026%2027/" class="md-nav__link">
+        Plantilla Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
+<hr />
+<p><strong>Unidad Didáctica</strong>            Unidad Didáctica 12: Gestión de la Seguridad de los Datos</p>
+<hr />
+<p><strong>Resultados de Aprendizaje</strong>   <strong>RA6:</strong> Ejecuta tareas de aseguramiento de la información, analizándolas y aplicando mecanismos de salvaguarda y transferencia.</p>
+<p><strong>Criterios de Evaluación</strong>     CE6.a, CE6.b, CE6.c, CE6.d, CE6.e, CE6.f, CE6.g, CE6.h</p>
+<p><strong>Tiempo Estimado</strong>             6 Horas (Distribuidas en sesiones teórico-prácticas orientadas a la administración de sistemas)</p>
+<hr />
+<h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h3>
+<h1 id="1-introduccion">1. INTRODUCCIÓN</h1>
+<p>La información corporativa constituye el activo más valioso de cualquier organización moderna. En el rol de un Administrador de Sistemas (SysAdmin), no basta con diseñar esquemas de datos relacionales eficientes y optimizar consultas complejas (competencias adquiridas en las Unidades 2, 3 y 5); es mandatorio garantizar de forma ininterrumpida la <strong>disponibilidad</strong>, <strong>integridad</strong> y <strong>confidencialidad</strong> de los datos frente a catástrofes físicas, fallos de software o accesos no autorizados.</p>
+<p>Esta unidad didáctica se conecta de forma directa con los siguientes módulos del ciclo ASIR:</p>
+<ul>
+<li>
+<p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se estudian políticas de seguridad perimetral, criptografía y redundancia a nivel de almacenamiento físico (RAID).</p>
+</li>
+<li>
+<p><strong>Administración de Sistemas Gestores de Bases de Datos (ASGBD - 2º curso):</strong> En el cual se profundizará en la replicación maestro-esclavo, clustering y balanceo de carga.</p>
+</li>
+<li>
+<p><strong>Implantación de Sistemas Operativos (ISO):</strong> Específicamente en la monitorización de servicios (daemons) del sistema y gestión de almacenamiento en volúmenes lógicos (LVM).</p>
+</li>
+</ul>
+<h1 id="2-diagnostico-y-origen-de-fallos-en-un-sgbd">2. DIAGNÓSTICO Y ORIGEN DE FALLOS EN UN SGBD</h1>
+<h2 id="21-tipologias-de-fallo-comunes">2.1 Tipologías de Fallo Comunes</h2>
+<p>Un SGBD puede sufrir interrupciones del servicio con pérdida potencial de consistencia o datos debido a múltiples factores que un SysAdmin debe prever de manera proactiva:</p>
+<ol>
+<li>
+<p><strong>Fallo de Suministro Eléctrico:</strong> Cortes repentinos de energía que impiden la escritura de páginas de datos desde la caché en memoria (Buffer Pool) al disco duro físico.</p>
+</li>
+<li>
+<p><strong>Fallos de Hardware:</strong> Sectores defectuosos en unidades de disco duro, corrupción en los módulos de memoria RAM del servidor o fallos en la CPU.</p>
+</li>
+<li>
+<p><strong>Fallos de Software:</strong> Errores del sistema operativo (Kernel Panics), bloqueos del servicio mysqld o bugs en los controladores lógicos del sistema de archivos (e.g., ext4, XFS).</p>
+</li>
+<li>
+<p><strong>Problemas del Sistema de Ficheros:</strong> Agotamiento del espacio en disco o de la tabla de inodos, o corrupción interna en la estructura lógica de directorios de almacenamiento.</p>
+</li>
+<li>
+<p><strong>Factores Externos o Catástrofes:</strong> Incendios, inundaciones, robos o sabotajes físicos de la infraestructura del centro de datos.</p>
+</li>
+</ol>
+<p>La pérdida de datos en un SGBD puede categorizarse de dos formas:</p>
+<ul>
+<li>
+<p><strong>Pérdida Parcial:</strong> El sistema de archivos se mantiene intacto, pero se corrompen algunas páginas de datos correspondientes a tablas concretas, o se pierde la integridad referencial debido a transacciones incompletas.</p>
+</li>
+<li>
+<p><strong>Pérdida Total:</strong> Destrucción total de los dispositivos de almacenamiento físico que contienen el directorio de datos o pérdida generalizada de la integridad semántica de todos los esquemas del servidor.</p>
+</li>
+</ul>
+<h2 id="22-elementos-en-un-plan-de-recuperacion-de-desastres-drp">2.2 Elementos en un Plan de Recuperación de Desastres (DRP)</h2>
+<p>Para minimizar el impacto de estas caídas del sistema, se debe establecer una estrategia sistemática de mantenimiento preventivo y de recuperación:</p>
+<ul>
+<li>
+<p><strong>Establecer un Plan de Respaldos Periódicos:</strong> Automatizar copias de seguridad completas combinadas con copias incrementales o diferenciales, optimizando el espacio mediante técnicas de compresión y cifrado fuerte.</p>
+</li>
+<li>
+<p><strong>Almacenamiento de Respaldos Offsite / Remotos:</strong> Conservar las copias en una ubicación geográfica distinta a la del servidor principal (e.g., almacenamiento en la nube o en servidores de respaldo remotos protegidos contra catástrofes).</p>
+</li>
+<li>
+<p><strong>Control del Acceso Físico y Lógico:</strong> Protección de la sala de servidores frente a intrusiones físicas y despliegue de un sistema de privilegios de acceso lógico basado en el principio de mínimo privilegio (según el estándar DCL).</p>
+</li>
+<li>
+<p><strong>Planes de Contingencia Documentados y Testeados:</strong> Realización de simulacros periódicos de recuperación de fallos para evaluar la viabilidad real de los planes de contingencia y medir los tiempos de recuperación (RTO - Recovery Time Objective) y los puntos de recuperación (RPO - Recovery Point Objective).</p>
+</li>
+</ul>
+<h1 id="3-ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG DE MYSQL</h1>
+<h2 id="31-arquitectura-de-almacenamiento-fisico-en-disco">3.1 Arquitectura de Almacenamiento Físico en Disco</h2>
+<p>En sistemas operativos Linux, el directorio por defecto donde MySQL almacena físicamente las bases de datos está configurado en la variable del sistema datadir:</p>
+<p># Comprobación de la ruta física desde la terminal del sistema operativo</p>
+<p>mysql -u root -p -e \"SHOW VARIABLES LIKE \'datadir\';\"</p>
+<p></p>
+<p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio, cada base de datos tiene asignado su propio subdirectorio con el nombre de la base de datos (por ejemplo, /var/lib/mysql/practica_dml).</p>
+<p>Físicamente, los archivos se distribuyen de la siguiente manera según el motor de almacenamiento utilizado:</p>
+<ul>
+<li>
+<p><strong>Archivos .frm:</strong> Almacenan de manera exclusiva los metadatos de estructura de las tablas (válido para MyISAM e InnoDB en versiones previas a MySQL 8.0; en MySQL 8.0, esta información se consolida en el Diccionario de Datos del sistema).</p>
+</li>
+<li>
+<p><strong>Archivos .ibd:</strong> Corresponden al motor por defecto <strong>InnoDB</strong>. Almacenan de forma agrupada los datos físicos y los índices asociados a cada tabla en modo file-per-table.</p>
+</li>
+<li>
+<p><strong>Archivos .myd:</strong> Almacenan los datos en bruto de las tablas de tipo <strong>MyISAM</strong> (datos propiamente dichos).</p>
+</li>
+<li>
+<p><strong>Archivos .myi:</strong> Almacenan los índices de las tablas creadas con el motor <strong>MyISAM</strong>.</p>
+</li>
+</ul>
+<h2 id="32-anatomia-y-configuracion-de-los-logs-del-motor">3.2 Anatomía y Configuración de los Logs del Motor</h2>
+<p>MySQL proporciona cuatro logs esenciales para diagnosticar el estado del servidor y garantizar la recuperabilidad point-in-time:</p>
+<ol>
+<li>
+<p><strong>Log de Errores (log-error):</strong> Registra eventos de arranque, parada y cualquier fallo crítico del servidor. Por defecto se nombra como host_name.err.</p>
+</li>
+<li>
+<p><strong>Log de Consultas Lentas (slow_query_log):</strong> Registra las sentencias cuya ejecución supera el umbral definido por long_query_time (en segundos). Es crucial para optimizar el rendimiento.</p>
+</li>
+<li>
+<p><strong>Log General (general_log):</strong> Registra de manera secuencial cada conexión abierta por un cliente y cada sentencia SQL recibida por el servidor. Consume una gran cantidad de I/O de disco y no se recomienda mantener activo de forma continua en producción.</p>
+</li>
+<li>
+<p><strong>Log Binario (log_bin):</strong> Contiene un registro cronológico de todas las sentencias que actualizan datos o alteran el esquema (DDL y DML de escritura). <strong>Es indispensable para la replicación y para realizar restauraciones incrementales</strong>. Almacenado en formato binario para optimizar la velocidad de escritura.</p>
+</li>
+</ol>
+<p>Para cerrar los archivos de log abiertos y forzar la inicialización de logs nuevos (muy útil para procesos de rotación y antes de copias de seguridad), se ejecuta la instrucción:</p>
+<p>-- Forzar el volcado de buffers a disco y la rotación de logs</p>
+<p>FLUSH LOGS;</p>
+<p></p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html">[MySQL Reference Manual - Server Logs]{.underline}</a>.</p>
+<h2 id="_1"></h2>
+<h2 id="33-la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog</h2>
+<p>Dado que el registro binario se escribe en formato binario no legible, los SysAdmins deben utilizar la herramienta de terminal nativa <strong>mysqlbinlog</strong> para auditar o aplicar los cambios almacenados.</p>
+<p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
+<p>mysqlbinlog [opciones] nombre_log_binario</p>
+<p></p>
+<p>Opciones Principales de mysqlbinlog</p>
+<ul>
+<li>
+<p>--database=nombre_bd (-d): Filtra los eventos del log binario aplicando las sentencias que afecten de forma exclusiva al esquema indicado.</p>
+</li>
+<li>
+<p>--start-datetime=\"YYYY-MM-DD HH:MM:SS\": Inicia la lectura de eventos desde la marca de tiempo absoluta especificada.</p>
+</li>
+<li>
+<p>--stop-datetime=\"YYYY-MM-DD HH:MM:SS\": Detiene la lectura en la marca temporal provista (esencial para recuperar la base de datos hasta un instante inmediatamente anterior al desastre).</p>
+</li>
+<li>
+<p>--short-form (-s): Omite información de metadatos del binlog, imprimiendo únicamente las sentencias SQL puras.</p>
+</li>
+</ul>
+<p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
+<p># Ejemplo 1: Convertir un binlog a fichero de texto plano legible para auditoría</p>
+<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 > /tmp/auditoria_dml.sql</p>
+<p># Ejemplo 2: Aplicar de forma directa las instrucciones del binlog para recuperar datos</p>
+<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 | mysql -u root -p</p>
+<p></p>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utilityunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html">[MySQL Manual - mysqlbinlog Utility]{.underline}</a></h5>
+<h1 id="4-mantenimiento-y-reparacion-de-tablas">4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</h1>
+<p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo, índices que no coinciden con los datos reales tras un apagón eléctrico), disponemos de utilidades de línea de comandos y sentencias SQL específicas.</p>
+<h2 id="41-herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas Externas: myisamchk y mysqlcheck</h2>
+<p><strong>myisamchk (Exclusivo para tablas MyISAM)</strong></p>
+<p>Opera directamente a nivel de archivos físicos en disco (.MYD y .MYI). <strong>Exige que el servidor MySQL esté completamente apagado o que las tablas implicadas estén bloqueadas contra escritura</strong> para evitar la corrupción de datos.</p>
+<p># Comprobar estado de consistencia de la tabla fabricante (tipo MyISAM si se requiere)</p>
+<p>myisamchk --check /var/lib/mysql/practica_dml/fabricante.MYI</p>
+<p># Reparación estándar rápida reconstruyendo índices</p>
+<p>myisamchk --recover --quick /var/lib/mysql/practica_dml/fabricante.MYI</p>
+<p>Opciones representativas: --silent (-s), --extended-check (-e), --force (-f), --backup (-B).</p>
+<p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
+<p>A diferencia de myisamchk, esta utilidad se comunica con el servidor MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede utilizarse para tablas InnoDB y MyISAM.</p>
+<p># Analizar y reparar automáticamente todas las tablas del esquema \'practica_dml\'</p>
+<p>mysqlcheck -u root -p --auto-repair --check practica_dml</p>
+<p></p>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-toolunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html">[MySQL Manual - mysqlcheck Tool]{.underline}</a></h5>
+<h2 id="42-sentencias-sql-de-optimizacion-e-integridad">4.2 Sentencias SQL de Optimización e Integridad</h2>
+<p>Estas instrucciones se ejecutan directamente en un cliente interactivo o script SQL:</p>
+<h5 id="check-table">CHECK TABLE</h5>
+<p>Chequea la estructura de la tabla y valida sus índices asociados. Devolverá una tabla con el estado.</p>
+<p>USE practica_dml;</p>
+<p>CHECK TABLE empleado, producto;</p>
+<h5 id="_2"></h5>
+<h5 id="analyze-table">ANALYZE TABLE</h5>
+<p>Analiza y recalcula las estadísticas de distribución de claves de los índices. Esto permite que el Optimizador de Consultas de MySQL elija planes de ejecución óptimos (uso de índices secundarios adecuados). Bloquea la tabla para lectura durante el procesamiento.</p>
+<p>-- Analizar el estado de los índices en la tabla de empleados</p>
+<p>ANALYZE TABLE empleado;</p>
+<h5 id="_3"></h5>
+<h5 id="optimize-table">OPTIMIZE TABLE</h5>
+<p>Se utiliza para recuperar el espacio físico que ocupaban los registros previamente eliminados (mediante DELETE) en tablas con columnas de longitud variable (como VARCHAR o TEXT en la tabla fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y reduce su tamaño en disco.</p>
+<p>-- Desfragmentar la tabla fabricante tras realizar eliminaciones masivas</p>
+<p>OPTIMIZE TABLE fabricante;</p>
+<h5 id="_4"></h5>
+<h5 id="repair-table">REPAIR TABLE</h5>
+<p>Sintaxis SQL para intentar la reparación inmediata de tablas corruptas de tipo MyISAM (no compatible con InnoDB).</p>
+<p>REPAIR TABLE fabricante QUICK;</p>
+<p></p>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statementsunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html">[MySQL Manual - Table Maintenance Statements]{.underline}</a>.</h5>
+<h1 id="5-politicas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE SEGURIDAD</h1>
+<h2 id="51-clasificacion-tecnica-de-los-backups">5.1 Clasificación Técnica de los Backups</h2>
+<p>Podemos realizar diferentes clasificaciones de las estrategias de respaldo:</p>
+<ul>
+<li>
+<p><strong>En Frío (Cold Backup):</strong> Requiere detener por completo el daemon mysqld. Es la forma más consistente de copiar archivos binarios directos, pero invalida la disponibilidad del servicio.</p>
+</li>
+<li>
+<p><strong>En Caliente (Hot Backup):</strong> El servidor se mantiene activo sirviendo peticiones a aplicaciones cliente sin interrupción mientras se realiza el volcado de datos.</p>
+</li>
+<li>
+<p><strong>Físicas / Binarias:</strong> Copia directa a nivel de bytes de los archivos contenidos en el datadir. Es un proceso extremadamente veloz tanto en el copiado como en la restauración.</p>
+</li>
+<li>
+<p><strong>Lógicas / Textuales:</strong> Consiste en generar archivos con instrucciones de creación DDL y comandos de inserción DML (INSERT INTO). Son más lentas de procesar, pero altamente portables a otros SGBD o versiones de MySQL distintas.</p>
+</li>
+<li>
+<p><strong>Completas (Full Backup):</strong> Copia íntegra de toda la estructura y datos del servidor.</p>
+</li>
+<li>
+<p><strong>Incrementales:</strong> Copia de seguridad que almacena de forma única los cambios realizados en las tablas desde la última copia de seguridad realizada (completa o incremental). En MySQL se implementa copiando los logs binarios.</p>
+</li>
+</ul>
+<h2 id="52-copias-fisicas-o-binarias-innodb-myisam">5.2 Copias Físicas o Binarias (InnoDB &amp; MyISAM)</h2>
+<p>Para el motor por defecto de producción <strong>InnoDB</strong>, realizar una copia binaria en caliente requiere el uso de comandos avanzados para aislar los espacios de tablas.</p>
+<h5 id="algoritmo-de-respaldo-fisico-transporte-de-tablespaces-con-practica_dmlproducto">Algoritmo de Respaldo Físico (Transporte de Tablespaces con practica_dml.producto)</h5>
+<p>Para clonar físicamente el archivo .ibd de una tabla InnoDB de forma consistente y restaurarlo en otra ubicación, el SysAdmin debe ejecutar de forma interactiva:</p>
+<p><strong>Paso 1:</strong> Solicitar un bloqueo de lectura en el servidor origen para garantizar que las páginas de datos en el Buffer Pool de la tabla producto se vuelquen de forma consistente a disco, cerrando la tabla temporalmente:</p>
+<p>USE practica_dml;</p>
+<p>FLUSH TABLES producto FOR EXPORT;</p>
+<p><em>(Mantener la sesión abierta para preservar el bloqueo de lectura global).</em></p>
+<p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar físicamente los metadatos .cfg y el archivo de datos producto.ibd generados hacia la ruta de almacenamiento de backups segura:</p>
+<p>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg} /backups/fisico_practica/</p>
+<p></p>
+<p><strong>Paso 3:</strong> Una vez finalizada la copia física de los ficheros, liberar el bloqueo en la terminal origen:</p>
+<p>UNLOCK TABLES;</p>
+<h5 id="_5"></h5>
+<h5 id="algoritmo-de-restauracion-fisica-en-el-servidor-de-destino">Algoritmo de Restauración Física en el Servidor de Destino</h5>
+<p><strong>Paso 4:</strong> En el servidor de destino (donde existe la tabla creada vacía), se debe descartar el espacio de tablas lógico existente para desvincular el archivo .ibd actual:</p>
+<p>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</p>
+<p></p>
+<p><strong>Paso 5:</strong> Copiar el archivo producto.ibd respaldado en el paso 2 dentro del directorio de la base de datos de destino /var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de permisos correspondan exactamente al daemon de MySQL:</p>
+<p>cp /backups/fisico_practica/producto.ibd /var/lib/mysql/practica_dml/</p>
+<p>chown mysql:mysql /var/lib/mysql/practica_dml/producto.ibd</p>
+<p>chmod 660 /var/lib/mysql/practica_dml/producto.ibd</p>
+<p></p>
+<p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de datos en la estructura del diccionario del SGBD:</p>
+<p>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</p>
+<h4 id="_6"></h4>
+<h2 id="53-copias-logicas-o-textuales-dumping">5.3 Copias Lógicas o Textuales (Dumping)</h2>
+<p><strong>1. Sentencia SELECT ... INTO OUTFILE y LOAD DATA INFILE</strong></p>
+<p>Este método permite exportar rápidamente el contenido en bruto de una tabla a un fichero de texto plano formateado (por ejemplo, .csv), útil para migraciones rápidas de datos o análisis con herramientas como Excel.</p>
+<p>Por motivos de seguridad contra ataques de inyección, MySQL restringe la exportación e importación de archivos mediante la variable del sistema <strong>secure_file_priv</strong>. Cualquier intento de exportación fuera del directorio definido en dicha variable lanzará el <strong>Error 1290</strong>.</p>
+<p>-- Comprobar el directorio permitido para exportación</p>
+<p>SHOW VARIABLES LIKE \'secure_file_priv\';</p>
+<p>-- En sistemas estándar, el directorio por defecto suele ser \'/var/lib/mysql-files/\'</p>
+<p></p>
+<p><strong>Exportación consistente de la tabla de empleados</strong></p>
+<p>SELECT codigo_empleado, nombre, apellido1, email, salario, comision</p>
+<p>INTO OUTFILE \'/var/lib/mysql-files/empleados_export.txt\'</p>
+<p>FIELDS TERMINATED BY \',\'</p>
+<p>OPTIONALLY ENCLOSED BY \'\"\'</p>
+<p>LINES TERMINATED BY \'\n\'</p>
+<p>FROM practica_dml.empleado;</p>
+<h6 id="_7"></h6>
+<p><strong>Restauración de los datos mediante LOAD DATA INFILE</strong></p>
+<p>Para importar los datos en una tabla de backup previamente estructurada:</p>
+<p>USE practica_dml;</p>
+<p>-- Crear tabla vacía de copia de seguridad (estructura clonada de empleados)</p>
+<p>CREATE TABLE empleado_backup LIKE empleado;</p>
+<p>-- Importar el fichero de datos exportado</p>
+<p>LOAD DATA INFILE \'/var/lib/mysql-files/empleados_export.txt\'</p>
+<p>INTO TABLE empleado_backup</p>
+<p>FIELDS TERMINATED BY \',\'</p>
+<p>OPTIONALLY ENCLOSED BY \'\"\'</p>
+<p>LINES TERMINATED BY \'\n\';</p>
+<h5 id="_8"></h5>
+<p><strong>2. La Utilidad mysqldump</strong></p>
+<p>Herramienta clásica y versátil que vuelca una base de datos o tablas en un archivo SQL con instrucciones DDL/DML.</p>
+<p><strong>A. Sintaxis para exportar tablas específicas de una base de datos:</strong></p>
+<p>mysqldump -u root -p practica_dml producto fabricante > /backups/productos_fabricantes.sql</p>
+<h6 id="_9"></h6>
+<p><strong>B. Sintaxis para exportar una o varias bases de datos completas:</strong></p>
+<p># Exportar las bases de datos practica_dml y tienda de forma estructurada</p>
+<p>mysqldump -u root -p --databases practica_dml > /backups/respaldo_practica.sql</p>
+<p><em>(Nota: Al usar --databases, se insertan automáticamente las directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
+<p><strong>C. Sintaxis para exportar todas las bases de datos de la instancia de MySQL:</strong></p>
+<p>mysqldump -u root -p --all-databases > /backups/instancia_completa.sql</p>
+<h5 id="_10"></h5>
+<p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
+<ul>
+<li>
+<p>--single-transaction: Esencial para tablas transaccionales <strong>InnoDB</strong>. Inicia una transacción antes de realizar la copia de seguridad, obteniendo un volcado consistente de los datos sin necesidad de bloquear los accesos de escritura a las aplicaciones cliente.</p>
+</li>
+<li>
+<p>--flush-logs (-F): Fuerza al servidor a inicializar un log binario nuevo justo al empezar el backup. Indispensable para organizar respaldos incrementales limpios.</p>
+</li>
+<li>
+<p>--no-data (-d): Exporta de forma exclusiva la estructura DDL de la base de datos (tablas, restricciones, tipos de datos), omitiendo los registros lógicos.</p>
+</li>
+<li>
+<p>--no-create-info (-t): Exporta únicamente los comandos INSERT INTO con los datos, omitiendo las instrucciones DDL de creación de tablas.</p>
+</li>
+<li>
+<p>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de cada definición de tabla. Evita errores de duplicados al restaurar bases de datos ya existentes.</p>
+</li>
+</ul>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utilityunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html">[MySQL Manual - mysqldump Utility]{.underline}</a></h5>
+<p><strong>3. La Utilidad mysqlimport</strong></p>
+<p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en la tabla correspondiente, la cual debe llamarse exactamente igual que el nombre base del archivo físico a importar.</p>
+<p># Importar el fichero \'empleado.txt\' en la tabla \'empleado\' del esquema \'practica_dml\'</p>
+<p>mysqlimport -u root -p --fields-terminated-by=\',\' practica_dml /var/lib/mysql-files/empleado.txt</p>
+<h3 id="_11"></h3>
+<h1 id="6-escenario-de-produccion-plan-de-respaldo-incremental-y-recuperacion-point-in-time">6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME</h1>
+<h4 id="caso-practico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo">Caso Práctico: Respaldo Incremental de practica_dml en un Entorno Corporativo</h4>
+<p><strong>Fase 1: Creación del Respaldo Base el Domingo a las 02:00 h</strong></p>
+<p>Como SysAdmin, ejecutamos un backup lógico consistente forzando la rotación de los logs binarios. El servidor comenzará a registrar cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo, binlog.000002).</p>
+<p>mysqldump -u root -p --single-transaction --flush-logs --databases practica_dml > /backups/practica_dml_domingo.sql</p>
+<p><strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00 h</strong></p>
+<p>Un desarrollador comete un fallo crítico de sintaxis en producción y ejecuta un DELETE accidental sin cláusula WHERE sobre la tabla de clientes en practica_dml, vaciando la tabla. El desastre se registra a las 10:00:15 en el log binario activo binlog.000002.</p>
+<p><strong>Fase 3: Proceso de Recuperación Point-in-Time (Lunes 10:15 h)</strong></p>
+<p><strong>Paso 1:</strong> Forzar de manera inmediata un bloqueo de escritura para evitar que nuevos registros interfieran o cerrar las conexiones clientes y rotar los logs binarios para aislar la actividad actual:</p>
+<p>mysqladmin -u root -p flush-logs</p>
+<p><em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene la sentencia destructiva).</em></p>
+<p><strong>Paso 2:</strong> Importar la copia de seguridad completa realizada el domingo, devolviendo la base de datos al estado consistente del domingo a las 02:00 h:</p>
+<p>mysql -u root -p \&lt; /backups/practica_dml_domingo.sql</p>
+<p></p>
+<p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de manera visual para encontrar la posición física o la fecha y hora exactas de la transacción dañina:</p>
+<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 | grep -i -C 5 \"delete\"</p>
+<p><em>Supongamos que encontramos que la transacción destructiva ocurrió a las \"2026-06-22 10:00:15\".</em></p>
+<p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las transacciones realizadas desde el domingo hasta el instante previo a la eliminación accidental (10:00:14 h):</p>
+<p>mysqlbinlog --database=practica_dml --stop-datetime=\"2026-06-22 10:00:14\" /var/lib/mysql/binlog.000002 | mysql -u root -p</p>
+<p></p>
+<p>¡La base de datos se ha recuperado con total consistencia y sin pérdida de datos válidos!</p>
+<h1 id="7-herramientas-graficas-y-migracion-entre-sgbd">7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD</h1>
+<p><strong>Realizar Copias de Seguridad con MySQL Workbench</strong></p>
+<ol>
+<li>
+<p>En la barra lateral de administración, seleccionar <strong>Data Export</strong>.</p>
+</li>
+<li>
+<p>Elegir las bases de datos y tablas que deseamos exportar.</p>
+</li>
+<li>
+<p>Seleccionar entre exportar a un directorio de archivos individuales (para restauraciones selectivas más rápidas) o a un archivo consolidado continuo (Self-Contained File).</p>
+</li>
+<li>
+<p>Activar las casillas <strong>Dump Stored Procedures and Functions</strong>, <strong>Dump Events</strong> y <strong>Dump Triggers</strong> según sea necesario para conservar la lógica de negocio de la unidad 11.</p>
+</li>
+<li>
+<p>Pulsar <strong>Start Export</strong>.</p>
+</li>
+</ol>
+<p><strong>Restauración mediante phpMyAdmin</strong></p>
+<ol>
+<li>
+<p>Acceder al menú de navegación superior y pulsar sobre el botón <strong>Importar</strong> (Import).</p>
+</li>
+<li>
+<p>Utilizar el explorador de archivos para seleccionar nuestro respaldo .sql o .sql.gz.</p>
+</li>
+<li>
+<p>Definir el formato de lectura (estándar SQL).</p>
+</li>
+<li>
+<p>Pulsar sobre el botón <strong>Continuar</strong> (Go).</p>
+</li>
+</ol>
+<p><strong>Migración de Esquemas mediante MySQL Workbench Database Migration</strong></p>
+<p>MySQL Workbench incorpora un asistente integral para migrar datos desde orígenes heterogéneos (Microsoft SQL Server, Microsoft Access, PostgreSQL, Oracle o SQLite) hacia bases de datos compatibles con MySQL.</p>
+<p>El proceso sigue esta jerarquía lógica de transformación de tipos y estructuras:</p>
+<p>El asistente realiza la transformación lógica de la estructura de la base de datos de manera automatizada en los siguientes pasos:</p>
+<ol>
+<li>
+<p><strong>Establecimiento del Punto de Acceso (Connection Parameters):</strong> Configura los controladores nativos (generalmente controladores ODBC o JDBC) para comunicarse con el servidor origen.</p>
+</li>
+<li>
+<p><strong>Mapeo de Tipos de Datos (Reverse Engineering):</strong> Analiza y adapta los tipos de datos incompatibles (por ejemplo, los campos de tipo IMAGE en SQL Server se traducen a campos de tipo LONGBLOB en MySQL, y los tipos de datos DATETIME2 se homologan al formato estándar DATETIME de precisión estándar).</p>
+</li>
+<li>
+<p><strong>Alineación Física y Creación de Esquemas (Target Schema Creation):</strong> Genera la base de datos de destino y crea las tablas aplicando las condiciones físicas óptimas.</p>
+</li>
+<li>
+<p><strong>Carga Eficiente de Datos (Data Copy):</strong> Ejecuta un volcado masivo de datos registro a registro de forma óptima deshabilitando temporalmente el control de claves ajenas (FOREIGN_KEY_CHECKS = 0) para acelerar el procesamiento.</p>
+</li>
+</ol>
+<h1 id="8-documentacion-de-politicas-de-seguridad-y-cumplimiento-normativo-rgpd">8. DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO (RGPD)</h1>
+<p>Un Administrador de Sistemas no puede limitarse a la ejecución de tareas técnicas; debe documentar de forma clara las normativas, roles y directivas que rigen la seguridad lógica y física de la información, de conformidad con el <strong>Reglamento General de Protección de Datos (RGPD / LOPDGDD)</strong>.</p>
+<p>La política de seguridad física e informática de la empresa debe detallar explícitamente las siguientes pautas organizativas:</p>
+<ul>
+<li>
+<p><strong>Identificación y Rotulación Estricta de Copias de Seguridad:</strong> Cada dispositivo físico que almacene respaldos debe estar claramente catalogado con su descripción, fecha de ejecución y clasificación de la información.</p>
+</li>
+<li>
+<p><strong>Establecimiento de Roles de Acceso (Mínimo Privilegio):</strong> Despliegue de esquemas de seguridad basados en roles utilizando comandos DCL (GRANT/REVOKE). El personal no cualificado o externo no debe poseer privilegios globales de edición sobre esquemas sensibles.</p>
+</li>
+<li>
+<p>Gestión del Ciclo de Vida de los Respaldos (Conservación y Dest</p>
+</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UT8 Programación SGBD" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              UT8 Programación SGBD
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-footer__link md-footer__link--next" aria-label="Next: Plantilla Apuntes" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Plantilla Apuntes
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

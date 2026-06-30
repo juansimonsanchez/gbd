@@ -1,0 +1,961 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Programación - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Programación
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT4.%20Teor%C3%ADa.%20DDL/" class="md-nav__link">
+        UT4 DDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-nav__link">
+        UT7 Transaccionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-nav__link">
+        UT8 Programación SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-nav__link">
+        UT9 Seguridad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_tareas_pr%C3%A1cticas%2026%2027/" class="md-nav__link">
+        Plantilla Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1"></h1>
+<h1 id="1-contextualizacion-normativa">1. CONTEXTUALIZACIÓN NORMATIVA</h1>
+<p>La presente programación didáctica se inserta en el marco legal determinado por el Estado y la Comunidad Autónoma de Andalucía para las enseñanzas de Formación Profesional, adaptándose a las siguientes normas de obligada referencia:</p>
+<ul>
+<li>
+<p><strong>Ley Orgánica 3/2022, de 31 de marzo</strong>, de ordenación e integración de la Formación Profesional.</p>
+</li>
+<li>
+<p><strong>Real Decreto 659/2023, de 18 de julio</strong>, por el que se desarrolla la ordenación del Sistema de Formación Profesional.</p>
+</li>
+<li>
+<p><strong>Decreto 165/2024</strong>, por el que se establece la ordenación general de la Formación Profesional en Andalucía.</p>
+</li>
+<li>
+<p><strong>Orden de 19 de julio de 2010</strong>, por la que se desarrolla el currículo correspondiente al título de Técnico Superior en Administración de Sistemas Informáticos en Red en la Comunidad Autónoma de Andalucía.</p>
+</li>
+<li>
+<p><strong>Orden de 18 de septiembre de 2025</strong>, por la que se regula la evaluación, certificación, acreditación y titulación académica del alumnado que cursa enseñanzas de los grados D y E del Sistema de Formación Profesional en la Comunidad Autónoma de Andalucía.</p>
+</li>
+<li>
+<p><strong>Instrucciones de 20 de mayo de 2026</strong> de la Dirección General de Formación Profesional y Educación Permanente, por las que se establecen aspectos relativos a la evaluación final del alumnado de los grados D y E para los centros docentes de Andalucía.</p>
+</li>
+</ul>
+<pre><code>&lt;!-- --&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>Horas semanales de módulo:</strong> 6 horas.</p>
+</li>
+<li>
+<p><strong>Horas totales del módulo:</strong> 192 horas (distribuidas en el primer curso lectivo).</p>
+</li>
+</ul>
+<h1 id="2-competencias-y-objetivos-asociados">2. COMPETENCIAS Y OBJETIVOS ASOCIADOS</h1>
+<p>El módulo profesional de <strong>Gestión de Bases de Datos</strong> contribuye al desarrollo de las siguientes competencias y objetivos generales descritos en el currículo oficial del título de ASIR en Andalucía:</p>
+<h3 id="a-competencias-profesionales-personales-y-sociales">A. Competencias Profesionales, Personales y Sociales:</h3>
+<ul>
+<li>
+<p><strong>Competencia c):</strong> Configurar la estructura lógica y física de los equipos, sistemas y redes de comunicaciones.</p>
+</li>
+<li>
+<p><strong>Competencia g):</strong> Configurar y gestionar bases de datos, garantizando la integridad, consistencia y accesibilidad de los datos.</p>
+</li>
+<li>
+<p><strong>Competencia h):</strong> Gestionar los derechos de acceso y usuarios del sistema para garantizar la seguridad de la información.</p>
+</li>
+<li>
+<p><strong>Competencia s):</strong> Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos dentro del ámbito de su competencia.</p>
+</li>
+</ul>
+<h3 id="b-objetivos-generales-del-ciclo-formativo">B. Objetivos Generales del Ciclo Formativo:</h3>
+<ul>
+<li>
+<p><strong>Objetivo b):</strong> Instalar y configurar el software de base y de aplicación, relacionándolo con sus requerimientos de hardware para administrar sistemas de servidores.</p>
+</li>
+<li>
+<p><strong>Objetivo k):</strong> Asegurar el sistema y los datos según las necesidades de uso y las condiciones de seguridad establecidas para prevenir fallos y ataques externos.</p>
+</li>
+<li>
+<p><strong>Objetivo r):</strong> Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos dentro del ámbito de su competencia, para asegurar la explotación y el mantenimiento preventivo del sistema.</p>
+</li>
+<li>
+<p><strong>Objetivo s):</strong> Analizar y utilizar los recursos y oportunidades de aprendizaje relacionados con la evolución científica, tecnológica y organizativa del sector y las tecnologías de la información y la comunicación.</p>
+</li>
+</ul>
+<h1 id="3-resultados-de-aprendizaje-y-criterios-de-evaluacion">3. RESULTADOS DE APRENDIZAJE Y CRITERIOS DE EVALUACIÓN</h1>
+<p>A continuación, se detalla la ponderación curricular que se asignará en la plataforma Séneca para cada <strong>Resultado de Aprendizaje (RA)</strong>, desglosando asimismo el <strong>peso relativo porcentual</strong> que tiene cada uno de sus <strong>Criterios de Evaluación (CE)</strong> asociados para el cálculo interno de la nota del RA correspondiente.</p>
+<hr />
+<p><strong>RA / Código</strong>                                                                                                                  <strong>Criterio de Evaluación / Descripción</strong>                                                                                                     <strong>Peso</strong></p>
+<hr />
+<p><strong>RA1: Almacena información en bases de datos utilizando sistemas de gestión de bases de datos. (Peso Total: 10%)</strong>                                                                                                                                                           </p>
+<p>CE1.a                                                                                                                            Se han identificado los sistemas de almacenamiento de la información.                                                                        15%</p>
+<p>CE1.b                                                                                                                            Se han analizado las ventajas y desventajas del uso de SGBD frente a ficheros tradicionales.                                                 20%</p>
+<p>CE1.c                                                                                                                            Se han descrito los componentes y funciones del SGBD.                                                                                        20%</p>
+<p>CE1.d                                                                                                                            Se han clasificado los SGBD según el modelo de datos y el nivel de concurrencia.                                                             15%</p>
+<p>CE1.e                                                                                                                            Se ha identificado el diccionario de datos y su utilidad en el SGBD.                                                                         15%</p>
+<p>CE1.f                                                                                                                            Se ha analizado la arquitectura ANSI/SPARC de tres niveles de un SGBD.                                                                       15%</p>
+<p><strong>RA2: Diseña modelos lógicos relacionales normalizándolos hasta la tercera forma normal. (Peso Total: 15%)</strong>                                                                                                                                                                 </p>
+<p>CE2.a                                                                                                                            Se han identificado los elementos que conforman el modelo relacional.                                                                        10%</p>
+<p>CE2.b                                                                                                                            Se han transformado esquemas conceptuales (Entidad/Relación) a esquemas lógicos relacionales.                                                30%</p>
+<p>CE2.c                                                                                                                            Se han determinado las claves primarias, ajenas, alternativas y candidatas de las relaciones.                                                15%</p>
+<p>CE2.d                                                                                                                            Se han analizado y aplicado las restricciones de integridad (entidad, referencial y dominio).                                                15%</p>
+<p>CE2.e                                                                                                                            Se han normalizado los esquemas lógicos relacionales aplicando las reglas hasta la tercera forma normal (3FN).                               20%</p>
+<p>CE2.f                                                                                                                            Se han dibujado esquemas lógicos relacionales utilizando herramientas de modelado de datos.                                                  10%</p>
+<p><strong>RA3: Realiza la estructura física de una base de datos utilizando lenguajes de definición de datos. (Peso Total: 15%)</strong>                                                                                                                                                     </p>
+<p>CE3.a                                                                                                                            Se han identificado los tipos de datos disponibles en el SGBD de referencia.                                                                 10%</p>
+<p>CE3.b                                                                                                                            Se han creado las tablas de la base de datos aplicando el lenguaje de definición de datos (DDL).                                             25%</p>
+<p>CE3.c                                                                                                                            Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.                                           25%</p>
+<p>CE3.d                                                                                                                            Se han implementado restricciones semánticas adicionales de columna y tabla (CHECK, UNIQUE, NOT NULL).                                       15%</p>
+<p>CE3.e                                                                                                                            Se han creado índices y vistas lógicas para optimizar el acceso y estructurar permisos.                                                      15%</p>
+<p>CE3.f                                                                                                                            Se han modificado y eliminado estructuras de la base de datos (ALTER, DROP).                                                                 10%</p>
+<p><strong>RA4: Consulta la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 25%)</strong>                                                                                                                                                </p>
+<p>CE4.a                                                                                                                            Se han diseñado consultas de selección simples (proyección, filtrado mediante WHERE, ordenación).                                            20%</p>
+<p>CE4.b                                                                                                                            Se han utilizado operadores lógicos, relacionales, de comparación de patrones y manejo de nulos.                                             20%</p>
+<p>CE4.c                                                                                                                            Se han diseñado consultas agregadas utilizando funciones de grupo y cláusulas de agrupamiento (GROUP BY, HAVING).                            20%</p>
+<p>CE4.d                                                                                                                            Se han realizado composiciones internas (INNER JOIN) y externas (LEFT, RIGHT, FULL OUTER JOIN) de tablas.                                    20%</p>
+<p>CE4.e                                                                                                                            Se han diseñado subconsultas correlacionadas y no correlacionadas mediante operadores de pertenencia y comparación (IN, EXISTS, ANY, ALL).   20%</p>
+<p><strong>RA5: Modifica la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 15%)</strong>                                                                                                                                                </p>
+<p>CE5.a                                                                                                                            Se han ejecutado sentencias de inserción de filas individuales y masivas (INSERT INTO ... VALUES / SELECT).                                 20%</p>
+<p>CE5.b                                                                                                                            Se han actualizado registros en tablas aplicando filtros complejos (UPDATE).                                                                 20%</p>
+<p>CE5.c                                                                                                                            Se han borrado registros de tablas aplicando filtros y gestionando borrados en cascada (DELETE).                                             20%</p>
+<p>CE5.d                                                                                                                            Se ha verificado el funcionamiento del control de transacciones (propiedades ACID: COMMIT, ROLLBACK).                                        15%</p>
+<p>CE5.e                                                                                                                            Se han analizado los problemas de acceso simultáneo a los datos, el concepto de bloqueo y las políticas de ejecución de transacciones.       15%</p>
+<p>CE5.f                                                                                                                            Se han adoptado medidas de configuración para mantener la integridad y consistencia de la información en entornos concurrentes.              10%</p>
+<p><strong>RA6: Desarrolla procedimientos almacenados y disparadores utilizando lenguajes de programación. (Peso Total: 20%)</strong>                                                                                                                                                         </p>
+<p>CE6.a                                                                                                                            Se han descrito las ventajas y áreas de utilización de los disparadores y de las tareas administrativas.                                     10%</p>
+<p>CE6.b                                                                                                                            Se han descrito los distintos métodos de ejecución de guiones (scripts).                                                                     10%</p>
+<p>CE6.c                                                                                                                            Se han identificado las herramientas disponibles para redactar guiones.                                                                      10%</p>
+<p>CE6.d                                                                                                                            Se han definido y utilizado guiones para automatizar tareas.                                                                                 20%</p>
+<p>CE6.e                                                                                                                            Se han identificado los eventos susceptibles de activar disparadores.                                                                        10%</p>
+<p>CE6.f                                                                                                                            Se han definido disparadores (triggers).                                                                                                     20%</p>
+<p>CE6.g                                                                                                                            Se han utilizado estructuras de control de flujo (bucles, condicionales).                                                                    10%</p>
+<p>CE6.h                                                                                                                            Se han adoptado medidas para mantener la integridad y consistencia de la información mediante disparadores y rutinas.                        10%</p>
+<hr />
+<h1 id="4-contenidos-y-distribucion-temporal">4. CONTENIDOS Y DISTRIBUCIÓN TEMPORAL</h1>
+<p>De acuerdo con el calendario oficial previsto para el curso académico <strong>2026/2027</strong> en la Comunidad Autónoma de Andalucía, el régimen lectivo se estructurará de la siguiente forma, contemplando un <strong>periodo de estancia dual obligatoria de 3 semanas que comienza una semana antes de Semana Santa, con una jornada de 7 horas diarias</strong>:</p>
+<h3 id="calendario-general-del-curso-20262027">Calendario General del Curso 2026/2027:</h3>
+<ul>
+<li>
+<p><strong>Primer Trimestre:</strong> Del 15 de septiembre de 2026 al 22 de diciembre de 2026 (14 semanas de clase en centro = 84 horas lectivas).</p>
+</li>
+<li>
+<p><strong>Segundo Trimestre:</strong> Del 8 de enero de 2027 al 19 de marzo de 2027 (10 semanas de clase en centro = 60 horas lectivas).</p>
+</li>
+<li>
+<p><strong>Tercer Trimestre (Clases en centro):</strong> Del 12 de abril de 2027 al 22 de junio de 2027 (9 semanas de clase en centro = 54 horas lectivas).</p>
+</li>
+<li>
+<p><strong>Periodo de Alternancia Dual (Estancia en Empresa):</strong> Del 15 de marzo de 2027 al 11 de abril de 2027 (<strong>105 horas totales</strong>).</p>
+</li>
+</ul>
+<h3 id="distribucion-temporal-y-secuenciacion-de-unidades-de-trabajo-ut">Distribución Temporal y Secuenciación de Unidades de Trabajo (UT):</h3>
+<hr />
+<p><strong>UT</strong>    <strong>Título</strong>                                         <strong>Horas</strong>   <strong>Periodo</strong>   <strong>RAs</strong>   <strong>Trimestre</strong></p>
+<hr />
+<p><strong>UT1</strong>   Almacenamiento de la información                   12 h        Sep           RA1       1º</p>
+<p><strong>UT2</strong>   Diseño del modelo conceptual                       18 h        Oct           RA2       1º</p>
+<p><strong>UT3</strong>   Modelo relacional                                  18 h        Oc - Nov      RA2       1º</p>
+<p><strong>UT4</strong>   Lenguaje de definición de datos                    36 h        Nov - Dic     RA3       1º</p>
+<p><strong>UT5</strong>   Realización de consultas                           54 h        Ene - Feb     RA4       2º</p>
+<p><strong>UT6</strong>   Manipulación de datos y control de transacciones   30 h        Mar - Abr     RA5       2º y 3º</p>
+<p><strong>UT7</strong>   Programación de bases de datos                     12 h        May - Jun     RA6       3º</p>
+<p><strong>UT8</strong>   Gestión de la seguridad                            12 h                      RA5       3º</p>
+<hr />
+<h1 id="5-formacion-dual">5. FORMACIÓN DUAL</h1>
+<p>Siguiendo las directrices del <strong>Decreto 165/2024</strong> y la <strong>Orden de 26 de septiembre de 2025</strong>, y considerando que el alumnado se encuentra en el primer curso con un nivel de conocimientos inicial, se selecciona el siguiente criterio de evaluación para ser consolidados durante la estancia de <strong>105 horas entre marzo y abril de 2027</strong>.</p>
+<h3 id="criterios-de-evaluacion-seleccionados-para-la-alternancia-dual">Criterios de Evaluación seleccionados para la Alternancia Dual:</h3>
+<ol>
+<li><strong>RA3 - Criterio de Evaluación c):</strong> <em>Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.</em></li>
+</ol>
+<h3 id="actividades-practicas-clave-en-la-empresa-sencillas-y-de-bajo-riesgo">Actividades Prácticas Clave en la Empresa (Sencillas y de bajo riesgo):</h3>
+<ul>
+<li><strong>Actividad 1 (Vinculada a RA3-c):</strong> Documentar la estructura de tablas existentes en un entorno de pruebas o desarrollo de la empresa, identificando visualmente qué campos actúan como claves primarias y cuáles conectan como claves ajenas, plasmándolo en un breve informe técnico.</li>
+</ul>
+<h1 id="6-metodologia-didactica">6. METODOLOGÍA DIDÁCTICA</h1>
+<p>El proceso de enseñanza-aprendizaje en el aula-taller se basará en enfoques activos, prácticos y constructivistas, orientados a la adquisición real de competencias técnicas y alineados con los requisitos de la formación profesional dual:</p>
+<ul>
+<li>
+<p><strong>Aprendizaje Basado en Proyectos (ABP):</strong> A lo largo del curso se planteará un proyecto transversal (por ejemplo, el diseño e implementación de la base de datos para una plataforma de comercio electrónico o un centro de datos). El alumnado aplicará los conocimientos teóricos de forma inmediata sobre este proyecto a medida que se avanza en los RAs.</p>
+</li>
+<li>
+<p><strong>Flipped Classroom (Aula Invertida):</strong> Por ejemplo, en determinados bloques teóricos y sintaxis SQL básica (RA1 y primeros temas de RA3 y RA4) se trabajarán previamente mediante vídeos explicativos y lecturas guiadas publicadas en Moodle Centros. El tiempo de clase presencial se reservará para la resolución de dudas complejas, debates de diseño lógico y la resolución cooperativa de retos de programación SQL.</p>
+</li>
+<li>
+<p><strong>Gamificación Técnica y Plataformas de Retos:</strong> Para consolidar la escritura ágil de sentencias SQL (RA4) se utilizarán retos creados por el docente en Moodle), incentivando la motivación mediante rankings formativos individuales o grupales.</p>
+</li>
+<li>
+<p><strong>Aprendizaje Cooperativo:</strong> Trabajo en parejas o pequeños grupos homogéneos, por ejemplo en la fase de modelado de datos (RA2), simulando dinámicas ágiles de diseño (Scrum/Kanban) y realizando revisiones cruzadas de código (Peer Review) de los scripts DDL creados por otros compañeros de clase.</p>
+</li>
+</ul>
+<h1 id="7-materiales-espacios-y-recursos-didacticos">7. MATERIALES, ESPACIOS Y RECURSOS DIDÁCTICOS</h1>
+<p>Las actividades complementarias y extraescolares están recogidas en la programación del departamento.</p>
+<ul>
+<li>
+<p><strong>Espacios:</strong> Aula polivalente / Aula taller de Informática equipada con mesas electrificadas y puestos individuales de trabajo para el alumnado, climatización adecuada, pizarra blanca y proyector interactivo de alta definición o pantalla de proyección táctil.</p>
+</li>
+<li>
+<p><strong>Equipamiento Hardware:</strong></p>
+<ul>
+<li>
+<p>Un ordenador para el puesto del profesorado con conexión a internet de banda ancha y equipo de proyección audiovisual.</p>
+</li>
+<li>
+<p>Un ordenador por alumno con procesador x86-64 multihilo (mínimo Intel Core i5 o equivalente), un mínimo de 16 GB de memoria RAM (esencial para la ejecución de entornos virtualizados y contenedores simultáneos) y disco de almacenamiento de estado sólido (SSD) de alta velocidad de al menos 512 GB.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Entornos de Software y Virtualización:</strong></p>
+<ul>
+<li>
+<p>Sistema operativo de libre distribución.</p>
+</li>
+<li>
+<p>Entorno de contenedores <strong>Docker y Docker Compose</strong> para el despliegue de los distintos sistemas gestores de bases de datos. El alumnado aprenderá a levantar contenedores con imágenes oficiales de MariaDB, PostgreSQL y SQLite.</p>
+</li>
+<li>
+<p>Herramienta cliente universal de bases de datos de código abierto.</p>
+</li>
+<li>
+<p>Herramientas de modelado de datos (MySQL Workbench, draw.io o similar).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Plataformas Virtuales de Aprendizaje:</strong></p>
+<ul>
+<li>Espacio virtual en <strong>Moodle Centros</strong> de la Junta de Andalucía como repositorio centralizado de documentación, guías de laboratorios, foros de soporte colaborativo, cuestionarios de autoevaluación y buzones de entrega parametrizados con rúbricas de corrección para el alumnado.</li>
+</ul>
+</li>
+</ul>
+<h1 id="8-evaluacion-y-calificacion">8. EVALUACIÓN Y CALIFICACIÓN</h1>
+<p>Toda la actividad académica, calificaciones y seguimiento del progreso del alumnado se centralizarán en la plataforma oficial <strong>Moodle Centros</strong>. El calificador de Moodle estará estructurado estrictamente por carpetas correspondientes a cada uno de los <strong>Resultados de Aprendizaje (RAs)</strong>, donde cada tarea, cuestionario, foro o prueba constituirá un ítem de calificación asociado a sus respectivos criterios de evaluación. La copia, plagio o utilización de tecnologías o herramientas no autorizadas en la realización de una actividad, implica la calificación de la actividad con una nota de <strong>cero</strong>. Se podrá solicitar la exposición o defensa la realización de cualquier actividad.</p>
+<p><strong>Instrumentos de evaluación:</strong> Pruebas prácticas o teóricas (escritas o en ordenador), proyectos o prácticas, tareas, evaluación diaria y cuestionarios.</p>
+<ul>
+<li>
+<p><strong>Foros temáticos y aportaciones en Moodle (10%):</strong> Uso de foros de debate técnico puntuables para la observación directa del desempeño, colaboración y asimilación de conceptos del alumnado.</p>
+</li>
+<li>
+<p><strong>Tareas prácticas entregables en Moodle (30%):</strong> Prácticas de modelado de datos, comandos, etc. Es obligada su entrega para poder superar el RA correspondiente y realizar la ponderación.</p>
+</li>
+<li>
+<p><strong>Prueba teórico/prácticas individuales (60%):</strong> Pruebas presenciales en el aula para evaluar la destreza individual. Se tienen que superar como mínimo con un 5 para poder superar el RA correspondiente y realizar la ponderación.</p>
+</li>
+</ul>
+<h3 id="a-obtencion-de-la-calificacion-del-primer-trimestre-1ot">A. Obtención de la Calificación del Primer Trimestre (1ºT)</h3>
+<ul>
+<li>
+<p><strong>Resultados de Aprendizaje evaluados:</strong> RA1 (10% peso anual), RA2 (15% peso anual), RA3 (15% peso anual).</p>
+</li>
+<li>
+<p><strong>Fórmula de cálculo del trimestre:</strong>\
+    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image5.png" />{width="6.458333333333333in" height="0.4583333333333333in"}</p>
+</li>
+</ul>
+<h3 id="b-obtencion-de-la-calificacion-del-segundo-trimestre-2ot">B. Obtención de la Calificación del Segundo Trimestre (2ºT)</h3>
+<ul>
+<li>
+<p><strong>Resultados de Aprendizaje evaluados:</strong> RA4 (25% peso anual), RA5 (Parte - 10% peso anual).</p>
+</li>
+<li>
+<p><strong>Fórmula de cálculo del trimestre:</strong>\
+    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image2.png" />{width="6.458333333333333in" height="0.4895833333333333in"}</p>
+</li>
+</ul>
+<h3 id="c-obtencion-de-la-calificacion-de-la-primera-evaluacion-final">C. Obtención de la Calificación de la Primera Evaluación Final</h3>
+<p>Se calcula una vez finalizado el periodo de junio, integrando la formación en centro y las valoraciones de las prácticas de la estancia dual de 2027.</p>
+<ul>
+<li>
+<p><strong>Paso 1: Calificación de la Estancia DUAL (Mayo):</strong> El tutor/a de la empresa completará una rúbrica en Séneca valorando el desempeño del alumno/a en los criterios dualizados (<strong>RA3-c</strong> ). Esta valoración se traducirá a una calificación de 1 a 10.</p>
+</li>
+<li>
+<p><strong>Paso 2: Integración de la nota DUAL en los RAs correspondientes:</strong></p>
+<ul>
+<li>La calificación final del <strong>RA3</strong> se obtendrá mediante:\
+    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image3.png" />{width="6.458333333333333in" height="0.5045570866141732in"}</li>
+</ul>
+</li>
+<li>
+<p><strong>Paso 3: Cálculo de la Nota Primera evaluación Final:</strong>\
+    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image4.png" />{width="6.458333333333333in" height="0.540909886264217in"}</p>
+</li>
+</ul>
+<p><strong><em>Requisito de superación:</em></strong> El alumnado debe obtener una calificación final igual o superior a 5 (sin decimales) y tener aprobados todos los Resultados de Aprendizaje evaluados en el centro con una nota mínima de 5 de forma independiente.</p>
+<h3 id="d-obtencion-de-la-calificacion-de-la-segunda-evaluacion-final">D. Obtención de la Calificación de la Segunda Evaluación Final</h3>
+<ul>
+<li>
+<p><strong>Destinatarios:</strong> Alumnado que no haya alcanzado una calificación igual o superior a 5 en la primera evaluación final o que tenga pendientes de superar uno o varios RAs de forma individual. También podrá ser utilizada por aquellos alumnos que habiendo aprobado quieran subir nota, por lo que previa solicitud, se les elaborará un plan para mejorar la calificación.</p>
+</li>
+<li>
+<p><strong>Metodología de Calificación:</strong> El alumnado se presentará a una prueba final teórico-práctica global enfocado <strong>únicamente en los Resultados de Aprendizaje que tenga suspensos</strong>. También deberá de presentar y defender aquellas prácticas que contribuyan a los RA y CE mínimos.</p>
+</li>
+<li>
+<p><strong>Cálculo de la nota:</strong> La calificación de la evaluación extraordinaria se calculará sustituyendo la nota de los RAs suspensos por la calificación obtenida en esta prueba extraordinaria. Los RAs aprobados durante el curso se conservarán con su nota ponderada. La estancia dual superada se mantiene con su peso asignado. El módulo se considerará aprobado si la media ponderada final resultante es igual o superior a 5.</p>
+</li>
+</ul>
+<h3 id="e-perdida-de-evaluacion-continua">E. Pérdida de evaluación continua</h3>
+<ul>
+<li>
+<p>El alumnado que acumule un número de faltas de asistencia (justificadas o injustificadas) que supere el <strong>20% de las horas totales del módulo profesional</strong> perderá el derecho al proceso de evaluación continua.</p>
+</li>
+<li>
+<p>La pérdida de la evaluación continua implica que el profesorado no podrá calificar al alumno mediante los instrumentos de seguimiento diario, trabajos de aula o actividades ordinarias planificadas a lo largo del curso, al no disponer de evidencias continuas y regulares de su proceso de aprendizaje.</p>
+</li>
+<li>
+<p>Procedimiento de evaluación alternativo (Primera Evaluación Final). Para garantizar el derecho constitucional a la evaluación en condiciones de equidad y objetividad, el alumnado que haya perdido la evaluación continua será calificado de cara a la primera evaluación final mediante el siguiente procedimiento diferenciado:</p>
+<ul>
+<li>
+<p><strong>Pruebas y actividades específicas:</strong> Se realizará una o varias pruebas objetivas de carácter extraordinario (teóricas, prácticas y/o supuestos profesionales) y se solicitarán aquellas actividades personalizadas que el profesor determine.</p>
+</li>
+<li>
+<p><strong>Vinculación con los Resultados de Aprendizaje (RA):</strong> Estos instrumentos se diseñarán con una mayor envergadura para asegurar la evaluación integral de todos los criterios de evaluación y resultados de aprendizaje (RA) del módulo.</p>
+</li>
+<li>
+<p><strong>Defensa presencial:</strong> En caso de requerirse la entrega de trabajos o prácticas, será obligatoria su defensa presencial ante el docente para verificar la autoría de los mismos. La calificación final dependerá primordialmente del resultado de dicha defensa y de las pruebas asociadas</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="9-atencion-a-la-diversidad-e-inclusion-dua">9. ATENCIÓN A LA DIVERSIDAD E INCLUSIÓN (DUA)</h1>
+<p>Esta programación adopta los principios fundamentales del Diseño Universal para el Aprendizaje (DUA) para garantizar la equidad y el acceso efectivo del alumnado a las competencias profesionales del módulo:</p>
+<ul>
+<li>
+<p><strong>Múltiples formas de representación (Qué aprender):</strong> Los contenidos conceptuales de bases de datos se facilitarán en diversos formatos a través del entorno Moodle Centros: manuales en PDF adaptados, esquemas conceptuales interactivos descargables, videotutoriales prácticos de codificación SQL subtitulados y referencias a plataformas interactivas de simulación SQL.</p>
+</li>
+<li>
+<p><strong>Múltiples formas de acción y expresión (Cómo aprender):</strong> El alumnado podrá demostrar el dominio de los resultados de aprendizaje a través de variadas alternativas. Para las actividades prácticas integradoras, se les posibilitará la entrega de scripts autoejecutables, defensas orales individuales o de pequeños vídeos explicativos de la estructura y programación del servidor de base de datos que hayan diseñado.</p>
+</li>
+<li>
+<p><strong>Múltiples formas de implicación (Por qué aprender):</strong> Se utilizarán dinámicas de aprendizaje cooperativo en el taller, permitiendo que el alumnado con perfiles heterogéneos se complemente. Se contextualizará cada UT con casos y problemáticas reales del mercado andaluz, despertando el interés del alumnados.</p>
+</li>
+<li>
+<p><strong>Adaptaciones individuales de acceso:</strong> En completa concordancia con las directrices del Departamento de Orientación del centro y el Plan de Centro, para el alumnado que cuente con necesidades específicas de apoyo educativo (NEAE) diagnosticadas, se aplicarán adaptaciones que en ningún caso minorarán las calificaciones finales obtenidas (conforme a la corrección de errores de la Orden de 18 de septiembre de 2025 publicada en el BOJA). Estas adaptaciones incluyen la ampliación del tiempo de realización de pruebas en un 25%, adaptaciones visuales de los IDEs de desarrollo, priorización del modelado guiado con andamiaje y segmentación de enunciados complejos de SQL en subtareas elementales.</p>
+</li>
+</ul>
+<h1 id="10-contenidos-transversales-e-interdisciplinariedad">10. CONTENIDOS TRANSVERSALES E INTERDISCIPLINARIEDAD</h1>
+<p>El desarrollo curricular de este módulo no se limita exclusivamente a contenidos sintácticos, sino que se enriquece mediante la incorporación de aspectos transversales y su relación con otros módulos profesionales del ciclo formativo:</p>
+<ul>
+<li>
+<p><strong>Sostenibilidad, computación Verde y buen uso de la IA:</strong> Se concienciará sobre el buen uso de la IA y la eficiencia de recursos. El mal diseño lógico o consultas ineficientes incrementan el consumo energético en los CPDs.</p>
+</li>
+<li>
+<p><strong>Protección de Datos y Privacidad (Educación en Valores):</strong> Se integrará el conocimiento de la Ley Orgánica 3/2018 (LOPDGDD) y el Reglamento General de Protección de Datos (RGPD) en el diseño físico de esquemas. El alumnado aprenderá la importancia de restringir los privilegios de los usuarios (RA5 y RA6) y la implantación de políticas activas de encriptación de datos sensibles para garantizar los derechos constitucionales a la privacidad.</p>
+</li>
+<li>
+<p><strong>Fomento de la Lectura y Competencia Lingüística:</strong> Se potenciará la comprensión lectora de documentación técnica oficial, la cual se encuentra redactada predominantemente en inglés técnico (como la documentación de referencia de MariaDB, PostgreSQL y estándares ANSI SQL). Esto preparará al alumnado de ASIR para entornos internacionales.</p>
+</li>
+</ul>
+<h1 id="anexo-aspectos-y-concreciones-recogidos-en-la-programacion-del-departamento">ANEXO: ASPECTOS Y CONCRECIONES RECOGIDOS EN LA PROGRAMACIÓN DEL DEPARTAMENTO</h1>
+<p>La presente programación didáctica del módulo se complementa e integra de forma vinculante con las directrices generales aprobadas en la <strong>Programación del Departamento de Informática</strong>, las cuales garantizan la cohesión pedagógica y organizativa del profesorado del centro:</p>
+<ol>
+<li>
+<p><strong>Actividades extraescolares y complementarias</strong></p>
+<ul>
+<li>Se recogen en la programación del departamento, ya que normalmente se organizan para varios cursos/grupos dependiendo del objetivo de la actividad.</li>
+</ul>
+</li>
+<li>
+<p><strong>Directrices para el Uso de Herramientas y SGBD Comunes:</strong></p>
+<ul>
+<li>
+<p>Se establece por consenso del departamento el uso obligatorio del SGBD <strong>MariaDB/MySQL</strong> como sistema de referencia para el primer curso de ASIR, garantizando la transición directa y sin fricciones metodológicas hacia los módulos de implantación de aplicaciones web de segundo curso.</p>
+</li>
+<li>
+<p>Uso de <strong>Docker y Docker Compose</strong> como entorno estandarizado de despliegue en las aulas de informática para que todo el alumnado trabaje bajo contenedores idénticos de base de datos, evitando desajustes por dependencias de sistemas operativos locales.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Protocolo Unificado de Reclamaciones y Revisión de Pruebas:</strong></p>
+<ul>
+<li>Política de reclamaciones: Las reclamaciones solo se podrán realizar sobre la nota de la evaluación final, conforme a lo estipulado en el PEC.</li>
+</ul>
+</li>
+<li>
+<p><strong>Criterios de Selección y Reparto de Puestos de Estancia Dual:</strong></p>
+<ul>
+<li>Baremos y procedimientos objetivos de asignación de las empresas colaboradoras al alumnado de primer curso basándose en su expediente académico del primer y segundo trimestre, asistencia y actitud.</li>
+</ul>
+</li>
+<li>
+<p><strong>Plan de Fomento de Competencias Lingüísticas y Lectura:</strong></p>
+<ul>
+<li>Inclusión obligatoria en todas las unidades de trabajo de lecturas de documentación técnica oficial estructurada en inglés técnico, preparando al alumnado para el entorno del sector.</li>
+</ul>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Inicio" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Inicio
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-footer__link md-footer__link--next" aria-label="Next: UT1 Almacenamiento" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              UT1 Almacenamiento
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

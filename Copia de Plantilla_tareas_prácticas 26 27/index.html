@@ -1,0 +1,753 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Plantilla Tareas - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ficha-tecnica-de-la-actividad" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plantilla Tareas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-tabs__link">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link md-tabs__link--active">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-nav__link">
+        Programación
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT4.%20Teor%C3%ADa.%20DDL/" class="md-nav__link">
+        UT4 DDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-nav__link">
+        UT7 Transaccionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-nav__link">
+        UT8 Programación SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-nav__link">
+        UT9 Seguridad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Plantilla Tareas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Plantilla Tareas
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ficha-tecnica-de-la-actividad" class="md-nav__link">
+    FICHA TÉCNICA DE LA ACTIVIDAD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-descripcion-general-objetivos" class="md-nav__link">
+    1. DESCRIPCIÓN GENERAL. OBJETIVOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-consideraciones-previas" class="md-nav__link">
+    2. CONSIDERACIONES PREVIAS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-actividades-a-realizar" class="md-nav__link">
+    3. ACTIVIDADES A REALIZAR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-calificacion" class="md-nav__link">
+    4. CALIFICACIÓN
+  </a>
+  
+    <nav class="md-nav" aria-label="4. CALIFICACIÓN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-calificacion-rubrica-general" class="md-nav__link">
+    CRITERIOS DE CALIFICACIÓN (RÚBRICA GENERAL)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-calificacion-rubrica-por-actividad" class="md-nav__link">
+    CRITERIOS DE CALIFICACIÓN (RÚBRICA por ACTIVIDAD)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-el-caso-de-entregar-una-documentacion-la-presentacion-se-valorara-como-sigue" class="md-nav__link">
+    En el caso de entregar una documentación la presentación se valorará como sigue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-solucionario" class="md-nav__link">
+    5. SOLUCIONARIO
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Plantilla Tareas</h1>
+
+<p><strong>TITULO</strong></p>
+<p><strong><em>SUBTITULO</em></strong></p>
+<h4 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA ACTIVIDAD</h4>
+<p>+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| <strong>Parámetro</strong>                                                                                                                                                                                                                                                                                                                                                                                                               | <strong>Detalle</strong>                                                                                                     |
++=============================================================================================================================================================================================================================================================================================================================================================================================================================+=================================================================================================================+
+| <strong>Unidad Didáctica</strong>                                                                                                                                                                                                                                                                                                                                                                                                        | Unidad 2: Instalación, configuración y utilización de Gestores de Contenido (CMS)                               |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| <strong>Nombre de la Tarea</strong>                                                                                                                                                                                                                                                                                                                                                                                                      | UT2. Tarea 1: Instalación y configuración de WordPress                                                          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| <strong>Resultado de Aprendizaje (RA)</strong>                                                                                                                                                                                                                                                                                                                                                                                           | <strong>RA1:</strong> Instala gestores de contenidos, identificando sus aplicaciones y configurándolos según requerimientos. |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| <strong>Criterios de Evaluación (CE)</strong>                                                                                                                                                                                                                                                                                                                                                                                            | <strong>CE b)</strong> Se han identificado los requerimientos necesarios para instalar gestores de contenidos.               |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             | <strong>CE e)</strong> Se han realizado pruebas de funcionamiento.                                                           |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             | <strong>CE g)</strong> Se han instalado y configurado los módulos y menús necesarios.                                        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| <strong>Tiempo de Realización Estimado</strong>                                                                                                                                                                                                                                                                                                                                                                                          | 4 horas (Equivalente a 1 sesión semanal completa de taller)                                                     |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| #### MÉTODO DE ENTREGA Y FORMATO                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                 |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+| -   <strong>[X] Documento:</strong> Documento en formato <strong>[PDF]</strong> (UT2_Tarea1_NombreAlumno.pdf) que incluya la explicación detallada de cada fase y el set de capturas de pantalla obligatorias solicitado en el desarrollo. El texto debe estar completamente <strong>justificado</strong>, con los apartados destacados en <strong>negrita</strong>. Cada captura debe llevar un comentario explicativo inferior sobre la acción de ingeniería realizada.   |                                                                                                                 |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+| -   <strong>[ ] Archivos de Código:</strong> No se requiere la entrega de archivos fuente para esta tarea.                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+|                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                 |
+| -   <strong>[X] Enlace/Texto:</strong> El portal debe permanecer operativo y accesible públicamente a través de la red del centro para su auditoría directa por parte del profesor en la URL: http://\&lt;TU_IP_FLOTANTE>/iescelia.                                                                                                                                                                                                      |                                                                                                                 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+</p>
+<h2 id="1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL. OBJETIVOS</h2>
+<h2 id="2-consideraciones-previas">2. CONSIDERACIONES PREVIAS</h2>
+<h2 id="3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR</h2>
+<h2 id="4-calificacion">4. CALIFICACIÓN</h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a través de la plataforma, la entrega del documento en formatos editables no permitidos (como .docx), capturas con identificación del alumno/a o la omisión de los enlaces de las fuentes documentales utilizadas penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<p>La actividad podrá será evaluada según los siguientes criterios:</p>
+<ul>
+<li>
+<p><strong>Funcionalidad (50%):</strong> Correcta implementación de las tareas/actividades solicitadas.</p>
+<blockquote>
+<p><strong>Memoria y Documentación (40%):</strong> [Claridad, concisión y completitud de la memoria entregada (explicaciones, capturas y comentarios)][Realización de manera clara, eficiente y adecuada]</p>
+<p><strong>Presentación (10%</strong>): Se siguen las indicaciones para el tipo de documento</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>IMPORTANTE:</strong> El retraso en la entrega, no cumplir los requisitos o la realización de forma inadecuada puede penalizar la calificación o anular la entrega. Se puede utilizar una rúbrica general, rúbrica por actividad o apartado</p>
+<h3 id="criterios-de-calificacion-rubrica-general">CRITERIOS DE CALIFICACIÓN (RÚBRICA GENERAL)</h3>
+<hr />
+<p><strong>Apartado / Criterio</strong>                 <strong>Muy Bien (100%)</strong>                              <strong>Notable (75%)</strong>                      <strong>Bien (50%)</strong>                          <strong>Mejorable (30%)</strong>                             <strong>Insuficiente (0%)</strong>                         <strong>Peso</strong></p>
+<hr />
+<p><strong>Contenido Técnico / funcionalidad</strong>   Completo y sin errores                           Completo y con errores mínimos.        Mayoría correcto, con algunos errores   Errores notables o faltan partes importantes.   No realizado o no cumple con los requisitos   50%</p>
+<p><strong>Procedimiento</strong>                       Todos los pasos, con mejoras o justificaciones   Sigue todos los pasos correctamente.   Pasos incompletos                       Pasos incompletos o erróneos.                   No se sigue.                                  40%</p>
+<p><strong>Presentación</strong>                        Limpio, profesional y creativo.                  Limpiol, sigue el formato              Desorganizado o sin formato             Desorganizado y difícil de leer.                Muy pobre o no trabajada                      10%</p>
+<hr />
+<p>Cuando son ejercicios individuales que no dependientes unos de los otros se establecerá en la rúbrica un apartado o criterio para cada ejercicio o bloque de ejercicios, como en el siguiente ejemplo:</p>
+<h3 id="criterios-de-calificacion-rubrica-por-actividad">CRITERIOS DE CALIFICACIÓN (RÚBRICA por ACTIVIDAD)</h3>
+<hr />
+<p><strong>Apartado / Criterio</strong>   <strong>Muy Bien (100%)</strong>      <strong>Notable (75%)</strong>                 <strong>Bien (50%)</strong>                          <strong>Mejorable (30%)</strong>                             <strong>Insuficiente (0%)</strong>                         <strong>Peso</strong></p>
+<hr />
+<p><strong>Ejercicios de ...</strong>     Completo y sin errores   Completo y con errores mínimos.   Mayoría correcto, con algunos errores   Errores notables o faltan partes importantes.   No realizado o no cumple con los requisitos   50%</p>
+<hr />
+<h3 id="en-el-caso-de-entregar-una-documentacion-la-presentacion-se-valorara-como-sigue">En el caso de entregar una documentación la presentación se valorará como sigue</h3>
+<hr />
+<pre><code>                 1                                                                                                                                   0.75                                                                                                               0.5                                                                               0.3                                0
+</code></pre>
+<hr />
+<p><strong>Presentación</strong>   Documento limpio, profesional y creativo. Sigue el formato (PDF) y cumple rigurosamente con todas las indicaciones de formato(1).   Documento limpio, sigue el formato (PDF) pero no cumple alguna de las indicaciones de formato o de forma básica.   Desorganizado o sin formato adecuado (ej. no es PDF o le falta formato básico).   Desorganizado y difícil de leer.   Muy pobre o no trabajada.</p>
+<hr />
+<p>(1) Portada, texto justificado, enunciados/apartados destacados en negrita, comentarios sobre cada una de las capturas o pasos realizados</p>
+<p>Si en la documentación se tienen que entregar capturas el criterio será</p>
+<hr />
+<p><strong>Criterio</strong>                                     <strong>Puntuación</strong>   <strong>Realizado correctamente</strong>                                                                                                                       <strong>Realizado con algún error</strong>                                                                                                              <strong>Realizado con errores</strong>                                                                                         <strong>No realizado</strong></p>
+<hr />
+<p><strong>Calidad de la documentación y presentación</strong>   1.5 Puntos       Documento impecable. Las capturas son legibles, se identifica al autor (prompt/user), el texto explica el proceso y se usan formatos adecuados.   Documento bien estructurado. Las capturas son legibles pero falta alguna explicación o la identificación del autor no es clara en todas.   Las capturas son de mala calidad o difíciles de leer. Falta documentación esencial o no se identifica al autor.   No entrega documento o es totalmente ilegible/sin capturas.</p>
+<hr />
+<h2 id="5-solucionario">5. SOLUCIONARIO</h2>
+<hr />
+<pre><code> ASD
+</code></pre>
+<hr />
+<hr />
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Plantilla Apuntes" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Plantilla Apuntes
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

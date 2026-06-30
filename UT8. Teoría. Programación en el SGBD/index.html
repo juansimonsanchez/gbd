@@ -1,0 +1,1113 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>UT8 Programación SGBD - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduccion-y-contextualizacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT8 Programación SGBD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-tabs__link">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link md-tabs__link--active">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-nav__link">
+        Programación
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT4.%20Teor%C3%ADa.%20DDL/" class="md-nav__link">
+        UT4 DDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-nav__link">
+        UT7 Transaccionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UT8 Programación SGBD
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-nav__link">
+        UT9 Seguridad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_tareas_pr%C3%A1cticas%2026%2027/" class="md-nav__link">
+        Plantilla Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
+<p>+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Unidad Didáctica</strong>          | Unidad Didáctica 8: Programación de bases de datos: Procedimientos, funciones y triggers en MySQL                                                                                                                                     |
++===============================+=======================================================================================================================================================================================================================================+
+| <strong>Resultados de Aprendizaje</strong> | <strong>RA6:</strong> Programa procedimientos almacenados, funciones y disparadores (triggers) analizando su funcionamiento e integrando lógica procedimental en el SGBD para garantizar la automatización, integridad y rendimiento de los datos. |
++-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Criterios de Evaluación</strong>   | <strong>CE6.a</strong> (Se han identificado los lenguajes de programación disponibles),                                                                                                                                                            |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.b</strong> (Se han definido procedimientos con paso de parámetros),                                                                                                                                                                    |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.c</strong> (Se han creado funciones),                                                                                                                                                                                                  |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.d</strong> (Se han utilizado estructuras de control de flujo),                                                                                                                                                                         |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.e</strong> (Se han utilizado cursores),                                                                                                                                                                                                |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.f</strong> (Se ha realizado el control de excepciones),                                                                                                                                                                                |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.g</strong> (Se han creado disparadores),                                                                                                                                                                                               |
+|                               |                                                                                                                                                                                                                                       |
+|                               | <strong>CE6.h</strong> (Se han depurado y probado los subprogramas creados).                                                                                                                                                                       |
++-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Tiempo Estimado</strong>           | 24 Horas (Distribuidas en 4 semanas de sesiones teórico-prácticas orientadas a la optimización de la lógica del servidor).                                                                                                            |
++-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</p>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#">[1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN]{.underline}</a></p>
+<p><a href="#">[2. PROCEDIMIENTOS ALMACENADOS]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[2.1 Sintaxis general y uso de DELIMITER]{.underline}</a></p>
+<p><a href="#">[2.2 Gestión de Parámetros: IN, OUT y INOUT]{.underline}</a></p>
+<p><a href="#">[2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[3. FUNCIONES ALMACENADAS]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[3.1 Diferencias con procedimientos y restricciones de retorno]{.underline}</a></p>
+<p><a href="#">[3.2 Modificadores de comportamiento de funciones en MySQL]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[4. ESTRUCTURAS DE CONTROL DE FLUJO]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[4.1 Condicionales (IF-THEN-ELSE y CASE)]{.underline}</a></p>
+<p><a href="#">[4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[5.1 El uso de DECLARE... HANDLER]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[6. CURSORES]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[6.1 Ciclo de vida de un cursor]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[7. DISPARADORES (TRIGGERS)]{.underline}</a></p>
+<blockquote>
+<p><a href="#">[7.1 Lógica de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE]{.underline}</a></p>
+<p><a href="#">[7.2 Pseudotablas OLD y NEW y su aplicación en la integridad de datos]{.underline}</a></p>
+</blockquote>
+<p><a href="#">[8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL]{.underline}</a></p>
+<h1 id="1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</h1>
+<p>La administración moderna de bases de datos a nivel de infraestructura no se limita a ejecutar consultas DML de manera interactiva. Para garantizar la eficiencia de los sistemas de red, la seguridad de la información y la automatización de procesos, los administradores de sistemas deben ser capaces de almacenar lógica programada directamente en el servidor SGBD.</p>
+<p>Esta unidad se conecta directamente con:</p>
+<ul>
+<li>
+<p><strong>GBD (Unidad 5 y 6):</strong> Emplea de manera avanzada comandos DML de consultas simples, agrupaciones y composiciones de tablas (JOIN) dentro de la lógica del servidor.</p>
+</li>
+<li>
+<p><strong>ISO (Implantación de Sistemas Operativos):</strong> Se relaciona con la automatización mediante scripting. Un <em>SysAdmin</em> puede encapsular flujos complejos dentro de procedimientos en el servidor de base de datos y activarlos desde tareas programadas del sistema operativo (<em>cron jobs</em> o <em>Windows Task Scheduler</em>).</p>
+</li>
+<li>
+<p><strong>SAD (Seguridad y Alta Disponibilidad) / GBD (Seguridad):</strong> El uso de rutinas almacenadas permite retirar permisos directos de lectura/escritura (SELECT, INSERT, UPDATE) sobre las tablas de producción de la base de datos <strong>Jardinería</strong>, otorgando únicamente privilegios de ejecución (EXECUTE) sobre procedimientos. Esto mitiga de forma casi absoluta los ataques de <strong>inyección SQL</strong> (<em>SQL Injection</em>).</p>
+</li>
+</ul>
+<h1 id="2-procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS</h1>
+<p>Un procedimiento almacenado es un conjunto de sentencias SQL preparadas y guardadas en el SGBD para poder ser reutilizadas repetidamente de forma eficiente [7].</p>
+<h2 id="21-sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso de DELIMITER</h2>
+<p>Por defecto, el SGBD interpreta el carácter punto y coma (;) como el terminador de una sentencia SQL. Al definir un bloque de código procedimental que contiene múltiples sentencias finalizadas con ;, necesitamos indicarle al motor de MySQL que cambie temporalmente este símbolo para que compile todo el bloque como una sola instrucción. Esto se logra con la directiva DELIMITER [7].</p>
+<p>-- Cambiamos el terminador por defecto a doble barra inclinada</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS ejemplo_basico//</p>
+<p>CREATE PROCEDURE ejemplo_basico()</p>
+<p>BEGIN</p>
+<p>-- El terminador temporal es //, el ; interno no interrumpe la compilación</p>
+<p>SELECT \'Procedimiento almacenado de Jardinería inicializado correctamente\' AS mensaje;</p>
+<p>END//</p>
+<p>-- Restauramos el delimitador estándar</p>
+<p>DELIMITER ;</p>
+<p>-- Invocación del procedimiento</p>
+<p>CALL ejemplo_basico();</p>
+<h2 id="22-gestion-de-parametros-in-out-y-inout">2.2 Gestión de Parámetros: IN, OUT y INOUT</h2>
+<p>MySQL permite especificar tres tipos de dirección para los parámetros de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
+<ul>
+<li>
+<p><strong>IN (Entrada):</strong> Es el valor que se pasa al procedimiento al llamarlo. Se trata de un parámetro de solo lectura dentro de la rutina (es el comportamiento por defecto si se omite la palabra clave) [7].</p>
+</li>
+<li>
+<p><strong>OUT (Salida):</strong> Almacena el valor calculado por el procedimiento y lo devuelve al entorno de llamada, generalmente asignándole a una variable de usuario (con prefijo @) [7, 11.2].</p>
+</li>
+<li>
+<p><strong>INOUT (Entrada/Salida):</strong> Se inicia al llamar al procedimiento, puede ser modificado por la rutina y devuelve el nuevo valor de vuelta al llamante [11.2].</p>
+</li>
+</ul>
+<p>A continuación se muestra la implementación de un procedimiento para actualizar el límite de crédito de un cliente de la base de datos <strong>Jardinería</strong> utilizando un parámetro IN, y otro procedimiento procedimental para calcular estadísticas de un cliente con parámetros OUT.</p>
+<p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//</p>
+<p>CREATE PROCEDURE sp_actualizar_limite_credito(</p>
+<p>IN p_codigo_cliente INT,</p>
+<p>IN p_porcentaje_incremento DECIMAL(5,2)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>-- Modifica el límite de crédito aplicando el incremento porcentual</p>
+<p>UPDATE cliente</p>
+<p>SET limite_credito = limite_credito * (1 + (p_porcentaje_incremento / 100))</p>
+<p>WHERE codigo_cliente = p_codigo_cliente;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>-- Probamos el procedimiento con el cliente 101 incrementando un 15.5% su crédito</p>
+<p>CALL sp_actualizar_limite_credito(101, 15.50);</p>
+<p>Ejemplo de parámetros OUT (Extracción de estadísticas de ventas):</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//</p>
+<p>CREATE PROCEDURE sp_obtener_estadisticas_cliente(</p>
+<p>IN p_codigo_cliente INT,</p>
+<p>OUT p_total_pedidos INT,</p>
+<p>OUT p_total_pagado DECIMAL(15,2)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>-- Contamos el número de pedidos realizados por el cliente</p>
+<p>SELECT COUNT(*) INTO p_total_pedidos</p>
+<p>FROM pedido</p>
+<p>WHERE codigo_cliente = p_codigo_cliente;</p>
+<p>-- Calculamos el acumulado total de los pagos registrados por este cliente</p>
+<p>SELECT COALESCE(SUM(total), 0) INTO p_total_pagado</p>
+<p>FROM pago</p>
+<p>WHERE codigo_cliente = p_codigo_cliente;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>-- Invocación utilizando variables de sesión de MySQL para recoger las salidas</p>
+<p>CALL sp_obtener_estadisticas_cliente(101, \@pedidos, \@pagado);</p>
+<p>-- Visualizamos los resultados</p>
+<p>SELECT \@pedidos AS pedidos_realizados, \@pagado AS total_euros_pagados;</p>
+<h2 id="23-ambito-de-variables-locales-y-asignaciones-declare-set">2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
+<p>Las variables internas deben declararse obligatoriamente al principio de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2]. Tras su declaración, se les puede dar un valor inicial con la cláusula DEFAULT o modificarse utilizando SET u obteniendo datos mediante la cláusula INTO dentro de un SELECT.</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//</p>
+<p>CREATE PROCEDURE sp_demo_variables_jardineria(</p>
+<p>IN p_codigo_oficina VARCHAR(10)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>-- Declaración de variables locales tipadas</p>
+<p>DECLARE v_ciudad_oficina VARCHAR(50);</p>
+<p>DECLARE v_cantidad_empleados INT DEFAULT 0;</p>
+<p>-- Asignación directa por consulta DML</p>
+<p>SELECT ciudad INTO v_ciudad_oficina</p>
+<p>FROM oficina</p>
+<p>WHERE codigo_oficina = p_codigo_oficina;</p>
+<p>-- Asignación por recuento</p>
+<p>SELECT COUNT(*) INTO v_cantidad_empleados</p>
+<p>FROM empleado</p>
+<p>WHERE codigo_oficina = p_codigo_oficina;</p>
+<p>-- Presentación de resultados</p>
+<p>SELECT v_ciudad_oficina AS ciudad, v_cantidad_empleados AS num_empleados_activos;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>CALL sp_demo_variables_jardineria(\'BCN-ES\');</p>
+<h1 id="3-funciones-almacenadas">3. FUNCIONES ALMACENADAS</h1>
+<p>Una función almacenada es una rutina que toma parámetros de entrada, ejecuta lógica procedural y <strong>devuelve un único valor escalar</strong> al entorno de llamada.</p>
+<h2 id="31-diferencias-con-procedimientos-y-restricciones-de-retorno">3.1 Diferencias con procedimientos y restricciones de retorno</h2>
+<p>A diferencia de los procedimientos almacenados, las funciones:</p>
+<ol>
+<li>
+<p>Deben especificar la cláusula RETURNS en su cabecera para definir el tipo de datos del resultado.</p>
+</li>
+<li>
+<p>Contienen obligatoriamente al menos una sentencia RETURN que finaliza la ejecución de la función.</p>
+</li>
+<li>
+<p>No se invocan con la sentencia CALL, sino que se pueden utilizar directamente dentro de sentencias DML (como parte de un SELECT, WHERE u ORDER BY), optimizando la legibilidad de las consultas complejas.</p>
+</li>
+</ol>
+<h2 id="32-modificadores-de-comportamiento-de-funciones-en-mysql">3.2 Modificadores de comportamiento de funciones en MySQL</h2>
+<p>Al compilar funciones en MySQL con el motor InnoDB activo, es obligatorio declarar sus características de acceso a datos para que el planificador y el motor de replicación trabajen con seguridad lógica [1.9.3]:</p>
+<ul>
+<li>
+<p>DETERMINISTIC: El resultado devuelto será idéntico siempre que se proporcionen los mismos parámetros de entrada.</p>
+</li>
+<li>
+<p>NOT DETERMINISTIC: El resultado puede cambiar aun pasando los mismos parámetros (por ejemplo, funciones que consulten la fecha actual o generen números aleatorios).</p>
+</li>
+<li>
+<p>READS SQL DATA: Indica que la rutina realizará consultas de lectura (SELECT) sobre tablas de la base de datos [1.9.3].</p>
+</li>
+<li>
+<p>MODIFIES SQL DATA: Indica que la rutina ejecutará modificaciones (INSERT, UPDATE, DELETE).</p>
+</li>
+</ul>
+<p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
+<p>Implementación de una función procedimental que calcula la diferencia acumulada entre el total facturado en pedidos al cliente y los pagos que este ha liquidado.</p>
+<p>DELIMITER //</p>
+<p>DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//</p>
+<p>CREATE FUNCTION fn_calcular_deuda_cliente(</p>
+<p>p_codigo_cliente INT</p>
+<p>)</p>
+<p>RETURNS DECIMAL(15,2)</p>
+<p>READS SQL DATA</p>
+<p>BEGIN</p>
+<p>DECLARE v_total_pedidos DECIMAL(15,2) DEFAULT 0.00;</p>
+<p>DECLARE v_total_pagado DECIMAL(15,2) DEFAULT 0.00;</p>
+<p>DECLARE v_deuda DECIMAL(15,2) DEFAULT 0.00;</p>
+<p>-- 1. Calcular el coste total acumulado de todos los pedidos detallados del cliente</p>
+<p>SELECT COALESCE(SUM(dp.cantidad * dp.precio_unidad), 0.00) INTO v_total_pedidos</p>
+<p>FROM pedido p</p>
+<p>JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido</p>
+<p>WHERE p.codigo_cliente = p_codigo_cliente;</p>
+<p>-- 2. Calcular la suma de todos los pagos realizados por el cliente</p>
+<p>SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagado</p>
+<p>FROM pago p</p>
+<p>WHERE p.codigo_cliente = p_codigo_cliente;</p>
+<p>-- 3. Restar para obtener la deuda activa</p>
+<p>SET v_deuda = v_total_pedidos - v_total_pagado;</p>
+<p>RETURN v_deuda;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>-- Invocación directa dentro de una consulta DML SELECT estándar de Jardinería</p>
+<p>SELECT</p>
+<p>codigo_cliente,</p>
+<p>nombre_cliente,</p>
+<p>limite_credito,</p>
+<p>fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo</p>
+<p>FROM cliente</p>
+<p>WHERE ciudad = \'Madrid\';</p>
+<h1 id="4-estructuras-de-control-de-flujo">4. ESTRUCTURAS DE CONTROL DE FLUJO</h1>
+<p>La programación procedural de bases de datos permite redirigir el orden de procesamiento de las sentencias utilizando estructuras lógicas avanzadas de decisión y repetición.</p>
+<h2 id="41-condicionales-if-then-else-y-case">4.1 Condicionales (IF-THEN-ELSE y CASE)</h2>
+<p>Permiten ejecutar diferentes fragmentos de código basándose en la evaluación de una condición booleana.</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//</p>
+<p>CREATE PROCEDURE sp_evaluar_riesgo_cliente(</p>
+<p>IN p_codigo_cliente INT,</p>
+<p>OUT p_nivel_riesgo VARCHAR(30)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>DECLARE v_deuda DECIMAL(15,2);</p>
+<p>DECLARE v_limite DECIMAL(15,2);</p>
+<p>-- Ejecutamos la llamada a la función previamente programada</p>
+<p>SET v_deuda = fn_calcular_deuda_cliente(p_codigo_cliente);</p>
+<p>-- Extraemos el límite de crédito asignado</p>
+<p>SELECT limite_credito INTO v_limite</p>
+<p>FROM cliente</p>
+<p>WHERE codigo_cliente = p_codigo_cliente;</p>
+<p>-- Bifurcación condicional compleja IF-THEN-ELSE</p>
+<p>IF v_deuda \&lt;= 0.00 THEN</p>
+<p>SET p_nivel_riesgo = \'EXCELENTE (SIN DEUDA)\';</p>
+<p>ELSEIF v_deuda > v_limite THEN</p>
+<p>SET p_nivel_riesgo = \'CRÍTICO: LÍMITE EXCEDIDO\';</p>
+<p>ELSEIF v_deuda > (v_limite * 0.75) THEN</p>
+<p>SET p_nivel_riesgo = \'ATENCIÓN: DEUDA ELEVADA (>75%)\';</p>
+<p>ELSE</p>
+<p>SET p_nivel_riesgo = \'RIESGO BAJO / CONTROLADO\';</p>
+<p>END IF;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>CALL sp_evaluar_riesgo_cliente(101, \@riesgo);</p>
+<p>SELECT \@riesgo AS estado_riesgo_financiero;</p>
+<h2 id="42-estructuras-iterativas-loop-repeat-y-while">4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)</h2>
+<p>MySQL proporciona estructuras nativas para realizar bucles lógicos [11.2]. En entornos de producción de administración de sistemas, es indispensable etiquetar estos bucles para gestionar flujos de control complejos mediante sentencias de escape como LEAVE (equivalente a <em>break</em>) o ITERATE (equivalente a <em>continue</em>) [12.1.8.2].</p>
+<p>A continuación se muestra un ejemplo comparativo de implementación de secuencias mediante bucles procedurales aplicados a un escenario administrativo para poblar una tabla de auditoría con rangos numéricos.</p>
+<p>-- Creamos una tabla auxiliar para almacenar históricos o rangos</p>
+<p>CREATE TABLE IF NOT EXISTS auxiliar_rangos (</p>
+<p>iteracion INT UNSIGNED PRIMARY KEY,</p>
+<p>mensaje_logs VARCHAR(100)</p>
+<p>);</p>
+<p>-- Implementación usando WHILE: Verifica la condición antes de entrar al bucle</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_llenar_while//</p>
+<p>CREATE PROCEDURE sp_llenar_while(IN p_tope INT)</p>
+<p>BEGIN</p>
+<p>DECLARE v_contador INT DEFAULT 1;</p>
+<p>TRUNCATE TABLE auxiliar_rangos;</p>
+<p>WHILE v_contador \&lt;= p_tope DO</p>
+<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT(\'Registro automatizado por bucle WHILE: \', v_contador));</p>
+<p>SET v_contador = v_contador + 1;</p>
+<p>END WHILE;</p>
+<p>END//</p>
+<p>-- Implementación usando REPEAT: Ejecuta el bloque y luego evalúa la condición de salida</p>
+<p>DROP PROCEDURE IF EXISTS sp_llenar_repeat//</p>
+<p>CREATE PROCEDURE sp_llenar_repeat(IN p_tope INT)</p>
+<p>BEGIN</p>
+<p>DECLARE v_contador INT DEFAULT 1;</p>
+<p>TRUNCATE TABLE auxiliar_rangos;</p>
+<p>REPEAT</p>
+<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT(\'Registro automatizado por bucle REPEAT: \', v_contador));</p>
+<p>SET v_contador = v_contador + 1;</p>
+<p>UNTIL v_contador > p_tope</p>
+<p>END REPEAT;</p>
+<p>END//</p>
+<p>-- Implementación usando LOOP: Bucle infinito controlado manualmente mediante LEAVE e ITERATE</p>
+<p>DROP PROCEDURE IF EXISTS sp_llenar_loop//</p>
+<p>CREATE PROCEDURE sp_llenar_loop(IN p_tope INT)</p>
+<p>BEGIN</p>
+<p>DECLARE v_contador INT DEFAULT 0;</p>
+<p>TRUNCATE TABLE auxiliar_rangos;</p>
+<p>mi_bucle: LOOP</p>
+<p>SET v_contador = v_contador + 1;</p>
+<p>-- Condición de parada de emergencia</p>
+<p>IF v_contador > p_tope THEN</p>
+<p>LEAVE mi_bucle;</p>
+<p>END IF;</p>
+<p>-- Saltarse números pares en la inserción (Uso de ITERATE)</p>
+<p>IF MOD(v_contador, 2) = 0 THEN</p>
+<p>ITERATE mi_bucle;</p>
+<p>END IF;</p>
+<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT(\'Registro impar automatizado por bucle LOOP: \', v_contador));</p>
+<p>END LOOP mi_bucle;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>CALL sp_llenar_loop(5);</p>
+<p>SELECT * FROM auxiliar_rangos;</p>
+<h1 id="5-manejo-de-excepciones-y-errores-en-mysql">5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL</h1>
+<p>El código procedimental que ejecuta cambios DML puede fallar debido a violaciones de integridad referencial, registros duplicados en claves primarias o caídas del sistema. Para evitar que la transacción completa aborte de forma incontrolada, MySQL ofrece el uso de manejadores de error declarativos [1.9].</p>
+<h2 id="51-el-uso-de-declare-handler">5.1 El uso de DECLARE... HANDLER</h2>
+<p>La sintaxis general para registrar un manejador de eventos excepcionales es la siguiente:</p>
+<p>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</p>
+<p>Donde:</p>
+<ul>
+<li>
+<p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y continúa con el flujo lógico del bloque procedimental tras la instrucción que generó la alerta [1.9].</p>
+</li>
+<li>
+<p><strong>EXIT:</strong> Detiene la ejecución del bloque actual (BEGIN ... END) de manera inmediata tras realizar las acciones de resolución de errores establecidas [1.9].</p>
+</li>
+<li>
+<p><strong>condicion_error:</strong> Puede ser un código de error numérico interno del SGBD, un estándar SQLSTATE de la industria o palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND [1.9].</p>
+</li>
+</ul>
+<p>Ejemplo de registro de pago de cliente seguro ante claves duplicadas:</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//</p>
+<p>CREATE PROCEDURE sp_registrar_pago_seguro(</p>
+<p>IN p_codigo_cliente INT,</p>
+<p>IN p_forma_pago VARCHAR(40),</p>
+<p>IN p_id_transaccion VARCHAR(50),</p>
+<p>IN p_fecha_pago DATE,</p>
+<p>IN p_total DECIMAL(15,2),</p>
+<p>OUT p_resultado_operacion VARCHAR(100)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>-- Manejador específico para el Error 1062 de MySQL (Entrada duplicada en clave primaria)</p>
+<p>DECLARE EXIT HANDLER FOR 1062</p>
+<p>BEGIN</p>
+<p>SET p_resultado_operacion = CONCAT(\'RECHAZADO: El ID de transacción \"\', p_id_transaccion, \'\" ya existe en el histórico de pagos.\');</p>
+<p>END;</p>
+<p>-- Manejador general para cualquier otro tipo de error de restricción o datos (Llave foránea incorrecta, etc.)</p>
+<p>DECLARE EXIT HANDLER FOR SQLEXCEPTION</p>
+<p>BEGIN</p>
+<p>SET p_resultado_operacion = \'RECHAZADO: Error general de integridad de base de datos.\';</p>
+<p>END;</p>
+<p>-- Intentamos la inserción en la tabla de Jardinería</p>
+<p>INSERT INTO pago (codigo_cliente, forma_pago, id_transaccion, fecha_pago, total)</p>
+<p>VALUES (p_codigo_cliente, p_forma_pago, p_id_transaccion, p_fecha_pago, p_total);</p>
+<p>SET p_resultado_operacion = \'OPERACIÓN COMPLETADA CON ÉXITO\';</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>-- Intentamos registrar una transacción segura</p>
+<p>CALL sp_registrar_pago_seguro(1, \'Transferencia\', \'TR-REG-001\', \'2026-06-19\', 450.50, \@estado);</p>
+<p>SELECT \@estado;</p>
+<p>-- Volvemos a llamar al procedimiento con la misma transacción para provocar la excepción de duplicidad controlada</p>
+<p>CALL sp_registrar_pago_seguro(1, \'Transferencia\', \'TR-REG-001\', \'2026-06-19\', 450.50, \@estado);</p>
+<p>SELECT \@estado;</p>
+<h1 id="6-cursores">6. CURSORES</h1>
+<p>Un cursor es una estructura procedimental en memoria que permite iterar y procesar, registro por registro, el conjunto de filas devuelto por una consulta SELECT.</p>
+<h2 id="61-ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un cursor</h2>
+<p>El uso de un cursor sigue estrictamente un proceso secuencial de 4 pasos [1.8.7]:</p>
+<ol>
+<li>
+<p><strong>DECLARE:</strong> Define el cursor vinculándolo a una consulta SQL selectiva. Esta instrucción debe colocarse después de declarar todas las variables locales pero antes de los manejadores de excepciones.</p>
+</li>
+<li>
+<p><strong>OPEN:</strong> Ejecuta la consulta SQL e inicializa el puntero en memoria, dejándolo preparado para la extracción.</p>
+</li>
+<li>
+<p><strong>FETCH:</strong> Extrae secuencialmente los valores de la fila actual donde apunta el puntero, asignando dichos valores a variables locales locales previamente declaradas.</p>
+</li>
+<li>
+<p><strong>CLOSE:</strong> Libera la memoria consumida por el cursor. Si se omite, MySQL cerrará el cursor automáticamente al finalizar la rutina.</p>
+</li>
+</ol>
+<p>Ejemplo (Actualización masiva de Límite de Crédito basado en la actividad real del cliente):</p>
+<p>Implementaremos un procedimiento que audite a todos los clientes de <strong>Jardinería</strong> mediante un cursor procedimental. Si un cliente ha acumulado en pagos efectivos más del 80% de su límite de crédito actual, el SGBD ampliará proactivamente su límite crediticio un 25%.</p>
+<p>DELIMITER //</p>
+<p>DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//</p>
+<p>CREATE PROCEDURE sp_optimizar_credito_clientes_activos()</p>
+<p>BEGIN</p>
+<p>-- 1. Declarar variables de control interno</p>
+<p>DECLARE v_finalizado INT DEFAULT FALSE;</p>
+<p>DECLARE v_codigo_cliente INT;</p>
+<p>DECLARE v_limite_actual DECIMAL(15,2);</p>
+<p>DECLARE v_total_pagos DECIMAL(15,2);</p>
+<p>-- 2. Declaración del cursor sobre todos los clientes activos con crédito</p>
+<p>DECLARE cursor_clientes CURSOR FOR</p>
+<p>SELECT codigo_cliente, limite_credito</p>
+<p>FROM cliente</p>
+<p>WHERE limite_credito > 0.00;</p>
+<p>-- 3. Handler asociado para controlar cuándo el cursor se queda sin filas (NOT FOUND)</p>
+<p>DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finalizado = TRUE;</p>
+<p>-- 4. Abrir la consulta y cargar el puntero</p>
+<p>OPEN cursor_clientes;</p>
+<p>bucle_extraccion: LOOP</p>
+<p>-- 5. Extraer registro actual</p>
+<p>FETCH cursor_clientes INTO v_codigo_cliente, v_limite_actual;</p>
+<p>-- Control del escape del bucle</p>
+<p>IF v_finalizado THEN</p>
+<p>LEAVE bucle_extraccion;</p>
+<p>END IF;</p>
+<p>-- 6. Ejecutar lógica procedural para evaluar la regla de negocio</p>
+<p>SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagos</p>
+<p>FROM pago</p>
+<p>WHERE codigo_cliente = v_codigo_cliente;</p>
+<p>-- Si el total de pagos reales acumulados supera el 80% de su límite, aumentamos el límite</p>
+<p>IF v_total_pagos > (v_limite_actual * 0.80) THEN</p>
+<p>UPDATE cliente</p>
+<p>SET limite_credito = v_limite_actual * 1.25</p>
+<p>WHERE codigo_cliente = v_codigo_cliente;</p>
+<p>END IF;</p>
+<p>END LOOP bucle_extraccion;</p>
+<p>-- 7. Cerrar cursor para liberar recursos de red</p>
+<p>CLOSE cursor_clientes;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>-- Ejecutamos la reevaluación de límites del sistema completo de Jardinería</p>
+<p>CALL sp_optimizar_credito_clientes_activos();</p>
+<h1 id="7-disparadores-triggers">7. DISPARADORES (TRIGGERS)</h1>
+<p>Un disparador o <em>trigger</em> es un objeto de base de datos asociado a una tabla que se activa de manera automática e implícita cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE o DELETE) sobre dicha tabla [1.8.8].</p>
+<h2 id="71-logica-de-ejecucion-beforeafter-e-insertupdatedelete">7.1 Lógica de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</h2>
+<p>Un disparador puede configurarse para activarse en dos instantes temporales distintos:</p>
+<ul>
+<li>
+<p><strong>BEFORE:</strong> Se ejecuta antes de que los cambios se validen e intenten almacenar en el disco del servidor. Es la opción idónea para realizar operaciones de validación, saneamiento de datos de entrada o cálculo de campos calculados [1.8.8].</p>
+</li>
+<li>
+<p><strong>AFTER:</strong> Se ejecuta una vez que los cambios han sido aplicados con éxito en la tabla de datos. Es ideal para mantener registros de auditoría o históricos en tablas paralelas [1.8.8].</p>
+</li>
+</ul>
+<h2 id="72-pseudotablas-old-y-new-y-su-aplicacion-en-la-integridad-de-datos">7.2 Pseudotablas OLD y NEW y su aplicación en la integridad de datos</h2>
+<p>Dependiendo del tipo de instrucción DML ejecutada, el cuerpo del trigger tiene acceso a los valores mediante las variables contextuales:</p>
+<ul>
+<li>
+<p><strong>NEW:</strong> Objeto temporal que contiene los valores de las columnas que se están insertando o modificando. (Disponible en INSERT y UPDATE) [1.8.8].</p>
+</li>
+<li>
+<p><strong>OLD:</strong> Objeto temporal que contiene los valores de las columnas previos a la actualización o eliminación. (Disponible en UPDATE y DELETE) [1.8.8].</p>
+</li>
+</ul>
+<hr />
+<p><strong>Operación</strong>           <strong>Acceso a NEW</strong>                        <strong>Acceso a OLD</strong></p>
+<hr />
+<p><strong>INSERT</strong>              Sí (Lectura / Modificación en BEFORE)   No</p>
+<p><strong>UPDATE</strong>              Sí (Lectura / Modificación en BEFORE)   Sí (Solo Lectura)</p>
+<p><strong>DELETE</strong>              No                                      Sí (Solo Lectura)</p>
+<hr />
+<p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad referencial):</p>
+<p>Un SysAdmin debe impedir que se registre un pedido de productos de jardinería si no existe stock real suficiente en el inventario, previniendo incoherencias comerciales.</p>
+<p>DELIMITER //</p>
+<p>DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//</p>
+<p>CREATE TRIGGER trigger_validar_stock_before_insert</p>
+<p>BEFORE INSERT ON detalle_pedido</p>
+<p>FOR EACH ROW</p>
+<p>BEGIN</p>
+<p>DECLARE v_stock_disponible INT;</p>
+<p>-- Obtener la cantidad de existencias físicas reales del producto seleccionado</p>
+<p>SELECT cantidad_en_stock INTO v_stock_disponible</p>
+<p>FROM producto</p>
+<p>WHERE codigo_producto = NEW.codigo_producto;</p>
+<p>-- Si se solicita mayor cantidad que la disponible, generamos una excepción personalizada</p>
+<p>IF NEW.cantidad > v_stock_disponible THEN</p>
+<p>SIGNAL SQLSTATE \'45000\'</p>
+<p>SET MESSAGE_TEXT = \'OPERACIÓN RECHAZADA: Stock insuficiente para procesar la línea del producto.\';</p>
+<p>END IF;</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<p>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos automáticos):</p>
+<p>Implementaremos un disparador que nos permita registrar en tiempo real un log de pagos que van realizando los clientes. Primero creamos una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
+<p>eroría-- Creamos la tabla de soporte técnico de notificaciones</p>
+<p>CREATE TABLE IF NOT EXISTS notificaciones (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,</p>
+<p>total DECIMAL(15,2) NOT NULL,</p>
+<p>codigo_cliente INT NOT NULL</p>
+<p>);</p>
+<p>DELIMITER //</p>
+<p>DROP TRIGGER IF EXISTS trigger_notificar_pago_after_insert//</p>
+<p>CREATE TRIGGER trigger_notificar_pago_after_insert</p>
+<p>AFTER INSERT ON pago</p>
+<p>FOR EACH ROW</p>
+<p>BEGIN</p>
+<p>-- Almacena de manera automática el pago registrado en nuestra tabla de notificaciones</p>
+<p>INSERT INTO notificaciones (total, codigo_cliente)</p>
+<p>VALUES (NEW.total, NEW.codigo_cliente);</p>
+<p>END//</p>
+<p>DELIMITER ;</p>
+<h1 id="8-enlaces-de-referencia-y-documentacion-oficial">8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
+<p>Para profundizar en la sintaxis procedimental avanzada, gestión de pilas de llamadas y optimización de ejecución del motor de rutinas almacenadas en MySQL 8.0, consulta los siguientes recursos del manual técnico oficial:</p>
+<ul>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html">[MySQL 8.0 Reference Manual: Stored Objects (Procedures &amp; Functions)]{.underline}</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html">[MySQL 8.0 Reference Manual: Trigger Syntax and Examples]{.underline}</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html">[MySQL 8.0 Reference Manual: Flow Control Statements]{.underline}</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html">[MySQL 8.0 Reference Manual: Cursors implementation]{.underline}</a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html">[MySQL 8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE]{.underline}</a></p>
+</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UT7 Transaccionalidad" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              UT7 Transaccionalidad
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-footer__link md-footer__link--next" aria-label="Next: UT9 Seguridad" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              UT9 Seguridad
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

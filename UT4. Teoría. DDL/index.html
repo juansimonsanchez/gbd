@@ -1,0 +1,1469 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>UT4 DDL - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT4 DDL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-tabs__link">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link md-tabs__link--active">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-nav__link">
+        Programación
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UT4 DDL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UT4 DDL
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-nav__link">
+    FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-contenidos" class="md-nav__link">
+    ÍNDICE DE CONTENIDOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion" class="md-nav__link">
+    1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-el-lenguaje-ddl-de-sql" class="md-nav__link">
+    2. EL LENGUAJE DDL DE SQL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-manipulacion-de-bases-de-datos-en-mysql" class="md-nav__link">
+    3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-creacion-de-bases-de-datos-parametros-del-sistema" class="md-nav__link">
+    3.1 Creación de Bases de Datos: Parámetros del Sistema
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Creación de Bases de Datos: Parámetros del Sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-conceptos-de-codificacion-de-caracteres-estandar-unicode" class="md-nav__link">
+    3.1.1 Conceptos de Codificación de Caracteres: Estándar Unicode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-gestion-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-produccion" class="md-nav__link">
+    3.1.2 Gestión de utf8 (alias utf8mb3) vs utf8mb4 en Entornos de Producción
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-definicion-de-character-set-y-colaciones-collate" class="md-nav__link">
+    3.1.3 Definición de CHARACTER SET y Colaciones (COLLATE)
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.3 Definición de CHARACTER SET y Colaciones (COLLATE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-impacto-del-cotejamiento-en-la-ordenacion-fisica-de-tablas" class="md-nav__link">
+    3.1.4 Impacto del Cotejamiento en la Ordenación Física de Tablas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-modificacion-de-bases-de-datos-alter-database" class="md-nav__link">
+    3.2 Modificación de Bases de Datos (ALTER DATABASE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-eliminacion-segura-drop-database" class="md-nav__link">
+    3.3 Eliminación Segura (DROP DATABASE)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-manipulacion-de-tablas" class="md-nav__link">
+    4. MANIPULACIÓN DE TABLAS
+  </a>
+  
+    <nav class="md-nav" aria-label="4. MANIPULACIÓN DE TABLAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sentencia-de-creacion-create-table" class="md-nav__link">
+    4.1 Sentencia de Creación (CREATE TABLE)
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Sentencia de Creación (CREATE TABLE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-la-sintaxis-formal-opciones-avanzadas-y-limitaciones-de-la-sentencia-de-creacion-se-detallan-en-mysql-manual-create-table-statementunderline" class="md-nav__link">
+    🔗 Documentación Oficial: La sintaxis formal, opciones avanzadas y limitaciones de la sentencia de creación se detallan en [MySQL Manual - CREATE TABLE Statement]{.underline}.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#411-restricciones-de-integridad-y-atributos-de-columna" class="md-nav__link">
+    4.1.1 Restricciones de Integridad y Atributos de Columna
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-integridad-referencial-opciones-en-claves-ajenas-foreign-key" class="md-nav__link">
+    4.1.2 Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.2 Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-para-comprender-a-fondo-el-funcionamiento-restricciones-e-impacto-de-rendimiento-de-las-restricciones-de-clave-ajena-visita-mysql-manual-foreign-key-constraintsunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Para comprender a fondo el funcionamiento, restricciones e impacto de rendimiento de las restricciones de clave ajena, visita [MySQL Manual - FOREIGN KEY Constraints]{.underline}.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-configuracion-de-opciones-de-tabla" class="md-nav__link">
+    4.1.3 Configuración de Opciones de Tabla
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-modificacion-estructural-alter-table" class="md-nav__link">
+    4.2 Modificación Estructural (ALTER TABLE)
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Modificación Estructural (ALTER TABLE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-consulta-la-sintaxis-completa-y-las-operaciones-en-caliente-online-ddl-que-se-pueden-realizar-en-el-motor-innodb-mediante-mysql-manual-alter-table-statementunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Consulta la sintaxis completa y las operaciones en caliente (Online DDL) que se pueden realizar en el motor InnoDB mediante [MySQL Manual - ALTER TABLE Statement]{.underline}.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#421-redefinicion-de-atributos-modify" class="md-nav__link">
+    4.2.1 Redefinición de Atributos (MODIFY)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-renombrado-y-cambio-estructurado-change" class="md-nav__link">
+    4.2.2 Renombrado y Cambio Estructurado (CHANGE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-gestion-de-valores-por-defecto-alter-setdrop-default" class="md-nav__link">
+    4.2.3 Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-adicion-y-eliminacion-de-atributos-add-drop-column" class="md-nav__link">
+    4.2.4 Adición y Eliminación de Atributos (ADD / DROP COLUMN)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-eliminacion-de-tablas-drop-table" class="md-nav__link">
+    4.3 Eliminación de Tablas (DROP TABLE)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tipos-de-datos-en-mysql" class="md-nav__link">
+    5. TIPOS DE DATOS EN MYSQL
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TIPOS DE DATOS EN MYSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-para-consultar-la-referencia-tecnica-de-todos-los-tipos-de-datos-disponibles-rangos-y-almacenamiento-fisico-en-bytes-revisa-mysql-manual-data-typesunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Para consultar la referencia técnica de todos los tipos de datos disponibles, rangos y almacenamiento físico en bytes, revisa [MySQL Manual - Data Types]{.underline}.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-clasificacion-y-representacion-en-memoria-de-enteros" class="md-nav__link">
+    5.1 Clasificación y Representación en Memoria de Enteros
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Clasificación y Representación en Memoria de Enteros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-atributo-zerofill-y-el-mito-de-int-11" class="md-nav__link">
+    5.1.1 Atributo ZEROFILL y el mito de INT (11)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-tipos-especiales-bit-bool-serial" class="md-nav__link">
+    5.1.2 Tipos Especiales (BIT, BOOL, SERIAL)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-datos-en-punto-flotante-valores-aproximados-y-precision-computacional" class="md-nav__link">
+    5.2 Datos en Punto Flotante (Valores Aproximados y Precisión Computacional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-datos-en-punto-fijo-valores-exactos-para-datos-financieros" class="md-nav__link">
+    5.3 Datos en Punto Fijo (Valores Exactos para Datos Financieros)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-fechas-y-tiempo" class="md-nav__link">
+    5.4 Fechas y Tiempo
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 Fechas y Tiempo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-para-conocer-las-ventajas-y-diferencias-operativas-entre-datetime-y-timestamp-lee-mysql-manual-date-and-time-typesunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Para conocer las ventajas y diferencias operativas entre DATETIME y TIMESTAMP, lee [MySQL Manual - Date and Time Types]{.underline}.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-cadenas-de-caracteres" class="md-nav__link">
+    5.5 Cadenas de Caracteres
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-datos-binarios" class="md-nav__link">
+    5.6 Datos Binarios
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tipos-estructurados-especiales-enum-set" class="md-nav__link">
+    5.7 Tipos Estructurados Especiales (ENUM, SET)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-tipos-no-relacionales-almacenamiento-y-operaciones-json" class="md-nav__link">
+    5.8 Tipos No Relacionales: Almacenamiento y Operaciones JSON
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Tipos No Relacionales: Almacenamiento y Operaciones JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-conoce-todas-las-funciones-y-ventajas-operativas-de-almacenar-documentos-no-relacionales-de-forma-nativa-en-mysql-manual-json-data-typeunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Conoce todas las funciones y ventajas operativas de almacenar documentos no relacionales de forma nativa en [MySQL Manual - JSON Data Type]{.underline}.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-configuracion-y-gestion-de-sql_mode" class="md-nav__link">
+    5.9 Configuración y Gestión de sql_mode
+  </a>
+  
+    <nav class="md-nav" aria-label="5.9 Configuración y Gestión de sql_mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-para-comprender-los-efectos-del-modo-estricto-en-la-prevencion-de-la-insercion-de-datos-corruptos-o-fuera-de-rango-en-produccion-consulta-mysql-manual-server-sql-modesunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Para comprender los efectos del modo estricto en la prevención de la inserción de datos corruptos o fuera de rango en producción, consulta [MySQL Manual - Server SQL Modes]{.underline}.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT7.%20Teor%C3%ADa%20Manipulaci%C3%B3n%20y%20Transaccionalidad/" class="md-nav__link">
+        UT7 Transaccionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-nav__link">
+        UT8 Programación SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-nav__link">
+        UT9 Seguridad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_tareas_pr%C3%A1cticas%2026%2027/" class="md-nav__link">
+        Plantilla Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
+<hr />
+<p><strong>Unidad Didáctica</strong>            Unidad Didáctica 4: Creación de bases de datos en MySQL (Lenguaje de Definición de Datos - DDL)</p>
+<hr />
+<p><strong>Resultados de Aprendizaje</strong>   <strong>RA3:</strong> Realiza el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.</p>
+<p><strong>Criterios de Evaluación</strong>     CE3.a, CE3.b, CE3.c, CE3.d, CE3.e, CE3.f, CE3.g, CE3.h, CE3.i</p>
+<p><strong>Tiempo Estimado</strong>             18 Horas (Planificado para 3 semanas de sesiones teórico-prácticas)</p>
+<hr />
+<h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h3>
+<blockquote>
+<p><a href="#">[FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA]{.underline}</a></p>
+<p><a href="#">[ÍNDICE DE CONTENIDOS]{.underline}</a></p>
+</blockquote>
+<p><a href="#introducción-y-contextualización">[1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN]{.underline}</a></p>
+<p><a href="#el-lenguaje-ddl-de-sql">[2. EL LENGUAJE DDL DE SQL]{.underline}</a></p>
+<p><a href="#manipulación-de-bases-de-datos-en-mysql">[3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL]{.underline}</a></p>
+<blockquote>
+<p><a href="#creación-de-bases-de-datos-parámetros-del-sistema">[3.1 Creación de Bases de Datos: Parámetros del Sistema]{.underline}</a></p>
+<p><a href="#conceptos-de-codificación-de-caracteres-estándar-unicode">[3.1.1 Conceptos de Codificación de Caracteres: Estándar Unicode]{.underline}</a></p>
+<p><a href="#gestión-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-producción">[3.1.2 Gestión de utf8 (alias utf8mb3) vs utf8mb4 en Entornos de Producción]{.underline}</a></p>
+<p><a href="#definición-de-character-set-y-colaciones-collate">[3.1.3 Definición de CHARACTER SET y Colaciones (COLLATE)]{.underline}</a></p>
+<p><a href="#impacto-del-cotejamiento-en-la-ordenación-física-de-tablas">[3.1.4 Impacto del Cotejamiento en la Ordenación Física de Tablas]{.underline}</a></p>
+<p><a href="#modificación-de-bases-de-datos-alter-database">[3.2 Modificación de Bases de Datos (ALTER DATABASE)]{.underline}</a></p>
+<p><a href="#eliminación-segura-drop-database">[3.3 Eliminación Segura (DROP DATABASE)]{.underline}</a></p>
+</blockquote>
+<p><a href="#manipulación-de-tablas">[4. MANIPULACIÓN DE TABLAS]{.underline}</a></p>
+<blockquote>
+<p><a href="#sentencia-de-creación-create-table">[4.1 Sentencia de Creación (CREATE TABLE)]{.underline}</a></p>
+<p><a href="#restricciones-de-integridad-y-atributos-de-columna">[4.1.1 Restricciones de Integridad y Atributos de Columna]{.underline}</a></p>
+<p><a href="#integridad-referencial-opciones-en-claves-ajenas-foreign-key">[4.1.2 Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)]{.underline}</a></p>
+<p><a href="#configuración-de-opciones-de-tabla">[4.1.3 Configuración de Opciones de Tabla]{.underline}</a></p>
+<p><a href="#modificación-estructural-alter-table">[4.2 Modificación Estructural (ALTER TABLE)]{.underline}</a></p>
+<p><a href="#redefinición-de-atributos-modify">[4.2.1 Redefinición de Atributos (MODIFY)]{.underline}</a></p>
+<p><a href="#renombrado-y-cambio-estructurado-change">[4.2.2 Renombrado y Cambio Estructurado (CHANGE)]{.underline}</a></p>
+<p><a href="#gestión-de-valores-por-defecto-alter-...-setdrop-default">[4.2.3 Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)]{.underline}</a></p>
+<p><a href="#adición-y-eliminación-de-atributos-add-drop-column">[4.2.4 Adición y Eliminación de Atributos (ADD / DROP COLUMN)]{.underline}</a></p>
+<p><a href="#eliminación-de-tablas-drop-table">[4.3 Eliminación de Tablas (DROP TABLE)]{.underline}</a></p>
+</blockquote>
+<p><a href="#tipos-de-datos-en-mysql">[5. TIPOS DE DATOS EN MYSQL]{.underline}</a></p>
+<blockquote>
+<p><a href="#clasificación-y-representación-en-memoria-de-enteros">[5.1 Clasificación y Representación en Memoria de Enteros]{.underline}</a></p>
+<p><a href="#atributo-zerofill-y-el-mito-de-int-11">[5.1.1 Atributo ZEROFILL y el mito de INT (11)]{.underline}</a></p>
+<p><a href="#tipos-especiales-bit-bool-serial">[5.1.2 Tipos Especiales (BIT, BOOL, SERIAL)]{.underline}</a></p>
+<p><a href="#datos-en-punto-flotante-valores-aproximados-y-precisión-computacional">[5.2 Datos en Punto Flotante (Valores Aproximados y Precisión Computacional)]{.underline}</a></p>
+<p><a href="#datos-en-punto-fijo-valores-exactos-para-datos-financieros">[5.3 Datos en Punto Fijo (Valores Exactos para Datos Financieros)]{.underline}</a></p>
+<p><a href="#fechas-y-tiempo">[5.4 Fechas y Tiempo]{.underline}</a></p>
+<p><a href="#cadenas-de-caracteres">[5.5 Cadenas de Caracteres]{.underline}</a></p>
+<p><a href="#datos-binarios">[5.6 Datos Binarios]{.underline}</a></p>
+<p><a href="#tipos-estructurados-especiales-enum-set">[5.7 Tipos Estructurados Especiales (ENUM, SET)]{.underline}</a></p>
+<p><a href="#tipos-no-relacionales-almacenamiento-y-operaciones-json">[5.8 Tipos No Relacionales: Almacenamiento y Operaciones JSON]{.underline}</a></p>
+<p><a href="#configuración-y-gestión-de-sql_mode">[5.9 Configuración y Gestión de sql_mode]{.underline}</a></p>
+</blockquote>
+<h1 id="1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</h1>
+<p>El objetivo primordial de esta unidad es capacitar al futuro administrador de sistemas en la implementación, modificación y optimización de las estructuras lógicas de datos sobre el motor de base de datos MySQL. Se busca no solo que el alumno domine la sintaxis estándar de SQL-DDL, sino que comprenda las implicaciones a nivel de rendimiento en disco, r</p>
+<p>Esta unidad se conecta directamente con los módulos profesionales de <strong>Administración de Sistemas Operativos en Red (ASO)</strong> e <strong>Implantación de Aplicaciones Web (IAW)</strong>. El aprovisionamiento de infraestructuras para aplicaciones como CMS (WordPress, Drupal) o plataformas empresariales requiere que el administrador configure de forma óptima el servidor de bases de datos relacionales, modificando variables globales de ejecución (sql_mode), definiendo esquemas eficientes y aislando el almacenamiento físico de la base de datos para garantizar la alta disponibilidad y la integridad referencial de los servicios corporativos.</p>
+<h1 id="2-el-lenguaje-ddl-de-sql">2. EL LENGUAJE DDL DE SQL</h1>
+<p>El DDL (data definition language) es la especificación de SQL encargada de definir las estructuras que almacenan los datos del sistema. Las sentencias de esta especificación se ejecutan de forma síncrona en el diccionario de datos de MySQL e impactan directamente sobre el sistema de archivos del servidor (por ejemplo, ficheros .ibd en motores InnoDB).</p>
+<p>+---+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|   | ###### 🔗 <strong>Documentación Oficia</strong>l: Para consultar la lista de todas las sentencias de definición de datos y la gestión del diccionario de datos de MySQL, accede a MySQL Manual - Data Definition Statements. |
++===+=================================================================================================================================================================================================================+
++---+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</p>
+<p>Estructura jerárquica de comandos SQL de definición</p>
+<ul>
+<li>
+<p>CREATE: Instancia nuevas estructuras (DATABASE, TABLE, INDEX, VIEW, USER)</p>
+</li>
+<li>
+<p>ALTER: Modifica metadatos y estructuras físicas existentes</p>
+</li>
+<li>
+<p>DROP: Elimina permanentemente estructuras físicas y sus contenidos</p>
+</li>
+<li>
+<p>SHOW: Consulta el estado del diccionario de datos y variables de sesión/global</p>
+</li>
+</ul>
+<p>Sentencias de utilidad</p>
+<ul>
+<li>
+<p>USE \&lt;nombre_bd> Selecciona el esquema activo en el hilo de conexión actual.</p>
+</li>
+<li>
+<p>DESCRIBE \&lt;nombre_tabla>; o DESC \&lt;nombre_tabla>;: Recupera los metadatos de las columnas de una tabla para validar el esquema.</p>
+</li>
+</ul>
+<h1 id="3-manipulacion-de-bases-de-datos-en-mysql">3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL</h1>
+<h2 id="31-creacion-de-bases-de-datos-parametros-del-sistema">3.1 Creación de Bases de Datos: Parámetros del Sistema</h2>
+<p>En MySQL, las palabras clave DATABASE y SCHEMA son sinónimos absolutos. La directiva IF NOT EXISTS evita que se interrumpa la ejecución de scripts automatizados de despliegue (como Ansible o scripts de Shell) si el esquema ya se encuentra en el servidor.</p>
+<p>-- Creación básica (Aplica el juego de caracteres del servidor por defecto)</p>
+<p>CREATE DATABASE IF NOT EXISTS sysadmin_prod;</p>
+<p>-- Creación óptima recomendada para compatibilidad internacional</p>
+<p>CREATE DATABASE IF NOT EXISTS sysadmin_prod</p>
+<p>CHARACTER SET utf8mb4</p>
+<p>COLLATE utf8mb4_unicode_ci;</p>
+<h5 id="_1"></h5>
+<h4 id="311-conceptos-de-codificacion-de-caracteres-estandar-unicode">3.1.1 Conceptos de Codificación de Caracteres: Estándar Unicode</h4>
+<p>Unicode define un conjunto universal de caracteres mapeado numéricamente. La codificación UTF-8 representa este conjunto usando bloques dinámicos de bytes:</p>
+<ul>
+<li>
+<p>Caracteres ASCII clásicos: 1 byte.</p>
+</li>
+<li>
+<p>Bloques alfabéticos adicionales: 2 bytes.</p>
+</li>
+<li>
+<p>Resto del BMP (Basic Multilingual Plane): 3 bytes.</p>
+</li>
+<li>
+<p>Caracteres complementarios (Emojis, caracteres ideográficos): 4 bytes.</p>
+</li>
+</ul>
+<h4 id="312-gestion-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-produccion">3.1.2 Gestión de utf8 (alias utf8mb3) vs utf8mb4 en Entornos de Producción</h4>
+<p>En las versiones heredadas de MySQL, la codificación denominada utf8 utiliza únicamente un máximo de 3 bytes por carácter. Esto imposibilita almacenar de forma nativa caracteres fuera del BMP, como la simbología emoji o caracteres asiáticos complejos. Para evitar fallas de inserción y truncado de strings en entornos corporativos modernos, es mandatorio utilizar el juego de caracteres utf8mb4, el cual sí soporta hasta 4 bytes.</p>
+<h3 id="313-definicion-de-character-set-y-colaciones-collate">3.1.3 Definición de CHARACTER SET y Colaciones (COLLATE)</h3>
+<ul>
+<li>
+<p><strong>CHARACTER SET:</strong> Indica qué codificación binaria se usa para mapear caracteres a bytes en disco.</p>
+</li>
+<li>
+<p><strong>COLLATE:</strong> Determina las reglas lógicas para la ordenación física y las comparaciones de igualdad entre strings.</p>
+<ul>
+<li>
+<p>_cs (Case Sensitive): Diferencia entre mayúsculas y minúsculas (Ej: a distinto de A).</p>
+</li>
+<li>
+<p>_ci (Case Insensitive): No diferencia mayúsculas de minúsculas (Ej: a igua A).</p>
+</li>
+<li>
+<p>_bin (Binary): Las comparaciones se ejecutan directamente sobre el valor de la representación numérica binaria en memoria del carácter.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>+---+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|   | ###### 🔗 <strong>Documentación Oficial</strong>: Para profundizar sobre cómo MySQL maneja los juegos de caracteres dinámicos y la compatibilidad con Unicode completo, revisa MySQL Manual - Character Sets, Collations, Unicode. |
++===+=======================================================================================================================================================================================================================+
++---+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</p>
+<p>-- Inspección del juego de caracteres y colaciones disponibles en el motor</p>
+<p>SHOW CHARACTER SET;</p>
+<p>SHOW COLLATION LIKE \"utf8mb4%\";</p>
+<p>-- Consulta del juego de caracteres y la colación configurados en la base de datos actual</p>
+<p>USE sysadmin_prod;</p>
+<p>SELECT @@character_set_database, @@collation_database;</p>
+<h5 id="_2"></h5>
+<h3 id="314-impacto-del-cotejamiento-en-la-ordenacion-fisica-de-tablas">3.1.4 Impacto del Cotejamiento en la Ordenación Física de Tablas</h3>
+<p>El cotejamiento afecta de forma radical a consultas ordenadas (ORDER BY). A continuación se ejemplifica cómo se almacena y ordena el diccionario de datos en base al cotejamiento asignado a la columna o tabla:</p>
+<p>-- Creación de tabla de prueba con codificación clásica latina</p>
+<p>CREATE TABLE tabla_cotejo (</p>
+<p>cadena CHAR(3) CHARACTER SET latin1</p>
+<p>);</p>
+<p>INSERT INTO tabla_cotejo (cadena) VALUES (\"AAA\"), (\"bbb\"), (\"aaa\"), (\"BBB\");</p>
+<p>-- 1. Ordenación con Cotejo Sensible a Mayúsculas (_cs)</p>
+<p>-- Salida esperada: aaa -> AAA -> bbb -> BBB</p>
+<p>SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_general_cs;</p>
+<p>-- 2. Ordenación con Cotejo Insensible a Mayúsculas (_ci)</p>
+<p>-- Salida esperada: AAA/aaa se tratan como iguales a nivel de ordenación, igual con BBB/bbb</p>
+<p>SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_swedish_ci;</p>
+<p>-- 3. Ordenación Binaria (_bin)</p>
+<p>-- Ordena rigurosamente según el valor del byte ASCII (Mayúsculas tienen códigos menores que minúsculas)</p>
+<p>-- Salida esperada: AAA -> BBB -> aaa -> bbb</p>
+<p>SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_bin;</p>
+<h2 id="_3"></h2>
+<h2 id="32-modificacion-de-bases-de-datos-alter-database">3.2 Modificación de Bases de Datos (ALTER DATABASE)</h2>
+<p>Permite alterar los parámetros estructurales por defecto del esquema sin necesidad de recrear los objetos internos.</p>
+<p>-- Cambio de codificación en caliente para dar soporte a Unicode completo</p>
+<p>ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</p>
+<h2 id="_4"></h2>
+<h2 id="33-eliminacion-segura-drop-database">3.3 Eliminación Segura (DROP DATABASE)</h2>
+<p>Elimina físicamente el directorio que contiene los ficheros de la base de datos y todas sus tablas. Debe usarse con extrema precaución en scripts de automatización.</p>
+<p>-- Eliminación controlada de un esquema de datos</p>
+<p>DROP DATABASE IF EXISTS sysadmin_prod;</p>
+<p></p>
+<h1 id="4-manipulacion-de-tablas">4. MANIPULACIÓN DE TABLAS</h1>
+<h2 id="41-sentencia-de-creacion-create-table">4.1 Sentencia de Creación (CREATE TABLE)</h2>
+<p>A continuación se detalla la sintaxis estructurada para instanciar tablas físicas aplicando restricciones del modelo relacional:</p>
+<h6 id="documentacion-oficial-la-sintaxis-formal-opciones-avanzadas-y-limitaciones-de-la-sentencia-de-creacion-se-detallan-en-mysql-manual-create-table-statementunderline">🔗 <strong>Documentación Oficial:</strong> La sintaxis formal, opciones avanzadas y limitaciones de la sentencia de creación se detallan en <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table.html">[MySQL Manual - CREATE TABLE Statement]{.underline}</a>.</h6>
+<p>-- Creación de la base de datos para el despliegue del esquema</p>
+<p>CREATE DATABASE IF NOT EXISTS logistica_empresa CHARSET utf8mb4;</p>
+<p>USE logistica_empresa;</p>
+<p>-- Creación de Tabla Principal (Entidad Fuerte)</p>
+<p>CREATE TABLE categoria (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT,</p>
+<p>nombre VARCHAR(100) NOT NULL,</p>
+<p>-- Declaración de Clave Primaria en la especificación de tabla</p>
+<p>CONSTRAINT pk_categoria PRIMARY KEY (id)</p>
+<p>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</p>
+<p>-- Creación de Tabla Relacionada (Entidad Débil con Clave Ajena y restricción CHECK)</p>
+<p>CREATE TABLE pieza (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT,</p>
+<p>nombre VARCHAR(100) NOT NULL,</p>
+<p>color VARCHAR(50) NOT NULL,</p>
+<p>precio DECIMAL(7,2) NOT NULL,</p>
+<p>id_categoria INT UNSIGNED NOT NULL,</p>
+<p>-- Clave Primaria</p>
+<p>CONSTRAINT pk_pieza PRIMARY KEY (id),</p>
+<p>-- Restricción de integridad Check (Soportada nativamente desde MySQL 8.0)</p>
+<p>CONSTRAINT chk_precio_positivo CHECK (precio > 0),</p>
+<p>-- Definición de la clave ajena</p>
+<p>CONSTRAINT fk_pieza_categoria FOREIGN KEY (id_categoria)</p>
+<p>REFERENCES categoria(id)</p>
+<p>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</p>
+<h3 id="_5"></h3>
+<h3 id="411-restricciones-de-integridad-y-atributos-de-columna">4.1.1 Restricciones de Integridad y Atributos de Columna</h3>
+<ul>
+<li>
+<p>NOT NULL / NULL: Indica obligatoriedad de valor.</p>
+</li>
+<li>
+<p>DEFAULT \&lt;valor>: Asigna un valor por defecto si se omite en la sentencia INSERT.</p>
+</li>
+<li>
+<p>AUTO_INCREMENT: Autonumérico incremental de enteros. Requiere que la columna sea clave primaria o índice único.</p>
+</li>
+<li>
+<p>UNIQUE: Impide la duplicidad de valores en la columna.</p>
+</li>
+<li>
+<p>PRIMARY KEY: Restringe el campo como identificador único de la tupla (implica indexación física por árbol B+ B-tree y restricción NOT NULL).</p>
+</li>
+</ul>
+<h3 id="412-integridad-referencial-opciones-en-claves-ajenas-foreign-key">4.1.2 Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)</h3>
+<p>Las cláusulas ON DELETE y ON UPDATE controlan el comportamiento del sistema ante la manipulación de datos maestros en cascada:</p>
+<ul>
+<li>
+<p>RESTRICT: Deniega el borrado o actualización en la tabla padre si existen registros huérfanos asociados en la tabla hija. Es la opción por defecto.</p>
+</li>
+<li>
+<p>CASCADE: Sincroniza de forma recursiva los cambios. Si se borra la categoría con id = 1, se eliminarán de forma automatizada todas las piezas pertenecientes a dicha categoría.</p>
+</li>
+<li>
+<p>SET NULL: Si se modifica o elimina el registro padre, actualiza las claves foráneas de la tabla hija a valor NULL (requiere que la columna no tenga restricción NOT NULL).</p>
+</li>
+<li>
+<p>NO ACTION: Equivale semánticamente a RESTRICT en motores MySQL.</p>
+</li>
+</ul>
+<h6 id="documentacion-oficial-para-comprender-a-fondo-el-funcionamiento-restricciones-e-impacto-de-rendimiento-de-las-restricciones-de-clave-ajena-visita-mysql-manual-foreign-key-constraintsunderline">🔗 <strong>Documentación Oficial:</strong> Para comprender a fondo el funcionamiento, restricciones e impacto de rendimiento de las restricciones de clave ajena, visita <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html">[MySQL Manual - FOREIGN KEY Constraints]{.underline}</a>.</h6>
+<p>-- Ejemplo de configuración relacional con Cascade para gestión automatizada</p>
+<p>CREATE TABLE pieza_cascade (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>nombre VARCHAR(100) NOT NULL,</p>
+<p>id_categoria INT UNSIGNED NOT NULL,</p>
+<p>CONSTRAINT fk_pieza_cat_cascade FOREIGN KEY (id_categoria)</p>
+<p>REFERENCES categoria(id)</p>
+<p>ON DELETE CASCADE</p>
+<p>ON UPDATE CASCADE</p>
+<p>) ENGINE=InnoDB;</p>
+<h3 id="_6"></h3>
+<h3 id="413-configuracion-de-opciones-de-tabla">4.1.3 Configuración de Opciones de Tabla</h3>
+<p>Al final de la sentencia de creación se definen opciones físicas de almacenamiento:</p>
+<ul>
+<li>
+<p>ENGINE=InnoDB: Motor transaccional ACID nativo de MySQL con bloqueo a nivel de fila e integridad referencial real.</p>
+</li>
+<li>
+<p>AUTO_INCREMENT = \&lt;valor_inicial>: Configura el puntero de inserción autonumérico.</p>
+</li>
+</ul>
+<p>-- Configuración avanzada de almacenamiento</p>
+<p>CREATE TABLE usuarios_logs (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>accion VARCHAR(255) NOT NULL</p>
+<p>) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;</p>
+<h2 id="42-modificacion-estructural-alter-table">4.2 Modificación Estructural (ALTER TABLE)</h2>
+<p>Esencial para aplicar parches de migración de datos en entornos de producción sin pérdida de registros existentes.</p>
+<h6 id="documentacion-oficial-consulta-la-sintaxis-completa-y-las-operaciones-en-caliente-online-ddl-que-se-pueden-realizar-en-el-motor-innodb-mediante-mysql-manual-alter-table-statementunderline">🔗 <strong>Documentación Oficial:</strong> Consulta la sintaxis completa y las operaciones en caliente (<em>Online DDL</em>) que se pueden realizar en el motor InnoDB mediante <a href="https://dev.mysql.com/doc/refman/8.0/en/alter-table.html">[MySQL Manual - ALTER TABLE Statement]{.underline}</a>.</h6>
+<h3 id="421-redefinicion-de-atributos-modify">4.2.1 Redefinición de Atributos (MODIFY)</h3>
+<p>Modifica el tipo de dato o las restricciones asociadas a una columna existente, manteniendo el nombre de esta.</p>
+<p>-- Cambiar la columna \"nombre\" para aceptar más caracteres y hacerla obligatoria</p>
+<p>ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</p>
+<h3 id="_7"></h3>
+<h3 id="422-renombrado-y-cambio-estructurado-change">4.2.2 Renombrado y Cambio Estructurado (CHANGE)</h3>
+<p>Permite renombrar una columna física además de redefinir su tipo de dato de forma simultánea.</p>
+<p>-- Modifica el nombre de la columna \"nombre\" a \"nombre_categoria\"</p>
+<p>ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT NULL;</p>
+<p></p>
+<h3 id="423-gestion-de-valores-por-defecto-alter-setdrop-default">4.2.3 Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)</h3>
+<p>Permite la modificación del metadato por defecto sin modificar el tipo de columna.</p>
+<p>-- Añadir rol por defecto al registrar un usuario nuevo</p>
+<p>ALTER TABLE usuarios_logs ADD COLUMN rol ENUM(\"SysAdmin\", \"Operador\") NOT NULL;</p>
+<p>ALTER TABLE usuarios_logs ALTER rol SET DEFAULT \"Operador\";</p>
+<p>-- Eliminar valor por defecto</p>
+<p>ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</p>
+<h3 id="424-adicion-y-eliminacion-de-atributos-add-drop-column">4.2.4 Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
+<p>Define las reglas físicas de ubicación de nuevas columnas dentro de la estructura de la tupla física en disco.</p>
+<p>-- Añade una columna al final de la tabla</p>
+<p>ALTER TABLE usuarios_logs ADD COLUMN timestamp_registro TIMESTAMP NOT NULL;</p>
+<p>-- Añade columnas controlando la posición exacta</p>
+<p>ALTER TABLE usuarios_logs ADD COLUMN ip_origen VARCHAR(45) NOT NULL AFTER accion;</p>
+<p>ALTER TABLE usuarios_logs ADD COLUMN id_interno INT FIRST;</p>
+<p>-- Eliminar columna física y sus datos asociados permanentemente</p>
+<p>ALTER TABLE usuarios_logs DROP COLUMN id_interno;</p>
+<p></p>
+<h2 id="43-eliminacion-de-tablas-drop-table">4.3 Eliminación de Tablas (DROP TABLE)</h2>
+<p>Elimina la estructura de metadatos, los índices físicos y los datos contenidos de la tabla del disco.</p>
+<p>-- Borrado unitario y múltiple controlado</p>
+<p>DROP TABLE IF EXISTS pieza;</p>
+<p>DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</p>
+<p></p>
+<h1 id="5-tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL</h1>
+<p>Elegir de forma óptima el tipo de dato previene el desperdicio de almacenamiento en disco y la saturación del pool de memoria (Buffer Pool de InnoDB).</p>
+<h6 id="documentacion-oficial-para-consultar-la-referencia-tecnica-de-todos-los-tipos-de-datos-disponibles-rangos-y-almacenamiento-fisico-en-bytes-revisa-mysql-manual-data-typesunderline">🔗 <strong>Documentación Oficial:</strong> Para consultar la referencia técnica de todos los tipos de datos disponibles, rangos y almacenamiento físico en bytes, revisa <a href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html">[MySQL Manual - Data Types]{.underline}</a>.</h6>
+<h2 id="51-clasificacion-y-representacion-en-memoria-de-enteros">5.1 Clasificación y Representación en Memoria de Enteros</h2>
+<hr />
+<p><strong>Tipo de Dato</strong>   <strong>Tamaño en Disco</strong>   <strong>Rango (Signed)</strong>      <strong>Rango (Unsigned)</strong></p>
+<hr />
+<p>TINYINT            1 Byte                [-128,127]            [0,255]</p>
+<p>SMALLINT           2 Byte                [-32768, 32767]       [0,65535]</p>
+<p>MEDIUMINT          3 Byte                [-8388608, 8388607]   [0, 16777215]</p>
+<p>INT / INTEGER      4 Byte                -2³¹ a 2³¹-1            0 a 2³²-1</p>
+<p>BIGINT             8 Byte                -2⁶³ a 2⁶³-1            0 a 2⁶⁴-1</p>
+<hr />
+<h3 id="511-atributo-zerofill-y-el-mito-de-int-11">5.1.1 Atributo ZEROFILL y el mito de INT (11)</h3>
+<p>La declaración de un tipo de dato como INT(11) no restringe el almacenamiento ni el valor del entero a 11 dígitos numéricos; es exclusivamente un metadato de formato de salida visual. Cuando se utiliza conjuntamente con el modificador ZEROFILL, MySQL rellenará con ceros a la izquierda de forma visual en las terminales que soporten este atributo hasta alcanzar el tamaño especificado.</p>
+<p>-- Ejemplo práctico de visualización</p>
+<p>CREATE TABLE demo_zerofill (</p>
+<p>numero INT(4) ZEROFILL</p>
+<p>);</p>
+<p>INSERT INTO demo_zerofill VALUES (5);</p>
+<p>-- Al hacer SELECT, la salida mostrada será: \"0005\"</p>
+<p></p>
+<h3 id="512-tipos-especiales-bit-bool-serial">5.1.2 Tipos Especiales (BIT, BOOL, SERIAL)</h3>
+<ul>
+<li>
+<p>BIT(M): Almacena valores a nivel de bits, donde 1 a 2⁶ (64).</p>
+</li>
+<li>
+<p>BOOL / BOOLEAN: Alias del motor para TINYINT(1). El valor 0 equivale a FALSE y cualquier entero se asume como TRUE.</p>
+</li>
+<li>
+<p>SERIAL: Alias que equivale de forma explícita a: BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE.</p>
+</li>
+</ul>
+<h2 id="52-datos-en-punto-flotante-valores-aproximados-y-precision-computacional">5.2 Datos en Punto Flotante (Valores Aproximados y Precisión Computacional)</h2>
+<p>Los tipos FLOAT y DOUBLE representan aproximaciones de números reales en punto flotante bajo el estándar IEEE-754. <strong>Nunca</strong> deben usarse en sistemas transaccionales monetarios debido a los redondeos e imprecisiones intrínsecas de las operaciones binarias internas de la CPU.</p>
+<ul>
+<li>
+<p>FLOAT(M, D): Simple precisión (4 bytes), con precisión de rango de aprox. ±1.1x10³⁸ a aprox. ±3.7540x10³⁸.</p>
+</li>
+<li>
+<p>DOUBLE(M, D): Doble precisión (8 Bytes), con rango de aprox. ±2,23x10^-^³⁰⁸ a aprox. ±1.79x10³⁰⁸.</p>
+</li>
+</ul>
+<h2 id="53-datos-en-punto-fijo-valores-exactos-para-datos-financieros">5.3 Datos en Punto Fijo (Valores Exactos para Datos Financieros)</h2>
+<p>Los tipos DECIMAL y NUMERIC son equivalentes. Almacenan los números de forma exacta (conversión a cadenas binarias empaquetadas por bloques de 9 dígitos en MySQL), preservando la precisión monetaria de las operaciones.</p>
+<ul>
+<li>DECIMAL(M, D): M representa la precisión total de dígitos de la que se compone el número entero (rango de 1 a 65), D representa el número de cifras decimales (rango de 0 a 30).</li>
+</ul>
+<p>-- Definición idónea para transacciones bancarias o e-commerce</p>
+<p>CREATE TABLE transaccion (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>importe DECIMAL(10,2) NOT NULL -- Permite hasta 8 dígitos enteros y 2 decimales</p>
+<p>);</p>
+<h2 id="54-fechas-y-tiempo">5.4 Fechas y Tiempo</h2>
+<hr />
+<p><strong>Tipo de Dato</strong>   <strong>Tamaño</strong>   <strong>Formato por Defecto</strong>   <strong>Rango Soportado</strong></p>
+<hr />
+<p>DATE               3 Bytes      YYYY-MM-DD                1000-01-01 a 9999-12-31</p>
+<p>DATETIME           8 Bytes      YYYY-MM-DD HH:MM:SS       1000-01-01 00:00:00 a 9999-12-31 23:59:59</p>
+<p>TIMESTAMP          4 Bytes      YYYY-MM-DD HH:MM:SS       1970-01-01 00:00:01 UTC a 2038-01-19 03:14:07 UTC</p>
+<p>TIME               3 Bytes      HH:MM:SS                  -838:59:59 a 838:59:59</p>
+<p>YEAR               1 Byte       YYYY                      1901 a 2155</p>
+<hr />
+<p>⚠️ <strong>El problema del año 2038:</strong> Los campos TIMESTAMP almacenan los datos internamente como el número de segundos transcurridos desde la época Unix (1970-01-01 00:00:00 UTC). Al ser un entero de 32 bits con signo, el valor máximo alcanzable expirará el martes 19 de enero de 2038 a las 03:14:07 UTC. A partir de ese instante el valor desbordará provocando errores críticos. Para nuevos diseños lógicos que almacenen fechas lejanas en el futuro, es obligatorio planificar la migración estructural a DATETIME (8 bytes).</p>
+<h6 id="documentacion-oficial-para-conocer-las-ventajas-y-diferencias-operativas-entre-datetime-y-timestamp-lee-mysql-manual-date-and-time-typesunderline">🔗 <strong>Documentación Oficial:</strong> Para conocer las ventajas y diferencias operativas entre DATETIME y TIMESTAMP, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html">[MySQL Manual - Date and Time Types]{.underline}</a>.</h6>
+<h2 id="55-cadenas-de-caracteres">5.5 Cadenas de Caracteres</h2>
+<ul>
+<li>
+<p>CHAR(M): Cadena de longitud fija, donde 0 a 255. Si el string introducido es de longitud inferior a M, el motor rellena físicamente el espacio sobrante con espacios en disco. Es ideal para hashes (MD5, SHA-256) o identificadores uniformes.</p>
+</li>
+<li>
+<p>VARCHAR(M): Cadena de longitud variable, donde 0 a 65535. Utiliza 1 o 2 Bytes adicionales como prefijo para almacenar la longitud lógica en bytes de la cadena ingresada. Ideal para nombres, correos y descripciones.</p>
+</li>
+<li>
+<p>TEXT: Para almacenamiento de texto plano a gran escala. No almacena los datos directamente en la página del índice clustered si exceden ciertos límites, sino en páginas externas de desbordamiento.</p>
+<ul>
+<li>
+<p>TEXT (Soporta hasta 2¹⁶Bytes = 64 KB.</p>
+</li>
+<li>
+<p>MEDIUMTEXT (Soporta hasta 2²⁴ Bytes = 16 MB.</p>
+</li>
+<li>
+<p>LONGTEXT (Soporta hasta 2³²Bytes = 4 GB</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="56-datos-binarios">5.6 Datos Binarios</h2>
+<p>La familia BLOB (Binary Large Object) se comporta igual que TEXT pero para bytes planos (archivos binarios, imágenes, cifrados binarios). En arquitectura e ingeniería de sistemas, <strong>no se recomienda</strong> almacenar archivos directamente en el motor de base de datos debido a que degrada el rendimiento de lectura del disco y satura el sistema de copias de seguridad (mysqldump). Es mejor guardar el archivo en el sistema de almacenamiento de archivos del servidor y registrar únicamente la ruta de acceso en una columna VARCHAR.</p>
+<h2 id="57-tipos-estructurados-especiales-enum-set">5.7 Tipos Estructurados Especiales (ENUM, SET)</h2>
+<ul>
+<li>
+<p>ENUM(\'val1\', \'val2\', ...): Permite almacenar únicamente un único valor de una lista restringida predefinida de strings (almacenado de forma interna de forma eficiente como un entero). Máximo de 65535 valores posibles.</p>
+</li>
+<li>
+<p>SET(\'val1\', \'val2\', ...): Permite almacenar de cero a múltiples valores simultáneos de la lista de strings permitidos. Máximo de 64 valores permitidos en la lista.</p>
+</li>
+</ul>
+<h2 id="58-tipos-no-relacionales-almacenamiento-y-operaciones-json">5.8 Tipos No Relacionales: Almacenamiento y Operaciones JSON</h2>
+<p>Nativo desde MySQL 5.7 y optimizado en 8.0, permite validar sintácticamente documentos JSON estructurados guardándolos de forma binaria transparente en disco.</p>
+<h6 id="documentacion-oficial-conoce-todas-las-funciones-y-ventajas-operativas-de-almacenar-documentos-no-relacionales-de-forma-nativa-en-mysql-manual-json-data-typeunderline">🔗 <strong>Documentación Oficial:</strong> Conoce todas las funciones y ventajas operativas de almacenar documentos no relacionales de forma nativa en <a href="https://dev.mysql.com/doc/refman/8.0/en/json.html">[MySQL Manual - JSON Data Type]{.underline}</a>.</h6>
+<p>-- Creación de tabla para almacenamiento no relacional estructurado</p>
+<p>CREATE TABLE auditoria_config (</p>
+<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>metadatos JSON NOT NULL</p>
+<p>);</p>
+<p>-- Inserción de documentos JSON válidos</p>
+<p>INSERT INTO auditoria_config (metadatos) VALUES</p>
+<p>(\'{\"servidor\": \"web_prod_01\", \"ip\": \"192.168.10.50\", \"servicios\": [\"http\", \"https\"]}\');</p>
+<p>-- Extracción de propiedades JSON estructuradas mediante alias y operadores directos -></p>
+<p>SELECT metadatos->\"\$.servidor\" AS servidor, metadatos->\"\$.servicios[0]\" AS puerto_principal</p>
+<p>FROM auditoria_config;</p>
+<h2 id="_8"></h2>
+<h2 id="59-configuracion-y-gestion-de-sql_mode">5.9 Configuración y Gestión de sql_mode</h2>
+<p>La variable del sistema sql_mode define el nivel de rigor del motor a la hora de procesar excepciones, desbordamiento de enteros y conversión implícita de tipos.</p>
+<h6 id="documentacion-oficial-para-comprender-los-efectos-del-modo-estricto-en-la-prevencion-de-la-insercion-de-datos-corruptos-o-fuera-de-rango-en-produccion-consulta-mysql-manual-server-sql-modesunderline">🔗 <strong>Documentación Oficial:</strong> Para comprender los efectos del modo estricto en la prevención de la inserción de datos corruptos o fuera de rango en producción, consulta <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html">[MySQL Manual - Server SQL Modes]{.underline}</a>.</h6>
+<p>-- Consulta del valor actual de sql_mode del servidor</p>
+<p>SELECT @@GLOBAL.sql_mode;</p>
+<p>SELECT @@SESSION.sql_mode;</p>
+<p>-- Configuración del modo estricto estandarizado (SysAdmin de Producción)</p>
+<p>-- El modo STRICT_TRANS_TABLES o TRADITIONAL deniega inserciones que provoquen truncado de datos o desbordamiento (lanza ERROR)</p>
+<p>SET SESSION sql_mode = \"STRICT_TRANS_TABLES,NO_ZERO_IN_DATE, NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO\";</p>
+<p>-- Demostración de desbordamiento (Comportamiento con sql_mode estricto vs no estricto)</p>
+<p>CREATE TABLE test_overflow (</p>
+<p>valor TINYINT UNSIGNED</p>
+<p>);</p>
+<p>-- Si sql_mode es estricto (STRICT_TRANS_TABLES): Lanza ERROR 1264 e impide la inserción</p>
+<p>-- Si sql_mode es vacío (\" \"): Inserta el valor máximo representable (255) y muestra un WARNING</p>
+<p>INSERT INTO test_overflow VALUES (300);</p>
+<p></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UT3 Modelo Relacional" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              UT3 Modelo Relacional
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-footer__link md-footer__link--next" aria-label="Next: UT5 Consultas" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              UT5 Consultas
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

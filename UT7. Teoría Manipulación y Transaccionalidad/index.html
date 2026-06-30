@@ -1,0 +1,1329 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y Material de Gestión de Bases de Datos (GBD)">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>UT7 Transaccionalidad - Gestión de Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Gestión de Bases de Datos" class="md-header__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gestión de Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT7 Transaccionalidad
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Inicio
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-tabs__link">
+      Programación
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-tabs__link md-tabs__link--active">
+        Temario
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-tabs__link">
+        Plantillas
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gestión de Bases de Datos" class="md-nav__button md-logo" aria-label="Gestión de Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gestión de Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Inicio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/" class="md-nav__link">
+        Programación
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Temario
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Temario" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Temario
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT1.%20Teor%C3%ADa.%20Almacenamiento%20de%20la%20informaci%C3%B3n/" class="md-nav__link">
+        UT1 Almacenamiento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT2.%20Teor%C3%ADa.%20Interpretaci%C3%B3n%20y%20dise%C3%B1o%20de%20diagramas%20E_R/" class="md-nav__link">
+        UT2 Diagramas E-R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT3.%20Teor%C3%ADa.%20Modelo%20relacional%20y%20normalizaci%C3%B3n/" class="md-nav__link">
+        UT3 Modelo Relacional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT4.%20Teor%C3%ADa.%20DDL/" class="md-nav__link">
+        UT4 DDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT5.%20Teor%C3%ADa.%20Consultas/" class="md-nav__link">
+        UT5 Consultas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-nav__link">
+        UT6 Vistas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UT7 Transaccionalidad
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UT7 Transaccionalidad
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ficha-tecnica-de-la-unidad-didactica" class="md-nav__link">
+    FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-contenidos" class="md-nav__link">
+    ÍNDICE DE CONTENIDOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion" class="md-nav__link">
+    1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lenguaje-de-manipulacion-de-datos-dml" class="md-nav__link">
+    2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)
+  </a>
+  
+    <nav class="md-nav" aria-label="2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-insercion-de-datos-sentencia-insert" class="md-nav__link">
+    2.1 Inserción de Datos: Sentencia INSERT
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Inserción de Datos: Sentencia INSERT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-insertunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más información en [Documentación Oficial de MySQL sobre la Sentencia INSERT]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-modificacion-de-datos-sentencia-update" class="md-nav__link">
+    2.2 Modificación de Datos: Sentencia UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Modificación de Datos: Sentencia UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentenciaunderline-update" class="md-nav__link">
+    🔗 Documentación Oficial: Más información en [Documentación Oficial de MySQL sobre la Sentencia]{.underline} UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Documentación Oficial: Más información en [Documentación Oficial de MySQL sobre la Sentencia]{.underline} UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advertencia-de-administrador-en-entornos-de-produccion-es-recomendable-habilitar-la-variable-de-entorno-sql_safe_updates-set-sql_safe_updates-1-esto-previene-la-ejecucion-de-sentencias-update-o-delete-que-no-utilicen-un-indice-o-clave-primaria-en-la-clausula-where" class="md-nav__link">
+    ⚠️ Advertencia de Administrador: En entornos de producción, es recomendable habilitar la variable de entorno \$sql_safe_updates\$ (SET sql_safe_updates = 1;). Esto previene la ejecución de sentencias UPDATE o DELETE que no utilicen un índice o clave primaria en la cláusula WHERE.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-eliminacion-de-datos-delete-y-truncate" class="md-nav__link">
+    2.3 Eliminación de Datos: DELETE y TRUNCATE
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Eliminación de Datos: DELETE y TRUNCATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-deleteunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más información en [Documentación Oficial de MySQL sobre la Sentencia DELETE]{.underline}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-truncate-tableunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más información en [Documentación Oficial de MySQL sobre la Sentencia TRUNCATE TABLE]{.underline}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-operaciones-de-manipulacion-e-integridad-referencial" class="md-nav__link">
+    2.4 Operaciones de Manipulación e Integridad Referencial
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-transacciones" class="md-nav__link">
+    3. TRANSACCIONES
+  </a>
+  
+    <nav class="md-nav" aria-label="3. TRANSACCIONES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepto-de-transaccion-y-propiedades-acid" class="md-nav__link">
+    3.1 Concepto de Transacción y Propiedades ACID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-control-del-autocommit-en-mysql" class="md-nav__link">
+    3.2 Control del AUTOCOMMIT en MySQL
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Control del AUTOCOMMIT en MySQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-informacion-sobre-autocommit-en-documentacion-oficial-de-mysql-sobre-autocommitunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Información sobre Autocommit en [Documentación Oficial de MySQL sobre Autocommit]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comandos-tcl-start-transaction-commit-y-rollback" class="md-nav__link">
+    3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-de-start-transaction-commit-y-rollbackunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [Documentación de START TRANSACTION, COMMIT y ROLLBACK]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-control-fino-con-puntos-de-retorno-savepoint" class="md-nav__link">
+    3.4 Control Fino con Puntos de Retorno (SAVEPOINT)
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Control Fino con Puntos de Retorno (SAVEPOINT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-savepointunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [Documentación Oficial de MySQL sobre SAVEPOINT]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-acceso-concurrente-y-niveles-de-aislamiento-en-innodb" class="md-nav__link">
+    4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB
+  </a>
+  
+    <nav class="md-nav" aria-label="4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-fenomenos-de-lectura-concurrente" class="md-nav__link">
+    4.1 Fenómenos de Lectura Concurrente
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-niveles-de-aislamiento" class="md-nav__link">
+    4.2 Niveles de Aislamiento
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Niveles de Aislamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-de-niveles-de-aislamiento-de-transacciones-en-innodbunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [Documentación de Niveles de Aislamiento de Transacciones en InnoDB]{.underline}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-transacciones-en-procedimientos-almacenados" class="md-nav__link">
+    5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-mas-informacion-en-documentacion-de-mysql-sobre-el-control-de-flujo-y-excepciones-en-stored-proceduresunderline" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en [Documentación de MySQL sobre el control de flujo y excepciones en Stored Procedures]{.underline}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-gestion-de-excepciones-y-reversion-automatica" class="md-nav__link">
+    5.1 Gestión de Excepciones y Reversión Automática
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-nav__link">
+        UT8 Programación SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UT9.%20Teor%C3%ADa.%20Gesti%C3%B3n%20de%20la%20seguridad%20de%20los%20datos/" class="md-nav__link">
+        UT9 Seguridad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Plantillas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plantillas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plantillas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_apuntes%20%2026%2027/" class="md-nav__link">
+        Plantilla Apuntes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copia%20de%20Plantilla_tareas_pr%C3%A1cticas%2026%2027/" class="md-nav__link">
+        Plantilla Tareas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
+<p>+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Unidad Didáctica</strong>          | Unidad Didáctica 10: Manipulación de Datos y Transaccionalidad en MySQL                                                                                                                 |
++===============================+=========================================================================================================================================================================================+
+| <strong>Resultados de Aprendizaje</strong> | <strong>RA5:</strong> Realiza operaciones de manipulación de datos de forma segura, garantizando la integridad, consistencia y persistencia de la información según las especificaciones del diseño. |
++-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Criterios de Evaluación</strong>   | <strong>CE5.a:</strong> Se han identificado los comandos y herramientas para la inserción, modificación y eliminación de datos.                                                                      |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.b:</strong> Se han realizado operaciones de inserción de registros en una o varias tablas de forma simultánea.                                                                           |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.c:</strong> Se han modificado registros de forma masiva o selectiva aplicando criterios de filtrado.                                                                                     |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.d:</strong> Se han eliminado registros garantizando la integridad referencial.                                                                                                           |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.e:</strong> Se ha descrito el concepto de transacción y sus propiedades ACID.                                                                                                            |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.f:</strong> Se han ejecutado transacciones utilizando comandos TCL de confirmación, deshacer y puntos de retorno.                                                                        |
+|                               |                                                                                                                                                                                         |
+|                               | <strong>CE5.g:</strong> Se han analizado los problemas de concurrencia y configurado los niveles de aislamiento adecuados en el motor InnoDB.                                                        |
++-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <strong>Tiempo Estimado</strong>           | 18 Horas (Planificado para 3 semanas de sesiones teorico prácticas)                                                                                                                     |
++-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</p>
+<h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h3>
+<p><a href="#introducción-y-contextualización">[1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN]{.underline}</a></p>
+<p><a href="#lenguaje-de-manipulación-de-datos-dml">[2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)]{.underline}</a></p>
+<blockquote>
+<p><a href="#inserción-de-datos-sentencia-insert">[2.1 Inserción de Datos: Sentencia INSERT]{.underline}</a></p>
+<p><a href="#modificación-de-datos-sentencia-update">[2.2 Modificación de Datos: Sentencia UPDATE]{.underline}</a></p>
+<p><a href="#eliminación-de-datos-delete-y-truncate">[2.3 Eliminación de Datos: DELETE y TRUNCATE]{.underline}</a></p>
+<p><a href="#operaciones-de-manipulación-e-integridad-referencial">[2.4 Operaciones de Manipulación e Integridad Referencial]{.underline}</a></p>
+</blockquote>
+<p><a href="#transacciones">[3. TRANSACCIONES]{.underline}</a></p>
+<blockquote>
+<p><a href="#concepto-de-transacción-y-propiedades-acid">[3.1 Concepto de Transacción y Propiedades ACID]{.underline}</a></p>
+<p><a href="#control-del-autocommit-en-mysql">[3.2 Control del AUTOCOMMIT en MySQL]{.underline}</a></p>
+<p><a href="#comandos-tcl-start-transaction-commit-y-rollback">[3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK]{.underline}</a></p>
+<p><a href="#control-fino-con-puntos-de-retorno-savepoint">[3.4 Control Fino con Puntos de Retorno (SAVEPOINT)]{.underline}</a></p>
+</blockquote>
+<p><a href="#acceso-concurrente-y-niveles-de-aislamiento-en-innodb">[4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB]{.underline}</a></p>
+<blockquote>
+<p><a href="#fenómenos-de-lectura-concurrente">[4.1 Fenómenos de Lectura Concurrente]{.underline}</a></p>
+<p><a href="#niveles-de-aislamiento">[4.2 Niveles de Aislamiento]{.underline}</a></p>
+</blockquote>
+<p><a href="#transacciones-en-procedimientos-almacenados">[5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS]{.underline}</a></p>
+<blockquote>
+<p><a href="#gestión-de-excepciones-y-reversión-automática">[5.1 Gestión de Excepciones y Reversión Automática]{.underline}</a></p>
+</blockquote>
+<h1 id="1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</h1>
+<p>El módulo de Gestión de Bases de Datos tiene como finalidad dotar al administrador de sistemas de las capacidades necesarias para mantener la integridad, disponibilidad y seguridad del activo más importante de cualquier organización: sus datos.</p>
+<p>Una vez que se han diseñado físicamente las estructuras de almacenamiento (tablas, restricciones y relaciones) y que se ha aprendido a extraer información compleja a través de consultas declarativas, es imperativo dominar el ciclo de vida del dato. Esto incluye desde su entrada en el sistema hasta su posterior actualización o borrado bajo un entorno transaccional multitarea.</p>
+<p>Esta unidad se conecta de forma directa con la <em>Unidad 5 (Recuperación de Información)</em> y la <em>Unidad 12 (Triggers y Programación de Procedimientos)</em>. Desde la perspectiva de un administrador de sistemas de red, el control transaccional es la última barrera de defensa para evitar la corrupción de datos ante caídas de servicio, fallos de red o inconsistencias físicas de almacenamiento en sistemas en producción.</p>
+<h1 id="2-lenguaje-de-manipulacion-de-datos-dml">2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)</h1>
+<p>Para realizar los ejemplos de esta unidad de trabajo, utilizaremos el esquema relacional de la base de datos de <strong>Jardinería / Pedidos</strong> definido a continuación:</p>
+<p>-- Creación de la base de datos con codificación utf8mb4 recomendada para SysAdmins</p>
+<p>CREATE DATABASE IF NOT EXISTS jardineria_pedidos</p>
+<p>CHARACTER SET utf8mb4</p>
+<p>COLLATE utf8mb4_spanish_ci;</p>
+<p>USE jardineria_pedidos;</p>
+<p>-- Tabla: CLIENTE</p>
+<p>CREATE TABLE cliente (</p>
+<p>codigo_cliente INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>nombre_cliente VARCHAR(50) NOT NULL,</p>
+<p>limite_credito DECIMAL(15, 2) NOT NULL DEFAULT 1000.00</p>
+<p>) ENGINE=InnoDB;</p>
+<p>-- Tabla: PRODUCTO</p>
+<p>CREATE TABLE producto (</p>
+<p>codigo_producto VARCHAR(15) PRIMARY KEY,</p>
+<p>nombre VARCHAR(70) NOT NULL,</p>
+<p>cantidad_en_stock SMALLINT UNSIGNED NOT NULL DEFAULT 0,</p>
+<p>precio_venta DECIMAL(15, 2) NOT NULL</p>
+<p>) ENGINE=InnoDB;</p>
+<p>-- Tabla: PEDIDO</p>
+<p>CREATE TABLE pedido (</p>
+<p>codigo_pedido INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
+<p>fecha_pedido DATE NOT NULL,</p>
+<p>fecha_esperada DATE NOT NULL,</p>
+<p>fecha_entrega DATE DEFAULT NULL,</p>
+<p>estado VARCHAR(15) NOT NULL DEFAULT \"Pendiente\",</p>
+<p>codigo_cliente INT UNSIGNED NOT NULL,</p>
+<p>CONSTRAINT fk_pedido_cliente FOREIGN KEY (codigo_cliente)</p>
+<p>REFERENCES cliente (codigo_cliente)</p>
+<p>) ENGINE=InnoDB;</p>
+<p>-- Tabla: DETALLE_PEDIDO</p>
+<p>CREATE TABLE detalle_pedido (</p>
+<p>codigo_pedido INT UNSIGNED,</p>
+<p>codigo_producto VARCHAR(15),</p>
+<p>cantidad INT UNSIGNED NOT NULL,</p>
+<p>precio_unidad DECIMAL(15, 2) NOT NULL,</p>
+<p>PRIMARY KEY (codigo_pedido, codigo_producto),</p>
+<p>CONSTRAINT fk_detalle_pedido FOREIGN KEY (codigo_pedido)</p>
+<p>REFERENCES pedido (codigo_pedido) ON DELETE CASCADE,</p>
+<p>CONSTRAINT fk_detalle_producto FOREIGN KEY (codigo_producto)</p>
+<p>REFERENCES producto (codigo_producto) ON DELETE RESTRICT</p>
+<p>) ENGINE=InnoDB;</p>
+<p>-- Tabla: PAGO</p>
+<p>CREATE TABLE pago (</p>
+<p>codigo_cliente INT UNSIGNED,</p>
+<p>id_transaccion VARCHAR(26) PRIMARY KEY,</p>
+<p>fecha_pago DATE NOT NULL,</p>
+<p>total DECIMAL(15, 2) NOT NULL,</p>
+<p>CONSTRAINT fk_pago_cliente FOREIGN KEY (codigo_cliente)</p>
+<p>REFERENCES cliente (codigo_cliente)</p>
+<p>) ENGINE=InnoDB;</p>
+<h2 id="_1"></h2>
+<h2 id="21-insercion-de-datos-sentencia-insert">2.1 Inserción de Datos: Sentencia INSERT</h2>
+<p>La sentencia INSERT permite añadir nuevos registros (filas) a una tabla existente en la base de datos.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-insertunderline">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/insert.html">[Documentación Oficial de MySQL sobre la Sentencia INSERT]{.underline}</a></h5>
+<p><strong>Sintaxis Básica de Inserción Posicional e Inserción Explícita</strong></p>
+<p>La buena práctica en administración exige siempre detallar la lista de columnas destino para evitar que cambios futuros en el esquema de la tabla rompan los scripts de automatización:</p>
+<p>-- Práctica Recomendada: Inserción explícita especificando columnas</p>
+<p>INSERT INTO cliente (nombre_cliente, limite_credito)</p>
+<p>VALUES (\'Jardines Celia S.L.\', 5000.00);</p>
+<p>-- Inserción múltiple de alta eficiencia</p>
+<p>INSERT INTO producto (codigo_producto, nombre, cantidad_en_stock, precio_venta)</p>
+<p>VALUES</p>
+<p>(\'PROD-P01\', \'Pala de Acero Reforzada\', 150, 19.95),</p>
+<p>(\'PROD-M02\', \'Manguera Autoenrollable 20m\', 80, 24.50),</p>
+<p>(\'PROD-T03\', \'Tijeras de Podar Premium\', 45, 12.99);</p>
+<p></p>
+<p><strong>Sentencia INSERT ... SELECT</strong></p>
+<p>Permite poblar una tabla de forma masiva utilizando el conjunto de resultados devuelto por una consulta SELECT. Es un recurso de rendimiento clave para migraciones de datos o generación de tablas de agregación histórica:</p>
+<p>-- Supongamos una tabla para almacenar un histórico de clientes premium</p>
+<p>CREATE TABLE clientes_vip (</p>
+<p>id_vip INT UNSIGNED PRIMARY KEY,</p>
+<p>nombre VARCHAR(50) NOT NULL,</p>
+<p>credito DECIMAL(15, 2) NOT NULL</p>
+<p>) ENGINE=InnoDB;</p>
+<p>-- Copia selectiva de registros masivos</p>
+<p>INSERT INTO clientes_vip (id_vip, nombre, credito)</p>
+<p>SELECT codigo_cliente, nombre_cliente, limite_credito</p>
+<p>FROM cliente</p>
+<p>WHERE limite_credito >= 5000.00;</p>
+<h2 id="_2"></h2>
+<h2 id="22-modificacion-de-datos-sentencia-update">2.2 Modificación de Datos: Sentencia UPDATE</h2>
+<p>La sentencia UPDATE permite modificar los valores de una o más columnas de filas ya existentes en una tabla.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentenciaunderline-update">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/insert.html">[Documentación Oficial de MySQL sobre la Sentencia]{.underline}</a> UPDATE</h5>
+<p><strong>Sintaxis de Modificación Selectiva</strong></p>
+<p>La cláusula WHERE es obligatoria para acotar el impacto del cambio. Su omisión modificará todos los registros de la tabla de forma irreversible:</p>
+<p>-- Actualización selectiva de un producto específico</p>
+<p>UPDATE producto</p>
+<p>SET cantidad_en_stock = cantidad_en_stock - 5,</p>
+<p>precio_venta = 22.50</p>
+<p>WHERE codigo_producto = \'PROD-P01\';</p>
+<p>-- Actualización múltiple de estados basada en condiciones de fecha</p>
+<p>UPDATE pedido</p>
+<p>SET estado = \'Retrasado\'</p>
+<p>WHERE fecha_entrega IS NULL</p>
+<p>AND fecha_esperada \&lt; CURDATE();</p>
+<blockquote>
+<p></p>
+</blockquote>
+<h6 id="advertencia-de-administrador-en-entornos-de-produccion-es-recomendable-habilitar-la-variable-de-entorno-sql_safe_updates-set-sql_safe_updates-1-esto-previene-la-ejecucion-de-sentencias-update-o-delete-que-no-utilicen-un-indice-o-clave-primaria-en-la-clausula-where">⚠️ <strong>Advertencia de Administrador:</strong> En entornos de producción, es recomendable habilitar la variable de entorno \$sql_safe_updates\$ (SET sql_safe_updates = 1;). Esto previene la ejecución de sentencias UPDATE o DELETE que no utilicen un índice o clave primaria en la cláusula WHERE.</h6>
+<h2 id="23-eliminacion-de-datos-delete-y-truncate">2.3 Eliminación de Datos: DELETE y TRUNCATE</h2>
+<p>La eliminación de registros puede realizarse de forma lógica, física selectiva o mediante el vaciado completo de la estructura física.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-deleteunderline">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/delete.html">[Documentación Oficial de MySQL sobre la Sentencia DELETE]{.underline}</a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-truncate-tableunderline">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/truncate-table.html">[Documentación Oficial de MySQL sobre la Sentencia TRUNCATE TABLE]{.underline}</a></h5>
+<p><strong>Sentencia DELETE (Selectivo)</strong></p>
+<p>Borra los registros que cumplen las condiciones del filtro WHERE uno a uno, disparando disparadores (triggers) y registrando la operación en el registro binario (binary log):</p>
+<p>-- Borrado selectivo de un pago específico</p>
+<p>DELETE FROM pago</p>
+<p>WHERE id_transaccion = \'TXN-2026-001\';</p>
+<h5 id="_3"></h5>
+<p><strong>Sentencia TRUNCATE (Borrado de Alta Eficiencia)</strong></p>
+<p>Es una sentencia DDL que, en lugar de eliminar fila por fila, destruye la tabla físicamente y la recrea vacía desde cero.</p>
+<ul>
+<li>
+<p>Es extremadamente rápida en tablas con millones de registros.</p>
+</li>
+<li>
+<p>No admite cláusula WHERE.</p>
+</li>
+<li>
+<p>Libera de forma inmediata el espacio en disco asignado a la tabla.</p>
+</li>
+<li>
+<p><strong>No</strong> activa los desencadenadores de borrado (ON DELETE TRIGGERS).</p>
+</li>
+<li>
+<p>Reinicia los contadores auto-incrementales (AUTO_INCREMENT = 1).</p>
+</li>
+<li>
+<p>No puede ejecutarse en tablas con claves externas activas referenciadas por otras tablas.</p>
+</li>
+</ul>
+<p>-- Vaciar por completo los datos históricos para preparar una nueva carga de datos</p>
+<p>TRUNCATE TABLE clientes_vip;</p>
+<h2 id="_4"></h2>
+<h2 id="24-operaciones-de-manipulacion-e-integridad-referencial">2.4 Operaciones de Manipulación e Integridad Referencial</h2>
+<p>Cuando modificamos o eliminamos registros que están asociados con otras tablas a través de relaciones de clave ajena (FOREIGN KEY), el SGBD actúa según la regla referencial definida:</p>
+<p>-- Intento de borrado de un producto referenciado</p>
+<p>DELETE FROM producto WHERE codigo_producto = \'PROD-M02\';</p>
+<ul>
+<li>
+<p><strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El motor InnoDB de MySQL detiene la sentencia y lanza un error si el código del producto existe en alguna fila de la tabla detalle_pedido.</p>
+</li>
+<li>
+<p><strong>ON DELETE CASCADE:</strong> Si se borrara un registro en la tabla pedido, InnoDB eliminará automáticamente todas las líneas asociadas en detalle_pedido para mantener la base de datos libre de registros huérfanos.</p>
+</li>
+<li>
+<p><strong>ON DELETE SET NULL:</strong> Si el registro principal se elimina, los registros secundarios asociados cambian el valor de su clave ajena a NULL (requiere que el campo acepte nulos).</p>
+</li>
+</ul>
+<h1 id="3-transacciones">3. TRANSACCIONES</h1>
+<h2 id="31-concepto-de-transaccion-y-propiedades-acid">3.1 Concepto de Transacción y Propiedades ACID</h2>
+<p>Una <strong>transacción</strong> es una unidad lógica de trabajo que agrupa un conjunto de sentencias SQL que deben ejecutarse como un bloque único. Para asegurar que los datos permanezcan íntegros, el motor relacional (en nuestro caso, InnoDB) debe implementar de forma estricta las propiedades <strong>ACID</strong>:</p>
+<ul>
+<li>
+<p><strong>Atomicidad (Atomicity):</strong> Garantiza el principio del \"todo o nada\". Si una sola de las sentencias del bloque transaccional falla, todo el bloque se descarta y los datos regresan a su estado original.</p>
+</li>
+<li>
+<p><strong>Consistencia (Consistency):</strong> La transacción debe llevar a la base de datos de un estado válido a otro, respetando estrictamente todas las restricciones declaradas en el esquema (claves primarias, de unicidad, nulos y checks).</p>
+</li>
+<li>
+<p><strong>Aislamiento (Isolation):</strong> Asegura que las operaciones que ocurren dentro de una transacción en curso no sean visibles ni interfieran con otras transacciones concurrentes del sistema hasta que se consoliden.</p>
+</li>
+<li>
+<p><strong>Durabilidad (Durability):</strong> Una vez que la transacción ha sido confirmada, sus modificaciones se vuelven persistentes en el almacenamiento físico, soportando fallos de alimentación del servidor, caídas del sistema operativo o pérdidas de red de los clientes.</p>
+</li>
+</ul>
+<h2 id="32-control-del-autocommit-en-mysql">3.2 Control del AUTOCOMMIT en MySQL</h2>
+<p>Por defecto, MySQL opera con la variable de entorno \$autocommit\$ activa (valor \$1\$). Esto significa que cada comando DML individual (INSERT, UPDATE, DELETE) se trata como una transacción independiente y se escribe de forma automática y definitiva en disco.</p>
+<h5 id="documentacion-oficial-informacion-sobre-autocommit-en-documentacion-oficial-de-mysql-sobre-autocommitunderline">🔗 Documentación Oficial: Información sobre Autocommit en <a href="https://dev.mysql.com/doc/refman/8.0/en/commit.html">[Documentación Oficial de MySQL sobre Autocommit]{.underline}</a></h5>
+<p>Para trabajar de manera profesional con transacciones complejas, debemos configurar y monitorizar el estado de este parámetro en el servidor:</p>
+<p>-- Consultar el estado del autocommit de la sesión actual</p>
+<p>SELECT @@SESSION.autocommit;</p>
+<p>-- Desactivar el autocommit (Recomendado para scripts interactivos de SysAdmin)</p>
+<p>SET autocommit = 0;</p>
+<p>-- Volver a activar el autocommit automático</p>
+<p>SET autocommit = 1;</p>
+<h2 id="33-comandos-tcl-start-transaction-commit-y-rollback">3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK</h2>
+<p>Los comandos del Lenguaje de Control de Transacciones (TCL) permiten delimitar el alcance del bloque lógico de trabajo.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-de-start-transaction-commit-y-rollbackunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/commit.html">[Documentación de START TRANSACTION, COMMIT y ROLLBACK]{.underline}</a></h5>
+<p><strong>START TRANSACTION / BEGIN</strong></p>
+<p>Inicia un bloque transaccional de forma explícita. Suspende temporalmente el comportamiento del autocommit si estuviera activo para la sesión de trabajo.</p>
+<p><strong>COMMIT</strong></p>
+<p>Guarda de forma permanente y definitiva todas las modificaciones realizadas durante la transacción activa en el almacenamiento físico del servidor.</p>
+<p><strong>ROLLBACK</strong></p>
+<p>Aborta la transacción activa, revierte todas las modificaciones en memoria y devuelve los datos a su estado original exacto (el estado inmediatamente anterior a la instrucción START TRANSACTION).</p>
+<p><strong>Ejemplo Práctico Integrado (Flujo de Pedido)</strong></p>
+<p>A continuación se ilustra un proceso real donde un cliente realiza un pedido de un producto. Esta operación requiere:</p>
+<ol>
+<li>
+<p>Validar que hay stock.</p>
+</li>
+<li>
+<p>Crear el pedido.</p>
+</li>
+<li>
+<p>Descontar el stock de la tabla producto.</p>
+</li>
+<li>
+<p>Generar la línea de detalle.</p>
+</li>
+</ol>
+<p>Si falla la inserción de las líneas de detalle, se debe abortar la operación para no descontar existencias de forma errónea:</p>
+<p>-- Iniciamos explícitamente el bloque transaccional</p>
+<p>START TRANSACTION;</p>
+<p>-- Paso 1: Insertar la cabecera del pedido para el cliente 1</p>
+<p>INSERT INTO pedido (fecha_pedido, fecha_esperada, estado, codigo_cliente)</p>
+<p>VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), \'Pendiente\', 1);</p>
+<p>-- Guardamos el ID autoincremental recién generado para el pedido</p>
+<p>SET \@nuevo_pedido = LAST_INSERT_ID();</p>
+<p>-- Paso 2: Restar el stock en la tabla de productos (Pala de Acero)</p>
+<p>UPDATE producto</p>
+<p>SET cantidad_en_stock = cantidad_en_stock - 2</p>
+<p>WHERE codigo_producto = \'PROD-P01\';</p>
+<p>-- Paso 3: Registrar la línea detallada del pedido</p>
+<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
+<p>VALUES (@nuevo_pedido, \'PROD-P01\', 2, 19.95);</p>
+<p>-- Confirmar cambios</p>
+<p>COMMIT;</p>
+<p>Si durante el script se detecta que no se cumple la restricción referencial o el stock es insuficiente, se puede invocar en cualquier punto antes del COMMIT:</p>
+<p>-- En caso de error, abortar todas las operaciones del bloque</p>
+<p>ROLLBACK;</p>
+<h2 id="_5"></h2>
+<h2 id="34-control-fino-con-puntos-de-retorno-savepoint">3.4 Control Fino con Puntos de Retorno (SAVEPOINT)</h2>
+<p>Los puntos de retorno (SAVEPOINT) permiten dividir una transacción extensa en etapas secundarias. De esta forma, el administrador puede realizar retrocesos parciales de la información sin desechar todo el trabajo realizado en la transacción.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-savepointunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/savepoint.html">[Documentación Oficial de MySQL sobre SAVEPOINT]{.underline}</a></h5>
+<p>START TRANSACTION;</p>
+<p>-- Registro de la cabecera del pedido</p>
+<p>INSERT INTO pedido (fecha_pedido, fecha_esperada, estado, codigo_cliente)</p>
+<p>VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 15 DAY), \'Pendiente\', 1);</p>
+<p>SET \@pedido_id = LAST_INSERT_ID();</p>
+<p>-- Definimos el primer punto de control</p>
+<p>SAVEPOINT sp_cabecera_pedido;</p>
+<p>-- Añadir primer producto al detalle</p>
+<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
+<p>VALUES (@pedido_id, \'PROD-P01\', 1, 19.95);</p>
+<p>-- Definimos el segundo punto de control</p>
+<p>SAVEPOINT sp_primer_producto;</p>
+<p>-- Añadir un segundo producto que podría fallar</p>
+<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
+<p>VALUES (@pedido_id, \'PROD-X99\', 5, 49.99);</p>
+<p>-- Regresar al estado sp_primer_producto en caso de fallo</p>
+<p>ROLLBACK TO SAVEPOINT sp_primer_producto;</p>
+<p>-- Liberar punto de retorno y confirmar</p>
+<p>RELEASE SAVEPOINT sp_cabecera_pedido;</p>
+<p>COMMIT;</p>
+<h1 id="_6"></h1>
+<h1 id="4-acceso-concurrente-y-niveles-de-aislamiento-en-innodb">4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</h1>
+<p>En servidores multiusuario modernos, cientos de conexiones de red pueden intentar interactuar de forma simultánea con las mismas tablas. Esto da lugar a una serie de fenómenos de lectura y actualización concurrente que deben gestionarse de forma estricta.</p>
+<h2 id="41-fenomenos-de-lectura-concurrente">4.1 Fenómenos de Lectura Concurrente</h2>
+<p><strong>1. Lectura Sucia (Dirty Read)</strong></p>
+<p>Ocurre cuando la <strong>Transacción A</strong> modifica una fila, y la <strong>Transacción B</strong> lee esa fila modificada <em>antes</em> de que la Transacción A haga un COMMIT. Si la Transacción A decide realizar un ROLLBACK, la Transacción B habrá recuperado y trabajado con un dato irreal que nunca se consolidó en el sistema.</p>
+<p>Transacción A Transacción B\
+| |\
+|-- UPDATE producto |\
+| SET precio_venta = 50.00 |\
+| WHERE id = \'PROD-P01\' |\
+| |-- SELECT precio_venta (Lee 50.00)\
+| | *(Lectura sucia)*\
+|-- ROLLBACK (Fallo en el sistema) |</p>
+<p><strong>2. Lectura No Repetible (Non-Repeatable Read)</strong></p>
+<p>Ocurre cuando una transacción lee los datos de una fila y, en el transcurso de la misma transacción, vuelve a leer el mismo registro pero encuentra que los datos han sido modificados o eliminados por otra transacción externa que ha hecho un COMMIT en ese intervalo de tiempo.</p>
+<p>Transacción A Transacción B\
+START TRANSACTION;\
+SELECT precio FROM producto</p>
+<p>WHERE id=1; -- Devuelve 10.00\
+START TRANSACTION;\
+UPDATE producto SET precio = 15.00 WHERE id = 1;\
+COMMIT;\
+SELECT precio FROM producto</p>
+<p>WHERE id=1; -- ¡Devuelve 15.00!</p>
+<p>El mismo SELECT da resultados distintos en la misma transacción.</p>
+<p><strong>3. Lectura Fantasma (Phantom Read)</strong></p>
+<p>Ocurre cuando una transacción ejecuta una consulta de rango de filas (ej: un SELECT condicionado), y una transacción concurrente inserta o elimina registros en ese rango y realiza un COMMIT. Al repetir la consulta inicial dentro de la primera transacción, se observa un conjunto de filas diferente (los registros \"fantasma\").</p>
+<p>Transacción A Transacción B\
+START TRANSACTION;\
+SELECT * FROM producto\
+WHERE precio_venta</p>
+<p>BETWEEN 10 AND 50;\
+-- Devuelve 2 filas (A y B)\
+START TRANSACTION;\
+INSERT INTO producto VALUES (3, \'Prod C\', 25.00);\
+COMMIT;\
+SELECT * FROM producto\
+WHERE precio_base</p>
+<p>BETWEEN 10 AND 50;\
+-- ¡Devuelve 3 filas! (A, B y el fantasma C)</p>
+<h2 id="42-niveles-de-aislamiento">4.2 Niveles de Aislamiento</h2>
+<p>El estándar SQL define cuatro <strong>niveles de aislamiento</strong> para controlar de manera fina el equilibrio entre consistencia y rendimiento del sistema. A mayor aislamiento, menor probabilidad de fallos de concurrencia, pero menor rendimiento debido al bloqueo físico de recursos.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-de-niveles-de-aislamiento-de-transacciones-en-innodbunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html">[Documentación de Niveles de Aislamiento de Transacciones en InnoDB]{.underline}</a></h5>
+<hr />
+<p><strong>Nivel de Aislamiento</strong>                   <strong>Lectura Sucia</strong>   <strong>Lectura No Repetible</strong>   <strong>Lectura Fantasma</strong></p>
+<hr />
+<p><strong>READ UNCOMMITTED</strong>                       Permitido           Permitido                  Permitido</p>
+<p><strong>READ COMMITTED</strong>                         Evitado             Permitido                  Permitido</p>
+<p><strong>REPEATABLE READ (Por defecto InnoDB)</strong>   Evitado             Evitado                    Evitado en MySQL*</p>
+<p><strong>SERIALIZABLE</strong>                           Evitado             Evitado                    Evitado</p>
+<hr />
+<p><em>*Nota técnica de administración: En la mayoría de sistemas SQL estándar, el nivel REPEATABLE READ permite lecturas fantasma. Sin embargo, el motor InnoDB de MySQL previene de forma nativa la inserción de registros fantasma utilizando la técnica de bloqueo </em><em>Next-Key Locking</em><em>.</em></p>
+<p><strong>Gestión de Variables de Aislamiento en MySQL</strong></p>
+<p>Como administradores, podemos consultar y parametrizar los niveles de aislamiento a nivel de servidor (GLOBAL) o a nivel de conexión activa (SESSION):</p>
+<p>-- Consultar el aislamiento a nivel de servidor global</p>
+<p>SELECT @@GLOBAL.transaction_isolation;</p>
+<p>-- Consultar el aislamiento de la sesión activa</p>
+<p>SELECT @@SESSION.transaction_isolation;</p>
+<p>-- Consultar de forma simplificada</p>
+<p>SELECT @@transaction_isolation;</p>
+<p>-- Modificar el nivel de aislamiento de la sesión</p>
+<p>SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;</p>
+<p>SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</p>
+<h1 id="_7"></h1>
+<h1 id="5-transacciones-en-procedimientos-almacenados">5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS</h1>
+<p>En la arquitectura de sistemas real, no es aconsejable delegar el control de transacciones de negocio crítico al cliente externo (PHP, Python, etc.). Es una práctica recomendada centralizar las transacciones complejas dentro del propio gestor mediante <strong>Procedimientos Almacenados (Stored Procedures)</strong>.</p>
+<h5 id="documentacion-oficial-mas-informacion-en-documentacion-de-mysql-sobre-el-control-de-flujo-y-excepciones-en-stored-proceduresunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/stored-programs.html">[Documentación de MySQL sobre el control de flujo y excepciones en Stored Procedures]{.underline}</a></h5>
+<h2 id="51-gestion-de-excepciones-y-reversion-automatica">5.1 Gestión de Excepciones y Reversión Automática</h2>
+<p>El motor de MySQL permite declarar manejadores de errores (DECLARE HANDLER). En caso de que ocurra una violación de restricción física (error de clave externa, de tipo o nulo), el manejador ejecutará una sección de código encargada de hacer el rollback automático de forma controlada y segura para la sesión:</p>
+<p>DELIMITER \$\$</p>
+<p>CREATE PROCEDURE procesar_pago_pedido (</p>
+<p>IN p_cliente_id INT UNSIGNED,</p>
+<p>IN p_transaccion VARCHAR(26),</p>
+<p>IN p_monto DECIMAL(15, 2)</p>
+<p>)</p>
+<p>BEGIN</p>
+<p>DECLARE t_error_detectado INT DEFAULT 0;</p>
+<p>DECLARE CONTINUE HANDLER FOR SQLEXCEPTION</p>
+<p>BEGIN</p>
+<p>SET t_error_detectado = 1;</p>
+<p>ROLLBACK;</p>
+<p>END;</p>
+<p>START TRANSACTION;</p>
+<p>INSERT INTO pago (codigo_cliente, id_transaccion, fecha_pago, total)</p>
+<p>VALUES (p_cliente_id, p_transaccion, CURDATE(), p_monto);</p>
+<p>UPDATE cliente</p>
+<p>SET limite_credito = limite_credito + (p_monto * 0.05)</p>
+<p>WHERE codigo_cliente = p_cliente_id;</p>
+<p>IF t_error_detectado = 0 THEN</p>
+<p>COMMIT;</p>
+<p>SELECT \'Transacción procesada correctamente.\' AS Estado;</p>
+<p>ELSE</p>
+<p>SELECT \'Error crítico. Transacción abortada.\' AS Estado;</p>
+<p>END IF;</p>
+<p>END\$\$</p>
+<p>DELIMITER ;</p>
+<p></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../UT6.%20Teor%C3%ADa.%20Vistas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UT6 Vistas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              UT6 Vistas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../UT8.%20Teor%C3%ADa.%20Programaci%C3%B3n%20en%20el%20SGBD/" class="md-footer__link md-footer__link--next" aria-label="Next: UT8 Programación SGBD" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              UT8 Programación SGBD
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>
