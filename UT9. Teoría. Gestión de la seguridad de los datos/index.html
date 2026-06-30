@@ -536,8 +536,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utilityunderline" class="md-nav__link">
-    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqlbinlog Utility]{.underline}
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utility" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en MySQL Manual - mysqlbinlog Utility
   </a>
   
 </li>
@@ -569,8 +569,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-toolunderline" class="md-nav__link">
-    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqlcheck Tool]{.underline}
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-tool" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en MySQL Manual - mysqlcheck Tool
   </a>
   
 </li>
@@ -638,8 +638,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statementsunderline" class="md-nav__link">
-    🔗 Documentación Oficial: Más Información en [MySQL Manual - Table Maintenance Statements]{.underline}.
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statements" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en MySQL Manual - Table Maintenance Statements.
   </a>
   
 </li>
@@ -753,8 +753,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utilityunderline" class="md-nav__link">
-    🔗 Documentación Oficial: Más Información en [MySQL Manual - mysqldump Utility]{.underline}
+  <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility" class="md-nav__link">
+    🔗 Documentación Oficial: Más Información en MySQL Manual - mysqldump Utility
   </a>
   
 </li>
@@ -902,13 +902,28 @@
 
 
 <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
-<hr />
-<p><strong>Unidad Didáctica</strong>            Unidad Didáctica 12: Gestión de la Seguridad de los Datos</p>
-<hr />
-<p><strong>Resultados de Aprendizaje</strong>   <strong>RA6:</strong> Ejecuta tareas de aseguramiento de la información, analizándolas y aplicando mecanismos de salvaguarda y transferencia.</p>
-<p><strong>Criterios de Evaluación</strong>     CE6.a, CE6.b, CE6.c, CE6.d, CE6.e, CE6.f, CE6.g, CE6.h</p>
-<p><strong>Tiempo Estimado</strong>             6 Horas (Distribuidas en sesiones teórico-prácticas orientadas a la administración de sistemas)</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th><strong>Unidad Didáctica</strong></th>
+<th>Unidad Didáctica 12: Gestión de la Seguridad de los Datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA6:</strong> Ejecuta tareas de aseguramiento de la información, analizándolas y aplicando mecanismos de salvaguarda y transferencia.</td>
+</tr>
+<tr>
+<td><strong>Criterios de Evaluación</strong></td>
+<td>CE6.a, CE6.b, CE6.c, CE6.d, CE6.e, CE6.f, CE6.g, CE6.h</td>
+</tr>
+<tr>
+<td><strong>Tiempo Estimado</strong></td>
+<td>6 Horas (Distribuidas en sesiones teórico-prácticas orientadas a la administración de sistemas)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h3>
 <h1 id="1-introduccion">1. INTRODUCCIÓN</h1>
 <p>La información corporativa constituye el activo más valioso de cualquier organización moderna. En el rol de un Administrador de Sistemas (SysAdmin), no basta con diseñar esquemas de datos relacionales eficientes y optimizar consultas complejas (competencias adquiridas en las Unidades 2, 3 y 5); es mandatorio garantizar de forma ininterrumpida la <strong>disponibilidad</strong>, <strong>integridad</strong> y <strong>confidencialidad</strong> de los datos frente a catástrofes físicas, fallos de software o accesos no autorizados.</p>
@@ -973,7 +988,7 @@
 <h2 id="31-arquitectura-de-almacenamiento-fisico-en-disco">3.1 Arquitectura de Almacenamiento Físico en Disco</h2>
 <p>En sistemas operativos Linux, el directorio por defecto donde MySQL almacena físicamente las bases de datos está configurado en la variable del sistema datadir:</p>
 <p># Comprobación de la ruta física desde la terminal del sistema operativo</p>
-<p>mysql -u root -p -e \"SHOW VARIABLES LIKE \'datadir\';\"</p>
+<p>mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</p>
 <p></p>
 <p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio, cada base de datos tiene asignado su propio subdirectorio con el nombre de la base de datos (por ejemplo, /var/lib/mysql/practica_dml).</p>
 <p>Físicamente, los archivos se distribuyen de la siguiente manera según el motor de almacenamiento utilizado:</p>
@@ -1011,7 +1026,7 @@
 <p>-- Forzar el volcado de buffers a disco y la rotación de logs</p>
 <p>FLUSH LOGS;</p>
 <p></p>
-<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html">[MySQL Reference Manual - Server Logs]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><u>MySQL Reference Manual - Server Logs</u></a>.</p>
 <h2 id="_1"></h2>
 <h2 id="33-la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog</h2>
 <p>Dado que el registro binario se escribe en formato binario no legible, los SysAdmins deben utilizar la herramienta de terminal nativa <strong>mysqlbinlog</strong> para auditar o aplicar los cambios almacenados.</p>
@@ -1024,10 +1039,10 @@
 <p>--database=nombre_bd (-d): Filtra los eventos del log binario aplicando las sentencias que afecten de forma exclusiva al esquema indicado.</p>
 </li>
 <li>
-<p>--start-datetime=\"YYYY-MM-DD HH:MM:SS\": Inicia la lectura de eventos desde la marca de tiempo absoluta especificada.</p>
+<p>--start-datetime="YYYY-MM-DD HH:MM:SS": Inicia la lectura de eventos desde la marca de tiempo absoluta especificada.</p>
 </li>
 <li>
-<p>--stop-datetime=\"YYYY-MM-DD HH:MM:SS\": Detiene la lectura en la marca temporal provista (esencial para recuperar la base de datos hasta un instante inmediatamente anterior al desastre).</p>
+<p>--stop-datetime="YYYY-MM-DD HH:MM:SS": Detiene la lectura en la marca temporal provista (esencial para recuperar la base de datos hasta un instante inmediatamente anterior al desastre).</p>
 </li>
 <li>
 <p>--short-form (-s): Omite información de metadatos del binlog, imprimiendo únicamente las sentencias SQL puras.</p>
@@ -1039,7 +1054,7 @@
 <p># Ejemplo 2: Aplicar de forma directa las instrucciones del binlog para recuperar datos</p>
 <p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 | mysql -u root -p</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utilityunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html">[MySQL Manual - mysqlbinlog Utility]{.underline}</a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><u>MySQL Manual - mysqlbinlog Utility</u></a></h5>
 <h1 id="4-mantenimiento-y-reparacion-de-tablas">4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</h1>
 <p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo, índices que no coinciden con los datos reales tras un apagón eléctrico), disponemos de utilidades de línea de comandos y sentencias SQL específicas.</p>
 <h2 id="41-herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas Externas: myisamchk y mysqlcheck</h2>
@@ -1052,10 +1067,10 @@
 <p>Opciones representativas: --silent (-s), --extended-check (-e), --force (-f), --backup (-B).</p>
 <p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
 <p>A diferencia de myisamchk, esta utilidad se comunica con el servidor MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede utilizarse para tablas InnoDB y MyISAM.</p>
-<p># Analizar y reparar automáticamente todas las tablas del esquema \'practica_dml\'</p>
+<p># Analizar y reparar automáticamente todas las tablas del esquema 'practica_dml'</p>
 <p>mysqlcheck -u root -p --auto-repair --check practica_dml</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-toolunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html">[MySQL Manual - mysqlcheck Tool]{.underline}</a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-tool">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><u>MySQL Manual - mysqlcheck Tool</u></a></h5>
 <h2 id="42-sentencias-sql-de-optimizacion-e-integridad">4.2 Sentencias SQL de Optimización e Integridad</h2>
 <p>Estas instrucciones se ejecutan directamente en un cliente interactivo o script SQL:</p>
 <h5 id="check-table">CHECK TABLE</h5>
@@ -1077,7 +1092,7 @@
 <p>Sintaxis SQL para intentar la reparación inmediata de tablas corruptas de tipo MyISAM (no compatible con InnoDB).</p>
 <p>REPAIR TABLE fabricante QUICK;</p>
 <p></p>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statementsunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html">[MySQL Manual - Table Maintenance Statements]{.underline}</a>.</h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statements">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><u>MySQL Manual - Table Maintenance Statements</u></a>.</h5>
 <h1 id="5-politicas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE SEGURIDAD</h1>
 <h2 id="51-clasificacion-tecnica-de-los-backups">5.1 Clasificación Técnica de los Backups</h2>
 <p>Podemos realizar diferentes clasificaciones de las estrategias de respaldo:</p>
@@ -1132,15 +1147,15 @@
 <p>Este método permite exportar rápidamente el contenido en bruto de una tabla a un fichero de texto plano formateado (por ejemplo, .csv), útil para migraciones rápidas de datos o análisis con herramientas como Excel.</p>
 <p>Por motivos de seguridad contra ataques de inyección, MySQL restringe la exportación e importación de archivos mediante la variable del sistema <strong>secure_file_priv</strong>. Cualquier intento de exportación fuera del directorio definido en dicha variable lanzará el <strong>Error 1290</strong>.</p>
 <p>-- Comprobar el directorio permitido para exportación</p>
-<p>SHOW VARIABLES LIKE \'secure_file_priv\';</p>
-<p>-- En sistemas estándar, el directorio por defecto suele ser \'/var/lib/mysql-files/\'</p>
+<p>SHOW VARIABLES LIKE 'secure_file_priv';</p>
+<p>-- En sistemas estándar, el directorio por defecto suele ser '/var/lib/mysql-files/'</p>
 <p></p>
 <p><strong>Exportación consistente de la tabla de empleados</strong></p>
 <p>SELECT codigo_empleado, nombre, apellido1, email, salario, comision</p>
-<p>INTO OUTFILE \'/var/lib/mysql-files/empleados_export.txt\'</p>
-<p>FIELDS TERMINATED BY \',\'</p>
-<p>OPTIONALLY ENCLOSED BY \'\"\'</p>
-<p>LINES TERMINATED BY \'\n\'</p>
+<p>INTO OUTFILE '/var/lib/mysql-files/empleados_export.txt'</p>
+<p>FIELDS TERMINATED BY ','</p>
+<p>OPTIONALLY ENCLOSED BY '"'</p>
+<p>LINES TERMINATED BY '\n'</p>
 <p>FROM practica_dml.empleado;</p>
 <h6 id="_7"></h6>
 <p><strong>Restauración de los datos mediante LOAD DATA INFILE</strong></p>
@@ -1149,11 +1164,11 @@
 <p>-- Crear tabla vacía de copia de seguridad (estructura clonada de empleados)</p>
 <p>CREATE TABLE empleado_backup LIKE empleado;</p>
 <p>-- Importar el fichero de datos exportado</p>
-<p>LOAD DATA INFILE \'/var/lib/mysql-files/empleados_export.txt\'</p>
+<p>LOAD DATA INFILE '/var/lib/mysql-files/empleados_export.txt'</p>
 <p>INTO TABLE empleado_backup</p>
-<p>FIELDS TERMINATED BY \',\'</p>
-<p>OPTIONALLY ENCLOSED BY \'\"\'</p>
-<p>LINES TERMINATED BY \'\n\';</p>
+<p>FIELDS TERMINATED BY ','</p>
+<p>OPTIONALLY ENCLOSED BY '"'</p>
+<p>LINES TERMINATED BY '\n';</p>
 <h5 id="_8"></h5>
 <p><strong>2. La Utilidad mysqldump</strong></p>
 <p>Herramienta clásica y versátil que vuelca una base de datos o tablas en un archivo SQL con instrucciones DDL/DML.</p>
@@ -1185,11 +1200,11 @@
 <p>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de cada definición de tabla. Evita errores de duplicados al restaurar bases de datos ya existentes.</p>
 </li>
 </ul>
-<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utilityunderline">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html">[MySQL Manual - mysqldump Utility]{.underline}</a></h5>
+<h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><u>MySQL Manual - mysqldump Utility</u></a></h5>
 <p><strong>3. La Utilidad mysqlimport</strong></p>
 <p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en la tabla correspondiente, la cual debe llamarse exactamente igual que el nombre base del archivo físico a importar.</p>
-<p># Importar el fichero \'empleado.txt\' en la tabla \'empleado\' del esquema \'practica_dml\'</p>
-<p>mysqlimport -u root -p --fields-terminated-by=\',\' practica_dml /var/lib/mysql-files/empleado.txt</p>
+<p># Importar el fichero 'empleado.txt' en la tabla 'empleado' del esquema 'practica_dml'</p>
+<p>mysqlimport -u root -p --fields-terminated-by=',' practica_dml /var/lib/mysql-files/empleado.txt</p>
 <h3 id="_11"></h3>
 <h1 id="6-escenario-de-produccion-plan-de-respaldo-incremental-y-recuperacion-point-in-time">6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME</h1>
 <h4 id="caso-practico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo">Caso Práctico: Respaldo Incremental de practica_dml en un Entorno Corporativo</h4>
@@ -1206,10 +1221,10 @@
 <p>mysql -u root -p \&lt; /backups/practica_dml_domingo.sql</p>
 <p></p>
 <p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de manera visual para encontrar la posición física o la fecha y hora exactas de la transacción dañina:</p>
-<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 | grep -i -C 5 \"delete\"</p>
-<p><em>Supongamos que encontramos que la transacción destructiva ocurrió a las \"2026-06-22 10:00:15\".</em></p>
+<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 | grep -i -C 5 "delete"</p>
+<p><em>Supongamos que encontramos que la transacción destructiva ocurrió a las "2026-06-22 10:00:15".</em></p>
 <p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las transacciones realizadas desde el domingo hasta el instante previo a la eliminación accidental (10:00:14 h):</p>
-<p>mysqlbinlog --database=practica_dml --stop-datetime=\"2026-06-22 10:00:14\" /var/lib/mysql/binlog.000002 | mysql -u root -p</p>
+<p>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22 10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</p>
 <p></p>
 <p>¡La base de datos se ha recuperado con total consistencia y sin pérdida de datos válidos!</p>
 <h1 id="7-herramientas-graficas-y-migracion-entre-sgbd">7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD</h1>

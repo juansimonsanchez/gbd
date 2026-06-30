@@ -432,8 +432,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statementunderline" class="md-nav__link">
-    🔗 Documentación Oficial: Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando de proyección en [MySQL Manual - SELECT Statement]{.underline}.
+  <a href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statement" class="md-nav__link">
+    🔗 Documentación Oficial: Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando de proyección en MySQL Manual - SELECT Statement.
   </a>
   
 </li>
@@ -1128,92 +1128,107 @@
 
 
 <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
-<hr />
-<p><strong>Unidad Didáctica</strong>            Unidad Didáctica 5: Recuperación de Información en MySQL (Lenguaje de Manipulación de Datos - Consultas DML)</p>
-<hr />
-<p><strong>Resultados de Aprendizaje</strong>   <strong>RA4:</strong> Realiza consultas sobre los datos almacenados en la base de datos utilizando herramientas gráficas y el lenguaje de manipulación de datos.</p>
-<p><strong>Criterios de Evaluación</strong>     CE4.a, CE4.b, CE4.c, CE4.d, CE4.e, CE4.f, CE4.g, CE4.h, CE4.i</p>
-<p><strong>Tiempo Estimado</strong>             36 Horas (Planificado para 6 semanas de sesiones teórico-prácticas por su alta densidad de contenido)</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th><strong>Unidad Didáctica</strong></th>
+<th>Unidad Didáctica 5: Recuperación de Información en MySQL (Lenguaje de Manipulación de Datos - Consultas DML)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA4:</strong> Realiza consultas sobre los datos almacenados en la base de datos utilizando herramientas gráficas y el lenguaje de manipulación de datos.</td>
+</tr>
+<tr>
+<td><strong>Criterios de Evaluación</strong></td>
+<td>CE4.a, CE4.b, CE4.c, CE4.d, CE4.e, CE4.f, CE4.g, CE4.h, CE4.i</td>
+</tr>
+<tr>
+<td><strong>Tiempo Estimado</strong></td>
+<td>36 Horas (Planificado para 6 semanas de sesiones teórico-prácticas por su alta densidad de contenido)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS</h3>
-<p><a href="#introducción-al-lenguaje-dml">[1. INTRODUCCIÓN AL LENGUAJE DML]{.underline}</a></p>
-<p><a href="#consultas-básicas-sobre-una-tabla">[2. CONSULTAS BÁSICAS SOBRE UNA TABLA]{.underline}</a></p>
+<p><a href="#introducción-al-lenguaje-dml"><u>1. INTRODUCCIÓN AL LENGUAJE DML</u></a></p>
+<p><a href="#consultas-básicas-sobre-una-tabla"><u>2. CONSULTAS BÁSICAS SOBRE UNA TABLA</u></a></p>
 <blockquote>
-<p><a href="#estructura-general">[2.1 Estructura General]{.underline}</a></p>
-<p><a href="#la-cláusula-select">[2.2 La Cláusula SELECT]{.underline}</a></p>
-<p><a href="#proyección-total-select">[2.2.1 Proyección Total (SELECT *)]{.underline}</a></p>
-<p><a href="#proyección-parcial-de-columnas">[2.2.2 Proyección Parcial de Columnas]{.underline}</a></p>
-<p><a href="#comentarios-en-sentencias-sql">[2.2.3 Comentarios en Sentencias SQL]{.underline}</a></p>
-<p><a href="#expresiones-y-columnas-calculadas">[2.2.4 Expresiones y Columnas Calculadas]{.underline}</a></p>
-<p><a href="#renombrado-de-columnas-as">[2.2.5 Renombrado de Columnas (AS)]{.underline}</a></p>
-<p><a href="#funciones-escalares-cadenas-matemáticas-y-fechas">[2.2.6 Funciones Escalares (Cadenas, Matemáticas y Fechas)]{.underline}</a></p>
-<p><a href="#modificadores-de-resultados-distinct-all-y-distinctrow">[2.2.7 Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW]{.underline}</a></p>
-<p><a href="#cláusula-where-filtrado">[2.3 Cláusula WHERE (Filtrado)]{.underline}</a></p>
-<p><a href="#operadores-de-comparación-y-lógicos">[2.3.1 Operadores de Comparación y Lógicos]{.underline}</a></p>
-<p><a href="#evaluación-de-rangos-between-y-listas-de-valores-in">[2.3.2 Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)]{.underline}</a></p>
-<p><a href="#búsqueda-de-patrones-de-texto-like">[2.3.3 Búsqueda de Patrones de Texto (LIKE)]{.underline}</a></p>
-<p><a href="#tratamiento-de-la-ausencia-de-datos-is-null-is-not-null">[2.3.4 Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)]{.underline}</a></p>
-<p><a href="#filtrado-especiales-booleanos-horas-y-marcas-de-tiempo">[2.3.5 Filtrado por Tipos Especiales (Booleanos, Horas y Marcas de Tiempo)]{.underline}</a></p>
-<p><a href="#cláusula-order-by-clasificación-física-de-resultados">[2.4 Cláusula ORDER BY: Clasificación Física de Resultados]{.underline}</a></p>
-<p><a href="#ordenación-ascendente-asc-y-descendente-desc">[2.4.1 Ordenación Ascendente (ASC) y Descendente (DESC)]{.underline}</a></p>
-<p><a href="#ordenación-por-múltiples-atributos">[2.4.2 Ordenación por Múltiples Atributos]{.underline}</a></p>
-<p><a href="#cláusula-limit-paginación-y-control-del-tránsito-de-red">[2.5 Cláusula LIMIT: Paginación y Control del Tránsito de Red]{.underline}</a></p>
+<p><a href="#estructura-general"><u>2.1 Estructura General</u></a></p>
+<p><a href="#la-cláusula-select"><u>2.2 La Cláusula SELECT</u></a></p>
+<p><a href="#proyección-total-select"><u>2.2.1 Proyección Total (SELECT *)</u></a></p>
+<p><a href="#proyección-parcial-de-columnas"><u>2.2.2 Proyección Parcial de Columnas</u></a></p>
+<p><a href="#comentarios-en-sentencias-sql"><u>2.2.3 Comentarios en Sentencias SQL</u></a></p>
+<p><a href="#expresiones-y-columnas-calculadas"><u>2.2.4 Expresiones y Columnas Calculadas</u></a></p>
+<p><a href="#renombrado-de-columnas-as"><u>2.2.5 Renombrado de Columnas (AS)</u></a></p>
+<p><a href="#funciones-escalares-cadenas-matemáticas-y-fechas"><u>2.2.6 Funciones Escalares (Cadenas, Matemáticas y Fechas)</u></a></p>
+<p><a href="#modificadores-de-resultados-distinct-all-y-distinctrow"><u>2.2.7 Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</u></a></p>
+<p><a href="#cláusula-where-filtrado"><u>2.3 Cláusula WHERE (Filtrado)</u></a></p>
+<p><a href="#operadores-de-comparación-y-lógicos"><u>2.3.1 Operadores de Comparación y Lógicos</u></a></p>
+<p><a href="#evaluación-de-rangos-between-y-listas-de-valores-in"><u>2.3.2 Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</u></a></p>
+<p><a href="#búsqueda-de-patrones-de-texto-like"><u>2.3.3 Búsqueda de Patrones de Texto (LIKE)</u></a></p>
+<p><a href="#tratamiento-de-la-ausencia-de-datos-is-null-is-not-null"><u>2.3.4 Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</u></a></p>
+<p><a href="#filtrado-especiales-booleanos-horas-y-marcas-de-tiempo"><u>2.3.5 Filtrado por Tipos Especiales (Booleanos, Horas y Marcas de Tiempo)</u></a></p>
+<p><a href="#cláusula-order-by-clasificación-física-de-resultados"><u>2.4 Cláusula ORDER BY: Clasificación Física de Resultados</u></a></p>
+<p><a href="#ordenación-ascendente-asc-y-descendente-desc"><u>2.4.1 Ordenación Ascendente (ASC) y Descendente (DESC)</u></a></p>
+<p><a href="#ordenación-por-múltiples-atributos"><u>2.4.2 Ordenación por Múltiples Atributos</u></a></p>
+<p><a href="#cláusula-limit-paginación-y-control-del-tránsito-de-red"><u>2.5 Cláusula LIMIT: Paginación y Control del Tránsito de Red</u></a></p>
 </blockquote>
-<p><a href="#consultas-sobre-varias-tablas">[3. CONSULTAS SOBRE VARIAS TABLAS]{.underline}</a></p>
+<p><a href="#consultas-sobre-varias-tablas"><u>3. CONSULTAS SOBRE VARIAS TABLAS</u></a></p>
 <blockquote>
-<p><a href="#concepto-de-producto-cartesiano-composición-cruzada-o-cross-join">[3.1 Concepto de Producto Cartesiano (Composición Cruzada o CROSS JOIN)]{.underline}</a></p>
-<p><a href="#composición-interna-inner-join">[3.2 Composición Interna (INNER JOIN)]{.underline}</a></p>
-<p><a href="#sintaxis-explícita-on-using-vs.-implícita-equi-join">[3.2.1 Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)]{.underline}</a></p>
-<p><a href="#uniones-equivalentes-y-no-equivalentes">[3.2.2 Uniones Equivalentes (Equi-Joins) y No Equivalentes (Non-Equi-Joins)]{.underline}</a></p>
-<p><a href="#autocomposición-o-unión-reflexiva-self-join">[3.2.3 Autocomposición o Unión Reflexiva (Self-Join)]{.underline}</a></p>
-<p><a href="#composición-de-tres-o-más-tablas-y-rutas-de-intersección">[3.2.4 Composición de Tres o Más Tablas y Rutas de Intersección]{.underline}</a></p>
-<p><a href="#composición-externa-outer-join">[3.3 Composición Externa (OUTER JOIN)]{.underline}</a></p>
-<p><a href="#composición-externa-izquierda-left-join">[3.3.1 Composición Externa Izquierda (LEFT JOIN)]{.underline}</a></p>
-<p><a href="#composición-externa-derecha-right-join">[3.3.2 Composición Externa Derecha (RIGHT JOIN)]{.underline}</a></p>
-<p><a href="#ausencia-de-full-outer-join-en-mysql">[3.3.3 Ausencia de FULL OUTER JOIN en MySQL y su Simulación vía UNION]{.underline}</a></p>
-<p><a href="#composiciones-externas-naturales-y-sus-riesgos">[3.3.4 Composiciones Externas Naturales y sus Riesgos]{.underline}</a></p>
-<p><a href="#gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor">[3.4 Gestión de Tablas de Distintas Bases de Datos en el Mismo Servidor]{.underline}</a></p>
+<p><a href="#concepto-de-producto-cartesiano-composición-cruzada-o-cross-join"><u>3.1 Concepto de Producto Cartesiano (Composición Cruzada o CROSS JOIN)</u></a></p>
+<p><a href="#composición-interna-inner-join"><u>3.2 Composición Interna (INNER JOIN)</u></a></p>
+<p><a href="#sintaxis-explícita-on-using-vs.-implícita-equi-join"><u>3.2.1 Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)</u></a></p>
+<p><a href="#uniones-equivalentes-y-no-equivalentes"><u>3.2.2 Uniones Equivalentes (Equi-Joins) y No Equivalentes (Non-Equi-Joins)</u></a></p>
+<p><a href="#autocomposición-o-unión-reflexiva-self-join"><u>3.2.3 Autocomposición o Unión Reflexiva (Self-Join)</u></a></p>
+<p><a href="#composición-de-tres-o-más-tablas-y-rutas-de-intersección"><u>3.2.4 Composición de Tres o Más Tablas y Rutas de Intersección</u></a></p>
+<p><a href="#composición-externa-outer-join"><u>3.3 Composición Externa (OUTER JOIN)</u></a></p>
+<p><a href="#composición-externa-izquierda-left-join"><u>3.3.1 Composición Externa Izquierda (LEFT JOIN)</u></a></p>
+<p><a href="#composición-externa-derecha-right-join"><u>3.3.2 Composición Externa Derecha (RIGHT JOIN)</u></a></p>
+<p><a href="#ausencia-de-full-outer-join-en-mysql"><u>3.3.3 Ausencia de FULL OUTER JOIN en MySQL y su Simulación vía UNION</u></a></p>
+<p><a href="#composiciones-externas-naturales-y-sus-riesgos"><u>3.3.4 Composiciones Externas Naturales y sus Riesgos</u></a></p>
+<p><a href="#gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor"><u>3.4 Gestión de Tablas de Distintas Bases de Datos en el Mismo Servidor</u></a></p>
 </blockquote>
-<p><a href="#consultas-de-agregación-y-resumen">[4. CONSULTAS DE AGREGACIÓN Y RESUMEN]{.underline}</a></p>
+<p><a href="#consultas-de-agregación-y-resumen"><u>4. CONSULTAS DE AGREGACIÓN Y RESUMEN</u></a></p>
 <blockquote>
-<p><a href="#funciones-de-agregación">[4.1 Funciones de Agregación]{.underline}</a></p>
-<p><a href="#comportamiento-y-diferencias-entre-count-y-countcolumna">[4.1.1 Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)]{.underline}</a></p>
-<p><a href="#agregación-de-valores-únicos-count-distinct">[4.1.2 Agregación de Valores Únicos (COUNT DISTINCT)]{.underline}</a></p>
-<p><a href="#interacción-de-las-funciones-de-agregación-con-valores-nulos">[4.1.3 Interacción de las Funciones de Agregación con Valores Nulos]{.underline}</a></p>
-<p><a href="#cláusula-group-by-agrupamiento-de-registros">[4.2 Cláusula GROUP BY: Agrupamiento de Registros]{.underline}</a></p>
-<p><a href="#mecánica-de-particionado">[4.2.1 Mecánica de Particionado]{.underline}</a></p>
-<p><a href="#agrupamiento-sobre-múltiples-atributos">[4.2.2 Agrupamiento sobre Múltiples Atributos]{.underline}</a></p>
-<p><a href="#cláusula-having-filtrado-de-grupos">[4.3 Cláusula HAVING: Filtrado de Grupos]{.underline}</a></p>
-<p><a href="#diferencias-críticas-de-procesamiento-where-vs.-having">[4.3.1 Diferencias Críticas de Procesamiento: WHERE vs. HAVING]{.underline}</a></p>
-<p><a href="#errores-comunes-en-consultas-de-resumen-y-only_full_group_by">[4.4 Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY]{.underline}</a></p>
+<p><a href="#funciones-de-agregación"><u>4.1 Funciones de Agregación</u></a></p>
+<p><a href="#comportamiento-y-diferencias-entre-count-y-countcolumna"><u>4.1.1 Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)</u></a></p>
+<p><a href="#agregación-de-valores-únicos-count-distinct"><u>4.1.2 Agregación de Valores Únicos (COUNT DISTINCT)</u></a></p>
+<p><a href="#interacción-de-las-funciones-de-agregación-con-valores-nulos"><u>4.1.3 Interacción de las Funciones de Agregación con Valores Nulos</u></a></p>
+<p><a href="#cláusula-group-by-agrupamiento-de-registros"><u>4.2 Cláusula GROUP BY: Agrupamiento de Registros</u></a></p>
+<p><a href="#mecánica-de-particionado"><u>4.2.1 Mecánica de Particionado</u></a></p>
+<p><a href="#agrupamiento-sobre-múltiples-atributos"><u>4.2.2 Agrupamiento sobre Múltiples Atributos</u></a></p>
+<p><a href="#cláusula-having-filtrado-de-grupos"><u>4.3 Cláusula HAVING: Filtrado de Grupos</u></a></p>
+<p><a href="#diferencias-críticas-de-procesamiento-where-vs.-having"><u>4.3.1 Diferencias Críticas de Procesamiento: WHERE vs. HAVING</u></a></p>
+<p><a href="#errores-comunes-en-consultas-de-resumen-y-only_full_group_by"><u>4.4 Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY</u></a></p>
 </blockquote>
-<p><a href="#subconsultas-consultas-anidadas">[5. SUBCONSULTAS (CONSULTAS ANIDADAS)]{.underline}</a></p>
+<p><a href="#subconsultas-consultas-anidadas"><u>5. SUBCONSULTAS (CONSULTAS ANIDADAS)</u></a></p>
 <blockquote>
-<p><a href="#introducción-y-tipología-de-subconsultas">[5.1 Introducción y Tipología de Subconsultas]{.underline}</a></p>
-<p><a href="#subconsultas-de-valor-escalar">[5.2 Subconsultas de Valor Escalar]{.underline}</a></p>
-<p><a href="#subconsultas-de-fila-o-de-lista-múltiples-filas">[5.3 Subconsultas de Fila o de Lista (Múltiples Filas)]{.underline}</a></p>
-<p><a href="#operadores-de-comparación-con-conjuntos-in-y-not-in">[5.3.1 Operadores de Comparación con Conjuntos: IN y NOT IN]{.underline}</a></p>
-<p><a href="#operadores-de-cuantificación-any-some-y-all">[5.3.2 Operadores de Cuantificación: ANY / SOME y ALL]{.underline}</a></p>
-<p><a href="#el-peligro-crítico-de-not-in-con-valores-nulos-en-la-subconsulta">[5.3.3 El Peligro Crítico de NOT IN con Valores Nulos en la Subconsulta]{.underline}</a></p>
-<p><a href="#subconsultas-de-tabla-cláusula-from-derived-tables">[5.4 Subconsultas de Tabla (Cláusula FROM / Derived Tables)]{.underline}</a></p>
-<p><a href="#subconsultas-correlacionadas-vs.-no-correlacionadas">[5.5 Subconsultas Correlacionadas vs. No Correlacionadas]{.underline}</a></p>
-<p><a href="#comprobación-de-existencia-exists-y-not-exists">[5.6 Comprobación de Existencia (EXISTS y NOT EXISTS)]{.underline}</a></p>
-<p><a href="#errores-comunes-de-execution-en-subconsultas">[5.7 Errores Comunes de Execution en Subconsultas]{.underline}</a></p>
+<p><a href="#introducción-y-tipología-de-subconsultas"><u>5.1 Introducción y Tipología de Subconsultas</u></a></p>
+<p><a href="#subconsultas-de-valor-escalar"><u>5.2 Subconsultas de Valor Escalar</u></a></p>
+<p><a href="#subconsultas-de-fila-o-de-lista-múltiples-filas"><u>5.3 Subconsultas de Fila o de Lista (Múltiples Filas)</u></a></p>
+<p><a href="#operadores-de-comparación-con-conjuntos-in-y-not-in"><u>5.3.1 Operadores de Comparación con Conjuntos: IN y NOT IN</u></a></p>
+<p><a href="#operadores-de-cuantificación-any-some-y-all"><u>5.3.2 Operadores de Cuantificación: ANY / SOME y ALL</u></a></p>
+<p><a href="#el-peligro-crítico-de-not-in-con-valores-nulos-en-la-subconsulta"><u>5.3.3 El Peligro Crítico de NOT IN con Valores Nulos en la Subconsulta</u></a></p>
+<p><a href="#subconsultas-de-tabla-cláusula-from-derived-tables"><u>5.4 Subconsultas de Tabla (Cláusula FROM / Derived Tables)</u></a></p>
+<p><a href="#subconsultas-correlacionadas-vs.-no-correlacionadas"><u>5.5 Subconsultas Correlacionadas vs. No Correlacionadas</u></a></p>
+<p><a href="#comprobación-de-existencia-exists-y-not-exists"><u>5.6 Comprobación de Existencia (EXISTS y NOT EXISTS)</u></a></p>
+<p><a href="#errores-comunes-de-execution-en-subconsultas"><u>5.7 Errores Comunes de Execution en Subconsultas</u></a></p>
 </blockquote>
-<p><a href="#errores-comunes-y-guía-de-buenas-prácticas">[6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS]{.underline}</a></p>
-<p><a href="#anexo-i-funciones-de-mysql-más-utilizadas">[7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS]{.underline}</a></p>
+<p><a href="#errores-comunes-y-guía-de-buenas-prácticas"><u>6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS</u></a></p>
+<p><a href="#anexo-i-funciones-de-mysql-más-utilizadas"><u>7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS</u></a></p>
 <blockquote>
-<p><a href="#funciones-de-cadenas-de-texto">[7.1 Funciones de Cadenas de Texto]{.underline}</a></p>
-<p><a href="#funciones-matemáticas">[7.2 Funciones Matemáticas]{.underline}</a></p>
-<p><a href="#funciones-de-fecha-y-hora">[7.3 Funciones de Fecha y Hora]{.underline}</a></p>
-<p><a href="#funciones-de-control-de-flujo-y-lógica">[7.4 Funciones de Control de Flujo y Lógica]{.underline}</a></p>
+<p><a href="#funciones-de-cadenas-de-texto"><u>7.1 Funciones de Cadenas de Texto</u></a></p>
+<p><a href="#funciones-matemáticas"><u>7.2 Funciones Matemáticas</u></a></p>
+<p><a href="#funciones-de-fecha-y-hora"><u>7.3 Funciones de Fecha y Hora</u></a></p>
+<p><a href="#funciones-de-control-de-flujo-y-lógica"><u>7.4 Funciones de Control de Flujo y Lógica</u></a></p>
 </blockquote>
-<p><a href="#anexo-ii-script-sql">[8. ANEXO II: SCRIPT SQL DE CREACIÓN Y CARGA PRÁCTICA (practica_dml)]{.underline}</a></p>
+<p><a href="#anexo-ii-script-sql"><u>8. ANEXO II: SCRIPT SQL DE CREACIÓN Y CARGA PRÁCTICA (practica_dml)</u></a></p>
 <h1 id="1-introduccion-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML</h1>
 <p>A diferencia de los lenguajes de programación imperativos tradicionales (C, Java, Python), donde el desarrollador define el algoritmo paso a paso (<em>cómo</em> obtener los datos), SQL es un lenguaje <strong>declarativo</strong>. El usuario describe formalmente la estructura de los datos que desea recuperar (<em>qué</em> obtener), y es el <strong>Optimizador de Consultas</strong> de MySQL el encargado de calcular el plan de ejecución físico más eficiente para acceder al disco y la memoria.</p>
 <p>Para un Administrador de Sistemas, comprender el flujo interno de una consulta dentro de la instancia de MySQL es vital para diagnosticar latencias y cuellos de botella:</p>
-<p>[Conexión Cliente] ---> [Hebra de Conexión] ---> [Analizador Sintáctico/Semántico (Parser)]\
-|\
+<p>[Conexión Cliente] ---> [Hebra de Conexión] ---> [Analizador Sintáctico/Semántico (Parser)]<br />
+|<br />
 [Resultados al Cliente] \&lt;-- [Motor de Almacenamiento (InnoDB)] \&lt;-- [Optimizador de Consultas]</p>
 <ol>
 <li>
@@ -1227,31 +1242,75 @@
 </li>
 </ol>
 <p>Uno de los errores conceptuales más frecuentes en estudiantes de administración de sistemas es asumir que MySQL procesa las cláusulas en el mismo orden en que se escriben en el editor. El orden lógico de procesamiento determina de forma rigurosa la visibilidad de los alias de columnas y el alcance de los filtros:</p>
-<hr />
-<p><strong>Orden de Escritura</strong>             <strong>Orden de Ejecución Lógico</strong></p>
-<hr />
-<p>1. SELECT \&lt;columnas>            1. FROM \&lt;tablas> (Carga el origen de datos)</p>
-<p>2. FROM \&lt;origen_datos>          2. ON \&lt;condiciones_unión> (Filtra las composiciones)</p>
-<p>3. WHERE \&lt;condición_filtro>     3. JOIN \&lt;tablas_asociadas> (Instancia el producto cartesiano)</p>
-<p>4. GROUP BY \&lt;atributos>         4. WHERE \&lt;condiciones_tuplas> (Filtra filas individuales)</p>
-<p>5. HAVING \&lt;condición_grupo>     5. GROUP BY \&lt;atributos> (Segmenta en subgrupos)</p>
-<p>6. ORDER BY \&lt;atributos>         6. HAVING \&lt;condiciones_grupo> (Filtra los subgrupos creados)</p>
-<p>7. LIMIT \&lt;desplaz., cantidad>   7. SELECT \&lt;columnas> (Proyecta y calcula alias)</p>
-<pre><code>                                 8\. DISTINCT (Elimina duplicados remanentes)
+<table>
+<thead>
+<tr>
+<th><strong>Orden de Escritura</strong></th>
+<th><strong>Orden de Ejecución Lógico</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. SELECT \&lt;columnas></td>
+<td>1. FROM \&lt;tablas> (Carga el origen de datos)</td>
+</tr>
+<tr>
+<td>2. FROM \&lt;origen_datos></td>
+<td>2. ON \&lt;condiciones_unión> (Filtra las composiciones)</td>
+</tr>
+<tr>
+<td>3. WHERE \&lt;condición_filtro></td>
+<td>3. JOIN \&lt;tablas_asociadas> (Instancia el producto cartesiano)</td>
+</tr>
+<tr>
+<td>4. GROUP BY \&lt;atributos></td>
+<td>4. WHERE \&lt;condiciones_tuplas> (Filtra filas individuales)</td>
+</tr>
+<tr>
+<td>5. HAVING \&lt;condición_grupo></td>
+<td>5. GROUP BY \&lt;atributos> (Segmenta en subgrupos)</td>
+</tr>
+<tr>
+<td>6. ORDER BY \&lt;atributos></td>
+<td>6. HAVING \&lt;condiciones_grupo> (Filtra los subgrupos creados)</td>
+</tr>
+<tr>
+<td>7. LIMIT \&lt;desplaz., cantidad></td>
+<td>7. SELECT \&lt;columnas> (Proyecta y calcula alias)</td>
+</tr>
+<tr>
+<td></td>
+<td>8. DISTINCT (Elimina duplicados remanentes)</td>
+</tr>
+<tr>
+<td></td>
+<td>9. ORDER BY \&lt;atributos> (Ordena el conjunto final de salida)</td>
+</tr>
+<tr>
+<td></td>
+<td>10. LIMIT (Recorta la porción de datos solicitada)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 96%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><h5 id="nota-de-diseño-debido-a-que-la-cláusula-select-se-ejecuta-en-el-paso-número-los-alias-definidos-con-la-palabra-clave-as-no-están-disponibles-en-la-cláusula-where-paso-.-no-obstante-sí-se-pueden-emplear-en-order-by-paso-y-limit-paso-."><strong>Nota de Diseñ</strong>o: Debido a que la cláusula SELECT se ejecuta en el paso número , los alias definidos con la palabra clave AS no están disponibles en la cláusula WHERE (paso ). No obstante, sí se pueden emplear en ORDER BY (paso ) y LIMIT (paso ).</h5></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 
-                                 9\. ORDER BY \&lt;atributos\&gt; (Ordena el conjunto final de salida)
-
-                                 10\. LIMIT (Recorta la porción de datos solicitada)
-</code></pre>
-<hr />
-<p>+---+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|   | ##### <strong>Nota de Diseñ</strong>o: Debido a que la cláusula SELECT se ejecuta en el paso número , los alias definidos con la palabra clave AS no están disponibles en la cláusula WHERE (paso ). No obstante, sí se pueden emplear en ORDER BY (paso ) y LIMIT (paso ). |
-+===+================================================================================================================================================================================================================================================================+
-+---+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</p>
 <h1 id="2-consultas-basicas-sobre-una-tabla">2. CONSULTAS BÁSICAS SOBRE UNA TABLA</h1>
 <h2 id="21-estructura-general">2.1 Estructura General</h2>
 <p>La sintaxis mínima para invocar una proyección de datos se compone del comando SELECT acoplado al origen físico provisto por FROM.</p>
-<h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statementunderline">🔗 <strong>Documentación Oficial:</strong> Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando de proyección en <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html">[MySQL Manual - SELECT Statement]{.underline}</a>.</h5>
+<h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statement">🔗 <strong>Documentación Oficial:</strong> Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando de proyección en <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html"><u>MySQL Manual - SELECT Statement</u></a>.</h5>
 <h2 id="22-la-clausula-select">2.2 La Cláusula SELECT</h2>
 <h3 id="221-proyeccion-total-select">2.2.1 Proyección Total (SELECT *)</h3>
 <p>Aunque el uso del asterisco comodín (*) es ampliamente recurrente en entornos de desarrollo rápido, <strong>está estrictamente desaconsejado en entornos de producción</strong> debido a:</p>
@@ -1292,7 +1351,7 @@
 <p>MySQL implementa un vasto catálogo de funciones de transformación rápida en el hilo de ejecución de la consulta.</p>
 <p>-- Manipulación avanzada de cadenas de texto y fechas de pedidos</p>
 <p>SELECT</p>
-<p>CONCAT(nombre, \' \', apellido1) AS nombre_completo,</p>
+<p>CONCAT(nombre, ' ', apellido1) AS nombre_completo,</p>
 <p>UPPER(email) AS email_mayusculas</p>
 <p>FROM empleado;</p>
 <p>SELECT</p>
@@ -1319,7 +1378,7 @@
 <p>-- Filtrado estricto combinado</p>
 <p>SELECT nombre, gama, precio_venta</p>
 <p>FROM producto</p>
-<p>WHERE gama = \'Herramientas\' AND precio_venta >= 100.00;</p>
+<p>WHERE gama = 'Herramientas' AND precio_venta >= 100.00;</p>
 <h3 id="_3"></h3>
 <h3 id="232-evaluacion-de-rangos-between-y-listas-de-valores-in">2.3.2 Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</h3>
 <p>-- Filtrado por rango inclusivo (Equivale a precio_venta >= 50 AND precio_venta \&lt;= 150)</p>
@@ -1329,38 +1388,47 @@
 <p>-- Filtrado por pertenencia a una lista discreta de valores</p>
 <p>SELECT nombre, gama</p>
 <p>FROM producto</p>
-<p>WHERE gama IN (\'Herramientas\', \'Frutales\', \'Ornamentales\');</p>
+<p>WHERE gama IN ('Herramientas', 'Frutales', 'Ornamentales');</p>
 <p></p>
 <h3 id="233-busqueda-de-patrones-de-texto-like">2.3.3 Búsqueda de Patrones de Texto (LIKE)</h3>
 <p>Permite la comparación parcial de strings mediante caracteres comodín:</p>
 <ul>
 <li>
-<p>\% representa cualquier secuencia de cero o más caracteres.</p>
+<p>% representa cualquier secuencia de cero o más caracteres.</p>
 </li>
 <li>
 <p>_ representa exactamente un único carácter físico.</p>
 </li>
 </ul>
-<p>-- Recupera productos cuyo nombre empiece con \"Maza\", contenga cualquier carácter intermedio y termine en \"a\"</p>
+<p>-- Recupera productos cuyo nombre empiece con "Maza", contenga cualquier carácter intermedio y termine en "a"</p>
 <p>SELECT nombre</p>
 <p>FROM producto</p>
-<p>WHERE nombre LIKE \'Maza%a\';</p>
-<p>-- Recupera correos que tengan exactamente un carácter antes de la arroba (Ej. \"j@empresa.com\")</p>
+<p>WHERE nombre LIKE 'Maza%a';</p>
+<p>-- Recupera correos que tengan exactamente un carácter antes de la arroba (Ej. "j@empresa.com")</p>
 <p>SELECT email</p>
 <p>FROM empleado</p>
-<p>WHERE email LIKE \'_@%\';</p>
+<p>WHERE email LIKE '_@%';</p>
 <h3 id="234-tratamiento-de-la-ausencia-de-datos-is-null-is-not-null">2.3.4 Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</h3>
-<p>En el modelo relacional y SQL, NULL no equivale a un valor numérico cero, ni a una cadena de texto vacía \"\". Representa la \"ausencia de valor\" o \"desconocimiento\". Las comparaciones directas con = (como columna = NULL) <strong>siempre devolverán un resultado de tipo indeterminado (UNKNOWN)</strong> bajo la lógica triestatal de SQL. Por ende, para evaluar la presencia o ausencia de datos, deben emplearse de forma exclusiva los operadores estructurados IS NULL y IS NOT NULL.</p>
+<p>En el modelo relacional y SQL, NULL no equivale a un valor numérico cero, ni a una cadena de texto vacía "". Representa la "ausencia de valor" o "desconocimiento". Las comparaciones directas con = (como columna = NULL) <strong>siempre devolverán un resultado de tipo indeterminado (UNKNOWN)</strong> bajo la lógica triestatal de SQL. Por ende, para evaluar la presencia o ausencia de datos, deben emplearse de forma exclusiva los operadores estructurados IS NULL y IS NOT NULL.</p>
 <p>-- IDENTIFICACIÓN CORRECTA de clientes que no tienen representante de ventas asociado</p>
 <p>SELECT nombre_cliente</p>
 <p>FROM cliente</p>
 <p>WHERE codigo_empleado_rep_ventas IS NULL;</p>
 <p></p>
-<hr />
-<pre><code> 🔗 Documentación Oficial: Para comprender a fondo el funcionamiento de la lógica de tres valores (True, False, Unknown) y el manejo de marcas de ausencia, lee MySQL Manual - Working with NULL Values.
-</code></pre>
-<hr />
-<hr />
+<table>
+<thead>
+<tr>
+<th></th>
+<th>🔗 Documentación Oficial: Para comprender a fondo el funcionamiento de la lógica de tres valores (True, False, Unknown) y el manejo de marcas de ausencia, lee MySQL Manual - Working with NULL Values.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="235-filtrado-especiales-booleanos-horas-y-marcas-de-tiempo">2.3.5 Filtrado especiales (Booleanos, Horas y Marcas de Tiempo)</h3>
 <p>Para un administrador de sistemas, es fundamental controlar el filtrado de estados booleanos y rangos temporales específicos de tipo TIME o DATETIME:</p>
 <p>-- 1. Filtrado de campos BOOLEAN (Soportados internamente como TINYINT(1) en MySQL)</p>
@@ -1372,12 +1440,12 @@
 <p>-- Recupera los empleados cuyo turno de mañana inicia a las 08:00:00 o antes</p>
 <p>SELECT nombre, apellido1, hora_entrada</p>
 <p>FROM empleado</p>
-<p>WHERE hora_entrada \&lt;= \'08:00:00\';</p>
+<p>WHERE hora_entrada \&lt;= '08:00:00';</p>
 <p>-- 3. Filtrado por marcas de tiempo completas (tipo DATETIME o TIMESTAMP)</p>
 <p>-- Recupera los clientes que se registraron a partir de una fecha y hora específicas en producción</p>
 <p>SELECT nombre_cliente, fecha_alta</p>
 <p>FROM cliente</p>
-<p>WHERE fecha_alta >= \'2026-01-01 00:00:00\';</p>
+<p>WHERE fecha_alta >= '2026-01-01 00:00:00';</p>
 <p></p>
 <h2 id="24-clausula-order-by-clasificacion-fisica-de-resultados">2.4 Cláusula ORDER BY: Clasificación Física de Resultados</h2>
 <p>Ordena el conjunto final de registros devueltos. Por defecto, si no se especifica el sentido, el motor aplica un orden ascendente (ASC).</p>
@@ -1385,7 +1453,7 @@
 <p>-- Ordenación explícita descendente de precios</p>
 <p>SELECT nombre, precio_venta</p>
 <p>FROM producto</p>
-<p>WHERE gama = \'Herramientas\'</p>
+<p>WHERE gama = 'Herramientas'</p>
 <p>ORDER BY precio_venta DESC;</p>
 <p></p>
 <h3 id="242-ordenacion-por-multiples-atributos">2.4.2 Ordenación por Múltiples Atributos</h3>
@@ -1468,7 +1536,7 @@
 <p>-- Unión encadenada: Cliente -> Empleado (Rep Ventas) -> Oficina</p>
 <p>SELECT</p>
 <p>C.nombre_cliente,</p>
-<p>CONCAT(E.nombre, \' \', E.apellido1) AS representante,</p>
+<p>CONCAT(E.nombre, ' ', E.apellido1) AS representante,</p>
 <p>O.ciudad AS ciudad_oficina</p>
 <p>FROM cliente C</p>
 <p>INNER JOIN empleado E ON C.codigo_empleado_rep_ventas = E.codigo_empleado</p>
@@ -1479,7 +1547,7 @@
 <h3 id="331-composicion-externa-izquierda-left-join">3.3.1 Composición Externa Izquierda (LEFT JOIN)</h3>
 <p>Recupera absolutamente <strong>todas las filas de la tabla declarada a la izquierda</strong> de la instrucción LEFT JOIN. Para aquellos registros que no posean una correspondencia en la tabla de la derecha, el motor rellenará los atributos correspondientes a esta última con valores NULL.</p>
 <p>-- Recupera TODOS los fabricantes de la base de datos con sus respectivos productos</p>
-<p>-- Fabricantes como \"Xiaomi\" que no tienen productos, aparecerán con NULL en las columnas de producto</p>
+<p>-- Fabricantes como "Xiaomi" que no tienen productos, aparecerán con NULL en las columnas de producto</p>
 <p>SELECT fabricante.nombre, producto.nombre AS producto</p>
 <p>FROM fabricante</p>
 <p>LEFT JOIN producto</p>
@@ -1529,7 +1597,7 @@
 <p>COUNT(columna): Evalúa la columna especificada y devuelve el número de registros en los que dicha columna posee un valor <strong>distinto de NULL</strong>.</p>
 </li>
 </ul>
-<p>-- Caso de estudio en producción (basado en nuestra tabla \'cliente\'):</p>
+<p>-- Caso de estudio en producción (basado en nuestra tabla 'cliente'):</p>
 <p>-- Supongamos clientes con y sin representante de ventas asignado</p>
 <p>SELECT COUNT(*) FROM cliente; -- Resultado: Conteo total de clientes</p>
 <p>SELECT COUNT(codigo_empleado_rep_ventas) FROM cliente; -- Cuenta solo los que no tengan NULL en esa columna</p>
@@ -1542,15 +1610,15 @@
 <h3 id="413-interaccion-de-las-funciones-de-agregacion-con-valores-nulos">4.1.3 Interacción de las Funciones de Agregación con Valores Nulos</h3>
 <p>Con la excepción de COUNT(*), todas las funciones de agregación (SUM, AVG, MIN, MAX) <strong>ignoran por completo los valores NULL</strong> para sus cálculos matemáticos:</p>
 <p>-- AVG calcula la media dividiendo la suma total únicamente entre los registros que NO tengan NULL</p>
-<p>-- En nuestro script de prácticas, \'comision\' puede tener valores NULL</p>
+<p>-- En nuestro script de prácticas, 'comision' puede tener valores NULL</p>
 <p>SELECT AVG(comision) FROM empleado;</p>
 <p></p>
 <h2 id="42-clausula-group-by-agrupamiento-de-registros">4.2 Cláusula GROUP BY: Agrupamiento de Registros</h2>
 <p>La cláusula GROUP BY subdivide el conjunto de datos de la tabla original en pequeños subgrupos lógicos basados en el valor común de una o más columnas especificadas.</p>
 <h3 id="421-mecanica-de-particionado">4.2.1 Mecánica de Particionado</h3>
-<p>Datos de entrada (Tabla Producto):\
-[Gama: Htas, Precio: 10]\
-[Gama: Htas, Precio: 20] GROUP BY Gama [Gama: Htas, Suma: 30]\
+<p>Datos de entrada (Tabla Producto):<br />
+[Gama: Htas, Precio: 10]<br />
+[Gama: Htas, Precio: 20] GROUP BY Gama [Gama: Htas, Suma: 30]<br />
 [Gama: Jrdn, Precio: 15] -------------> [Gama: Jrdn, Suma: 15]</p>
 <p>-- Suma total de los precios de venta agrupados por el código del fabricante asociado</p>
 <p>SELECT codigo_fabricante, SUM(precio_venta) AS total_ventas</p>
@@ -1603,7 +1671,7 @@
 <p>GROUP BY codigo_fabricante;</p>
 <blockquote>
 <p><strong>Explicación Técnica del Error:</strong> En la consulta anterior, agrupamos los datos por codigo_fabricante. Sin embargo, en el SELECT estamos solicitando la proyección de la columna nombre. Como pueden existir muchos nombres de productos distintos para un mismo código de fabricante, el motor no sabe qué nombre de producto individual mostrar en la tupla de salida. Para solucionar esto sin desactivar la variable global sql_mode, la consulta debe reescribirse para que todas las columnas proyectadas en el SELECT estén presentes en el GROUP BY o se encuentren dentro de una función de agregación (como MAX(nombre) o GROUP_CONCAT(nombre)).</p>
-<p>🔗 <strong>Documentación Oficial:</strong> Amplía información sobre el control de agregaciones de tipo unívoco y las políticas de restricción de SQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/group-by-handling.html">[MySQL Manual - GROUP BY Handling and ONLY_FULL_GROUP_BY]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Amplía información sobre el control de agregaciones de tipo unívoco y las políticas de restricción de SQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/group-by-handling.html"><u>MySQL Manual - GROUP BY Handling and ONLY_FULL_GROUP_BY</u></a>.</p>
 </blockquote>
 <h1 id="5-subconsultas-consultas-anidadas">5. SUBCONSULTAS (CONSULTAS ANIDADAS)</h1>
 <p>Una subconsulta es una sentencia SELECT anidada dentro de otra consulta de nivel superior (llamada consulta externa). Las subconsultas permiten estructurar soluciones complejas sin requerir múltiples pasos o llamadas desde el lenguaje de programación de backend.</p>
@@ -1624,7 +1692,7 @@
 </li>
 </ol>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Consulta las reglas de análisis semántico del anidamiento de sentencias DML en <a href="https://dev.mysql.com/doc/refman/8.0/en/subqueries.html">[MySQL Manual - Subquery Syntax]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Consulta las reglas de análisis semántico del anidamiento de sentencias DML en <a href="https://dev.mysql.com/doc/refman/8.0/en/subqueries.html"><u>MySQL Manual - Subquery Syntax</u></a>.</p>
 </blockquote>
 <h2 id="52-subconsultas-de-valor-escalar">5.2 Subconsultas de Valor Escalar</h2>
 <p>Suelen acoplarse con operadores de comparación relacionales clásicos en las cláusulas WHERE o HAVING.</p>
@@ -1647,11 +1715,11 @@
 </ul>
 <p>-- Obtener productos de fabricantes ubicados en España</p>
 <p>SELECT * FROM producto</p>
-<p>WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais = \'España\');</p>
+<p>WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais = 'España');</p>
 <p></p>
 <p>-- Obtener productos de fabricantes ubicados en España</p>
 <p>SELECT * FROM producto</p>
-<p>WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais = \'España\');</p>
+<p>WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais = 'España');</p>
 <h4 id="532-operadores-de-cuantificacion-any-some-y-all">5.3.2 Operadores de Cuantificación: ANY / SOME y ALL</h4>
 <ul>
 <li>
@@ -1661,21 +1729,21 @@
 <p>ALL: El criterio de comparación se cumple si la evaluación lógica resulta en TRUE para <strong>absolutamente todos</strong> los elementos del conjunto devuelto por la subconsulta (Equivale a un conector relacional AND masivo).</p>
 </li>
 </ul>
-<p>-- Obtener los productos cuyo precio de venta sea mayor que TODOS los productos de la gama \'Herramientas\'</p>
+<p>-- Obtener los productos cuyo precio de venta sea mayor que TODOS los productos de la gama 'Herramientas'</p>
 <p>SELECT nombre, precio_venta</p>
 <p>FROM producto</p>
-<p>WHERE precio_venta > ALL (SELECT precio_venta FROM producto WHERE gama = \'Herramientas\');</p>
+<p>WHERE precio_venta > ALL (SELECT precio_venta FROM producto WHERE gama = 'Herramientas');</p>
 <p></p>
-<p>-- Obtener los productos cuyo precio de venta sea mayor que TODOS los productos de la gama \'Herramientas\'</p>
+<p>-- Obtener los productos cuyo precio de venta sea mayor que TODOS los productos de la gama 'Herramientas'</p>
 <p>SELECT nombre, precio_venta</p>
 <p>FROM producto</p>
-<p>WHERE precio_venta > ALL (SELECT precio_venta FROM producto WHERE gama = \'Herramientas\');</p>
+<p>WHERE precio_venta > ALL (SELECT precio_venta FROM producto WHERE gama = 'Herramientas');</p>
 <h4 id="533-el-peligro-critico-de-not-in-con-valores-nulos-en-la-subconsulta">5.3.3 El Peligro Crítico de NOT IN con Valores Nulos en la Subconsulta</h4>
 <blockquote>
 <p><strong>Advertencia:</strong> Si la subconsulta interna invocada mediante un operador NOT IN devuelve, en su conjunto de datos, al menos un solo registro con valor NULL, <strong>la consulta externa completa no devolverá ninguna fila</strong>.</p>
 </blockquote>
 <p>Esto se debe a que SQL evalúa la condición de exclusión como:</p>
-<p><img alt="" src="../images/UT5.%20Teor%C3%ADa.%20Consultas/media/image2.png" />{width="4.802083333333333in" height="0.31666666666666665in"}</p>
+<p><img src="./docs/images/UT5. Teoría. Consultas/media/image2.png" style="width:4.80208in;height:0.31667in" /></p>
 <p>Cualquier comparación de desigualdad física con NULL resulta en UNKNOWN, invalidando toda la expresión lógica conectorizada con AND. Para mitigar esto, es obligatorio filtrar explícitamente los valores nulos en el filtro de la subconsulta interna:</p>
 <p>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS</p>
 <p>SELECT nombre</p>
@@ -1696,7 +1764,7 @@
 <p>);</p>
 <h2 id="54-subconsultas-de-tabla-clausula-from-derived-tables">5.4 Subconsultas de Tabla (Cláusula FROM / Derived Tables)</h2>
 <p>Cuando se anida una subconsulta dentro de la cláusula FROM, esta actúa temporalmente como una tabla lógica residente en memoria (tabla derivada o inline view). <strong>En MySQL, es estrictamente obligatorio asignar un alias de tabla a estas estructuras</strong> para evitar fallos sintácticos graves del parser del sistema.</p>
-<p>-- Uso de Derived Table con alias \'subtabla\'</p>
+<p>-- Uso de Derived Table con alias 'subtabla'</p>
 <p>SELECT AVG(subtabla.precio_maximo) AS media_maxima</p>
 <p>FROM (</p>
 <p>SELECT codigo_fabricante, MAX(precio_venta) AS precio_maximo</p>
@@ -1704,7 +1772,7 @@
 <p>GROUP BY codigo_fabricante</p>
 <p>) AS subtabla;</p>
 <p></p>
-<p>-- Uso de Derived Table con alias \'subtabla\'</p>
+<p>-- Uso de Derived Table con alias 'subtabla'</p>
 <p>SELECT AVG(subtabla.precio_maximo) AS media_maxima</p>
 <p>FROM (</p>
 <p>SELECT codigo_fabricante, MAX(precio_venta) AS precio_maximo</p>
@@ -1738,7 +1806,7 @@
 <p>WHERE P_Int.gama = P_Ext.gama</p>
 <p>);</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Para comprender cómo el motor reescribe u optimiza de manera interna las subconsultas correlacionadas, consulta <a href="https://dev.mysql.com/doc/refman/8.0/en/subquery-optimization.html">[MySQL Manual - Optimizing Subqueries]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para comprender cómo el motor reescribe u optimiza de manera interna las subconsultas correlacionadas, consulta <a href="https://dev.mysql.com/doc/refman/8.0/en/subquery-optimization.html"><u>MySQL Manual - Optimizing Subqueries</u></a>.</p>
 </blockquote>
 <h2 id="56-comprobacion-de-existencia-exists-y-not-exists">5.6 Comprobación de Existencia (EXISTS y NOT EXISTS)</h2>
 <p>El operador EXISTS devuelve TRUE si la subconsulta interna encuentra al menos un registro que cumpla la condición. Es un operador altamente optimizado por MySQL: una vez que el motor lo localiza, interrumpe inmediatamente el escaneo de la subconsulta (early exit), minimizando las operaciones de lectura en disco.</p>
@@ -1781,7 +1849,7 @@
 <p><strong>Utilizar filtros WHERE sobre columnas indexadas:</strong> Para evitar lecturas completas de tabla (Full Table Scans), asegúrate de que los filtros de búsqueda frecuente y las columnas que enlazan JOINs cuenten con un índice secundario asociado en la estructura DDL de la base de datos.</p>
 </li>
 <li>
-<p><strong>No utilizar funciones directamente sobre columnas filtradas:</strong> Si consultas WHERE YEAR(fecha_registro) = 2026, MySQL se verá obligado a procesar la función matemática para cada fila de la tabla, invalidando los índices asociados a fecha_registro. En su lugar, utiliza rangos planos: WHERE fecha_registro BETWEEN \'2026-01-01\' AND \'2026-12-31\'.</p>
+<p><strong>No utilizar funciones directamente sobre columnas filtradas:</strong> Si consultas WHERE YEAR(fecha_registro) = 2026, MySQL se verá obligado a procesar la función matemática para cada fila de la tabla, invalidando los índices asociados a fecha_registro. En su lugar, utiliza rangos planos: WHERE fecha_registro BETWEEN '2026-01-01' AND '2026-12-31'.</p>
 </li>
 <li>
 <p><strong>Validar las consultas analíticas en producción:</strong> Herramientas como EXPLAIN (analizadas a fondo en la Unidad 10) deben ser ejecutadas de forma sistemática ante cualquier consulta que devuelva latencias de respuesta superiores a los 100 ms en los logs de consultas lentas (slow_query_log).</p>
@@ -1790,20 +1858,20 @@
 <h1 id="7-anexo-i-funciones-de-mysql-mas-utilizadas">7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS</h1>
 <p>Este catálogo técnico detalla el comportamiento de las funciones nativas indispensables para la transformación de datos directamente en el motor de bases de datos.</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Tienes a tu disposición la guía de referencia alfabética y funcional de operadores y funciones nativas de MySQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/functions.html">[MySQL Manual - Functions and Operators]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Tienes a tu disposición la guía de referencia alfabética y funcional de operadores y funciones nativas de MySQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/functions.html"><u>MySQL Manual - Functions and Operators</u></a>.</p>
 </blockquote>
 <h2 id="71-funciones-de-cadenas-de-texto">7.1 Funciones de Cadenas de Texto</h2>
 <ul>
 <li></li>
 </ul>
-<p>SELECT CONCAT(nombre, \' \', apellido1) AS nombre_completo FROM empleado;</p>
+<p>SELECT CONCAT(nombre, ' ', apellido1) AS nombre_completo FROM empleado;</p>
 <p>SELECT UPPER(email) FROM empleado;</p>
 <p>SELECT SUBSTRING(nombre, 1, 3) AS iniciales FROM empleado;</p>
 <p>SELECT nombre, CHAR_LENGTH(nombre) AS longitud FROM producto;</p>
-<p>SELECT REPLACE(email, \'empresa.com\', \'corporativo.es\') FROM empleado;</p>
-<p>SELECT TRIM(\' Texto con espacios \') AS limpio;</p>
+<p>SELECT REPLACE(email, 'empresa.com', 'corporativo.es') FROM empleado;</p>
+<p>SELECT TRIM(' Texto con espacios ') AS limpio;</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Para explorar todas las operaciones de procesamiento de texto con codificación multibyte (utf8mb4), accede a <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html">[MySQL Manual - String Functions]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para explorar todas las operaciones de procesamiento de texto con codificación multibyte (utf8mb4), accede a <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html"><u>MySQL Manual - String Functions</u></a>.</p>
 </blockquote>
 <h2 id="72-funciones-matematicas">7.2 Funciones Matemáticas</h2>
 <ul>
@@ -1815,7 +1883,7 @@
 <p>SELECT MOD(10, 3) AS resto;</p>
 <p>SELECT POW(2, 3) AS resultado_potencia;</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> El desglose completo de constantes y operaciones aritméticas de precisión de punto flotante se encuentra en <a href="https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html">[MySQL Manual - Numeric Functions]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> El desglose completo de constantes y operaciones aritméticas de precisión de punto flotante se encuentra en <a href="https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html"><u>MySQL Manual - Numeric Functions</u></a>.</p>
 </blockquote>
 <h2 id="73-funciones-de-fecha-y-hora">7.3 Funciones de Fecha y Hora</h2>
 <ul>
@@ -1825,10 +1893,10 @@
 <p>SELECT CURDATE() AS fecha_hoy;</p>
 <p>SELECT DATE_ADD(CURDATE(), INTERVAL 30 DAY) AS fecha_vencimiento;</p>
 <p>SELECT DATEDIFF(fecha_entrega, fecha_esperada) FROM pedido;</p>
-<p>SELECT DATE_FORMAT(fecha_esperada, \'%d/%m/%Y\') AS formato_espanol FROM pedido;</p>
+<p>SELECT DATE_FORMAT(fecha_esperada, '%d/%m/%Y') AS formato_espanol FROM pedido;</p>
 <p>SELECT YEAR(fecha_esperada) AS anio_pedido FROM pedido;</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> El tratamiento de zonas horarias e intervalos temporales complejos está descrito de forma exhaustiva en <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html">[MySQL Manual - Date and Time Functions]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> El tratamiento de zonas horarias e intervalos temporales complejos está descrito de forma exhaustiva en <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html"><u>MySQL Manual - Date and Time Functions</u></a>.</p>
 </blockquote>
 <h2 id="74-funciones-de-control-de-flujo-y-logica">7.4 Funciones de Control de Flujo y Lógica</h2>
 <ul>
@@ -1836,15 +1904,15 @@
 </ul>
 <p>SELECT COALESCE(comision, 0.00) AS comision_final FROM empleado;</p>
 <p>SELECT IFNULL(comision, 0) FROM empleado;</p>
-<p>SELECT nombre, IF(precio_venta > 100, \'Caro\', \'Asequible\') AS categoria FROM producto;</p>
-<p>SELECT nombre, CASE WHEN precio_venta \&lt; 50 THEN \'Bajo\' WHEN precio_venta BETWEEN 50 AND 150 THEN \'Medio\' ELSE \'Alto\' END AS rango_precio FROM producto;</p>
+<p>SELECT nombre, IF(precio_venta > 100, 'Caro', 'Asequible') AS categoria FROM producto;</p>
+<p>SELECT nombre, CASE WHEN precio_venta \&lt; 50 THEN 'Bajo' WHEN precio_venta BETWEEN 50 AND 150 THEN 'Medio' ELSE 'Alto' END AS rango_precio FROM producto;</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Descubre más sobre la evaluación perezosa y estructuras condicionales aplicadas al conjunto de datos en <a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html">[MySQL Manual - Flow Control Functions]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Descubre más sobre la evaluación perezosa y estructuras condicionales aplicadas al conjunto de datos en <a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html"><u>MySQL Manual - Flow Control Functions</u></a>.</p>
 </blockquote>
 <h1 id="8-anexo-ii-script-sql">8. ANEXO II: SCRIPT SQL</h1>
 <p>Este script DDL y DML autoejecutable genera de forma íntegra el esquema físico para que puedan probar la totalidad de consultas y funciones explicadas en el tema.</p>
 <blockquote>
-<p>🔗 <strong>Documentación Oficial:</strong> Para comprender el comportamiento transaccional del motor utilizado en este script, la gestión del almacenamiento en espacio de tablas (<em>tablespaces</em>) y las políticas de bloqueo físico, puedes visitar <a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html">[MySQL Manual - InnoDB Storage Engine]{.underline}</a>.</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Para comprender el comportamiento transaccional del motor utilizado en este script, la gestión del almacenamiento en espacio de tablas (<em>tablespaces</em>) y las políticas de bloqueo físico, puedes visitar <a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html"><u>MySQL Manual - InnoDB Storage Engine</u></a>.</p>
 </blockquote>
 <p>-- =============================================================================</p>
 <p>-- BASE DE DATOS DE PRÁCTICAS DML - UNIDAD 5 (ESQUEMA ENRIQUECIDO PARA ASIR)</p>
@@ -1881,7 +1949,7 @@
 <p>codigo_departamento INT,</p>
 <p>codigo_jefe INT,</p>
 <p>fecha_contratacion DATE NOT NULL,</p>
-<p>hora_entrada TIME DEFAULT \'08:00:00\', -- Ejemplo de tipo de tiempo (hora del turno)</p>
+<p>hora_entrada TIME DEFAULT '08:00:00', -- Ejemplo de tipo de tiempo (hora del turno)</p>
 <p>activo BOOLEAN DEFAULT TRUE, -- Atributo booleano de control de accesos</p>
 <p>FOREIGN KEY (codigo_oficina) REFERENCES oficina(codigo_oficina) ON UPDATE CASCADE ON DELETE SET NULL,</p>
 <p>FOREIGN KEY (codigo_departamento) REFERENCES departamento(codigo) ON UPDATE CASCADE ON DELETE SET NULL,</p>
@@ -1893,7 +1961,7 @@
 <p>codigo_cliente INT PRIMARY KEY,</p>
 <p>nombre_cliente VARCHAR(100) NOT NULL,</p>
 <p>codigo_empleado_rep_ventas INT,</p>
-<p>pais VARCHAR(50) DEFAULT \'España\',</p>
+<p>pais VARCHAR(50) DEFAULT 'España',</p>
 <p>es_premium BOOLEAN DEFAULT FALSE, -- Clasificación booleana</p>
 <p>limite_credito DECIMAL(12,2) DEFAULT 1000.00, -- Capacidad de solvencia fiscal</p>
 <p>fecha_alta DATETIME DEFAULT CURRENT_TIMESTAMP, -- Sello temporal completo de alta</p>
@@ -1941,74 +2009,74 @@
 <p>-- =============================================================================</p>
 <p>-- Inserciones en DEPARTAMENTO</p>
 <p>INSERT INTO departamento (codigo, nombre, presupuesto) VALUES</p>
-<p>(10, \'Dirección General\', 350000.00),</p>
-<p>(20, \'Ventas y Expansión\', 180000.00),</p>
-<p>(30, \'Soporte de Sistemas y DevOps\', 250000.00),</p>
-<p>(40, \'Recursos Humanos y RSE\', 90000.00),</p>
-<p>(50, \'I+D+i Tecnológico\', 150000.00), -- Nuevos departamentos para cruces avanzados</p>
-<p>(60, \'Marketing y Comunicación\', 0.00);</p>
+<p>(10, 'Dirección General', 350000.00),</p>
+<p>(20, 'Ventas y Expansión', 180000.00),</p>
+<p>(30, 'Soporte de Sistemas y DevOps', 250000.00),</p>
+<p>(40, 'Recursos Humanos y RSE', 90000.00),</p>
+<p>(50, 'I+D+i Tecnológico', 150000.00), -- Nuevos departamentos para cruces avanzados</p>
+<p>(60, 'Marketing y Comunicación', 0.00);</p>
 <p>-- Inserciones en OFICINA</p>
 <p>INSERT INTO oficina (codigo_oficina, ciudad, telefono, superficie) VALUES</p>
-<p>(\'OFI-MAD\', \'Madrid\', \'+34 912 345 678\', 1200),</p>
-<p>(\'OFI-BAR\', \'Barcelona\', \'+34 931 234 567\', 850),</p>
-<p>(\'OFI-SEV\', \'Sevilla\', \'+34 954 123 456\', 500),</p>
-<p>(\'OFI-VAL\', \'Valencia\', \'+34 963 987 654\', 420),</p>
-<p>(\'OFI-BIL\', \'Bilbao\', \'+34 944 555 666\', 310);</p>
+<p>('OFI-MAD', 'Madrid', '+34 912 345 678', 1200),</p>
+<p>('OFI-BAR', 'Barcelona', '+34 931 234 567', 850),</p>
+<p>('OFI-SEV', 'Sevilla', '+34 954 123 456', 500),</p>
+<p>('OFI-VAL', 'Valencia', '+34 963 987 654', 420),</p>
+<p>('OFI-BIL', 'Bilbao', '+34 944 555 666', 310);</p>
 <p>-- Inserciones en EMPLEADO (Cumpliendo dependencias jerárquicas de jefes)</p>
 <p>-- Directores de nivel 1 (jefe NULL)</p>
 <p>INSERT INTO empleado (codigo_empleado, nombre, apellido1, email, salario, comision, codigo_oficina, codigo_departamento, codigo_jefe, fecha_contratacion, hora_entrada, activo) VALUES</p>
-<p>(1, \'Alberto\', \'Gómez\', \'a.gomez@empresa.com\', 4200.00, NULL, \'OFI-MAD\', 10, NULL, \'2020-01-15\', \'07:30:00\', TRUE);</p>
+<p>(1, 'Alberto', 'Gómez', 'a.gomez@empresa.com', 4200.00, NULL, 'OFI-MAD', 10, NULL, '2020-01-15', '07:30:00', TRUE);</p>
 <p>-- Mandos intermedios y coordinadores (jefe: 1)</p>
 <p>INSERT INTO empleado (codigo_empleado, nombre, apellido1, email, salario, comision, codigo_oficina, codigo_departamento, codigo_jefe, fecha_contratacion, hora_entrada, activo) VALUES</p>
-<p>(2, \'Beatriz\', \'Ruiz\', \'b.ruiz@empresa.com\', 2800.00, 500.00, \'OFI-BAR\', 20, 1, \'2021-03-10\', \'08:00:00\', TRUE),</p>
-<p>(3, \'Carlos\', \'López\', \'c.lopez@empresa.com\', 2400.00, NULL, \'OFI-MAD\', 30, 1, \'2021-06-01\', \'08:00:00\', TRUE),</p>
-<p>(4, \'Sonia\', \'Benítez\', \'s.benitez@empresa.com\', 1900.00, 150.00, \'OFI-SEV\', 20, 1, \'2022-09-18\', \'08:30:00\', TRUE);</p>
+<p>(2, 'Beatriz', 'Ruiz', 'b.ruiz@empresa.com', 2800.00, 500.00, 'OFI-BAR', 20, 1, '2021-03-10', '08:00:00', TRUE),</p>
+<p>(3, 'Carlos', 'López', 'c.lopez@empresa.com', 2400.00, NULL, 'OFI-MAD', 30, 1, '2021-06-01', '08:00:00', TRUE),</p>
+<p>(4, 'Sonia', 'Benítez', 's.benitez@empresa.com', 1900.00, 150.00, 'OFI-SEV', 20, 1, '2022-09-18', '08:30:00', TRUE);</p>
 <p>-- Técnicos y personal operativo</p>
 <p>INSERT INTO empleado (codigo_empleado, nombre, apellido1, email, salario, comision, codigo_oficina, codigo_departamento, codigo_jefe, fecha_contratacion, hora_entrada, activo) VALUES</p>
-<p>(5, \'José\', \'Sanz\', \'j@empresa.com\', 1500.00, NULL, \'OFI-MAD\', 30, 3, \'2023-11-20\', \'08:00:00\', TRUE),</p>
-<p>(6, \'Diana\', \'Mendoza\', \'d.mendoza@empresa.com\', 1450.00, NULL, \'OFI-BAR\', 30, 3, \'2024-02-01\', \'08:15:00\', TRUE),</p>
-<p>(7, \'Felipe\', \'Torres\', \'f.torres@empresa.com\', 1200.00, 50.00, \'OFI-SEV\', 20, 4, \'2024-05-15\', \'09:00:00\', FALSE), -- Empleado inactivo</p>
-<p>(8, \'Elena\', \'Guerrero\', \'e.guerrero@empresa.com\', 1700.00, NULL, \'OFI-VAL\', 40, 1, \'2022-10-10\', \'08:30:00\', TRUE);</p>
+<p>(5, 'José', 'Sanz', 'j@empresa.com', 1500.00, NULL, 'OFI-MAD', 30, 3, '2023-11-20', '08:00:00', TRUE),</p>
+<p>(6, 'Diana', 'Mendoza', 'd.mendoza@empresa.com', 1450.00, NULL, 'OFI-BAR', 30, 3, '2024-02-01', '08:15:00', TRUE),</p>
+<p>(7, 'Felipe', 'Torres', 'f.torres@empresa.com', 1200.00, 50.00, 'OFI-SEV', 20, 4, '2024-05-15', '09:00:00', FALSE), -- Empleado inactivo</p>
+<p>(8, 'Elena', 'Guerrero', 'e.guerrero@empresa.com', 1700.00, NULL, 'OFI-VAL', 40, 1, '2022-10-10', '08:30:00', TRUE);</p>
 <p>-- Inserciones en CLIENTE (Con combinaciones booleanas y límites de créditos diversos)</p>
 <p>INSERT INTO cliente (codigo_cliente, nombre_cliente, codigo_empleado_rep_ventas, pais, es_premium, limite_credito, fecha_alta) VALUES</p>
-<p>(101, \'Jardines de Almería S.L.\', 2, \'España\', TRUE, 50000.00, \'2022-01-10 10:30:00\'),</p>
-<p>(102, \'Viveros del Cantábrico\', 4, \'España\', FALSE, 12000.00, \'2023-04-15 11:00:00\'),</p>
-<p>(103, \'Suministros Globales Portugal\', 2, \'Portugal\', TRUE, 75000.00, \'2023-08-20 09:15:00\'),</p>
-<p>(104, \'Cliente Autónomo Huerto\', NULL, \'España\', FALSE, 500.00, \'2024-11-01 16:45:00\'),</p>
-<p>(105, \'Boutique Floral París\', 4, \'Francia\', TRUE, 120000.00, \'2025-02-18 12:00:00\'),</p>
-<p>(106, \'AgroInsumos del Sur S.A.\', 2, \'España\', TRUE, 45000.00, \'2025-05-30 08:30:00\'),</p>
-<p>(107, \'Horticultura Silvestre\', NULL, \'Chile\', FALSE, 3000.00, \'2026-01-15 14:22:00\'),</p>
-<p>(108, \'Jardines de Toscana\', 8, \'Italia\', TRUE, 90000.00, \'2026-03-10 10:00:00\');</p>
+<p>(101, 'Jardines de Almería S.L.', 2, 'España', TRUE, 50000.00, '2022-01-10 10:30:00'),</p>
+<p>(102, 'Viveros del Cantábrico', 4, 'España', FALSE, 12000.00, '2023-04-15 11:00:00'),</p>
+<p>(103, 'Suministros Globales Portugal', 2, 'Portugal', TRUE, 75000.00, '2023-08-20 09:15:00'),</p>
+<p>(104, 'Cliente Autónomo Huerto', NULL, 'España', FALSE, 500.00, '2024-11-01 16:45:00'),</p>
+<p>(105, 'Boutique Floral París', 4, 'Francia', TRUE, 120000.00, '2025-02-18 12:00:00'),</p>
+<p>(106, 'AgroInsumos del Sur S.A.', 2, 'España', TRUE, 45000.00, '2025-05-30 08:30:00'),</p>
+<p>(107, 'Horticultura Silvestre', NULL, 'Chile', FALSE, 3000.00, '2026-01-15 14:22:00'),</p>
+<p>(108, 'Jardines de Toscana', 8, 'Italia', TRUE, 90000.00, '2026-03-10 10:00:00');</p>
 <p>-- Inserciones en FABRICANTE (Incluso con bloques descriptivos extensos TEXT)</p>
 <p>INSERT INTO fabricante (codigo, nombre, pais, descripcion) VALUES</p>
-<p>(1, \'Bellota\', \'España\', \'Fabricante líder en herramientas de mano de forjado de alta resistencia y durabilidad para agricultura.\'),</p>
-<p>(2, \'Gardena\', \'Alemania\', \'Líder europeo en herramientas de riego inteligente, robótica de jardín y accesorios ergonómicos.\'),</p>
-<p>(3, \'Husqvarna\', \'Suecia\', \'Maquinaria pesada forestal y de jardinería profesional, incluyendo motosierras, sopladoras e hilos de corte.\'),</p>
-<p>(4, \'Xiaomi\', \'China\', \'Marca global de tecnología inteligente, incluyendo sensores de humedad de tierra IoT y control inteligente de invernaderos.\'),</p>
-<p>(5, \'Sanz\', \'España\', \'Distribuidor tradicional de abonos minerales de lenta liberación y fitosanitarios domésticos ecológicos.\'),</p>
-<p>(6, \'Fiskars\', \'Finlandia\', \'Herramientas de corte de precisión, tijeras de podar de alta gama y hachas ligeras con tecnología de absorción.\');</p>
+<p>(1, 'Bellota', 'España', 'Fabricante líder en herramientas de mano de forjado de alta resistencia y durabilidad para agricultura.'),</p>
+<p>(2, 'Gardena', 'Alemania', 'Líder europeo en herramientas de riego inteligente, robótica de jardín y accesorios ergonómicos.'),</p>
+<p>(3, 'Husqvarna', 'Suecia', 'Maquinaria pesada forestal y de jardinería profesional, incluyendo motosierras, sopladoras e hilos de corte.'),</p>
+<p>(4, 'Xiaomi', 'China', 'Marca global de tecnología inteligente, incluyendo sensores de humedad de tierra IoT y control inteligente de invernaderos.'),</p>
+<p>(5, 'Sanz', 'España', 'Distribuidor tradicional de abonos minerales de lenta liberación y fitosanitarios domésticos ecológicos.'),</p>
+<p>(6, 'Fiskars', 'Finlandia', 'Herramientas de corte de precisión, tijeras de podar de alta gama y hachas ligeras con tecnología de absorción.');</p>
 <p>-- Inserciones en PRODUCTO (Gamas: Herramientas, Frutales, Ornamentales)</p>
 <p>INSERT INTO producto (codigo_producto, nombre, precio_venta, gama, codigo_fabricante, stock_seguridad) VALUES</p>
-<p>(\'PROD-H01\', \'Maza de goma pesada\', 125.50, \'Herramientas\', 1, 15),</p>
-<p>(\'PROD-H02\', \'Tijera de podar ergonómica\', 45.00, \'Herramientas\', 2, 30),</p>
-<p>(\'PROD-H03\', \'Hacha de mano Fiskars X7\', 55.00, \'Herramientas\', 6, 12),</p>
-<p>(\'PROD-F01\', \'Manzano de flor injertado\', 85.00, \'Frutales\', 1, 5),</p>
-<p>(\'PROD-F02\', \'Cerezo japonés\', 150.00, \'Frutales\', 2, 8),</p>
-<p>(\'PROD-F03\', \'Limonero de cuatro estaciones\', 110.00, \'Frutales\', 5, 4),</p>
-<p>(\'PROD-O01\', \'Rosa silvestre\', 25.00, \'Ornamentales\', 1, 50),</p>
-<p>(\'PROD-O02\', \'Maza de madera de arce\', 75.00, \'Ornamentales\', 3, 20),</p>
-<p>(\'PROD-O03\', \'Orquídea Phalaenopsis Premium\', 35.00, \'Ornamentales\', 5, 25),</p>
-<p>(\'PROD-O04\', \'Sensor de humedad IoT Bluetooth\', 19.99, \'Ornamentales\', 4, 100);</p>
+<p>('PROD-H01', 'Maza de goma pesada', 125.50, 'Herramientas', 1, 15),</p>
+<p>('PROD-H02', 'Tijera de podar ergonómica', 45.00, 'Herramientas', 2, 30),</p>
+<p>('PROD-H03', 'Hacha de mano Fiskars X7', 55.00, 'Herramientas', 6, 12),</p>
+<p>('PROD-F01', 'Manzano de flor injertado', 85.00, 'Frutales', 1, 5),</p>
+<p>('PROD-F02', 'Cerezo japonés', 150.00, 'Frutales', 2, 8),</p>
+<p>('PROD-F03', 'Limonero de cuatro estaciones', 110.00, 'Frutales', 5, 4),</p>
+<p>('PROD-O01', 'Rosa silvestre', 25.00, 'Ornamentales', 1, 50),</p>
+<p>('PROD-O02', 'Maza de madera de arce', 75.00, 'Ornamentales', 3, 20),</p>
+<p>('PROD-O03', 'Orquídea Phalaenopsis Premium', 35.00, 'Ornamentales', 5, 25),</p>
+<p>('PROD-O04', 'Sensor de humedad IoT Bluetooth', 19.99, 'Ornamentales', 4, 100);</p>
 <p>-- Inserciones en PEDIDO (Combina fecha, hora y fecha esperada/entrega precisa)</p>
 <p>INSERT INTO pedido (codigo_pedido, codigo_cliente, fecha_pedido, hora_pedido, fecha_esperada, fecha_entrega, comentarios) VALUES</p>
-<p>(501, 101, \'2026-05-15\', \'09:30:00\', \'2026-06-01\', \'2026-05-31 14:30:00\', \'Cliente solicita descarga en muelle posterior.\'),</p>
-<p>(502, 102, \'2026-06-01\', \'11:15:00\', \'2026-06-15\', \'2026-06-20 18:00:00\', \'Retraso logístico ajeno a fábrica. Compensar portes.\'),</p>
-<p>(503, 101, \'2026-06-18\', \'08:00:00\', \'2026-07-01\', NULL, \'Pendiente de confirmación de aduanas.\'),</p>
-<p>(504, 105, \'2026-06-10\', \'16:00:00\', \'2026-06-25\', \'2026-06-24 10:15:00\', \'Pedido internacional prioritario.\'),</p>
-<p>(505, 103, \'2026-06-12\', \'12:45:00\', \'2026-06-28\', NULL, \'En tránsito terrestre internacional.\'),</p>
-<p>(506, 106, \'2026-06-14\', \'10:00:00\', \'2026-06-30\', \'2026-06-29 09:00:00\', \'Entregado en palets termo-sellados.\'),</p>
-<p>(507, 108, \'2026-06-15\', \'17:30:00\', \'2026-07-05\', NULL, \'Envío especial consolidado.\'),</p>
-<p>(508, 101, \'2026-06-16\', \'14:20:00\', \'2026-07-01\', NULL, \'Segundo pedido recurrente del mes.\');</p>
+<p>(501, 101, '2026-05-15', '09:30:00', '2026-06-01', '2026-05-31 14:30:00', 'Cliente solicita descarga en muelle posterior.'),</p>
+<p>(502, 102, '2026-06-01', '11:15:00', '2026-06-15', '2026-06-20 18:00:00', 'Retraso logístico ajeno a fábrica. Compensar portes.'),</p>
+<p>(503, 101, '2026-06-18', '08:00:00', '2026-07-01', NULL, 'Pendiente de confirmación de aduanas.'),</p>
+<p>(504, 105, '2026-06-10', '16:00:00', '2026-06-25', '2026-06-24 10:15:00', 'Pedido internacional prioritario.'),</p>
+<p>(505, 103, '2026-06-12', '12:45:00', '2026-06-28', NULL, 'En tránsito terrestre internacional.'),</p>
+<p>(506, 106, '2026-06-14', '10:00:00', '2026-06-30', '2026-06-29 09:00:00', 'Entregado en palets termo-sellados.'),</p>
+<p>(507, 108, '2026-06-15', '17:30:00', '2026-07-05', NULL, 'Envío especial consolidado.'),</p>
+<p>(508, 101, '2026-06-16', '14:20:00', '2026-07-01', NULL, 'Segundo pedido recurrente del mes.');</p>
 <p>-- Inserciones en GRADO_NOMINA</p>
 <p>INSERT INTO grado_nomina (grado_salarial, salario_minimo, salario_maximo) VALUES</p>
 <p>(1, 1000.00, 1999.99),</p>

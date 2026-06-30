@@ -542,8 +542,8 @@
 <p><strong>Instrucciones de 20 de mayo de 2026</strong> de la Dirección General de Formación Profesional y Educación Permanente, por las que se establecen aspectos relativos a la evaluación final del alumnado de los grados D y E para los centros docentes de Andalucía.</p>
 </li>
 </ul>
-<pre><code>&lt;!-- --&gt;
-</code></pre>
+<!-- -->
+
 <ul>
 <li>
 <p><strong>Horas semanales de módulo:</strong> 6 horas.</p>
@@ -586,53 +586,232 @@
 </ul>
 <h1 id="3-resultados-de-aprendizaje-y-criterios-de-evaluacion">3. RESULTADOS DE APRENDIZAJE Y CRITERIOS DE EVALUACIÓN</h1>
 <p>A continuación, se detalla la ponderación curricular que se asignará en la plataforma Séneca para cada <strong>Resultado de Aprendizaje (RA)</strong>, desglosando asimismo el <strong>peso relativo porcentual</strong> que tiene cada uno de sus <strong>Criterios de Evaluación (CE)</strong> asociados para el cálculo interno de la nota del RA correspondiente.</p>
-<hr />
-<p><strong>RA / Código</strong>                                                                                                                  <strong>Criterio de Evaluación / Descripción</strong>                                                                                                     <strong>Peso</strong></p>
-<hr />
-<p><strong>RA1: Almacena información en bases de datos utilizando sistemas de gestión de bases de datos. (Peso Total: 10%)</strong>                                                                                                                                                           </p>
-<p>CE1.a                                                                                                                            Se han identificado los sistemas de almacenamiento de la información.                                                                        15%</p>
-<p>CE1.b                                                                                                                            Se han analizado las ventajas y desventajas del uso de SGBD frente a ficheros tradicionales.                                                 20%</p>
-<p>CE1.c                                                                                                                            Se han descrito los componentes y funciones del SGBD.                                                                                        20%</p>
-<p>CE1.d                                                                                                                            Se han clasificado los SGBD según el modelo de datos y el nivel de concurrencia.                                                             15%</p>
-<p>CE1.e                                                                                                                            Se ha identificado el diccionario de datos y su utilidad en el SGBD.                                                                         15%</p>
-<p>CE1.f                                                                                                                            Se ha analizado la arquitectura ANSI/SPARC de tres niveles de un SGBD.                                                                       15%</p>
-<p><strong>RA2: Diseña modelos lógicos relacionales normalizándolos hasta la tercera forma normal. (Peso Total: 15%)</strong>                                                                                                                                                                 </p>
-<p>CE2.a                                                                                                                            Se han identificado los elementos que conforman el modelo relacional.                                                                        10%</p>
-<p>CE2.b                                                                                                                            Se han transformado esquemas conceptuales (Entidad/Relación) a esquemas lógicos relacionales.                                                30%</p>
-<p>CE2.c                                                                                                                            Se han determinado las claves primarias, ajenas, alternativas y candidatas de las relaciones.                                                15%</p>
-<p>CE2.d                                                                                                                            Se han analizado y aplicado las restricciones de integridad (entidad, referencial y dominio).                                                15%</p>
-<p>CE2.e                                                                                                                            Se han normalizado los esquemas lógicos relacionales aplicando las reglas hasta la tercera forma normal (3FN).                               20%</p>
-<p>CE2.f                                                                                                                            Se han dibujado esquemas lógicos relacionales utilizando herramientas de modelado de datos.                                                  10%</p>
-<p><strong>RA3: Realiza la estructura física de una base de datos utilizando lenguajes de definición de datos. (Peso Total: 15%)</strong>                                                                                                                                                     </p>
-<p>CE3.a                                                                                                                            Se han identificado los tipos de datos disponibles en el SGBD de referencia.                                                                 10%</p>
-<p>CE3.b                                                                                                                            Se han creado las tablas de la base de datos aplicando el lenguaje de definición de datos (DDL).                                             25%</p>
-<p>CE3.c                                                                                                                            Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.                                           25%</p>
-<p>CE3.d                                                                                                                            Se han implementado restricciones semánticas adicionales de columna y tabla (CHECK, UNIQUE, NOT NULL).                                       15%</p>
-<p>CE3.e                                                                                                                            Se han creado índices y vistas lógicas para optimizar el acceso y estructurar permisos.                                                      15%</p>
-<p>CE3.f                                                                                                                            Se han modificado y eliminado estructuras de la base de datos (ALTER, DROP).                                                                 10%</p>
-<p><strong>RA4: Consulta la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 25%)</strong>                                                                                                                                                </p>
-<p>CE4.a                                                                                                                            Se han diseñado consultas de selección simples (proyección, filtrado mediante WHERE, ordenación).                                            20%</p>
-<p>CE4.b                                                                                                                            Se han utilizado operadores lógicos, relacionales, de comparación de patrones y manejo de nulos.                                             20%</p>
-<p>CE4.c                                                                                                                            Se han diseñado consultas agregadas utilizando funciones de grupo y cláusulas de agrupamiento (GROUP BY, HAVING).                            20%</p>
-<p>CE4.d                                                                                                                            Se han realizado composiciones internas (INNER JOIN) y externas (LEFT, RIGHT, FULL OUTER JOIN) de tablas.                                    20%</p>
-<p>CE4.e                                                                                                                            Se han diseñado subconsultas correlacionadas y no correlacionadas mediante operadores de pertenencia y comparación (IN, EXISTS, ANY, ALL).   20%</p>
-<p><strong>RA5: Modifica la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 15%)</strong>                                                                                                                                                </p>
-<p>CE5.a                                                                                                                            Se han ejecutado sentencias de inserción de filas individuales y masivas (INSERT INTO ... VALUES / SELECT).                                 20%</p>
-<p>CE5.b                                                                                                                            Se han actualizado registros en tablas aplicando filtros complejos (UPDATE).                                                                 20%</p>
-<p>CE5.c                                                                                                                            Se han borrado registros de tablas aplicando filtros y gestionando borrados en cascada (DELETE).                                             20%</p>
-<p>CE5.d                                                                                                                            Se ha verificado el funcionamiento del control de transacciones (propiedades ACID: COMMIT, ROLLBACK).                                        15%</p>
-<p>CE5.e                                                                                                                            Se han analizado los problemas de acceso simultáneo a los datos, el concepto de bloqueo y las políticas de ejecución de transacciones.       15%</p>
-<p>CE5.f                                                                                                                            Se han adoptado medidas de configuración para mantener la integridad y consistencia de la información en entornos concurrentes.              10%</p>
-<p><strong>RA6: Desarrolla procedimientos almacenados y disparadores utilizando lenguajes de programación. (Peso Total: 20%)</strong>                                                                                                                                                         </p>
-<p>CE6.a                                                                                                                            Se han descrito las ventajas y áreas de utilización de los disparadores y de las tareas administrativas.                                     10%</p>
-<p>CE6.b                                                                                                                            Se han descrito los distintos métodos de ejecución de guiones (scripts).                                                                     10%</p>
-<p>CE6.c                                                                                                                            Se han identificado las herramientas disponibles para redactar guiones.                                                                      10%</p>
-<p>CE6.d                                                                                                                            Se han definido y utilizado guiones para automatizar tareas.                                                                                 20%</p>
-<p>CE6.e                                                                                                                            Se han identificado los eventos susceptibles de activar disparadores.                                                                        10%</p>
-<p>CE6.f                                                                                                                            Se han definido disparadores (triggers).                                                                                                     20%</p>
-<p>CE6.g                                                                                                                            Se han utilizado estructuras de control de flujo (bucles, condicionales).                                                                    10%</p>
-<p>CE6.h                                                                                                                            Se han adoptado medidas para mantener la integridad y consistencia de la información mediante disparadores y rutinas.                        10%</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th><strong>RA / Código</strong></th>
+<th><strong>Criterio de Evaluación / Descripción</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RA1: Almacena información en bases de datos utilizando sistemas de gestión de bases de datos. (Peso Total: 10%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE1.a</td>
+<td>Se han identificado los sistemas de almacenamiento de la información.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE1.b</td>
+<td>Se han analizado las ventajas y desventajas del uso de SGBD frente a ficheros tradicionales.</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE1.c</td>
+<td>Se han descrito los componentes y funciones del SGBD.</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE1.d</td>
+<td>Se han clasificado los SGBD según el modelo de datos y el nivel de concurrencia.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE1.e</td>
+<td>Se ha identificado el diccionario de datos y su utilidad en el SGBD.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE1.f</td>
+<td>Se ha analizado la arquitectura ANSI/SPARC de tres niveles de un SGBD.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td><strong>RA2: Diseña modelos lógicos relacionales normalizándolos hasta la tercera forma normal. (Peso Total: 15%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE2.a</td>
+<td>Se han identificado los elementos que conforman el modelo relacional.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE2.b</td>
+<td>Se han transformado esquemas conceptuales (Entidad/Relación) a esquemas lógicos relacionales.</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>CE2.c</td>
+<td>Se han determinado las claves primarias, ajenas, alternativas y candidatas de las relaciones.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE2.d</td>
+<td>Se han analizado y aplicado las restricciones de integridad (entidad, referencial y dominio).</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE2.e</td>
+<td>Se han normalizado los esquemas lógicos relacionales aplicando las reglas hasta la tercera forma normal (3FN).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE2.f</td>
+<td>Se han dibujado esquemas lógicos relacionales utilizando herramientas de modelado de datos.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>RA3: Realiza la estructura física de una base de datos utilizando lenguajes de definición de datos. (Peso Total: 15%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE3.a</td>
+<td>Se han identificado los tipos de datos disponibles en el SGBD de referencia.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE3.b</td>
+<td>Se han creado las tablas de la base de datos aplicando el lenguaje de definición de datos (DDL).</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>CE3.c</td>
+<td>Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>CE3.d</td>
+<td>Se han implementado restricciones semánticas adicionales de columna y tabla (CHECK, UNIQUE, NOT NULL).</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE3.e</td>
+<td>Se han creado índices y vistas lógicas para optimizar el acceso y estructurar permisos.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE3.f</td>
+<td>Se han modificado y eliminado estructuras de la base de datos (ALTER, DROP).</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>RA4: Consulta la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 25%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE4.a</td>
+<td>Se han diseñado consultas de selección simples (proyección, filtrado mediante WHERE, ordenación).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE4.b</td>
+<td>Se han utilizado operadores lógicos, relacionales, de comparación de patrones y manejo de nulos.</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE4.c</td>
+<td>Se han diseñado consultas agregadas utilizando funciones de grupo y cláusulas de agrupamiento (GROUP BY, HAVING).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE4.d</td>
+<td>Se han realizado composiciones internas (INNER JOIN) y externas (LEFT, RIGHT, FULL OUTER JOIN) de tablas.</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE4.e</td>
+<td>Se han diseñado subconsultas correlacionadas y no correlacionadas mediante operadores de pertenencia y comparación (IN, EXISTS, ANY, ALL).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td><strong>RA5: Modifica la información almacenada en bases de datos utilizando lenguajes de manipulación de datos. (Peso Total: 15%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE5.a</td>
+<td>Se han ejecutado sentencias de inserción de filas individuales y masivas (INSERT INTO ... VALUES / SELECT).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE5.b</td>
+<td>Se han actualizado registros en tablas aplicando filtros complejos (UPDATE).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE5.c</td>
+<td>Se han borrado registros de tablas aplicando filtros y gestionando borrados en cascada (DELETE).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE5.d</td>
+<td>Se ha verificado el funcionamiento del control de transacciones (propiedades ACID: COMMIT, ROLLBACK).</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE5.e</td>
+<td>Se han analizado los problemas de acceso simultáneo a los datos, el concepto de bloqueo y las políticas de ejecución de transacciones.</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>CE5.f</td>
+<td>Se han adoptado medidas de configuración para mantener la integridad y consistencia de la información en entornos concurrentes.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>RA6: Desarrolla procedimientos almacenados y disparadores utilizando lenguajes de programación. (Peso Total: 20%)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CE6.a</td>
+<td>Se han descrito las ventajas y áreas de utilización de los disparadores y de las tareas administrativas.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE6.b</td>
+<td>Se han descrito los distintos métodos de ejecución de guiones (scripts).</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE6.c</td>
+<td>Se han identificado las herramientas disponibles para redactar guiones.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE6.d</td>
+<td>Se han definido y utilizado guiones para automatizar tareas.</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE6.e</td>
+<td>Se han identificado los eventos susceptibles de activar disparadores.</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE6.f</td>
+<td>Se han definido disparadores (triggers).</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>CE6.g</td>
+<td>Se han utilizado estructuras de control de flujo (bucles, condicionales).</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>CE6.h</td>
+<td>Se han adoptado medidas para mantener la integridad y consistencia de la información mediante disparadores y rutinas.</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
 <h1 id="4-contenidos-y-distribucion-temporal">4. CONTENIDOS Y DISTRIBUCIÓN TEMPORAL</h1>
 <p>De acuerdo con el calendario oficial previsto para el curso académico <strong>2026/2027</strong> en la Comunidad Autónoma de Andalucía, el régimen lectivo se estructurará de la siguiente forma, contemplando un <strong>periodo de estancia dual obligatoria de 3 semanas que comienza una semana antes de Semana Santa, con una jornada de 7 horas diarias</strong>:</p>
 <h3 id="calendario-general-del-curso-20262027">Calendario General del Curso 2026/2027:</h3>
@@ -651,18 +830,84 @@
 </li>
 </ul>
 <h3 id="distribucion-temporal-y-secuenciacion-de-unidades-de-trabajo-ut">Distribución Temporal y Secuenciación de Unidades de Trabajo (UT):</h3>
-<hr />
-<p><strong>UT</strong>    <strong>Título</strong>                                         <strong>Horas</strong>   <strong>Periodo</strong>   <strong>RAs</strong>   <strong>Trimestre</strong></p>
-<hr />
-<p><strong>UT1</strong>   Almacenamiento de la información                   12 h        Sep           RA1       1º</p>
-<p><strong>UT2</strong>   Diseño del modelo conceptual                       18 h        Oct           RA2       1º</p>
-<p><strong>UT3</strong>   Modelo relacional                                  18 h        Oc - Nov      RA2       1º</p>
-<p><strong>UT4</strong>   Lenguaje de definición de datos                    36 h        Nov - Dic     RA3       1º</p>
-<p><strong>UT5</strong>   Realización de consultas                           54 h        Ene - Feb     RA4       2º</p>
-<p><strong>UT6</strong>   Manipulación de datos y control de transacciones   30 h        Mar - Abr     RA5       2º y 3º</p>
-<p><strong>UT7</strong>   Programación de bases de datos                     12 h        May - Jun     RA6       3º</p>
-<p><strong>UT8</strong>   Gestión de la seguridad                            12 h                      RA5       3º</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th><strong>UT</strong></th>
+<th><strong>Título</strong></th>
+<th><strong>Horas</strong></th>
+<th><strong>Periodo</strong></th>
+<th><strong>RAs</strong></th>
+<th><strong>Trimestre</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UT1</strong></td>
+<td>Almacenamiento de la información</td>
+<td>12 h</td>
+<td>Sep</td>
+<td>RA1</td>
+<td>1º</td>
+</tr>
+<tr>
+<td><strong>UT2</strong></td>
+<td>Diseño del modelo conceptual</td>
+<td>18 h</td>
+<td>Oct</td>
+<td>RA2</td>
+<td>1º</td>
+</tr>
+<tr>
+<td><strong>UT3</strong></td>
+<td>Modelo relacional</td>
+<td>18 h</td>
+<td>Oc - Nov</td>
+<td>RA2</td>
+<td>1º</td>
+</tr>
+<tr>
+<td><strong>UT4</strong></td>
+<td>Lenguaje de definición de datos</td>
+<td>36 h</td>
+<td>Nov - Dic</td>
+<td>RA3</td>
+<td>1º</td>
+</tr>
+<tr>
+<td><strong>UT5</strong></td>
+<td>Realización de consultas</td>
+<td>54 h</td>
+<td>Ene - Feb</td>
+<td>RA4</td>
+<td>2º</td>
+</tr>
+<tr>
+<td><strong>UT6</strong></td>
+<td>Manipulación de datos y control de transacciones</td>
+<td>30 h</td>
+<td>Mar - Abr</td>
+<td>RA5</td>
+<td>2º y 3º</td>
+</tr>
+<tr>
+<td><strong>UT7</strong></td>
+<td>Programación de bases de datos</td>
+<td>12 h</td>
+<td>May - Jun</td>
+<td>RA6</td>
+<td>3º</td>
+</tr>
+<tr>
+<td><strong>UT8</strong></td>
+<td>Gestión de la seguridad</td>
+<td>12 h</td>
+<td></td>
+<td>RA5</td>
+<td>3º</td>
+</tr>
+</tbody>
+</table>
 <h1 id="5-formacion-dual">5. FORMACIÓN DUAL</h1>
 <p>Siguiendo las directrices del <strong>Decreto 165/2024</strong> y la <strong>Orden de 26 de septiembre de 2025</strong>, y considerando que el alumnado se encuentra en el primer curso con un nivel de conocimientos inicial, se selecciona el siguiente criterio de evaluación para ser consolidados durante la estancia de <strong>105 horas entre marzo y abril de 2027</strong>.</p>
 <h3 id="criterios-de-evaluacion-seleccionados-para-la-alternancia-dual">Criterios de Evaluación seleccionados para la Alternancia Dual:</h3>
@@ -750,8 +995,8 @@
 <p><strong>Resultados de Aprendizaje evaluados:</strong> RA1 (10% peso anual), RA2 (15% peso anual), RA3 (15% peso anual).</p>
 </li>
 <li>
-<p><strong>Fórmula de cálculo del trimestre:</strong>\
-    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image5.png" />{width="6.458333333333333in" height="0.4583333333333333in"}</p>
+<p><strong>Fórmula de cálculo del trimestre:</strong><br />
+    &gt; <img src="./docs/images/Programación Gestión de Bases de Datos ASIR/media/image5.png" style="width:6.45833in;height:0.45833in" /></p>
 </li>
 </ul>
 <h3 id="b-obtencion-de-la-calificacion-del-segundo-trimestre-2ot">B. Obtención de la Calificación del Segundo Trimestre (2ºT)</h3>
@@ -760,8 +1005,8 @@
 <p><strong>Resultados de Aprendizaje evaluados:</strong> RA4 (25% peso anual), RA5 (Parte - 10% peso anual).</p>
 </li>
 <li>
-<p><strong>Fórmula de cálculo del trimestre:</strong>\
-    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image2.png" />{width="6.458333333333333in" height="0.4895833333333333in"}</p>
+<p><strong>Fórmula de cálculo del trimestre:</strong><br />
+    &gt; <img src="./docs/images/Programación Gestión de Bases de Datos ASIR/media/image2.png" style="width:6.45833in;height:0.48958in" /></p>
 </li>
 </ul>
 <h3 id="c-obtencion-de-la-calificacion-de-la-primera-evaluacion-final">C. Obtención de la Calificación de la Primera Evaluación Final</h3>
@@ -773,13 +1018,13 @@
 <li>
 <p><strong>Paso 2: Integración de la nota DUAL en los RAs correspondientes:</strong></p>
 <ul>
-<li>La calificación final del <strong>RA3</strong> se obtendrá mediante:\
-    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image3.png" />{width="6.458333333333333in" height="0.5045570866141732in"}</li>
+<li>La calificación final del <strong>RA3</strong> se obtendrá mediante:<br />
+    &gt; <img src="./docs/images/Programación Gestión de Bases de Datos ASIR/media/image3.png" style="width:6.45833in;height:0.50456in" /></li>
 </ul>
 </li>
 <li>
-<p><strong>Paso 3: Cálculo de la Nota Primera evaluación Final:</strong>\
-    &gt; <img alt="" src="../images/Programaci%C3%B3n%20Gesti%C3%B3n%20de%20Bases%20de%20Datos%20ASIR/media/image4.png" />{width="6.458333333333333in" height="0.540909886264217in"}</p>
+<p><strong>Paso 3: Cálculo de la Nota Primera evaluación Final:</strong><br />
+    &gt; <img src="./docs/images/Programación Gestión de Bases de Datos ASIR/media/image4.png" style="width:6.45833in;height:0.54091in" /></p>
 </li>
 </ul>
 <p><strong><em>Requisito de superación:</em></strong> El alumnado debe obtener una calificación final igual o superior a 5 (sin decimales) y tener aprobados todos los Resultados de Aprendizaje evaluados en el centro con una nota mínima de 5 de forma independiente.</p>
