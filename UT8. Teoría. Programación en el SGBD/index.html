@@ -573,19 +573,58 @@
 <p>Un procedimiento almacenado es un conjunto de sentencias SQL preparadas y guardadas en el SGBD para poder ser reutilizadas repetidamente de forma eficiente [7].</p>
 <h2 id="21-sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso de DELIMITER</h2>
 <p>Por defecto, el SGBD interpreta el carácter punto y coma (;) como el terminador de una sentencia SQL. Al definir un bloque de código procedimental que contiene múltiples sentencias finalizadas con ;, necesitamos indicarle al motor de MySQL que cambie temporalmente este símbolo para que compile todo el bloque como una sola instrucción. Esto se logra con la directiva DELIMITER [7].</p>
-<p>-- Cambiamos el terminador por defecto a doble barra inclinada</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS ejemplo_basico//</p>
-<p>CREATE PROCEDURE ejemplo_basico()</p>
-<p>BEGIN</p>
-<p>-- El terminador temporal es //, el ; interno no interrumpe la compilación</p>
-<p>SELECT 'Procedimiento almacenado de Jardinería inicializado correctamente' AS mensaje;</p>
-<p>END//</p>
-<p>-- Restauramos el delimitador estándar</p>
-<p>DELIMITER ;</p>
-<p>-- Invocación del procedimiento</p>
-<p>CALL ejemplo_basico();</p>
-<h2 id="22-gestion-de-parametros-in-out-y-inout">2.2 Gestión de Parámetros: IN, OUT y INOUT</h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">-- Cambiamos el terminador por defecto a doble barra inclinada</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ejemplo_basico</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemplo_basico</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="c1">-- El terminador temporal es //, el ; interno no interrumpe la compilación</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Procedimiento almacenado de Jardinería inicializado correctamente&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="c1">-- Restauramos el delimitador estándar</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="c1">-- Invocación del procedimiento</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">CALL</span><span class="w"> </span><span class="n">ejemplo_basico</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+2.2 Gestión de Parámetros: IN, OUT y INOUT</p>
 <p>MySQL permite especificar tres tipos de dirección para los parámetros de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
 <ul>
 <li>
@@ -600,69 +639,251 @@
 </ul>
 <p>A continuación se muestra la implementación de un procedimiento para actualizar el límite de crédito de un cliente de la base de datos <strong>Jardinería</strong> utilizando un parámetro IN, y otro procedimiento procedimental para calcular estadísticas de un cliente con parámetros OUT.</p>
 <p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//</p>
-<p>CREATE PROCEDURE sp_actualizar_limite_credito(</p>
-<p>IN p_codigo_cliente INT,</p>
-<p>IN p_porcentaje_incremento DECIMAL(5,2)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>-- Modifica el límite de crédito aplicando el incremento porcentual</p>
-<p>UPDATE cliente</p>
-<p>SET limite_credito = limite_credito * (1 + (p_porcentaje_incremento / 100))</p>
-<p>WHERE codigo_cliente = p_codigo_cliente;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>-- Probamos el procedimiento con el cliente 101 incrementando un 15.5% su crédito</p>
-<p>CALL sp_actualizar_limite_credito(101, 15.50);</p>
-<p>Ejemplo de parámetros OUT (Extracción de estadísticas de ventas):</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//</p>
-<p>CREATE PROCEDURE sp_obtener_estadisticas_cliente(</p>
-<p>IN p_codigo_cliente INT,</p>
-<p>OUT p_total_pedidos INT,</p>
-<p>OUT p_total_pagado DECIMAL(15,2)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>-- Contamos el número de pedidos realizados por el cliente</p>
-<p>SELECT COUNT(*) INTO p_total_pedidos</p>
-<p>FROM pedido</p>
-<p>WHERE codigo_cliente = p_codigo_cliente;</p>
-<p>-- Calculamos el acumulado total de los pagos registrados por este cliente</p>
-<p>SELECT COALESCE(SUM(total), 0) INTO p_total_pagado</p>
-<p>FROM pago</p>
-<p>WHERE codigo_cliente = p_codigo_cliente;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>-- Invocación utilizando variables de sesión de MySQL para recoger las salidas</p>
-<p>CALL sp_obtener_estadisticas_cliente(101, @pedidos, @pagado);</p>
-<p>-- Visualizamos los resultados</p>
-<p>SELECT @pedidos AS pedidos_realizados, @pagado AS total_euros_pagados;</p>
-<h2 id="23-ambito-de-variables-locales-y-asignaciones-declare-set">2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_actualizar_limite_credito</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_actualizar_limite_credito</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_porcentaje_incremento</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c1">-- Modifica el límite de crédito aplicando el incremento porcentual</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="k">SET</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p_porcentaje_incremento</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="c1">-- Probamos el procedimiento con el cliente 101 incrementando un 15.5% su crédito</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_actualizar_limite_credito</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">.</span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+Ejemplo de parámetros OUT (Extracción de estadísticas de ventas):</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_obtener_estadisticas_cliente</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_obtener_estadisticas_cliente</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">OUT</span><span class="w"> </span><span class="n">p_total_pedidos</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="k">OUT</span><span class="w"> </span><span class="n">p_total_pagado</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1">-- Contamos el número de pedidos realizados por el cliente</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="err">\</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">p_total_pedidos</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pedido</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="c1">-- Calculamos el acumulado total de los pagos registrados por este cliente</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">total</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">p_total_pagado</span><span class="w"></span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"></span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="c1">-- Invocación utilizando variables de sesión de MySQL para recoger las salidas</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_obtener_estadisticas_cliente</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">pedidos</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">pagado</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="c1">-- Visualizamos los resultados</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">pedidos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pedidos_realizados</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">pagado</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_euros_pagados</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+2.3 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</p>
 <p>Las variables internas deben declararse obligatoriamente al principio de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2]. Tras su declaración, se les puede dar un valor inicial con la cláusula DEFAULT o modificarse utilizando SET u obteniendo datos mediante la cláusula INTO dentro de un SELECT.</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//</p>
-<p>CREATE PROCEDURE sp_demo_variables_jardineria(</p>
-<p>IN p_codigo_oficina VARCHAR(10)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>-- Declaración de variables locales tipadas</p>
-<p>DECLARE v_ciudad_oficina VARCHAR(50);</p>
-<p>DECLARE v_cantidad_empleados INT DEFAULT 0;</p>
-<p>-- Asignación directa por consulta DML</p>
-<p>SELECT ciudad INTO v_ciudad_oficina</p>
-<p>FROM oficina</p>
-<p>WHERE codigo_oficina = p_codigo_oficina;</p>
-<p>-- Asignación por recuento</p>
-<p>SELECT COUNT(*) INTO v_cantidad_empleados</p>
-<p>FROM empleado</p>
-<p>WHERE codigo_oficina = p_codigo_oficina;</p>
-<p>-- Presentación de resultados</p>
-<p>SELECT v_ciudad_oficina AS ciudad, v_cantidad_empleados AS num_empleados_activos;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>CALL sp_demo_variables_jardineria('BCN-ES');</p>
-<h1 id="3-funciones-almacenadas">3. FUNCIONES ALMACENADAS</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_demo_variables_jardineria</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_demo_variables_jardineria</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_codigo_oficina</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1">-- Declaración de variables locales tipadas</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_ciudad_oficina</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_cantidad_empleados</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="c1">-- Asignación directa por consulta DML</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">ciudad</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_ciudad_oficina</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="k">FROM</span><span class="w"> </span><span class="n">oficina</span><span class="w"></span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_oficina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_oficina</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="c1">-- Asignación por recuento</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="err">\</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_cantidad_empleados</span><span class="w"></span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"></span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_oficina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_oficina</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="c1">-- Presentación de resultados</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">v_ciudad_oficina</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ciudad</span><span class="p">,</span><span class="w"> </span><span class="n">v_cantidad_empleados</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_empleados_activos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_demo_variables_jardineria</span><span class="p">(</span><span class="s1">&#39;BCN-ES&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+3. FUNCIONES ALMACENADAS</p>
 <p>Una función almacenada es una rutina que toma parámetros de entrada, ejecuta lógica procedural y <strong>devuelve un único valor escalar</strong> al entorno de llamada.</p>
 <h2 id="31-diferencias-con-procedimientos-y-restricciones-de-retorno">3.1 Diferencias con procedimientos y restricciones de retorno</h2>
 <p>A diferencia de los procedimientos almacenados, las funciones:</p>
@@ -695,132 +916,482 @@
 </ul>
 <p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
 <p>Implementación de una función procedimental que calcula la diferencia acumulada entre el total facturado en pedidos al cliente y los pagos que este ha liquidado.</p>
-<p>DELIMITER //</p>
-<p>DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//</p>
-<p>CREATE FUNCTION fn_calcular_deuda_cliente(</p>
-<p>p_codigo_cliente INT</p>
-<p>)</p>
-<p>RETURNS DECIMAL(15,2)</p>
-<p>READS SQL DATA</p>
-<p>BEGIN</p>
-<p>DECLARE v_total_pedidos DECIMAL(15,2) DEFAULT 0.00;</p>
-<p>DECLARE v_total_pagado DECIMAL(15,2) DEFAULT 0.00;</p>
-<p>DECLARE v_deuda DECIMAL(15,2) DEFAULT 0.00;</p>
-<p>-- 1. Calcular el coste total acumulado de todos los pedidos detallados del cliente</p>
-<p>SELECT COALESCE(SUM(dp.cantidad * dp.precio_unidad), 0.00) INTO v_total_pedidos</p>
-<p>FROM pedido p</p>
-<p>JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido</p>
-<p>WHERE p.codigo_cliente = p_codigo_cliente;</p>
-<p>-- 2. Calcular la suma de todos los pagos realizados por el cliente</p>
-<p>SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagado</p>
-<p>FROM pago p</p>
-<p>WHERE p.codigo_cliente = p_codigo_cliente;</p>
-<p>-- 3. Restar para obtener la deuda activa</p>
-<p>SET v_deuda = v_total_pedidos - v_total_pagado;</p>
-<p>RETURN v_deuda;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>-- Invocación directa dentro de una consulta DML SELECT estándar de Jardinería</p>
-<p>SELECT</p>
-<p>codigo_cliente,</p>
-<p>nombre_cliente,</p>
-<p>limite_credito,</p>
-<p>fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo</p>
-<p>FROM cliente</p>
-<p>WHERE ciudad = 'Madrid';</p>
-<h1 id="4-estructuras-de-control-de-flujo">4. ESTRUCTURAS DE CONTROL DE FLUJO</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span>
+<span class="normal"><a href="#__codelineno-4-38">38</a></span>
+<span class="normal"><a href="#__codelineno-4-39">39</a></span>
+<span class="normal"><a href="#__codelineno-4-40">40</a></span>
+<span class="normal"><a href="#__codelineno-4-41">41</a></span>
+<span class="normal"><a href="#__codelineno-4-42">42</a></span>
+<span class="normal"><a href="#__codelineno-4-43">43</a></span>
+<span class="normal"><a href="#__codelineno-4-44">44</a></span>
+<span class="normal"><a href="#__codelineno-4-45">45</a></span>
+<span class="normal"><a href="#__codelineno-4-46">46</a></span>
+<span class="normal"><a href="#__codelineno-4-47">47</a></span>
+<span class="normal"><a href="#__codelineno-4-48">48</a></span>
+<span class="normal"><a href="#__codelineno-4-49">49</a></span>
+<span class="normal"><a href="#__codelineno-4-50">50</a></span>
+<span class="normal"><a href="#__codelineno-4-51">51</a></span>
+<span class="normal"><a href="#__codelineno-4-52">52</a></span>
+<span class="normal"><a href="#__codelineno-4-53">53</a></span>
+<span class="normal"><a href="#__codelineno-4-54">54</a></span>
+<span class="normal"><a href="#__codelineno-4-55">55</a></span>
+<span class="normal"><a href="#__codelineno-4-56">56</a></span>
+<span class="normal"><a href="#__codelineno-4-57">57</a></span>
+<span class="normal"><a href="#__codelineno-4-58">58</a></span>
+<span class="normal"><a href="#__codelineno-4-59">59</a></span>
+<span class="normal"><a href="#__codelineno-4-60">60</a></span>
+<span class="normal"><a href="#__codelineno-4-61">61</a></span>
+<span class="normal"><a href="#__codelineno-4-62">62</a></span>
+<span class="normal"><a href="#__codelineno-4-63">63</a></span>
+<span class="normal"><a href="#__codelineno-4-64">64</a></span>
+<span class="normal"><a href="#__codelineno-4-65">65</a></span>
+<span class="normal"><a href="#__codelineno-4-66">66</a></span>
+<span class="normal"><a href="#__codelineno-4-67">67</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">fn_calcular_deuda_cliente</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">fn_calcular_deuda_cliente</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="n">p_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="k">RETURNS</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">READS</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="k">DATA</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_total_pedidos</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_total_pagado</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="c1">-- 1. Calcular el coste total acumulado de todos los pedidos detallados del cliente</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">dp</span><span class="p">.</span><span class="n">cantidad</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="n">dp</span><span class="p">.</span><span class="n">precio_unidad</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_total_pedidos</span><span class="w"></span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">codigo_pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="p">.</span><span class="n">codigo_pedido</span><span class="w"></span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a><span class="c1">-- 2. Calcular la suma de todos los pagos realizados por el cliente</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">total</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_total_pagado</span><span class="w"></span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="c1">-- 3. Restar para obtener la deuda activa</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a>
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="k">SET</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_total_pedidos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v_total_pagado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="k">RETURN</span><span class="w"> </span><span class="n">v_deuda</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="c1">-- Invocación directa dentro de una consulta DML SELECT estándar de Jardinería</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a>
+<a id="__codelineno-4-57" name="__codelineno-4-57"></a><span class="n">nombre_cliente</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-4-58" name="__codelineno-4-58"></a>
+<a id="__codelineno-4-59" name="__codelineno-4-59"></a><span class="n">limite_credito</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-4-60" name="__codelineno-4-60"></a>
+<a id="__codelineno-4-61" name="__codelineno-4-61"></a><span class="n">fn_calcular_deuda_cliente</span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">saldo_deudor_activo</span><span class="w"></span>
+<a id="__codelineno-4-62" name="__codelineno-4-62"></a>
+<a id="__codelineno-4-63" name="__codelineno-4-63"></a><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-4-64" name="__codelineno-4-64"></a>
+<a id="__codelineno-4-65" name="__codelineno-4-65"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">ciudad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-66" name="__codelineno-4-66"></a>
+<a id="__codelineno-4-67" name="__codelineno-4-67"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+4. ESTRUCTURAS DE CONTROL DE FLUJO</p>
 <p>La programación procedural de bases de datos permite redirigir el orden de procesamiento de las sentencias utilizando estructuras lógicas avanzadas de decisión y repetición.</p>
 <h2 id="41-condicionales-if-then-else-y-case">4.1 Condicionales (IF-THEN-ELSE y CASE)</h2>
 <p>Permiten ejecutar diferentes fragmentos de código basándose en la evaluación de una condición booleana.</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//</p>
-<p>CREATE PROCEDURE sp_evaluar_riesgo_cliente(</p>
-<p>IN p_codigo_cliente INT,</p>
-<p>OUT p_nivel_riesgo VARCHAR(30)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>DECLARE v_deuda DECIMAL(15,2);</p>
-<p>DECLARE v_limite DECIMAL(15,2);</p>
-<p>-- Ejecutamos la llamada a la función previamente programada</p>
-<p>SET v_deuda = fn_calcular_deuda_cliente(p_codigo_cliente);</p>
-<p>-- Extraemos el límite de crédito asignado</p>
-<p>SELECT limite_credito INTO v_limite</p>
-<p>FROM cliente</p>
-<p>WHERE codigo_cliente = p_codigo_cliente;</p>
-<p>-- Bifurcación condicional compleja IF-THEN-ELSE</p>
-<p>IF v_deuda \&lt;= 0.00 THEN</p>
-<p>SET p_nivel_riesgo = 'EXCELENTE (SIN DEUDA)';</p>
-<p>ELSEIF v_deuda > v_limite THEN</p>
-<p>SET p_nivel_riesgo = 'CRÍTICO: LÍMITE EXCEDIDO';</p>
-<p>ELSEIF v_deuda > (v_limite * 0.75) THEN</p>
-<p>SET p_nivel_riesgo = 'ATENCIÓN: DEUDA ELEVADA (>75%)';</p>
-<p>ELSE</p>
-<p>SET p_nivel_riesgo = 'RIESGO BAJO / CONTROLADO';</p>
-<p>END IF;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>CALL sp_evaluar_riesgo_cliente(101, @riesgo);</p>
-<p>SELECT @riesgo AS estado_riesgo_financiero;</p>
-<h2 id="42-estructuras-iterativas-loop-repeat-y-while">4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)</h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span>
+<span class="normal"><a href="#__codelineno-5-36">36</a></span>
+<span class="normal"><a href="#__codelineno-5-37">37</a></span>
+<span class="normal"><a href="#__codelineno-5-38">38</a></span>
+<span class="normal"><a href="#__codelineno-5-39">39</a></span>
+<span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span>
+<span class="normal"><a href="#__codelineno-5-42">42</a></span>
+<span class="normal"><a href="#__codelineno-5-43">43</a></span>
+<span class="normal"><a href="#__codelineno-5-44">44</a></span>
+<span class="normal"><a href="#__codelineno-5-45">45</a></span>
+<span class="normal"><a href="#__codelineno-5-46">46</a></span>
+<span class="normal"><a href="#__codelineno-5-47">47</a></span>
+<span class="normal"><a href="#__codelineno-5-48">48</a></span>
+<span class="normal"><a href="#__codelineno-5-49">49</a></span>
+<span class="normal"><a href="#__codelineno-5-50">50</a></span>
+<span class="normal"><a href="#__codelineno-5-51">51</a></span>
+<span class="normal"><a href="#__codelineno-5-52">52</a></span>
+<span class="normal"><a href="#__codelineno-5-53">53</a></span>
+<span class="normal"><a href="#__codelineno-5-54">54</a></span>
+<span class="normal"><a href="#__codelineno-5-55">55</a></span>
+<span class="normal"><a href="#__codelineno-5-56">56</a></span>
+<span class="normal"><a href="#__codelineno-5-57">57</a></span>
+<span class="normal"><a href="#__codelineno-5-58">58</a></span>
+<span class="normal"><a href="#__codelineno-5-59">59</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_evaluar_riesgo_cliente</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_evaluar_riesgo_cliente</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">OUT</span><span class="w"> </span><span class="n">p_nivel_riesgo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_limite</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="c1">-- Ejecutamos la llamada a la función previamente programada</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="k">SET</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fn_calcular_deuda_cliente</span><span class="p">(</span><span class="n">p_codigo_cliente</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="c1">-- Extraemos el límite de crédito asignado</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_limite</span><span class="w"></span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="c1">-- Bifurcación condicional compleja IF-THEN-ELSE</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="k">IF</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_nivel_riesgo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;EXCELENTE (SIN DEUDA)&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-36" name="__codelineno-5-36"></a>
+<a id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="n">ELSEIF</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v_limite</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-5-38" name="__codelineno-5-38"></a>
+<a id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_nivel_riesgo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CRÍTICO: LÍMITE EXCEDIDO&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-40" name="__codelineno-5-40"></a>
+<a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="n">ELSEIF</span><span class="w"> </span><span class="n">v_deuda</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">v_limite</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">75</span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-5-42" name="__codelineno-5-42"></a>
+<a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_nivel_riesgo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ATENCIÓN: DEUDA ELEVADA (\&gt;75%)&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-44" name="__codelineno-5-44"></a>
+<a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="k">ELSE</span><span class="w"></span>
+<a id="__codelineno-5-46" name="__codelineno-5-46"></a>
+<a id="__codelineno-5-47" name="__codelineno-5-47"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_nivel_riesgo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;RIESGO BAJO / CONTROLADO&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-48" name="__codelineno-5-48"></a>
+<a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-50" name="__codelineno-5-50"></a>
+<a id="__codelineno-5-51" name="__codelineno-5-51"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-5-52" name="__codelineno-5-52"></a>
+<a id="__codelineno-5-53" name="__codelineno-5-53"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-54" name="__codelineno-5-54"></a>
+<a id="__codelineno-5-55" name="__codelineno-5-55"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_evaluar_riesgo_cliente</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">riesgo</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-56" name="__codelineno-5-56"></a>
+<a id="__codelineno-5-57" name="__codelineno-5-57"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">riesgo</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">estado_riesgo_financiero</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-58" name="__codelineno-5-58"></a>
+<a id="__codelineno-5-59" name="__codelineno-5-59"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+4.2 Estructuras Iterativas (LOOP, REPEAT y WHILE)</p>
 <p>MySQL proporciona estructuras nativas para realizar bucles lógicos [11.2]. En entornos de producción de administración de sistemas, es indispensable etiquetar estos bucles para gestionar flujos de control complejos mediante sentencias de escape como LEAVE (equivalente a <em>break</em>) o ITERATE (equivalente a <em>continue</em>) [12.1.8.2].</p>
 <p>A continuación se muestra un ejemplo comparativo de implementación de secuencias mediante bucles procedurales aplicados a un escenario administrativo para poblar una tabla de auditoría con rangos numéricos.</p>
-<p>-- Creamos una tabla auxiliar para almacenar históricos o rangos</p>
-<p>CREATE TABLE IF NOT EXISTS auxiliar_rangos (</p>
-<p>iteracion INT UNSIGNED PRIMARY KEY,</p>
-<p>mensaje_logs VARCHAR(100)</p>
-<p>);</p>
-<p>-- Implementación usando WHILE: Verifica la condición antes de entrar al bucle</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_llenar_while//</p>
-<p>CREATE PROCEDURE sp_llenar_while(IN p_tope INT)</p>
-<p>BEGIN</p>
-<p>DECLARE v_contador INT DEFAULT 1;</p>
-<p>TRUNCATE TABLE auxiliar_rangos;</p>
-<p>WHILE v_contador \&lt;= p_tope DO</p>
-<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro automatizado por bucle WHILE: ', v_contador));</p>
-<p>SET v_contador = v_contador + 1;</p>
-<p>END WHILE;</p>
-<p>END//</p>
-<p>-- Implementación usando REPEAT: Ejecuta el bloque y luego evalúa la condición de salida</p>
-<p>DROP PROCEDURE IF EXISTS sp_llenar_repeat//</p>
-<p>CREATE PROCEDURE sp_llenar_repeat(IN p_tope INT)</p>
-<p>BEGIN</p>
-<p>DECLARE v_contador INT DEFAULT 1;</p>
-<p>TRUNCATE TABLE auxiliar_rangos;</p>
-<p>REPEAT</p>
-<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro automatizado por bucle REPEAT: ', v_contador));</p>
-<p>SET v_contador = v_contador + 1;</p>
-<p>UNTIL v_contador > p_tope</p>
-<p>END REPEAT;</p>
-<p>END//</p>
-<p>-- Implementación usando LOOP: Bucle infinito controlado manualmente mediante LEAVE e ITERATE</p>
-<p>DROP PROCEDURE IF EXISTS sp_llenar_loop//</p>
-<p>CREATE PROCEDURE sp_llenar_loop(IN p_tope INT)</p>
-<p>BEGIN</p>
-<p>DECLARE v_contador INT DEFAULT 0;</p>
-<p>TRUNCATE TABLE auxiliar_rangos;</p>
-<p>mi_bucle: LOOP</p>
-<p>SET v_contador = v_contador + 1;</p>
-<p>-- Condición de parada de emergencia</p>
-<p>IF v_contador > p_tope THEN</p>
-<p>LEAVE mi_bucle;</p>
-<p>END IF;</p>
-<p>-- Saltarse números pares en la inserción (Uso de ITERATE)</p>
-<p>IF MOD(v_contador, 2) = 0 THEN</p>
-<p>ITERATE mi_bucle;</p>
-<p>END IF;</p>
-<p>INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro impar automatizado por bucle LOOP: ', v_contador));</p>
-<p>END LOOP mi_bucle;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>CALL sp_llenar_loop(5);</p>
-<p>SELECT * FROM auxiliar_rangos;</p>
-<h1 id="5-manejo-de-excepciones-y-errores-en-mysql">5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-6-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-6-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-6-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-6-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-6-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-6-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-6-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-6-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-6-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-6-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-6-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-6-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-6-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-6-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-6-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-6-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-6-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-6-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-6-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-6-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-6-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-6-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-6-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-6-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-6-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-6-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-6-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-6-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-6-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-6-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-6-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-6-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-6-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-6-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-6-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-6-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-6-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-6-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-6-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-6-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-6-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-6-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-6-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-6-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-6-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-6-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-6-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-6-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-6-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-6-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-6-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-6-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-6-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-6-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-6-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-6-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-6-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-6-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-6-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-6-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-6-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-6-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-6-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-6-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-6-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-6-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-6-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-6-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-6-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-6-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-6-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-6-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-6-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-6-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-6-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-6-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-6-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-6-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-6-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-6-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-6-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-6-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-6-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-6-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-6-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-6-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-6-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-6-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-6-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-6-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-6-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-6-100">100</a></span>
+<span class="normal"><a href="#__codelineno-6-101">101</a></span>
+<span class="normal"><a href="#__codelineno-6-102">102</a></span>
+<span class="normal"><a href="#__codelineno-6-103">103</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">-- Creamos una tabla auxiliar para almacenar históricos o rangos</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="n">iteracion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="n">mensaje_logs</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="c1">-- Implementación usando WHILE: Verifica la condición antes de entrar al bucle</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_llenar_while</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_llenar_while</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">p_tope</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="n">WHILE</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p_tope</span><span class="w"> </span><span class="k">DO</span><span class="w"></span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">v_contador</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Registro automatizado por bucle WHILE: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">v_contador</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="k">SET</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a>
+<a id="__codelineno-6-35" name="__codelineno-6-35"></a><span class="c1">-- Implementación usando REPEAT: Ejecuta el bloque y luego evalúa la condición de salida</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36"></a>
+<a id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_llenar_repeat</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-38" name="__codelineno-6-38"></a>
+<a id="__codelineno-6-39" name="__codelineno-6-39"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_llenar_repeat</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">p_tope</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-40" name="__codelineno-6-40"></a>
+<a id="__codelineno-6-41" name="__codelineno-6-41"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-6-42" name="__codelineno-6-42"></a>
+<a id="__codelineno-6-43" name="__codelineno-6-43"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-44" name="__codelineno-6-44"></a>
+<a id="__codelineno-6-45" name="__codelineno-6-45"></a><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-46" name="__codelineno-6-46"></a>
+<a id="__codelineno-6-47" name="__codelineno-6-47"></a><span class="n">REPEAT</span><span class="w"></span>
+<a id="__codelineno-6-48" name="__codelineno-6-48"></a>
+<a id="__codelineno-6-49" name="__codelineno-6-49"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">v_contador</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Registro automatizado por bucle REPEAT: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">v_contador</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-6-50" name="__codelineno-6-50"></a>
+<a id="__codelineno-6-51" name="__codelineno-6-51"></a><span class="k">SET</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-52" name="__codelineno-6-52"></a>
+<a id="__codelineno-6-53" name="__codelineno-6-53"></a><span class="k">UNTIL</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p_tope</span><span class="w"></span>
+<a id="__codelineno-6-54" name="__codelineno-6-54"></a>
+<a id="__codelineno-6-55" name="__codelineno-6-55"></a><span class="k">END</span><span class="w"> </span><span class="n">REPEAT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-56" name="__codelineno-6-56"></a>
+<a id="__codelineno-6-57" name="__codelineno-6-57"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-58" name="__codelineno-6-58"></a>
+<a id="__codelineno-6-59" name="__codelineno-6-59"></a><span class="c1">-- Implementación usando LOOP: Bucle infinito controlado manualmente mediante LEAVE e ITERATE</span>
+<a id="__codelineno-6-60" name="__codelineno-6-60"></a>
+<a id="__codelineno-6-61" name="__codelineno-6-61"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_llenar_loop</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-62" name="__codelineno-6-62"></a>
+<a id="__codelineno-6-63" name="__codelineno-6-63"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_llenar_loop</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">p_tope</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-64" name="__codelineno-6-64"></a>
+<a id="__codelineno-6-65" name="__codelineno-6-65"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-6-66" name="__codelineno-6-66"></a>
+<a id="__codelineno-6-67" name="__codelineno-6-67"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-68" name="__codelineno-6-68"></a>
+<a id="__codelineno-6-69" name="__codelineno-6-69"></a><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-70" name="__codelineno-6-70"></a>
+<a id="__codelineno-6-71" name="__codelineno-6-71"></a><span class="n">mi_bucle</span><span class="p">:</span><span class="w"> </span><span class="n">LOOP</span><span class="w"></span>
+<a id="__codelineno-6-72" name="__codelineno-6-72"></a>
+<a id="__codelineno-6-73" name="__codelineno-6-73"></a><span class="k">SET</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-74" name="__codelineno-6-74"></a>
+<a id="__codelineno-6-75" name="__codelineno-6-75"></a><span class="c1">-- Condición de parada de emergencia</span>
+<a id="__codelineno-6-76" name="__codelineno-6-76"></a>
+<a id="__codelineno-6-77" name="__codelineno-6-77"></a><span class="k">IF</span><span class="w"> </span><span class="n">v_contador</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p_tope</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-6-78" name="__codelineno-6-78"></a>
+<a id="__codelineno-6-79" name="__codelineno-6-79"></a><span class="n">LEAVE</span><span class="w"> </span><span class="n">mi_bucle</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-80" name="__codelineno-6-80"></a>
+<a id="__codelineno-6-81" name="__codelineno-6-81"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-82" name="__codelineno-6-82"></a>
+<a id="__codelineno-6-83" name="__codelineno-6-83"></a><span class="c1">-- Saltarse números pares en la inserción (Uso de ITERATE)</span>
+<a id="__codelineno-6-84" name="__codelineno-6-84"></a>
+<a id="__codelineno-6-85" name="__codelineno-6-85"></a><span class="k">IF</span><span class="w"> </span><span class="k">MOD</span><span class="p">(</span><span class="n">v_contador</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-6-86" name="__codelineno-6-86"></a>
+<a id="__codelineno-6-87" name="__codelineno-6-87"></a><span class="k">ITERATE</span><span class="w"> </span><span class="n">mi_bucle</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-88" name="__codelineno-6-88"></a>
+<a id="__codelineno-6-89" name="__codelineno-6-89"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-90" name="__codelineno-6-90"></a>
+<a id="__codelineno-6-91" name="__codelineno-6-91"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">v_contador</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Registro impar automatizado por bucle LOOP: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">v_contador</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-6-92" name="__codelineno-6-92"></a>
+<a id="__codelineno-6-93" name="__codelineno-6-93"></a><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="w"> </span><span class="n">mi_bucle</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-94" name="__codelineno-6-94"></a>
+<a id="__codelineno-6-95" name="__codelineno-6-95"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-6-96" name="__codelineno-6-96"></a>
+<a id="__codelineno-6-97" name="__codelineno-6-97"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-98" name="__codelineno-6-98"></a>
+<a id="__codelineno-6-99" name="__codelineno-6-99"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_llenar_loop</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-100" name="__codelineno-6-100"></a>
+<a id="__codelineno-6-101" name="__codelineno-6-101"></a><span class="k">SELECT</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">auxiliar_rangos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-102" name="__codelineno-6-102"></a>
+<a id="__codelineno-6-103" name="__codelineno-6-103"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+5. MANEJO DE EXCEPCIONES Y ERRORES EN MYSQL</p>
 <p>El código procedimental que ejecuta cambios DML puede fallar debido a violaciones de integridad referencial, registros duplicados en claves primarias o caídas del sistema. Para evitar que la transacción completa aborte de forma incontrolada, MySQL ofrece el uso de manejadores de error declarativos [1.9].</p>
 <h2 id="51-el-uso-de-declare-handler">5.1 El uso de DECLARE... HANDLER</h2>
 <p>La sintaxis general para registrar un manejador de eventos excepcionales es la siguiente:</p>
-<p>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</p>
-<p>Donde:</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">DECLARE</span><span class="w"> </span><span class="err">{</span><span class="k">CONTINUE</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="n">EXIT</span><span class="err">}</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">condicion_error</span><span class="w"> </span><span class="n">sentencia</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+Donde:</p>
 <ul>
 <li>
 <p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y continúa con el flujo lógico del bloque procedimental tras la instrucción que generó la alerta [1.9].</p>
@@ -833,40 +1404,142 @@
 </li>
 </ul>
 <p>Ejemplo de registro de pago de cliente seguro ante claves duplicadas:</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//</p>
-<p>CREATE PROCEDURE sp_registrar_pago_seguro(</p>
-<p>IN p_codigo_cliente INT,</p>
-<p>IN p_forma_pago VARCHAR(40),</p>
-<p>IN p_id_transaccion VARCHAR(50),</p>
-<p>IN p_fecha_pago DATE,</p>
-<p>IN p_total DECIMAL(15,2),</p>
-<p>OUT p_resultado_operacion VARCHAR(100)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>-- Manejador específico para el Error 1062 de MySQL (Entrada duplicada en clave primaria)</p>
-<p>DECLARE EXIT HANDLER FOR 1062</p>
-<p>BEGIN</p>
-<p>SET p_resultado_operacion = CONCAT('RECHAZADO: El ID de transacción "', p_id_transaccion, '" ya existe en el histórico de pagos.');</p>
-<p>END;</p>
-<p>-- Manejador general para cualquier otro tipo de error de restricción o datos (Llave foránea incorrecta, etc.)</p>
-<p>DECLARE EXIT HANDLER FOR SQLEXCEPTION</p>
-<p>BEGIN</p>
-<p>SET p_resultado_operacion = 'RECHAZADO: Error general de integridad de base de datos.';</p>
-<p>END;</p>
-<p>-- Intentamos la inserción en la tabla de Jardinería</p>
-<p>INSERT INTO pago (codigo_cliente, forma_pago, id_transaccion, fecha_pago, total)</p>
-<p>VALUES (p_codigo_cliente, p_forma_pago, p_id_transaccion, p_fecha_pago, p_total);</p>
-<p>SET p_resultado_operacion = 'OPERACIÓN COMPLETADA CON ÉXITO';</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>-- Intentamos registrar una transacción segura</p>
-<p>CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001', '2026-06-19', 450.50, @estado);</p>
-<p>SELECT @estado;</p>
-<p>-- Volvemos a llamar al procedimiento con la misma transacción para provocar la excepción de duplicidad controlada</p>
-<p>CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001', '2026-06-19', 450.50, @estado);</p>
-<p>SELECT @estado;</p>
-<h1 id="6-cursores">6. CURSORES</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span>
+<span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span>
+<span class="normal"><a href="#__codelineno-8-38">38</a></span>
+<span class="normal"><a href="#__codelineno-8-39">39</a></span>
+<span class="normal"><a href="#__codelineno-8-40">40</a></span>
+<span class="normal"><a href="#__codelineno-8-41">41</a></span>
+<span class="normal"><a href="#__codelineno-8-42">42</a></span>
+<span class="normal"><a href="#__codelineno-8-43">43</a></span>
+<span class="normal"><a href="#__codelineno-8-44">44</a></span>
+<span class="normal"><a href="#__codelineno-8-45">45</a></span>
+<span class="normal"><a href="#__codelineno-8-46">46</a></span>
+<span class="normal"><a href="#__codelineno-8-47">47</a></span>
+<span class="normal"><a href="#__codelineno-8-48">48</a></span>
+<span class="normal"><a href="#__codelineno-8-49">49</a></span>
+<span class="normal"><a href="#__codelineno-8-50">50</a></span>
+<span class="normal"><a href="#__codelineno-8-51">51</a></span>
+<span class="normal"><a href="#__codelineno-8-52">52</a></span>
+<span class="normal"><a href="#__codelineno-8-53">53</a></span>
+<span class="normal"><a href="#__codelineno-8-54">54</a></span>
+<span class="normal"><a href="#__codelineno-8-55">55</a></span>
+<span class="normal"><a href="#__codelineno-8-56">56</a></span>
+<span class="normal"><a href="#__codelineno-8-57">57</a></span>
+<span class="normal"><a href="#__codelineno-8-58">58</a></span>
+<span class="normal"><a href="#__codelineno-8-59">59</a></span>
+<span class="normal"><a href="#__codelineno-8-60">60</a></span>
+<span class="normal"><a href="#__codelineno-8-61">61</a></span>
+<span class="normal"><a href="#__codelineno-8-62">62</a></span>
+<span class="normal"><a href="#__codelineno-8-63">63</a></span>
+<span class="normal"><a href="#__codelineno-8-64">64</a></span>
+<span class="normal"><a href="#__codelineno-8-65">65</a></span>
+<span class="normal"><a href="#__codelineno-8-66">66</a></span>
+<span class="normal"><a href="#__codelineno-8-67">67</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_registrar_pago_seguro</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_registrar_pago_seguro</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_forma_pago</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_id_transaccion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_fecha_pago</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_total</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="k">OUT</span><span class="w"> </span><span class="n">p_resultado_operacion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="c1">-- Manejador específico para el Error 1062 de MySQL (Entrada duplicada en clave primaria)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1062</span><span class="w"></span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_resultado_operacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;RECHAZADO: El ID de transacción &quot;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">p_id_transaccion</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&quot; ya existe en el histórico de pagos.&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="k">END</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a>
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a><span class="c1">-- Manejador general para cualquier otro tipo de error de restricción o datos (Llave foránea incorrecta, etc.)</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34"></a>
+<a id="__codelineno-8-35" name="__codelineno-8-35"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="w"></span>
+<a id="__codelineno-8-36" name="__codelineno-8-36"></a>
+<a id="__codelineno-8-37" name="__codelineno-8-37"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-8-38" name="__codelineno-8-38"></a>
+<a id="__codelineno-8-39" name="__codelineno-8-39"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_resultado_operacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;RECHAZADO: Error general de integridad de base de datos.&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-40" name="__codelineno-8-40"></a>
+<a id="__codelineno-8-41" name="__codelineno-8-41"></a><span class="k">END</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-42" name="__codelineno-8-42"></a>
+<a id="__codelineno-8-43" name="__codelineno-8-43"></a><span class="c1">-- Intentamos la inserción en la tabla de Jardinería</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44"></a>
+<a id="__codelineno-8-45" name="__codelineno-8-45"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">forma_pago</span><span class="p">,</span><span class="w"> </span><span class="n">id_transaccion</span><span class="p">,</span><span class="w"> </span><span class="n">fecha_pago</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-46" name="__codelineno-8-46"></a>
+<a id="__codelineno-8-47" name="__codelineno-8-47"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">p_codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">p_forma_pago</span><span class="p">,</span><span class="w"> </span><span class="n">p_id_transaccion</span><span class="p">,</span><span class="w"> </span><span class="n">p_fecha_pago</span><span class="p">,</span><span class="w"> </span><span class="n">p_total</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-48" name="__codelineno-8-48"></a>
+<a id="__codelineno-8-49" name="__codelineno-8-49"></a><span class="k">SET</span><span class="w"> </span><span class="n">p_resultado_operacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;OPERACIÓN COMPLETADA CON ÉXITO&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-50" name="__codelineno-8-50"></a>
+<a id="__codelineno-8-51" name="__codelineno-8-51"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-8-52" name="__codelineno-8-52"></a>
+<a id="__codelineno-8-53" name="__codelineno-8-53"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-54" name="__codelineno-8-54"></a>
+<a id="__codelineno-8-55" name="__codelineno-8-55"></a><span class="c1">-- Intentamos registrar una transacción segura</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56"></a>
+<a id="__codelineno-8-57" name="__codelineno-8-57"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_registrar_pago_seguro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Transferencia&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;TR-REG-001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-06-19&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">.</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">estado</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-58" name="__codelineno-8-58"></a>
+<a id="__codelineno-8-59" name="__codelineno-8-59"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">estado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-60" name="__codelineno-8-60"></a>
+<a id="__codelineno-8-61" name="__codelineno-8-61"></a><span class="c1">-- Volvemos a llamar al procedimiento con la misma transacción para provocar la excepción de duplicidad controlada</span>
+<a id="__codelineno-8-62" name="__codelineno-8-62"></a>
+<a id="__codelineno-8-63" name="__codelineno-8-63"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_registrar_pago_seguro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Transferencia&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;TR-REG-001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-06-19&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">.</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">estado</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-64" name="__codelineno-8-64"></a>
+<a id="__codelineno-8-65" name="__codelineno-8-65"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">estado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-66" name="__codelineno-8-66"></a>
+<a id="__codelineno-8-67" name="__codelineno-8-67"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+6. CURSORES</p>
 <p>Un cursor es una estructura procedimental en memoria que permite iterar y procesar, registro por registro, el conjunto de filas devuelto por una consulta SELECT.</p>
 <h2 id="61-ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un cursor</h2>
 <p>El uso de un cursor sigue estrictamente un proceso secuencial de 4 pasos [1.8.7]:</p>
@@ -886,49 +1559,178 @@
 </ol>
 <p>Ejemplo (Actualización masiva de Límite de Crédito basado en la actividad real del cliente):</p>
 <p>Implementaremos un procedimiento que audite a todos los clientes de <strong>Jardinería</strong> mediante un cursor procedimental. Si un cliente ha acumulado en pagos efectivos más del 80% de su límite de crédito actual, el SGBD ampliará proactivamente su límite crediticio un 25%.</p>
-<p>DELIMITER //</p>
-<p>DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//</p>
-<p>CREATE PROCEDURE sp_optimizar_credito_clientes_activos()</p>
-<p>BEGIN</p>
-<p>-- 1. Declarar variables de control interno</p>
-<p>DECLARE v_finalizado INT DEFAULT FALSE;</p>
-<p>DECLARE v_codigo_cliente INT;</p>
-<p>DECLARE v_limite_actual DECIMAL(15,2);</p>
-<p>DECLARE v_total_pagos DECIMAL(15,2);</p>
-<p>-- 2. Declaración del cursor sobre todos los clientes activos con crédito</p>
-<p>DECLARE cursor_clientes CURSOR FOR</p>
-<p>SELECT codigo_cliente, limite_credito</p>
-<p>FROM cliente</p>
-<p>WHERE limite_credito > 0.00;</p>
-<p>-- 3. Handler asociado para controlar cuándo el cursor se queda sin filas (NOT FOUND)</p>
-<p>DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finalizado = TRUE;</p>
-<p>-- 4. Abrir la consulta y cargar el puntero</p>
-<p>OPEN cursor_clientes;</p>
-<p>bucle_extraccion: LOOP</p>
-<p>-- 5. Extraer registro actual</p>
-<p>FETCH cursor_clientes INTO v_codigo_cliente, v_limite_actual;</p>
-<p>-- Control del escape del bucle</p>
-<p>IF v_finalizado THEN</p>
-<p>LEAVE bucle_extraccion;</p>
-<p>END IF;</p>
-<p>-- 6. Ejecutar lógica procedural para evaluar la regla de negocio</p>
-<p>SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagos</p>
-<p>FROM pago</p>
-<p>WHERE codigo_cliente = v_codigo_cliente;</p>
-<p>-- Si el total de pagos reales acumulados supera el 80% de su límite, aumentamos el límite</p>
-<p>IF v_total_pagos > (v_limite_actual * 0.80) THEN</p>
-<p>UPDATE cliente</p>
-<p>SET limite_credito = v_limite_actual * 1.25</p>
-<p>WHERE codigo_cliente = v_codigo_cliente;</p>
-<p>END IF;</p>
-<p>END LOOP bucle_extraccion;</p>
-<p>-- 7. Cerrar cursor para liberar recursos de red</p>
-<p>CLOSE cursor_clientes;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>-- Ejecutamos la reevaluación de límites del sistema completo de Jardinería</p>
-<p>CALL sp_optimizar_credito_clientes_activos();</p>
-<h1 id="7-disparadores-triggers">7. DISPARADORES (TRIGGERS)</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span>
+<span class="normal"><a href="#__codelineno-9-42">42</a></span>
+<span class="normal"><a href="#__codelineno-9-43">43</a></span>
+<span class="normal"><a href="#__codelineno-9-44">44</a></span>
+<span class="normal"><a href="#__codelineno-9-45">45</a></span>
+<span class="normal"><a href="#__codelineno-9-46">46</a></span>
+<span class="normal"><a href="#__codelineno-9-47">47</a></span>
+<span class="normal"><a href="#__codelineno-9-48">48</a></span>
+<span class="normal"><a href="#__codelineno-9-49">49</a></span>
+<span class="normal"><a href="#__codelineno-9-50">50</a></span>
+<span class="normal"><a href="#__codelineno-9-51">51</a></span>
+<span class="normal"><a href="#__codelineno-9-52">52</a></span>
+<span class="normal"><a href="#__codelineno-9-53">53</a></span>
+<span class="normal"><a href="#__codelineno-9-54">54</a></span>
+<span class="normal"><a href="#__codelineno-9-55">55</a></span>
+<span class="normal"><a href="#__codelineno-9-56">56</a></span>
+<span class="normal"><a href="#__codelineno-9-57">57</a></span>
+<span class="normal"><a href="#__codelineno-9-58">58</a></span>
+<span class="normal"><a href="#__codelineno-9-59">59</a></span>
+<span class="normal"><a href="#__codelineno-9-60">60</a></span>
+<span class="normal"><a href="#__codelineno-9-61">61</a></span>
+<span class="normal"><a href="#__codelineno-9-62">62</a></span>
+<span class="normal"><a href="#__codelineno-9-63">63</a></span>
+<span class="normal"><a href="#__codelineno-9-64">64</a></span>
+<span class="normal"><a href="#__codelineno-9-65">65</a></span>
+<span class="normal"><a href="#__codelineno-9-66">66</a></span>
+<span class="normal"><a href="#__codelineno-9-67">67</a></span>
+<span class="normal"><a href="#__codelineno-9-68">68</a></span>
+<span class="normal"><a href="#__codelineno-9-69">69</a></span>
+<span class="normal"><a href="#__codelineno-9-70">70</a></span>
+<span class="normal"><a href="#__codelineno-9-71">71</a></span>
+<span class="normal"><a href="#__codelineno-9-72">72</a></span>
+<span class="normal"><a href="#__codelineno-9-73">73</a></span>
+<span class="normal"><a href="#__codelineno-9-74">74</a></span>
+<span class="normal"><a href="#__codelineno-9-75">75</a></span>
+<span class="normal"><a href="#__codelineno-9-76">76</a></span>
+<span class="normal"><a href="#__codelineno-9-77">77</a></span>
+<span class="normal"><a href="#__codelineno-9-78">78</a></span>
+<span class="normal"><a href="#__codelineno-9-79">79</a></span>
+<span class="normal"><a href="#__codelineno-9-80">80</a></span>
+<span class="normal"><a href="#__codelineno-9-81">81</a></span>
+<span class="normal"><a href="#__codelineno-9-82">82</a></span>
+<span class="normal"><a href="#__codelineno-9-83">83</a></span>
+<span class="normal"><a href="#__codelineno-9-84">84</a></span>
+<span class="normal"><a href="#__codelineno-9-85">85</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">sp_optimizar_credito_clientes_activos</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">sp_optimizar_credito_clientes_activos</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="c1">-- 1. Declarar variables de control interno</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_finalizado</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_limite_actual</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_total_pagos</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="c1">-- 2. Declaración del cursor sobre todos los clientes activos con crédito</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">cursor_clientes</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"></span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"></span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="c1">-- 3. Handler asociado para controlar cuándo el cursor se queda sin filas (NOT FOUND)</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">v_finalizado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="c1">-- 4. Abrir la consulta y cargar el puntero</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="k">OPEN</span><span class="w"> </span><span class="n">cursor_clientes</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-36" name="__codelineno-9-36"></a>
+<a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="n">bucle_extraccion</span><span class="p">:</span><span class="w"> </span><span class="n">LOOP</span><span class="w"></span>
+<a id="__codelineno-9-38" name="__codelineno-9-38"></a>
+<a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="c1">-- 5. Extraer registro actual</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40"></a>
+<a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="k">FETCH</span><span class="w"> </span><span class="n">cursor_clientes</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">v_limite_actual</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-42" name="__codelineno-9-42"></a>
+<a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="c1">-- Control del escape del bucle</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44"></a>
+<a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="k">IF</span><span class="w"> </span><span class="n">v_finalizado</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-9-46" name="__codelineno-9-46"></a>
+<a id="__codelineno-9-47" name="__codelineno-9-47"></a><span class="n">LEAVE</span><span class="w"> </span><span class="n">bucle_extraccion</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-48" name="__codelineno-9-48"></a>
+<a id="__codelineno-9-49" name="__codelineno-9-49"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-50" name="__codelineno-9-50"></a>
+<a id="__codelineno-9-51" name="__codelineno-9-51"></a><span class="c1">-- 6. Ejecutar lógica procedural para evaluar la regla de negocio</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52"></a>
+<a id="__codelineno-9-53" name="__codelineno-9-53"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">total</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_total_pagos</span><span class="w"></span>
+<a id="__codelineno-9-54" name="__codelineno-9-54"></a>
+<a id="__codelineno-9-55" name="__codelineno-9-55"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"></span>
+<a id="__codelineno-9-56" name="__codelineno-9-56"></a>
+<a id="__codelineno-9-57" name="__codelineno-9-57"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-58" name="__codelineno-9-58"></a>
+<a id="__codelineno-9-59" name="__codelineno-9-59"></a><span class="c1">-- Si el total de pagos reales acumulados supera el 80% de su límite, aumentamos el límite</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60"></a>
+<a id="__codelineno-9-61" name="__codelineno-9-61"></a><span class="k">IF</span><span class="w"> </span><span class="n">v_total_pagos</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">v_limite_actual</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-9-62" name="__codelineno-9-62"></a>
+<a id="__codelineno-9-63" name="__codelineno-9-63"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-9-64" name="__codelineno-9-64"></a>
+<a id="__codelineno-9-65" name="__codelineno-9-65"></a><span class="k">SET</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_limite_actual</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">25</span><span class="w"></span>
+<a id="__codelineno-9-66" name="__codelineno-9-66"></a>
+<a id="__codelineno-9-67" name="__codelineno-9-67"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v_codigo_cliente</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-68" name="__codelineno-9-68"></a>
+<a id="__codelineno-9-69" name="__codelineno-9-69"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-70" name="__codelineno-9-70"></a>
+<a id="__codelineno-9-71" name="__codelineno-9-71"></a><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="w"> </span><span class="n">bucle_extraccion</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-72" name="__codelineno-9-72"></a>
+<a id="__codelineno-9-73" name="__codelineno-9-73"></a><span class="c1">-- 7. Cerrar cursor para liberar recursos de red</span>
+<a id="__codelineno-9-74" name="__codelineno-9-74"></a>
+<a id="__codelineno-9-75" name="__codelineno-9-75"></a><span class="k">CLOSE</span><span class="w"> </span><span class="n">cursor_clientes</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-76" name="__codelineno-9-76"></a>
+<a id="__codelineno-9-77" name="__codelineno-9-77"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-9-78" name="__codelineno-9-78"></a>
+<a id="__codelineno-9-79" name="__codelineno-9-79"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-80" name="__codelineno-9-80"></a>
+<a id="__codelineno-9-81" name="__codelineno-9-81"></a><span class="c1">-- Ejecutamos la reevaluación de límites del sistema completo de Jardinería</span>
+<a id="__codelineno-9-82" name="__codelineno-9-82"></a>
+<a id="__codelineno-9-83" name="__codelineno-9-83"></a><span class="k">CALL</span><span class="w"> </span><span class="n">sp_optimizar_credito_clientes_activos</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-9-84" name="__codelineno-9-84"></a>
+<a id="__codelineno-9-85" name="__codelineno-9-85"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+7. DISPARADORES (TRIGGERS)</p>
 <p>Un disparador o <em>trigger</em> es un objeto de base de datos asociado a una tabla que se activa de manera automática e implícita cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE o DELETE) sobre dicha tabla [1.8.8].</p>
 <h2 id="71-logica-de-ejecucion-beforeafter-e-insertupdatedelete">7.1 Lógica de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</h2>
 <p>Un disparador puede configurarse para activarse en dos instantes temporales distintos:</p>
@@ -978,45 +1780,155 @@
 </table>
 <p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad referencial):</p>
 <p>Un SysAdmin debe impedir que se registre un pedido de productos de jardinería si no existe stock real suficiente en el inventario, previniendo incoherencias comerciales.</p>
-<p>DELIMITER //</p>
-<p>DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//</p>
-<p>CREATE TRIGGER trigger_validar_stock_before_insert</p>
-<p>BEFORE INSERT ON detalle_pedido</p>
-<p>FOR EACH ROW</p>
-<p>BEGIN</p>
-<p>DECLARE v_stock_disponible INT;</p>
-<p>-- Obtener la cantidad de existencias físicas reales del producto seleccionado</p>
-<p>SELECT cantidad_en_stock INTO v_stock_disponible</p>
-<p>FROM producto</p>
-<p>WHERE codigo_producto = NEW.codigo_producto;</p>
-<p>-- Si se solicita mayor cantidad que la disponible, generamos una excepción personalizada</p>
-<p>IF NEW.cantidad > v_stock_disponible THEN</p>
-<p>SIGNAL SQLSTATE '45000'</p>
-<p>SET MESSAGE_TEXT = 'OPERACIÓN RECHAZADA: Stock insuficiente para procesar la línea del producto.';</p>
-<p>END IF;</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<p>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos automáticos):</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span>
+<span class="normal"><a href="#__codelineno-10-31">31</a></span>
+<span class="normal"><a href="#__codelineno-10-32">32</a></span>
+<span class="normal"><a href="#__codelineno-10-33">33</a></span>
+<span class="normal"><a href="#__codelineno-10-34">34</a></span>
+<span class="normal"><a href="#__codelineno-10-35">35</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">trigger_validar_stock_before_insert</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">trigger_validar_stock_before_insert</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_stock_disponible</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="c1">-- Obtener la cantidad de existencias físicas reales del producto seleccionado</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_stock_disponible</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">codigo_producto</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="c1">-- Si se solicita mayor cantidad que la disponible, generamos una excepción personalizada</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">cantidad</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v_stock_disponible</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span><span class="w"></span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;OPERACIÓN RECHAZADA: Stock insuficiente para procesar la línea del producto.&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos automáticos):</p>
 <p>Implementaremos un disparador que nos permita registrar en tiempo real un log de pagos que van realizando los clientes. Primero creamos una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
-<p>eroría-- Creamos la tabla de soporte técnico de notificaciones</p>
-<p>CREATE TABLE IF NOT EXISTS notificaciones (</p>
-<p>id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
-<p>fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,</p>
-<p>total DECIMAL(15,2) NOT NULL,</p>
-<p>codigo_cliente INT NOT NULL</p>
-<p>);</p>
-<p>DELIMITER //</p>
-<p>DROP TRIGGER IF EXISTS trigger_notificar_pago_after_insert//</p>
-<p>CREATE TRIGGER trigger_notificar_pago_after_insert</p>
-<p>AFTER INSERT ON pago</p>
-<p>FOR EACH ROW</p>
-<p>BEGIN</p>
-<p>-- Almacena de manera automática el pago registrado en nuestra tabla de notificaciones</p>
-<p>INSERT INTO notificaciones (total, codigo_cliente)</p>
-<p>VALUES (NEW.total, NEW.codigo_cliente);</p>
-<p>END//</p>
-<p>DELIMITER ;</p>
-<h1 id="8-enlaces-de-referencia-y-documentacion-oficial">8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">eroría</span><span class="c1">-- Creamos la tabla de soporte técnico de notificaciones</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">notificaciones</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">fecha_hora</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="n">total</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="n">codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">trigger_notificar_pago_after_insert</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">trigger_notificar_pago_after_insert</span><span class="w"></span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">pago</span><span class="w"></span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span><span class="w"></span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="c1">-- Almacena de manera automática el pago registrado en nuestra tabla de notificaciones</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">notificaciones</span><span class="w"> </span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">NEW</span><span class="p">.</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">codigo_cliente</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="k">END</span><span class="o">//</span><span class="w"></span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN OFICIAL</p>
 <p>Para profundizar en la sintaxis procedimental avanzada, gestión de pilas de llamadas y optimización de ejecución del motor de rutinas almacenadas en MySQL 8.0, consulta los siguientes recursos del manual técnico oficial:</p>
 <ul>
 <li>

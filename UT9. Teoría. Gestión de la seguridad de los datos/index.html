@@ -596,13 +596,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#analyze-table" class="md-nav__link">
     ANALYZE TABLE
   </a>
@@ -610,22 +603,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#optimize-table" class="md-nav__link">
     OPTIMIZE TABLE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    
   </a>
   
 </li>
@@ -685,22 +664,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#algoritmo-de-restauracion-fisica-en-el-servidor-de-destino" class="md-nav__link">
     Algoritmo de Restauración Física en el Servidor de Destino
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    
   </a>
   
 </li>
@@ -719,49 +684,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    
-  </a>
-  
-    <nav class="md-nav" aria-label="">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility" class="md-nav__link">
     🔗 Documentación Oficial: Más Información en MySQL Manual - mysqldump Utility
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    
   </a>
   
 </li>
@@ -987,9 +911,13 @@
 <h1 id="3-ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG DE MYSQL</h1>
 <h2 id="31-arquitectura-de-almacenamiento-fisico-en-disco">3.1 Arquitectura de Almacenamiento Físico en Disco</h2>
 <p>En sistemas operativos Linux, el directorio por defecto donde MySQL almacena físicamente las bases de datos está configurado en la variable del sistema datadir:</p>
-<p># Comprobación de la ruta física desde la terminal del sistema operativo</p>
-<p>mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Comprobación</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">ruta</span><span class="w"> </span><span class="n">física</span><span class="w"> </span><span class="n">desde</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">terminal</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">sistema</span><span class="w"> </span><span class="n">operativo</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="ss">&quot;SHOW VARIABLES LIKE &#39;datadir&#39;;&quot;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio, cada base de datos tiene asignado su propio subdirectorio con el nombre de la base de datos (por ejemplo, /var/lib/mysql/practica_dml).</p>
 <p>Físicamente, los archivos se distribuyen de la siguiente manera según el motor de almacenamiento utilizado:</p>
 <ul>
@@ -1023,16 +951,21 @@
 </li>
 </ol>
 <p>Para cerrar los archivos de log abiertos y forzar la inicialización de logs nuevos (muy útil para procesos de rotación y antes de copias de seguridad), se ejecuta la instrucción:</p>
-<p>-- Forzar el volcado de buffers a disco y la rotación de logs</p>
-<p>FLUSH LOGS;</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">-- Forzar el volcado de buffers a disco y la rotación de logs</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">FLUSH</span><span class="w"> </span><span class="n">LOGS</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p>🔗 <strong>Documentación Oficial:</strong> Para conocer más parámetros de los ficheros de log, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><em>MySQL Reference Manual - Server Logs</em></a>.</p>
 <h2 id="_1"></h2>
 <h2 id="33-la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog</h2>
 <p>Dado que el registro binario se escribe en formato binario no legible, los SysAdmins deben utilizar la herramienta de terminal nativa <strong>mysqlbinlog</strong> para auditar o aplicar los cambios almacenados.</p>
 <p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
-<p>mysqlbinlog [opciones] nombre_log_binario</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">mysqlbinlog</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="n">opciones</span><span class="err">\</span><span class="p">]</span><span class="w"> </span><span class="n">nombre_log_binario</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p>Opciones Principales de mysqlbinlog</p>
 <ul>
 <li>
@@ -1049,49 +982,99 @@
 </li>
 </ul>
 <p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
-<p># Ejemplo 1: Convertir un binlog a fichero de texto plano legible para auditoría</p>
-<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 > /tmp/auditoria_dml.sql</p>
-<p># Ejemplo 2: Aplicar de forma directa las instrucciones del binlog para recuperar datos</p>
-<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 | mysql -u root -p</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Ejemplo</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">Convertir</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">binlog</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">fichero</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="n">plano</span><span class="w"> </span><span class="n">legible</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">auditoría</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">mysqlbinlog</span><span class="w"> </span><span class="c1">--database=practica_dml /var/lib/mysql/binlog.000001 \&gt; /tmp/auditoria_dml.sql</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="err">\</span><span class="o">#</span><span class="w"> </span><span class="n">Ejemplo</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">Aplicar</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">forma</span><span class="w"> </span><span class="n">directa</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="n">instrucciones</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">binlog</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">recuperar</span><span class="w"> </span><span class="n">datos</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">mysqlbinlog</span><span class="w"> </span><span class="c1">--database=practica_dml /var/lib/mysql/binlog.000001 \| mysql -u root -p</span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlbinlog-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><em>MySQL Manual - mysqlbinlog Utility</em></a></h5>
 <h1 id="4-mantenimiento-y-reparacion-de-tablas">4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</h1>
 <p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo, índices que no coinciden con los datos reales tras un apagón eléctrico), disponemos de utilidades de línea de comandos y sentencias SQL específicas.</p>
 <h2 id="41-herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas Externas: myisamchk y mysqlcheck</h2>
 <p><strong>myisamchk (Exclusivo para tablas MyISAM)</strong></p>
 <p>Opera directamente a nivel de archivos físicos en disco (.MYD y .MYI). <strong>Exige que el servidor MySQL esté completamente apagado o que las tablas implicadas estén bloqueadas contra escritura</strong> para evitar la corrupción de datos.</p>
-<p># Comprobar estado de consistencia de la tabla fabricante (tipo MyISAM si se requiere)</p>
-<p>myisamchk --check /var/lib/mysql/practica_dml/fabricante.MYI</p>
-<p># Reparación estándar rápida reconstruyendo índices</p>
-<p>myisamchk --recover --quick /var/lib/mysql/practica_dml/fabricante.MYI</p>
-<p>Opciones representativas: --silent (-s), --extended-check (-e), --force (-f), --backup (-B).</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Comprobar</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">consistencia</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">fabricante</span><span class="w"> </span><span class="p">(</span><span class="n">tipo</span><span class="w"> </span><span class="n">MyISAM</span><span class="w"> </span><span class="n">si</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="n">requiere</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">myisamchk</span><span class="w"> </span><span class="c1">--check /var/lib/mysql/practica_dml/fabricante.MYI</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="err">\</span><span class="o">#</span><span class="w"> </span><span class="n">Reparación</span><span class="w"> </span><span class="n">estándar</span><span class="w"> </span><span class="n">rápida</span><span class="w"> </span><span class="n">reconstruyendo</span><span class="w"> </span><span class="err">í</span><span class="n">ndices</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="n">myisamchk</span><span class="w"> </span><span class="c1">--recover --quick /var/lib/mysql/practica_dml/fabricante.MYI</span>
+</code></pre></div>
+</td></tr></table>
+Opciones representativas: --silent (-s), --extended-check (-e), --force (-f), --backup (-B).</p>
 <p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
 <p>A diferencia de myisamchk, esta utilidad se comunica con el servidor MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede utilizarse para tablas InnoDB y MyISAM.</p>
-<p># Analizar y reparar automáticamente todas las tablas del esquema 'practica_dml'</p>
-<p>mysqlcheck -u root -p --auto-repair --check practica_dml</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Analizar</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">reparar</span><span class="w"> </span><span class="n">automáticamente</span><span class="w"> </span><span class="n">todas</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="n">tablas</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">esquema</span><span class="w"> </span><span class="s1">&#39;practica_dml&#39;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">mysqlcheck</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--auto-repair --check practica_dml</span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqlcheck-tool">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><em>MySQL Manual - mysqlcheck Tool</em></a></h5>
 <h2 id="42-sentencias-sql-de-optimizacion-e-integridad">4.2 Sentencias SQL de Optimización e Integridad</h2>
 <p>Estas instrucciones se ejecutan directamente en un cliente interactivo o script SQL:</p>
 <h5 id="check-table">CHECK TABLE</h5>
 <p>Chequea la estructura de la tabla y valida sus índices asociados. Devolverá una tabla con el estado.</p>
-<p>USE practica_dml;</p>
-<p>CHECK TABLE empleado, producto;</p>
-<h5 id="_2"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">USE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">CHECK</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado</span><span class="p">,</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="analyze-table">ANALYZE TABLE</h5>
 <p>Analiza y recalcula las estadísticas de distribución de claves de los índices. Esto permite que el Optimizador de Consultas de MySQL elija planes de ejecución óptimos (uso de índices secundarios adecuados). Bloquea la tabla para lectura durante el procesamiento.</p>
-<p>-- Analizar el estado de los índices en la tabla de empleados</p>
-<p>ANALYZE TABLE empleado;</p>
-<h5 id="_3"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">-- Analizar el estado de los índices en la tabla de empleados</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="k">ANALYZE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="optimize-table">OPTIMIZE TABLE</h5>
 <p>Se utiliza para recuperar el espacio físico que ocupaban los registros previamente eliminados (mediante DELETE) en tablas con columnas de longitud variable (como VARCHAR o TEXT en la tabla fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y reduce su tamaño en disco.</p>
-<p>-- Desfragmentar la tabla fabricante tras realizar eliminaciones masivas</p>
-<p>OPTIMIZE TABLE fabricante;</p>
-<h5 id="_4"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">-- Desfragmentar la tabla fabricante tras realizar eliminaciones masivas</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">OPTIMIZE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">fabricante</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="repair-table">REPAIR TABLE</h5>
 <p>Sintaxis SQL para intentar la reparación inmediata de tablas corruptas de tipo MyISAM (no compatible con InnoDB).</p>
-<p>REPAIR TABLE fabricante QUICK;</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">REPAIR</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">fabricante</span><span class="w"> </span><span class="n">QUICK</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-table-maintenance-statements">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><em>MySQL Manual - Table Maintenance Statements</em></a>.</h5>
 <h1 id="5-politicas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE SEGURIDAD</h1>
 <h2 id="51-clasificacion-tecnica-de-los-backups">5.1 Clasificación Técnica de los Backups</h2>
@@ -1121,67 +1104,162 @@
 <h5 id="algoritmo-de-respaldo-fisico-transporte-de-tablespaces-con-practica_dmlproducto">Algoritmo de Respaldo Físico (Transporte de Tablespaces con practica_dml.producto)</h5>
 <p>Para clonar físicamente el archivo .ibd de una tabla InnoDB de forma consistente y restaurarlo en otra ubicación, el SysAdmin debe ejecutar de forma interactiva:</p>
 <p><strong>Paso 1:</strong> Solicitar un bloqueo de lectura en el servidor origen para garantizar que las páginas de datos en el Buffer Pool de la tabla producto se vuelquen de forma consistente a disco, cerrando la tabla temporalmente:</p>
-<p>USE practica_dml;</p>
-<p>FLUSH TABLES producto FOR EXPORT;</p>
-<p><em>(Mantener la sesión abierta para preservar el bloqueo de lectura global).</em></p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">USE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">FLUSH</span><span class="w"> </span><span class="n">TABLES</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">EXPORT</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<em>(Mantener la sesión abierta para preservar el bloqueo de lectura global).</em></p>
 <p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar físicamente los metadatos .cfg y el archivo de datos producto.ibd generados hacia la ruta de almacenamiento de backups segura:</p>
-<p>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg} /backups/fisico_practica/</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">cp</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">practica_dml</span><span class="o">/</span><span class="n">producto</span><span class="p">.</span><span class="err">{</span><span class="n">ibd</span><span class="p">,</span><span class="n">cfg</span><span class="err">}</span><span class="w"> </span><span class="o">/</span><span class="n">backups</span><span class="o">/</span><span class="n">fisico_practica</span><span class="o">/</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Paso 3:</strong> Una vez finalizada la copia física de los ficheros, liberar el bloqueo en la terminal origen:</p>
-<p>UNLOCK TABLES;</p>
-<h5 id="_5"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">UNLOCK</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="algoritmo-de-restauracion-fisica-en-el-servidor-de-destino">Algoritmo de Restauración Física en el Servidor de Destino</h5>
 <p><strong>Paso 4:</strong> En el servidor de destino (donde existe la tabla creada vacía), se debe descartar el espacio de tablas lógico existente para desvincular el archivo .ibd actual:</p>
-<p>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">.</span><span class="n">producto</span><span class="w"> </span><span class="n">DISCARD</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Paso 5:</strong> Copiar el archivo producto.ibd respaldado en el paso 2 dentro del directorio de la base de datos de destino /var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de permisos correspondan exactamente al daemon de MySQL:</p>
-<p>cp /backups/fisico_practica/producto.ibd /var/lib/mysql/practica_dml/</p>
-<p>chown mysql:mysql /var/lib/mysql/practica_dml/producto.ibd</p>
-<p>chmod 660 /var/lib/mysql/practica_dml/producto.ibd</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">cp</span><span class="w"> </span><span class="o">/</span><span class="n">backups</span><span class="o">/</span><span class="n">fisico_practica</span><span class="o">/</span><span class="n">producto</span><span class="p">.</span><span class="n">ibd</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">practica_dml</span><span class="o">/</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">chown</span><span class="w"> </span><span class="n">mysql</span><span class="p">:</span><span class="n">mysql</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">practica_dml</span><span class="o">/</span><span class="n">producto</span><span class="p">.</span><span class="n">ibd</span><span class="w"></span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="n">chmod</span><span class="w"> </span><span class="mi">660</span><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">practica_dml</span><span class="o">/</span><span class="n">producto</span><span class="p">.</span><span class="n">ibd</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de datos en la estructura del diccionario del SGBD:</p>
-<p>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</p>
-<h4 id="_6"></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">.</span><span class="n">producto</span><span class="w"> </span><span class="n">IMPORT</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="o">####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="53-copias-logicas-o-textuales-dumping">5.3 Copias Lógicas o Textuales (Dumping)</h2>
 <p><strong>1. Sentencia SELECT ... INTO OUTFILE y LOAD DATA INFILE</strong></p>
 <p>Este método permite exportar rápidamente el contenido en bruto de una tabla a un fichero de texto plano formateado (por ejemplo, .csv), útil para migraciones rápidas de datos o análisis con herramientas como Excel.</p>
 <p>Por motivos de seguridad contra ataques de inyección, MySQL restringe la exportación e importación de archivos mediante la variable del sistema <strong>secure_file_priv</strong>. Cualquier intento de exportación fuera del directorio definido en dicha variable lanzará el <strong>Error 1290</strong>.</p>
-<p>-- Comprobar el directorio permitido para exportación</p>
-<p>SHOW VARIABLES LIKE 'secure_file_priv';</p>
-<p>-- En sistemas estándar, el directorio por defecto suele ser '/var/lib/mysql-files/'</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1">-- Comprobar el directorio permitido para exportación</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;secure_file_priv&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1">-- En sistemas estándar, el directorio por defecto suele ser &#39;/var/lib/mysql-files/&#39;</span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Exportación consistente de la tabla de empleados</strong></p>
-<p>SELECT codigo_empleado, nombre, apellido1, email, salario, comision</p>
-<p>INTO OUTFILE '/var/lib/mysql-files/empleados_export.txt'</p>
-<p>FIELDS TERMINATED BY ','</p>
-<p>OPTIONALLY ENCLOSED BY '"'</p>
-<p>LINES TERMINATED BY '\n'</p>
-<p>FROM practica_dml.empleado;</p>
-<h6 id="_7"></h6>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">codigo_empleado</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">apellido1</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">salario</span><span class="p">,</span><span class="w"> </span><span class="n">comision</span><span class="w"></span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="k">INTO</span><span class="w"> </span><span class="n">OUTFILE</span><span class="w"> </span><span class="s1">&#39;/var/lib/mysql-files/empleados_export.txt&#39;</span><span class="w"></span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="n">FIELDS</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"></span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="n">OPTIONALLY</span><span class="w"> </span><span class="n">ENCLOSED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="n">LINES</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"></span>
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="k">FROM</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">.</span><span class="n">empleado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="o">######</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Restauración de los datos mediante LOAD DATA INFILE</strong></p>
 <p>Para importar los datos en una tabla de backup previamente estructurada:</p>
-<p>USE practica_dml;</p>
-<p>-- Crear tabla vacía de copia de seguridad (estructura clonada de empleados)</p>
-<p>CREATE TABLE empleado_backup LIKE empleado;</p>
-<p>-- Importar el fichero de datos exportado</p>
-<p>LOAD DATA INFILE '/var/lib/mysql-files/empleados_export.txt'</p>
-<p>INTO TABLE empleado_backup</p>
-<p>FIELDS TERMINATED BY ','</p>
-<p>OPTIONALLY ENCLOSED BY '"'</p>
-<p>LINES TERMINATED BY '\n';</p>
-<h5 id="_8"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span>
+<span class="normal"><a href="#__codelineno-18-15">15</a></span>
+<span class="normal"><a href="#__codelineno-18-16">16</a></span>
+<span class="normal"><a href="#__codelineno-18-17">17</a></span>
+<span class="normal"><a href="#__codelineno-18-18">18</a></span>
+<span class="normal"><a href="#__codelineno-18-19">19</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">USE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="c1">-- Crear tabla vacía de copia de seguridad (estructura clonada de empleados)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado_backup</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="c1">-- Importar el fichero de datos exportado</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="k">LOAD</span><span class="w"> </span><span class="k">DATA</span><span class="w"> </span><span class="n">INFILE</span><span class="w"> </span><span class="s1">&#39;/var/lib/mysql-files/empleados_export.txt&#39;</span><span class="w"></span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="k">INTO</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado_backup</span><span class="w"></span>
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a>
+<a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="n">FIELDS</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"></span>
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a>
+<a id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="n">OPTIONALLY</span><span class="w"> </span><span class="n">ENCLOSED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<a id="__codelineno-18-16" name="__codelineno-18-16"></a>
+<a id="__codelineno-18-17" name="__codelineno-18-17"></a><span class="n">LINES</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-18-18" name="__codelineno-18-18"></a>
+<a id="__codelineno-18-19" name="__codelineno-18-19"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>2. La Utilidad mysqldump</strong></p>
 <p>Herramienta clásica y versátil que vuelca una base de datos o tablas en un archivo SQL con instrucciones DDL/DML.</p>
 <p><strong>A. Sintaxis para exportar tablas específicas de una base de datos:</strong></p>
-<p>mysqldump -u root -p practica_dml producto fabricante > /backups/productos_fabricantes.sql</p>
-<h6 id="_9"></h6>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">practica_dml</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="n">fabricante</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">backups</span><span class="o">/</span><span class="n">productos_fabricantes</span><span class="p">.</span><span class="k">sql</span><span class="w"></span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="o">######</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>B. Sintaxis para exportar una o varias bases de datos completas:</strong></p>
-<p># Exportar las bases de datos practica_dml y tienda de forma estructurada</p>
-<p>mysqldump -u root -p --databases practica_dml > /backups/respaldo_practica.sql</p>
-<p><em>(Nota: Al usar --databases, se insertan automáticamente las directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Exportar</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="n">bases</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="n">practica_dml</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">tienda</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">forma</span><span class="w"> </span><span class="n">estructurada</span><span class="w"></span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--databases practica_dml \&gt; /backups/respaldo_practica.sql</span>
+</code></pre></div>
+</td></tr></table>
+<em>(Nota: Al usar --databases, se insertan automáticamente las directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
 <p><strong>C. Sintaxis para exportar todas las bases de datos de la instancia de MySQL:</strong></p>
-<p>mysqldump -u root -p --all-databases > /backups/instancia_completa.sql</p>
-<h5 id="_10"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--all-databases \&gt; /backups/instancia_completa.sql</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
 <ul>
 <li>
@@ -1203,29 +1281,45 @@
 <h5 id="documentacion-oficial-mas-informacion-en-mysql-manual-mysqldump-utility">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><em>MySQL Manual - mysqldump Utility</em></a></h5>
 <p><strong>3. La Utilidad mysqlimport</strong></p>
 <p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en la tabla correspondiente, la cual debe llamarse exactamente igual que el nombre base del archivo físico a importar.</p>
-<p># Importar el fichero 'empleado.txt' en la tabla 'empleado' del esquema 'practica_dml'</p>
-<p>mysqlimport -u root -p --fields-terminated-by=',' practica_dml /var/lib/mysql-files/empleado.txt</p>
-<h3 id="_11"></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="o">#</span><span class="w"> </span><span class="n">Importar</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">fichero</span><span class="w"> </span><span class="s1">&#39;empleado.txt&#39;</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="s1">&#39;empleado&#39;</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">esquema</span><span class="w"> </span><span class="s1">&#39;practica_dml&#39;</span><span class="w"></span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="n">mysqlimport</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--fields-terminated-by=&#39;,&#39; practica_dml /var/lib/mysql-files/empleado.txt</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="o">###</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h1 id="6-escenario-de-produccion-plan-de-respaldo-incremental-y-recuperacion-point-in-time">6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME</h1>
 <h4 id="caso-practico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo">Caso Práctico: Respaldo Incremental de practica_dml en un Entorno Corporativo</h4>
 <p><strong>Fase 1: Creación del Respaldo Base el Domingo a las 02:00 h</strong></p>
 <p>Como SysAdmin, ejecutamos un backup lógico consistente forzando la rotación de los logs binarios. El servidor comenzará a registrar cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo, binlog.000002).</p>
-<p>mysqldump -u root -p --single-transaction --flush-logs --databases practica_dml > /backups/practica_dml_domingo.sql</p>
-<p><strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00 h</strong></p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--single-transaction --flush-logs --databases practica_dml \&gt; /backups/practica_dml_domingo.sql</span>
+</code></pre></div>
+</td></tr></table>
+<strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00 h</strong></p>
 <p>Un desarrollador comete un fallo crítico de sintaxis en producción y ejecuta un DELETE accidental sin cláusula WHERE sobre la tabla de clientes en practica_dml, vaciando la tabla. El desastre se registra a las 10:00:15 en el log binario activo binlog.000002.</p>
 <p><strong>Fase 3: Proceso de Recuperación Point-in-Time (Lunes 10:15 h)</strong></p>
 <p><strong>Paso 1:</strong> Forzar de manera inmediata un bloqueo de escritura para evitar que nuevos registros interfieran o cerrar las conexiones clientes y rotar los logs binarios para aislar la actividad actual:</p>
-<p>mysqladmin -u root -p flush-logs</p>
-<p><em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene la sentencia destructiva).</em></p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">mysqladmin</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">flush</span><span class="o">-</span><span class="n">logs</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene la sentencia destructiva).</em></p>
 <p><strong>Paso 2:</strong> Importar la copia de seguridad completa realizada el domingo, devolviendo la base de datos al estado consistente del domingo a las 02:00 h:</p>
-<p>mysql -u root -p \&lt; /backups/practica_dml_domingo.sql</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;</span><span class="w"> </span><span class="o">/</span><span class="n">backups</span><span class="o">/</span><span class="n">practica_dml_domingo</span><span class="p">.</span><span class="k">sql</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de manera visual para encontrar la posición física o la fecha y hora exactas de la transacción dañina:</p>
-<p>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 | grep -i -C 5 "delete"</p>
-<p><em>Supongamos que encontramos que la transacción destructiva ocurrió a las "2026-06-22 10:00:15".</em></p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="n">mysqlbinlog</span><span class="w"> </span><span class="c1">--database=practica_dml /var/lib/mysql/binlog.000002 \| grep -i -C 5 &quot;delete&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<em>Supongamos que encontramos que la transacción destructiva ocurrió a las "2026-06-22 10:00:15".</em></p>
 <p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las transacciones realizadas desde el domingo hasta el instante previo a la eliminación accidental (10:00:14 h):</p>
-<p>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22 10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="n">mysqlbinlog</span><span class="w"> </span><span class="c1">--database=practica_dml --stop-datetime=&quot;2026-06-22 10:00:14&quot; /var/lib/mysql/binlog.000002 \| mysql -u root -p</span>
+</code></pre></div>
+</td></tr></table>
 <p>¡La base de datos se ha recuperado con total consistencia y sin pérdida de datos válidos!</p>
 <h1 id="7-herramientas-graficas-y-migracion-entre-sgbd">7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD</h1>
 <p><strong>Realizar Copias de Seguridad con MySQL Workbench</strong></p>

@@ -452,13 +452,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#21-insercion-de-datos-sentencia-insert" class="md-nav__link">
     2.1 Inserción de Datos: Sentencia INSERT
   </a>
@@ -475,13 +468,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    
-  </a>
   
 </li>
         
@@ -540,22 +526,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    
-  </a>
   
 </li>
         
@@ -601,19 +573,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-comandos-tcl-start-transaction-commit-y-rollback" class="md-nav__link">
-    3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK
-  </a>
-  
-    <nav class="md-nav" aria-label="3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#documentacion-oficial-mas-informacion-en-documentacion-de-start-transaction-commit-y-rollback" class="md-nav__link">
     🔗 Documentación Oficial: Más Información en Documentación de START TRANSACTION, COMMIT y ROLLBACK
@@ -623,13 +582,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    
-  </a>
   
 </li>
         
@@ -655,13 +607,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    
-  </a>
   
 </li>
       
@@ -702,13 +647,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    
-  </a>
   
 </li>
       
@@ -891,104 +829,346 @@
 <p>Esta unidad se conecta de forma directa con la <em>Unidad 5 (Recuperación de Información)</em> y la <em>Unidad 12 (Triggers y Programación de Procedimientos)</em>. Desde la perspectiva de un administrador de sistemas de red, el control transaccional es la última barrera de defensa para evitar la corrupción de datos ante caídas de servicio, fallos de red o inconsistencias físicas de almacenamiento en sistemas en producción.</p>
 <h1 id="2-lenguaje-de-manipulacion-de-datos-dml">2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)</h1>
 <p>Para realizar los ejemplos de esta unidad de trabajo, utilizaremos el esquema relacional de la base de datos de <strong>Jardinería / Pedidos</strong> definido a continuación:</p>
-<p>-- Creación de la base de datos con codificación utf8mb4 recomendada para SysAdmins</p>
-<p>CREATE DATABASE IF NOT EXISTS jardineria_pedidos</p>
-<p>CHARACTER SET utf8mb4</p>
-<p>COLLATE utf8mb4_spanish_ci;</p>
-<p>USE jardineria_pedidos;</p>
-<p>-- Tabla: CLIENTE</p>
-<p>CREATE TABLE cliente (</p>
-<p>codigo_cliente INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
-<p>nombre_cliente VARCHAR(50) NOT NULL,</p>
-<p>limite_credito DECIMAL(15, 2) NOT NULL DEFAULT 1000.00</p>
-<p>) ENGINE=InnoDB;</p>
-<p>-- Tabla: PRODUCTO</p>
-<p>CREATE TABLE producto (</p>
-<p>codigo_producto VARCHAR(15) PRIMARY KEY,</p>
-<p>nombre VARCHAR(70) NOT NULL,</p>
-<p>cantidad_en_stock SMALLINT UNSIGNED NOT NULL DEFAULT 0,</p>
-<p>precio_venta DECIMAL(15, 2) NOT NULL</p>
-<p>) ENGINE=InnoDB;</p>
-<p>-- Tabla: PEDIDO</p>
-<p>CREATE TABLE pedido (</p>
-<p>codigo_pedido INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,</p>
-<p>fecha_pedido DATE NOT NULL,</p>
-<p>fecha_esperada DATE NOT NULL,</p>
-<p>fecha_entrega DATE DEFAULT NULL,</p>
-<p>estado VARCHAR(15) NOT NULL DEFAULT "Pendiente",</p>
-<p>codigo_cliente INT UNSIGNED NOT NULL,</p>
-<p>CONSTRAINT fk_pedido_cliente FOREIGN KEY (codigo_cliente)</p>
-<p>REFERENCES cliente (codigo_cliente)</p>
-<p>) ENGINE=InnoDB;</p>
-<p>-- Tabla: DETALLE_PEDIDO</p>
-<p>CREATE TABLE detalle_pedido (</p>
-<p>codigo_pedido INT UNSIGNED,</p>
-<p>codigo_producto VARCHAR(15),</p>
-<p>cantidad INT UNSIGNED NOT NULL,</p>
-<p>precio_unidad DECIMAL(15, 2) NOT NULL,</p>
-<p>PRIMARY KEY (codigo_pedido, codigo_producto),</p>
-<p>CONSTRAINT fk_detalle_pedido FOREIGN KEY (codigo_pedido)</p>
-<p>REFERENCES pedido (codigo_pedido) ON DELETE CASCADE,</p>
-<p>CONSTRAINT fk_detalle_producto FOREIGN KEY (codigo_producto)</p>
-<p>REFERENCES producto (codigo_producto) ON DELETE RESTRICT</p>
-<p>) ENGINE=InnoDB;</p>
-<p>-- Tabla: PAGO</p>
-<p>CREATE TABLE pago (</p>
-<p>codigo_cliente INT UNSIGNED,</p>
-<p>id_transaccion VARCHAR(26) PRIMARY KEY,</p>
-<p>fecha_pago DATE NOT NULL,</p>
-<p>total DECIMAL(15, 2) NOT NULL,</p>
-<p>CONSTRAINT fk_pago_cliente FOREIGN KEY (codigo_cliente)</p>
-<p>REFERENCES cliente (codigo_cliente)</p>
-<p>) ENGINE=InnoDB;</p>
-<h2 id="_1"></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">-- Creación de la base de datos con codificación utf8mb4 recomendada para SysAdmins</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">jardineria_pedidos</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_spanish_ci</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="n">USE</span><span class="w"> </span><span class="n">jardineria_pedidos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="c1">-- Tabla: CLIENTE</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="n">codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="n">nombre_cliente</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="n">limite_credito</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">1000</span><span class="p">.</span><span class="mi">00</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="c1">-- Tabla: PRODUCTO</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="n">codigo_producto</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="n">precio_venta</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="c1">-- Tabla: PEDIDO</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="n">codigo_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="n">fecha_pedido</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="n">fecha_esperada</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="n">fecha_entrega</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="n">estado</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="ss">&quot;Pendiente&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="n">codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_pedido_cliente</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="k">REFERENCES</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="c1">-- Tabla: DETALLE_PEDIDO</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="n">codigo_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="n">codigo_producto</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="n">cantidad</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="n">precio_unidad</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_producto</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_detalle_pedido</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="k">REFERENCES</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_detalle_producto</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_producto</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="k">REFERENCES</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_producto</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">RESTRICT</span><span class="w"></span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="c1">-- Tabla: PAGO</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="n">codigo_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="n">id_transaccion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="n">fecha_pago</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="n">total</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_pago_cliente</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="k">REFERENCES</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="21-insercion-de-datos-sentencia-insert">2.1 Inserción de Datos: Sentencia INSERT</h2>
 <p>La sentencia INSERT permite añadir nuevos registros (filas) a una tabla existente en la base de datos.</p>
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-insert">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/insert.html"><em>Documentación Oficial de MySQL sobre la Sentencia INSERT</em></a></h5>
 <p><strong>Sintaxis Básica de Inserción Posicional e Inserción Explícita</strong></p>
 <p>La buena práctica en administración exige siempre detallar la lista de columnas destino para evitar que cambios futuros en el esquema de la tabla rompan los scripts de automatización:</p>
-<p>-- Práctica Recomendada: Inserción explícita especificando columnas</p>
-<p>INSERT INTO cliente (nombre_cliente, limite_credito)</p>
-<p>VALUES ('Jardines Celia S.L.', 5000.00);</p>
-<p>-- Inserción múltiple de alta eficiencia</p>
-<p>INSERT INTO producto (codigo_producto, nombre, cantidad_en_stock, precio_venta)</p>
-<p>VALUES</p>
-<p>('PROD-P01', 'Pala de Acero Reforzada', 150, 19.95),</p>
-<p>('PROD-M02', 'Manguera Autoenrollable 20m', 80, 24.50),</p>
-<p>('PROD-T03', 'Tijeras de Podar Premium', 45, 12.99);</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">-- Práctica Recomendada: Inserción explícita especificando columnas</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="p">(</span><span class="n">nombre_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">limite_credito</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Jardines Celia S.L.&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1">-- Inserción múltiple de alta eficiencia</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="p">,</span><span class="w"> </span><span class="n">precio_venta</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="k">VALUES</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="p">(</span><span class="s1">&#39;PROD-P01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pala de Acero Reforzada&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">.</span><span class="mi">95</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="p">(</span><span class="s1">&#39;PROD-M02&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Manguera Autoenrollable 20m&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">.</span><span class="mi">50</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">(</span><span class="s1">&#39;PROD-T03&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tijeras de Podar Premium&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">99</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Sentencia INSERT ... SELECT</strong></p>
 <p>Permite poblar una tabla de forma masiva utilizando el conjunto de resultados devuelto por una consulta SELECT. Es un recurso de rendimiento clave para migraciones de datos o generación de tablas de agregación histórica:</p>
-<p>-- Supongamos una tabla para almacenar un histórico de clientes premium</p>
-<p>CREATE TABLE clientes_vip (</p>
-<p>id_vip INT UNSIGNED PRIMARY KEY,</p>
-<p>nombre VARCHAR(50) NOT NULL,</p>
-<p>credito DECIMAL(15, 2) NOT NULL</p>
-<p>) ENGINE=InnoDB;</p>
-<p>-- Copia selectiva de registros masivos</p>
-<p>INSERT INTO clientes_vip (id_vip, nombre, credito)</p>
-<p>SELECT codigo_cliente, nombre_cliente, limite_credito</p>
-<p>FROM cliente</p>
-<p>WHERE limite_credito >= 5000.00;</p>
-<h2 id="_2"></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">-- Supongamos una tabla para almacenar un histórico de clientes premium</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">clientes_vip</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">id_vip</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="n">credito</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="c1">-- Copia selectiva de registros masivos</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">clientes_vip</span><span class="w"> </span><span class="p">(</span><span class="n">id_vip</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">credito</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">nombre_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="err">\</span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5000</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="22-modificacion-de-datos-sentencia-update">2.2 Modificación de Datos: Sentencia UPDATE</h2>
 <p>La sentencia UPDATE permite modificar los valores de una o más columnas de filas ya existentes en una tabla.</p>
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-update">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/insert.html"><em>Documentación Oficial de MySQL sobre la Sentencia</em></a> UPDATE</h5>
 <p><strong>Sintaxis de Modificación Selectiva</strong></p>
 <p>La cláusula WHERE es obligatoria para acotar el impacto del cambio. Su omisión modificará todos los registros de la tabla de forma irreversible:</p>
-<p>-- Actualización selectiva de un producto específico</p>
-<p>UPDATE producto</p>
-<p>SET cantidad_en_stock = cantidad_en_stock - 5,</p>
-<p>precio_venta = 22.50</p>
-<p>WHERE codigo_producto = 'PROD-P01';</p>
-<p>-- Actualización múltiple de estados basada en condiciones de fecha</p>
-<p>UPDATE pedido</p>
-<p>SET estado = 'Retrasado'</p>
-<p>WHERE fecha_entrega IS NULL</p>
-<p>AND fecha_esperada \&lt; CURDATE();</p>
-<blockquote>
-<p></p>
-</blockquote>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">-- Actualización selectiva de un producto específico</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">producto</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">SET</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">precio_venta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">.</span><span class="mi">50</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PROD-P01&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">-- Actualización múltiple de estados basada en condiciones de fecha</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">pedido</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Retrasado&#39;</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">fecha_entrega</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="k">AND</span><span class="w"> </span><span class="n">fecha_esperada</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="o">&gt;</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h6 id="advertencia-de-administrador-en-entornos-de-produccion-es-recomendable-habilitar-la-variable-de-entorno-sql_safe_updates-set-sql_safe_updates-1-esto-previene-la-ejecucion-de-sentencias-update-o-delete-que-no-utilicen-un-indice-o-clave-primaria-en-la-clausula-where">⚠️ <strong>Advertencia de Administrador:</strong> En entornos de producción, es recomendable habilitar la variable de entorno $sql_safe_updates$ (SET sql_safe_updates = 1;). Esto previene la ejecución de sentencias UPDATE o DELETE que no utilicen un índice o clave primaria en la cláusula WHERE.</h6>
 <h2 id="23-eliminacion-de-datos-delete-y-truncate">2.3 Eliminación de Datos: DELETE y TRUNCATE</h2>
 <p>La eliminación de registros puede realizarse de forma lógica, física selectiva o mediante el vaciado completo de la estructura física.</p>
@@ -996,10 +1176,21 @@
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-la-sentencia-truncate-table">🔗 Documentación Oficial: Más información en <a href="https://dev.mysql.com/doc/refman/8.0/en/truncate-table.html"><em>Documentación Oficial de MySQL sobre la Sentencia TRUNCATE TABLE</em></a></h5>
 <p><strong>Sentencia DELETE (Selectivo)</strong></p>
 <p>Borra los registros que cumplen las condiciones del filtro WHERE uno a uno, disparando disparadores (triggers) y registrando la operación en el registro binario (binary log):</p>
-<p>-- Borrado selectivo de un pago específico</p>
-<p>DELETE FROM pago</p>
-<p>WHERE id_transaccion = 'TXN-2026-001';</p>
-<h5 id="_3"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">-- Borrado selectivo de un pago específico</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pago</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id_transaccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;TXN-2026-001&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Sentencia TRUNCATE (Borrado de Alta Eficiencia)</strong></p>
 <p>Es una sentencia DDL que, en lugar de eliminar fila por fila, destruye la tabla físicamente y la recrea vacía desde cero.</p>
 <ul>
@@ -1022,17 +1213,32 @@
 <p>No puede ejecutarse en tablas con claves externas activas referenciadas por otras tablas.</p>
 </li>
 </ul>
-<p>-- Vaciar por completo los datos históricos para preparar una nueva carga de datos</p>
-<p>TRUNCATE TABLE clientes_vip;</p>
-<h2 id="_4"></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">-- Vaciar por completo los datos históricos para preparar una nueva carga de datos</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">clientes_vip</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="24-operaciones-de-manipulacion-e-integridad-referencial">2.4 Operaciones de Manipulación e Integridad Referencial</h2>
 <p>Cuando modificamos o eliminamos registros que están asociados con otras tablas a través de relaciones de clave ajena (FOREIGN KEY), el SGBD actúa según la regla referencial definida:</p>
-<p>-- Intento de borrado de un producto referenciado</p>
-<p>DELETE FROM producto WHERE codigo_producto = 'PROD-M02';</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">-- Intento de borrado de un producto referenciado</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PROD-M02&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="o">-</span><span class="w">   </span>
+</code></pre></div>
+</td></tr></table>
+<strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El motor InnoDB de MySQL detiene la sentencia y lanza un error si el código del producto existe en alguna fila de la tabla detalle_pedido.</p>
 <ul>
-<li>
-<p><strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El motor InnoDB de MySQL detiene la sentencia y lanza un error si el código del producto existe en alguna fila de la tabla detalle_pedido.</p>
-</li>
 <li>
 <p><strong>ON DELETE CASCADE:</strong> Si se borrara un registro en la tabla pedido, InnoDB eliminará automáticamente todas las líneas asociadas en detalle_pedido para mantener la base de datos libre de registros huérfanos.</p>
 </li>
@@ -1061,13 +1267,34 @@
 <p>Por defecto, MySQL opera con la variable de entorno $autocommit$ activa (valor $1$). Esto significa que cada comando DML individual (INSERT, UPDATE, DELETE) se trata como una transacción independiente y se escribe de forma automática y definitiva en disco.</p>
 <h5 id="documentacion-oficial-informacion-sobre-autocommit-en-documentacion-oficial-de-mysql-sobre-autocommit">🔗 Documentación Oficial: Información sobre Autocommit en <a href="https://dev.mysql.com/doc/refman/8.0/en/commit.html"><em>Documentación Oficial de MySQL sobre Autocommit</em></a></h5>
 <p>Para trabajar de manera profesional con transacciones complejas, debemos configurar y monitorizar el estado de este parámetro en el servidor:</p>
-<p>-- Consultar el estado del autocommit de la sesión actual</p>
-<p>SELECT @@SESSION.autocommit;</p>
-<p>-- Desactivar el autocommit (Recomendado para scripts interactivos de SysAdmin)</p>
-<p>SET autocommit = 0;</p>
-<p>-- Volver a activar el autocommit automático</p>
-<p>SET autocommit = 1;</p>
-<h2 id="33-comandos-tcl-start-transaction-commit-y-rollback">3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK</h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">-- Consultar el estado del autocommit de la sesión actual</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="k">SESSION</span><span class="p">.</span><span class="n">autocommit</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="c1">-- Desactivar el autocommit (Recomendado para scripts interactivos de SysAdmin)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="c1">-- Volver a activar el autocommit automático</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+3.3 Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK</p>
 <p>Los comandos del Lenguaje de Control de Transacciones (TCL) permiten delimitar el alcance del bloque lógico de trabajo.</p>
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-de-start-transaction-commit-y-rollback">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/commit.html"><em>Documentación de START TRANSACTION, COMMIT y ROLLBACK</em></a></h5>
 <p><strong>START TRANSACTION / BEGIN</strong></p>
@@ -1093,50 +1320,167 @@
 </li>
 </ol>
 <p>Si falla la inserción de las líneas de detalle, se debe abortar la operación para no descontar existencias de forma errónea:</p>
-<p>-- Iniciamos explícitamente el bloque transaccional</p>
-<p>START TRANSACTION;</p>
-<p>-- Paso 1: Insertar la cabecera del pedido para el cliente 1</p>
-<p>INSERT INTO pedido (fecha_pedido, fecha_esperada, estado, codigo_cliente)</p>
-<p>VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), 'Pendiente', 1);</p>
-<p>-- Guardamos el ID autoincremental recién generado para el pedido</p>
-<p>SET @nuevo_pedido = LAST_INSERT_ID();</p>
-<p>-- Paso 2: Restar el stock en la tabla de productos (Pala de Acero)</p>
-<p>UPDATE producto</p>
-<p>SET cantidad_en_stock = cantidad_en_stock - 2</p>
-<p>WHERE codigo_producto = 'PROD-P01';</p>
-<p>-- Paso 3: Registrar la línea detallada del pedido</p>
-<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
-<p>VALUES (@nuevo_pedido, 'PROD-P01', 2, 19.95);</p>
-<p>-- Confirmar cambios</p>
-<p>COMMIT;</p>
-<p>Si durante el script se detecta que no se cumple la restricción referencial o el stock es insuficiente, se puede invocar en cualquier punto antes del COMMIT:</p>
-<p>-- En caso de error, abortar todas las operaciones del bloque</p>
-<p>ROLLBACK;</p>
-<h2 id="_5"></h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">-- Iniciamos explícitamente el bloque transaccional</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="c1">-- Paso 1: Insertar la cabecera del pedido para el cliente 1</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="p">(</span><span class="n">fecha_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">fecha_esperada</span><span class="p">,</span><span class="w"> </span><span class="n">estado</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="k">DAY</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;Pendiente&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="c1">-- Guardamos el ID autoincremental recién generado para el pedido</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">nuevo_pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="c1">-- Paso 2: Restar el stock en la tabla de productos (Pala de Acero)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">producto</span><span class="w"></span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="k">SET</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad_en_stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PROD-P01&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="c1">-- Paso 3: Registrar la línea detallada del pedido</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="n">precio_unidad</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">nuevo_pedido</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PROD-P01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">.</span><span class="mi">95</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="c1">-- Confirmar cambios</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+Si durante el script se detecta que no se cumple la restricción referencial o el stock es insuficiente, se puede invocar en cualquier punto antes del COMMIT:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">-- En caso de error, abortar todas las operaciones del bloque</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">ROLLBACK</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="34-control-fino-con-puntos-de-retorno-savepoint">3.4 Control Fino con Puntos de Retorno (SAVEPOINT)</h2>
 <p>Los puntos de retorno (SAVEPOINT) permiten dividir una transacción extensa en etapas secundarias. De esta forma, el administrador puede realizar retrocesos parciales de la información sin desechar todo el trabajo realizado en la transacción.</p>
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-savepoint">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/savepoint.html"><em>Documentación Oficial de MySQL sobre SAVEPOINT</em></a></h5>
-<p>START TRANSACTION;</p>
-<p>-- Registro de la cabecera del pedido</p>
-<p>INSERT INTO pedido (fecha_pedido, fecha_esperada, estado, codigo_cliente)</p>
-<p>VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 15 DAY), 'Pendiente', 1);</p>
-<p>SET @pedido_id = LAST_INSERT_ID();</p>
-<p>-- Definimos el primer punto de control</p>
-<p>SAVEPOINT sp_cabecera_pedido;</p>
-<p>-- Añadir primer producto al detalle</p>
-<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
-<p>VALUES (@pedido_id, 'PROD-P01', 1, 19.95);</p>
-<p>-- Definimos el segundo punto de control</p>
-<p>SAVEPOINT sp_primer_producto;</p>
-<p>-- Añadir un segundo producto que podría fallar</p>
-<p>INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad, precio_unidad)</p>
-<p>VALUES (@pedido_id, 'PROD-X99', 5, 49.99);</p>
-<p>-- Regresar al estado sp_primer_producto en caso de fallo</p>
-<p>ROLLBACK TO SAVEPOINT sp_primer_producto;</p>
-<p>-- Liberar punto de retorno y confirmar</p>
-<p>RELEASE SAVEPOINT sp_cabecera_pedido;</p>
-<p>COMMIT;</p>
-<h1 id="_6"></h1>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span>
+<span class="normal"><a href="#__codelineno-10-31">31</a></span>
+<span class="normal"><a href="#__codelineno-10-32">32</a></span>
+<span class="normal"><a href="#__codelineno-10-33">33</a></span>
+<span class="normal"><a href="#__codelineno-10-34">34</a></span>
+<span class="normal"><a href="#__codelineno-10-35">35</a></span>
+<span class="normal"><a href="#__codelineno-10-36">36</a></span>
+<span class="normal"><a href="#__codelineno-10-37">37</a></span>
+<span class="normal"><a href="#__codelineno-10-38">38</a></span>
+<span class="normal"><a href="#__codelineno-10-39">39</a></span>
+<span class="normal"><a href="#__codelineno-10-40">40</a></span>
+<span class="normal"><a href="#__codelineno-10-41">41</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="c1">-- Registro de la cabecera del pedido</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="p">(</span><span class="n">fecha_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">fecha_esperada</span><span class="p">,</span><span class="w"> </span><span class="n">estado</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="k">DAY</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;Pendiente&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">pedido_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="c1">-- Definimos el primer punto de control</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp_cabecera_pedido</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="c1">-- Añadir primer producto al detalle</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="n">precio_unidad</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">pedido_id</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PROD-P01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">.</span><span class="mi">95</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="c1">-- Definimos el segundo punto de control</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp_primer_producto</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="c1">-- Añadir un segundo producto que podría fallar</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">detalle_pedido</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_pedido</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="n">precio_unidad</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">pedido_id</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PROD-X99&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">49</span><span class="p">.</span><span class="mi">99</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><span class="c1">-- Regresar al estado sp_primer_producto en caso de fallo</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp_primer_producto</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="c1">-- Liberar punto de retorno y confirmar</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a><span class="n">RELEASE</span><span class="w"> </span><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp_cabecera_pedido</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a><span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-40" name="__codelineno-10-40"></a>
+<a id="__codelineno-10-41" name="__codelineno-10-41"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h1 id="4-acceso-concurrente-y-niveles-de-aislamiento-en-innodb">4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</h1>
 <p>En servidores multiusuario modernos, cientos de conexiones de red pueden intentar interactuar de forma simultánea con las mismas tablas. Esto da lugar a una serie de fenómenos de lectura y actualización concurrente que deben gestionarse de forma estricta.</p>
 <h2 id="41-fenomenos-de-lectura-concurrente">4.1 Fenómenos de Lectura Concurrente</h2>
@@ -1219,49 +1563,157 @@ WHERE precio_base</p>
 <p><em>*Nota técnica de administración: En la mayoría de sistemas SQL estándar, el nivel REPEATABLE READ permite lecturas fantasma. Sin embargo, el motor InnoDB de MySQL previene de forma nativa la inserción de registros fantasma utilizando la técnica de bloqueo </em><em>Next-Key Locking</em><em>.</em></p>
 <p><strong>Gestión de Variables de Aislamiento en MySQL</strong></p>
 <p>Como administradores, podemos consultar y parametrizar los niveles de aislamiento a nivel de servidor (GLOBAL) o a nivel de conexión activa (SESSION):</p>
-<p>-- Consultar el aislamiento a nivel de servidor global</p>
-<p>SELECT @@GLOBAL.transaction_isolation;</p>
-<p>-- Consultar el aislamiento de la sesión activa</p>
-<p>SELECT @@SESSION.transaction_isolation;</p>
-<p>-- Consultar de forma simplificada</p>
-<p>SELECT @@transaction_isolation;</p>
-<p>-- Modificar el nivel de aislamiento de la sesión</p>
-<p>SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;</p>
-<p>SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</p>
-<h1 id="_7"></h1>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">-- Consultar el aislamiento a nivel de servidor global</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="k">GLOBAL</span><span class="p">.</span><span class="n">transaction_isolation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">-- Consultar el aislamiento de la sesión activa</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="k">SESSION</span><span class="p">.</span><span class="n">transaction_isolation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">-- Consultar de forma simplificada</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="n">transaction_isolation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="c1">-- Modificar el nivel de aislamiento de la sesión</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="k">SET</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">COMMITTED</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="k">SET</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">SERIALIZABLE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h1 id="5-transacciones-en-procedimientos-almacenados">5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS</h1>
 <p>En la arquitectura de sistemas real, no es aconsejable delegar el control de transacciones de negocio crítico al cliente externo (PHP, Python, etc.). Es una práctica recomendada centralizar las transacciones complejas dentro del propio gestor mediante <strong>Procedimientos Almacenados (Stored Procedures)</strong>.</p>
 <h5 id="documentacion-oficial-mas-informacion-en-documentacion-de-mysql-sobre-el-control-de-flujo-y-excepciones-en-stored-procedures">🔗 Documentación Oficial: Más Información en <a href="https://dev.mysql.com/doc/refman/8.0/en/stored-programs.html"><em>Documentación de MySQL sobre el control de flujo y excepciones en Stored Procedures</em></a></h5>
 <h2 id="51-gestion-de-excepciones-y-reversion-automatica">5.1 Gestión de Excepciones y Reversión Automática</h2>
 <p>El motor de MySQL permite declarar manejadores de errores (DECLARE HANDLER). En caso de que ocurra una violación de restricción física (error de clave externa, de tipo o nulo), el manejador ejecutará una sección de código encargada de hacer el rollback automático de forma controlada y segura para la sesión:</p>
-<p>DELIMITER $$</p>
-<p>CREATE PROCEDURE procesar_pago_pedido (</p>
-<p>IN p_cliente_id INT UNSIGNED,</p>
-<p>IN p_transaccion VARCHAR(26),</p>
-<p>IN p_monto DECIMAL(15, 2)</p>
-<p>)</p>
-<p>BEGIN</p>
-<p>DECLARE t_error_detectado INT DEFAULT 0;</p>
-<p>DECLARE CONTINUE HANDLER FOR SQLEXCEPTION</p>
-<p>BEGIN</p>
-<p>SET t_error_detectado = 1;</p>
-<p>ROLLBACK;</p>
-<p>END;</p>
-<p>START TRANSACTION;</p>
-<p>INSERT INTO pago (codigo_cliente, id_transaccion, fecha_pago, total)</p>
-<p>VALUES (p_cliente_id, p_transaccion, CURDATE(), p_monto);</p>
-<p>UPDATE cliente</p>
-<p>SET limite_credito = limite_credito + (p_monto * 0.05)</p>
-<p>WHERE codigo_cliente = p_cliente_id;</p>
-<p>IF t_error_detectado = 0 THEN</p>
-<p>COMMIT;</p>
-<p>SELECT 'Transacción procesada correctamente.' AS Estado;</p>
-<p>ELSE</p>
-<p>SELECT 'Error crítico. Transacción abortada.' AS Estado;</p>
-<p>END IF;</p>
-<p>END$$</p>
-<p>DELIMITER ;</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span>
+<span class="normal"><a href="#__codelineno-12-35">35</a></span>
+<span class="normal"><a href="#__codelineno-12-36">36</a></span>
+<span class="normal"><a href="#__codelineno-12-37">37</a></span>
+<span class="normal"><a href="#__codelineno-12-38">38</a></span>
+<span class="normal"><a href="#__codelineno-12-39">39</a></span>
+<span class="normal"><a href="#__codelineno-12-40">40</a></span>
+<span class="normal"><a href="#__codelineno-12-41">41</a></span>
+<span class="normal"><a href="#__codelineno-12-42">42</a></span>
+<span class="normal"><a href="#__codelineno-12-43">43</a></span>
+<span class="normal"><a href="#__codelineno-12-44">44</a></span>
+<span class="normal"><a href="#__codelineno-12-45">45</a></span>
+<span class="normal"><a href="#__codelineno-12-46">46</a></span>
+<span class="normal"><a href="#__codelineno-12-47">47</a></span>
+<span class="normal"><a href="#__codelineno-12-48">48</a></span>
+<span class="normal"><a href="#__codelineno-12-49">49</a></span>
+<span class="normal"><a href="#__codelineno-12-50">50</a></span>
+<span class="normal"><a href="#__codelineno-12-51">51</a></span>
+<span class="normal"><a href="#__codelineno-12-52">52</a></span>
+<span class="normal"><a href="#__codelineno-12-53">53</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="err">$$</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesar_pago_pedido</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_cliente_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_transaccion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">26</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="k">IN</span><span class="w"> </span><span class="n">p_monto</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="k">DECLARE</span><span class="w"> </span><span class="n">t_error_detectado</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="w"></span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="k">BEGIN</span><span class="w"></span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="k">SET</span><span class="w"> </span><span class="n">t_error_detectado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="k">ROLLBACK</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="k">END</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a>
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-28" name="__codelineno-12-28"></a>
+<a id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pago</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">id_transaccion</span><span class="p">,</span><span class="w"> </span><span class="n">fecha_pago</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-30" name="__codelineno-12-30"></a>
+<a id="__codelineno-12-31" name="__codelineno-12-31"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">p_cliente_id</span><span class="p">,</span><span class="w"> </span><span class="n">p_transaccion</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="n">p_monto</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-32" name="__codelineno-12-32"></a>
+<a id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">cliente</span><span class="w"></span>
+<a id="__codelineno-12-34" name="__codelineno-12-34"></a>
+<a id="__codelineno-12-35" name="__codelineno-12-35"></a><span class="k">SET</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">limite_credito</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p_monto</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-36" name="__codelineno-12-36"></a>
+<a id="__codelineno-12-37" name="__codelineno-12-37"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_cliente_id</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-38" name="__codelineno-12-38"></a>
+<a id="__codelineno-12-39" name="__codelineno-12-39"></a><span class="k">IF</span><span class="w"> </span><span class="n">t_error_detectado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<a id="__codelineno-12-40" name="__codelineno-12-40"></a>
+<a id="__codelineno-12-41" name="__codelineno-12-41"></a><span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-42" name="__codelineno-12-42"></a>
+<a id="__codelineno-12-43" name="__codelineno-12-43"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción procesada correctamente.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Estado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-44" name="__codelineno-12-44"></a>
+<a id="__codelineno-12-45" name="__codelineno-12-45"></a><span class="k">ELSE</span><span class="w"></span>
+<a id="__codelineno-12-46" name="__codelineno-12-46"></a>
+<a id="__codelineno-12-47" name="__codelineno-12-47"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error crítico. Transacción abortada.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Estado</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-48" name="__codelineno-12-48"></a>
+<a id="__codelineno-12-49" name="__codelineno-12-49"></a><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-50" name="__codelineno-12-50"></a>
+<a id="__codelineno-12-51" name="__codelineno-12-51"></a><span class="k">END</span><span class="err">$$</span><span class="w"></span>
+<a id="__codelineno-12-52" name="__codelineno-12-52"></a>
+<a id="__codelineno-12-53" name="__codelineno-12-53"></a><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 
               
             </article>

@@ -480,13 +480,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax" class="md-nav__link">
     🔗 Documentación Oficial: Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando CREATE VIEW en MySQL Reference Manual - CREATE VIEW Syntax
   </a>
@@ -518,13 +511,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#22-eliminacion-de-vistas-drop-view" class="md-nav__link">
     2.2 Eliminación de Vistas (DROP VIEW)
   </a>
@@ -532,22 +518,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#23-renombrado-de-vistas-rename-table" class="md-nav__link">
     2.3 Renombrado de Vistas (RENAME TABLE)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    
   </a>
   
 </li>
@@ -561,13 +533,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    
-  </a>
   
 </li>
       
@@ -656,13 +621,6 @@
           <li class="md-nav__item">
   <a href="#43-ejemplo-3-prevencion-de-inconsistencias-de-tipo" class="md-nav__link">
     4.3 Ejemplo 3: Prevención de Inconsistencias de Tipo
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-ejemplo-4-analisis-de-una-vista-de-terceros-no-actualizable" class="md-nav__link">
-    4.4 Ejemplo 4: Análisis de una Vista de Terceros No Actualizable
   </a>
   
 </li>
@@ -879,15 +837,41 @@
 <h2 id="21-creacion-de-vistas-create-or-replace-view">2.1 Creación de Vistas (CREATE OR REPLACE VIEW)</h2>
 <h3 id="211-sintaxis-completa-y-parametros-del-motor">2.1.1 Sintaxis Completa y Parámetros del Motor</h3>
 <p>La creación de vistas en MySQL permite definir modificadores que influyen directamente en la optimización y en los privilegios de ejecución del motor.</p>
-<p>CREATE</p>
-<p>[OR REPLACE]</p>
-<p>[ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]</p>
-<p>[DEFINER = user]</p>
-<p>[SQL SECURITY { DEFINER | INVOKER }]</p>
-<p>VIEW view_name [(column_list)]</p>
-<p>AS select_statement</p>
-<p>[WITH [CASCADED | LOCAL] CHECK OPTION];</p>
-<h5 id="_1"></h5>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="err">\</span><span class="p">[</span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="err">\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="err">\</span><span class="p">[</span><span class="n">ALGORITHM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="n">UNDEFINED</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="n">MERGE</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="n">TEMPTABLE</span><span class="err">}\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="err">\</span><span class="p">[</span><span class="k">DEFINER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="err">\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="err">\</span><span class="p">[</span><span class="k">SQL</span><span class="w"> </span><span class="k">SECURITY</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="k">DEFINER</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="k">INVOKER</span><span class="w"> </span><span class="err">}\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">VIEW</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="err">\</span><span class="p">[(</span><span class="n">column_list</span><span class="p">)</span><span class="err">\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">AS</span><span class="w"> </span><span class="n">select_statement</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="err">\</span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="k">CASCADED</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="k">LOCAL</span><span class="err">\</span><span class="p">]</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="k">OPTION</span><span class="err">\</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="o">#####</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax">🔗 Documentación Oficial: Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando CREATE VIEW en <a href="https://dev.mysql.com/doc/refman/8.0/en/create-view.html"><em>MySQL Reference Manual - CREATE VIEW Syntax</em></a></h5>
 <h3 id="212-algoritmos-de-procesamiento-de-vistas">2.1.2 Algoritmos de Procesamiento de Vistas</h3>
 <p>El parámetro ALGORITHM determina el método físico que utilizará el Optimizador de MySQL para resolver la vista:</p>
@@ -906,40 +890,108 @@
 <p>Podemos renombrar de forma estructural las columnas resultantes directamente en la cabecera de la declaración, aislando por completo los nombres físicos del diseño relacional.</p>
 <p><strong>Ejemplo de uso práctico:</strong></p>
 <p>Si deseamos proyectar el personal de la oficina de Madrid ocultando sus atributos sensibles de salario, podemos definir alias en la cabecera del SELECT:</p>
-<p>USE practica_dml;</p>
-<p>CREATE OR REPLACE VIEW v_personal_madrid (ID, Empleado, Correo, Ciudad) AS</p>
-<p>SELECT</p>
-<p>codigo_empleado,</p>
-<p>CONCAT(nombre, ' ', apellido1),</p>
-<p>email,</p>
-<p>'Madrid'</p>
-<p>FROM empleado</p>
-<p>WHERE codigo_oficina = 'OFI-MAD';</p>
-<h2 id="_2"></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">USE</span><span class="w"> </span><span class="n">practica_dml</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">v_personal_madrid</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">Empleado</span><span class="p">,</span><span class="w"> </span><span class="n">Correo</span><span class="p">,</span><span class="w"> </span><span class="n">Ciudad</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="n">codigo_empleado</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">CONCAT</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="n">email</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="s1">&#39;Madrid&#39;</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_oficina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;OFI-MAD&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="22-eliminacion-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP VIEW)</h2>
 <p>Al eliminar una vista, únicamente se destruye su definición en el catálogo de metadatos. Las tablas físicas y los datos subyacentes permanecen inalterados.</p>
-<p>DROP VIEW [IF EXISTS]</p>
-<p>view_name [, view_name] ...</p>
-<p>[RESTRICT | CASCADE];</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">DROP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="err">\</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">view_name</span><span class="w"> </span><span class="err">\</span><span class="p">[,</span><span class="w"> </span><span class="n">view_name</span><span class="err">\</span><span class="p">]</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="err">\</span><span class="p">[</span><span class="k">RESTRICT</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="k">CASCADE</span><span class="err">\</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><strong>Ejemplo de uso práctico:</strong></p>
-<p>DROP VIEW IF EXISTS v_personal_madrid;</p>
-<h2 id="_3"></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">DROP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">v_personal_madrid</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="23-renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas (RENAME TABLE)</h2>
 <p>Dado que las vistas se comportan en gran medida como tablas lógicas en el espacio de nombres de la base de datos, se utiliza el comando estándar de renombrado de tablas para modificar su identificador en el esquema.</p>
-<p>RENAME TABLE old_view_name TO new_view_name;</p>
-<p><strong>Ejemplo de uso práctico:</strong></p>
-<p>RENAME TABLE v_personal_madrid TO v_empleados_capital;</p>
-<h2 id="_4"></h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">RENAME</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">old_view_name</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_view_name</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<strong>Ejemplo de uso práctico:</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">RENAME</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">v_personal_madrid</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">v_empleados_capital</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="24-metadatos-e-inspeccion-de-vistas">2.4 Metadatos e Inspección de Vistas</h2>
 <p>En un servidor corporativo con cientos de objetos, el administrador necesita auditar y verificar el catálogo físico de tablas para aislar exclusivamente las vistas del esquema y consultar su código fuente DDL de creación.</p>
-<p>-- Listar todos los objetos indicando si son tablas base o vistas</p>
-<p>SHOW FULL TABLES;</p>
-<p>-- Filtrar y mostrar únicamente las vistas del esquema activo</p>
-<p>SHOW FULL TABLES WHERE Table_type = 'VIEW';</p>
-<p>-- Consultar la sentencia exacta de creación (auditoría lógica)</p>
-<p>SHOW CREATE VIEW v_empleados_capital;</p>
-<h1 id="_5"></h1>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">-- Listar todos los objetos indicando si son tablas base o vistas</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="k">FULL</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1">-- Filtrar y mostrar únicamente las vistas del esquema activo</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="k">SHOW</span><span class="w"> </span><span class="k">FULL</span><span class="w"> </span><span class="n">TABLES</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Table_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;VIEW&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="c1">-- Consultar la sentencia exacta de creación (auditoría lógica)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">v_empleados_capital</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="o">#</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
 <h1 id="3-vistas-actualizables">3. VISTAS ACTUALIZABLES</h1>
 <h2 id="31-restricciones-de-modificacion-insert-update-delete">3.1 Restricciones de Modificación (INSERT, UPDATE, DELETE)</h2>
 <p>MySQL permite realizar operaciones DML de modificación sobre una vista, impactando de forma directa y automática en las tablas base. Sin embargo, para que una vista sea <strong>actualizable</strong>, debe ser sencilla y directa.</p>
@@ -985,79 +1037,254 @@
 <p>A continuación se presentan una serie de ejemplos reales de administración utilizando de forma íntegra el esquema físico desarrollado en la Unidad 5 para resolver necesidades comunes de un SysAdmin.</p>
 <h2 id="41-ejemplo-1-seguridad-logica-en-la-tabla-empleados">4.1 Ejemplo 1: Seguridad Lógica en la Tabla Empleados</h2>
 <p><strong>Requisito:</strong> Se necesita crear un objeto de acceso para el personal técnico que muestre información del empleado, su email, fecha de contratación y oficina, ocultando sus campos sensibles de nómina (salario y comision).</p>
-<p>-- Creación de la vista segura</p>
-<p>CREATE OR REPLACE VIEW v_empleados_publico AS</p>
-<p>SELECT</p>
-<p>codigo_empleado,</p>
-<p>nombre,</p>
-<p>apellido1,</p>
-<p>email,</p>
-<p>codigo_oficina,</p>
-<p>fecha_contratacion</p>
-<p>FROM empleado</p>
-<p>WHERE activo = TRUE;</p>
-<p>-- Consulta plana realizada por el usuario de soporte técnico</p>
-<p>SELECT * FROM v_empleados_publico WHERE codigo_oficina = 'OFI-BAR';</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">-- Creación de la vista segura</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">v_empleados_publico</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="n">codigo_empleado</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="n">nombre</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="n">apellido1</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="n">email</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="n">codigo_oficina</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="n">fecha_contratacion</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">activo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a>
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="c1">-- Consulta plana realizada por el usuario de soporte técnico</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a>
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="k">SELECT</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">v_empleados_publico</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">codigo_oficina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;OFI-BAR&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre v_empleados_publico y no sobre la tabla física empleado, se impide que usuarios con privilegios limitados conozcan el costo salarial corporativo.</p>
 <h2 id="42-ejemplo-2-simplificacion-de-relaciones-complejas">4.2 Ejemplo 2: Simplificación de Relaciones Complejas</h2>
 <p><strong>Requisito:</strong> El equipo de desarrollo de frontend necesita pintar de forma unificada el catálogo de productos con sus respectivos fabricantes asociados sin tener que escribir consultas INNER JOIN repetidamente en el código de la aplicación.</p>
-<p>-- Creación de la vista integradora de inventario</p>
-<p>CREATE OR REPLACE VIEW v_inventario_fabricantes AS</p>
-<p>SELECT</p>
-<p>p.codigo_producto AS Cod_Prod,</p>
-<p>p.nombre AS Nombre_Producto,</p>
-<p>p.precio_venta AS PVP,</p>
-<p>p.gama AS Categoria,</p>
-<p>f.nombre AS Fabricante,</p>
-<p>f.pais AS Pais_Origen</p>
-<p>FROM producto p</p>
-<p>INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</p>
-<p></p>
-<p></p>
-<p>-- Consulta unificada directa desde la aplicación cliente</p>
-<p>SELECT * FROM v_inventario_fabricantes WHERE PVP \&lt; 50.00;</p>
-<p><em>Análisis técnico:</em> Esta vista es un ejemplo de composición interna (INNER JOIN). <strong>No es actualizable con INSERT</strong> de forma directa ya que afecta a múltiples tablas (producto y fabricante) de manera simultánea en su proyección de origen.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">-- Creación de la vista integradora de inventario</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">v_inventario_fabricantes</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="n">p</span><span class="p">.</span><span class="n">codigo_producto</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Cod_Prod</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="n">p</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Nombre_Producto</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="n">p</span><span class="p">.</span><span class="n">precio_venta</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">PVP</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="n">p</span><span class="p">.</span><span class="n">gama</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Categoria</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="n">f</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Fabricante</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="n">f</span><span class="p">.</span><span class="n">pais</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Pais_Origen</span><span class="w"></span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">fabricante</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">codigo_fabricante</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">codigo</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">-- Consulta unificada directa desde la aplicación cliente</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">v_inventario_fabricantes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PVP</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">.</span><span class="mi">00</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<em>Análisis técnico:</em> Esta vista es un ejemplo de composición interna (INNER JOIN). <strong>No es actualizable con INSERT</strong> de forma directa ya que afecta a múltiples tablas (producto y fabricante) de manera simultánea en su proyección de origen.</p>
 <h2 id="43-ejemplo-3-prevencion-de-inconsistencias-de-tipo">4.3 Ejemplo 3: Prevención de Inconsistencias de Tipo</h2>
 <p><strong>Requisito:</strong> El administrador debe delegar un acceso de modificación en cascada sobre los productos que pertenecen exclusivamente a la gama de 'Herramientas'. Debe garantizarse que, a través de dicho canal de edición, no sea posible agregar o renombrar un producto hacia otra gama distinta (como 'Ornamentales' o 'Frutales').</p>
-<p>-- Creación de la vista restrictiva de gama</p>
-<p>CREATE OR REPLACE VIEW v_gestion_herramientas AS</p>
-<p>SELECT</p>
-<p>codigo_producto,</p>
-<p>nombre,</p>
-<p>precio_venta,</p>
-<p>gama,</p>
-<p>codigo_fabricante</p>
-<p>FROM producto</p>
-<p>WHERE gama = 'Herramientas'</p>
-<p>WITH CHECK OPTION;</p>
-<p>-- Escenario A: Operación permitida (el registro cumple el filtro gama = 'Herramientas')</p>
-<p>INSERT INTO v_gestion_herramientas (codigo_producto, nombre, precio_venta, gama, codigo_fabricante)</p>
-<p>VALUES ('PROD-H99', 'Destornillador aislado de precisión', 12.50, 'Herramientas', 1);</p>
-<p>-- Escenario B: Operación RECHAZADA (el registro viola la restricción al ser 'Ornamentales')</p>
-<p>INSERT INTO v_gestion_herramientas (codigo_producto, nombre, precio_venta, gama, codigo_fabricante)</p>
-<p>VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales', 5);</p>
-<p>-- Error esperado en el motor de base de datos:</p>
-<p>-- ERROR 1369 (HY000): CHECK OPTION failed 'practica_dml.v_gestion_herramientas'</p>
-<h2 id="44-ejemplo-4-analisis-de-una-vista-de-terceros-no-actualizable">4.4 Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span>
+<span class="normal"><a href="#__codelineno-10-31">31</a></span>
+<span class="normal"><a href="#__codelineno-10-32">32</a></span>
+<span class="normal"><a href="#__codelineno-10-33">33</a></span>
+<span class="normal"><a href="#__codelineno-10-34">34</a></span>
+<span class="normal"><a href="#__codelineno-10-35">35</a></span>
+<span class="normal"><a href="#__codelineno-10-36">36</a></span>
+<span class="normal"><a href="#__codelineno-10-37">37</a></span>
+<span class="normal"><a href="#__codelineno-10-38">38</a></span>
+<span class="normal"><a href="#__codelineno-10-39">39</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">-- Creación de la vista restrictiva de gama</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">v_gestion_herramientas</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="n">codigo_producto</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="n">nombre</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">precio_venta</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="n">gama</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="n">codigo_fabricante</span><span class="w"></span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">gama</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Herramientas&#39;</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="k">WITH</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="c1">-- Escenario A: Operación permitida (el registro cumple el filtro gama = &#39;Herramientas&#39;)</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_gestion_herramientas</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">precio_venta</span><span class="p">,</span><span class="w"> </span><span class="n">gama</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_fabricante</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;PROD-H99&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Destornillador aislado de precisión&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Herramientas&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="c1">-- Escenario B: Operación RECHAZADA (el registro viola la restricción al ser &#39;Ornamentales&#39;)</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">v_gestion_herramientas</span><span class="w"> </span><span class="p">(</span><span class="n">codigo_producto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">precio_venta</span><span class="p">,</span><span class="w"> </span><span class="n">gama</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_fabricante</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;PROD-O99&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ficus Benjamina Gigante&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ornamentales&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="c1">-- Error esperado en el motor de base de datos:</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a><span class="c1">-- ERROR 1369 (HY000): CHECK OPTION failed &#39;practica_dml.v_gestion_herramientas&#39;</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a><span class="o">##</span><span class="w"> </span>
+</code></pre></div>
+</td></tr></table>
+4.4 Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</p>
 <p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para simplificar estructuras lógicas orientadas a la facturación y generación de informes de películas.</p>
 <p>Analicemos la estructura sintáctica de la vista de producción customer_list:</p>
-<p>CREATE VIEW customer_list AS</p>
-<p>SELECT</p>
-<p>cu.customer_id AS ID,</p>
-<p>CONCAT(cu.first_name, ' ', cu.last_name) AS name,</p>
-<p>a.address AS address,</p>
-<p>a.postal_code AS `zip code`,</p>
-<p>a.phone AS phone,</p>
-<p>city.city AS city,</p>
-<p>country.country AS country,</p>
-<p>IF(cu.active, 'active', '') AS notes,</p>
-<p>cu.store_id AS SID</p>
-<p>FROM customer AS cu</p>
-<p>JOIN address AS a ON cu.address_id = a.address_id</p>
-<p>JOIN city ON a.city_id = city.city_id</p>
-<p>JOIN country ON city.country_id = country.country_id;</p>
-<p></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">customer_list</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">SELECT</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="n">cu</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ID</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">CONCAT</span><span class="p">(</span><span class="n">cu</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">cu</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="n">a</span><span class="p">.</span><span class="n">address</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="n">a</span><span class="p">.</span><span class="n">postal_code</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">\</span><span class="o">`</span><span class="n">zip</span><span class="w"> </span><span class="n">code</span><span class="err">\</span><span class="o">`</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="n">a</span><span class="p">.</span><span class="n">phone</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">phone</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="n">city</span><span class="p">.</span><span class="n">city</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="n">country</span><span class="p">.</span><span class="n">country</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">country</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="k">IF</span><span class="p">(</span><span class="n">cu</span><span class="p">.</span><span class="n">active</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">notes</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="n">cu</span><span class="p">.</span><span class="n">store_id</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SID</span><span class="w"></span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cu</span><span class="w"></span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">cu</span><span class="p">.</span><span class="n">address_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">address_id</span><span class="w"></span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">city_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">city</span><span class="p">.</span><span class="n">city_id</span><span class="w"></span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">city</span><span class="p">.</span><span class="n">country_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">country</span><span class="p">.</span><span class="n">country_id</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
 <p><em>Análisis técnico para debate y auditoría:</em></p>
 <ul>
 <li><strong>¿Es esta vista actualizable con un comando INSERT?</strong> No, la vista utiliza funciones de manipulación de cadenas en campos lógicos calculados (como CONCAT para el campo name e IF para el campo notes), además de involucrar múltiples tablas relacionales mediante joins encadenados. Al violar las reglas de actualizabilidad, el motor físico impedirá cualquier acción DML de inserción a través de esta.</li>
