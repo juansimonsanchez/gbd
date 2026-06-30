@@ -764,7 +764,7 @@
                 
 
 
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image7.png" style="width:4.70833in;height:3.15625in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image7.png" style="width:4.70833in;height:3.15625in" /></p>
 <h4 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h4>
 <table>
 <thead>
@@ -845,38 +845,38 @@
 <p><strong>Registros</strong></p>
 <p>Normalmente la información se almacena en forma de <strong>registros</strong>, que son colecciones de valores o elementos de información relacionados, cada uno de los cuales corresponde a un campo del registro. Por ejemplo, un registro de alumno incluiría <strong>campos</strong> como el nombre, fecha de nacimiento o teléfono, cuyos valores para cada alumno forman cada registro. A su vez, cada campo tiene un <strong>tipo de dato</strong> que especifica el tipo de valores que puede tomar. Estos tipos suelen corresponderse con los lenguajes de programación. Así, en nuestro ejemplo tendríamos que para el nombre del alumno usamos un tipo carácter o char, para la fecha de nacimiento un tipo de fecha y para la edad un tipo numérico entero o int. Además, cada campo tiene un tamaño determinado en bytes que puede ser fijo o variable según los requisitos de la aplicación.</p>
 <p>La unión de estos campos y sus tipos determina el tipo o formato del <strong>registro</strong>.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image4.png" style="width:6.26042in;height:3.01042in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image4.png" style="width:6.26042in;height:3.01042in" /></p>
 <p><strong>Archivos</strong></p>
 <p>Podemos definir un <strong>fichero</strong> informático como un conjunto de registros, grabados sobre un soporte que pueda ser leído por el ordenador.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image14.png" style="width:5.08139in;height:0.61868in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image14.png" style="width:5.08139in;height:0.61868in" /></p>
 <p>Estos registros pueden tener longitud fija si todos los registros son iguales en tamaño, o variable si los registros son de distinto tipo o si, aun siendo iguales en formato tienen campos de tamaño variable u opcionales (campos que no necesariamente tienen un valor para cada registro, por ejemplo, teléfono en el tipo de registro de alumno podría ser un campo opcional).</p>
 <p>Los archivos de registros de longitud fija son más fáciles de manipular por parte de los programas, sin embargo desperdician espacio en disco. Por el contrario, para el caso de longitud variable los programas son más complejos ya que los registros no ocupan posiciones fijas, sino que dependen del valor de cada campo.</p>
 <p>Los ficheros son importantes porque son la unidad básica de información utilizada por cualquier programa, incluidos los sistemas gestores de bases de datos. Todos los datos son, en última instancia gestionados mediante ficheros mediante cuatro operaciones básicas: <strong>consulta o lectura, inserción, modificación y borrado</strong>. Cualquier operación más compleja (como búsqueda, ordenación, etc.) es combinación de dos o más operaciones básicas.</p>
 <h2 id="121-organizacion-primaria-de-archivos">1.2.1 ORGANIZACIÓN PRIMARIA DE ARCHIVOS</h2>
 <p>El término <strong>organización de ficheros</strong> se aplica a la forma en que se colocan los datos contenidos en los registros de cada fichero sobre el soporte informático (disco, cinta, etc.) durante su grabación.</p>
 <p>Existen dos formas básicas de organización de ficheros: secuencial y relativa. En la organización secuencial los registros se van grabando unos a continuación de los otros, en el orden que se van dando de alta, mientras que en la organización relativa los registros se graban en las posiciones que les corresponda según el valor que guarden en el campo denominado clave, que permite identificar el registro dentro del fichero.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image22.png" style="width:3.33333in;height:2.22917in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image22.png" style="width:3.33333in;height:2.22917in" /></p>
 <p><strong>Organización secuencial</strong></p>
 <p>Es el tipo más básico de organización. <strong>Los registros se colocan secuencialmente uno a continuación del otro y los registros nuevos se añaden al final del fichero</strong>.</p>
 <p>La inserción es eficiente al realizarse al final del fichero, pero la búsqueda es costosa por ser lineal y bloque a bloque. El borrado es ineficiente; genera huecos que no se reutilizan automáticamente, requiriendo reorganizaciones periódicas para compactar los registros.</p>
 <p>La modificación es compleja al exigir búsqueda y reescritura. En registros de longitud variable, si el nuevo dato no cabe, debe tratarse como una nueva inserción al final. Existen variantes para mejorar estas prestaciones en soportes direccionables.</p>
 <p><strong>Organización secuencial indexada</strong></p>
 <p>Los datos se graban secuencialmente, pero un fichero de <strong><em>índice</em></strong> adicional permite el acceso directo al registrar la posición de cada registro.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image18.png" style="width:6.26772in;height:2.26389in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image18.png" style="width:6.26772in;height:2.26389in" /></p>
 <p><strong>La organización secuencial indexada</strong></p>
 <p>Los registros con los datos s<strong><em>e graban en un fichero secuencialmente</em></strong>, pero <strong><em>se pueden recuperar con acceso directo gracias a la utilización de un fichero adicional, llamado índice</em></strong>, que contiene información de la posición que ocupa cada registro en el fichero de datos.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image18.png" style="width:6.26772in;height:2.26389in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image18.png" style="width:6.26772in;height:2.26389in" /></p>
 <p><strong>La organización secuencial encadenada</strong></p>
 <p>Permite tener los registros <strong><em>ordenados según un orden lógico diferente del orden físico</em></strong> en el que están grabados gracias a la utilización de unos campos adicionales llamados punteros.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image10.png" style="width:4.4642in;height:3.3554in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image10.png" style="width:4.4642in;height:3.3554in" /></p>
 <p><strong>Organización Relativa</strong></p>
 <p>En este tipo de archivos los registros <strong><em>se graban en orden según el valor de uno de sus campos llamado campo de ordenación</em></strong>. Normalmente se usa un campo especial denominado <strong><em>campo clave</em></strong>, cuyos valores son distintos para cada registro.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image6.png" style="width:4.96198in;height:3.21875in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image6.png" style="width:4.96198in;height:3.21875in" /></p>
 <p>La organización relativa es ineficiente para accesos aleatorios o por campos distintos al de ordenación, requiriendo en esos casos archivos adicionales. Mantener el orden físico encarece las inserciones por el desplazamiento de registros, mientras que la modificación es compleja si afecta al campo clave o varía el tamaño del registro. La eliminación es más sencilla mediante marcas y reorganizaciones periódicas.</p>
 <p><strong>Dispersión</strong></p>
 <p>En este sistema, se aplica una <strong><em>función de aleatorización</em></strong> sobre un <strong><em>campo de dispersión</em></strong> para <strong><em>obtener la dirección del bloque de disco</em></strong> donde se guardará el registro. Estas técnicas de hashing agilizan las búsquedas individuales basadas en dicho campo, que suele ser la clave.</p>
 <p>Las técnicas de dispersión o hashing se utilizan para acelerar el acceso a los registros cuando se busca un único registro según el llamado campo de dispersión. Normalmente este campo suele ser el campo clave.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image2.png" style="width:4.21913in;height:2.85302in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image2.png" style="width:4.21913in;height:2.85302in" /></p>
 <p>Existen numerosas funciones de dispersión y su eficacia radica en que distribuyan los registros lo más posible minimizando el número de colisiones (producida cuando dos valores distintos del campo de dispersión producen el mismo valor de dispersión). Para estas situaciones se deben implementar medidas de corrección, como usar una segunda función, buscar la siguiente posición vacía dentro del bloque o usar técnicas de encadenamiento de registros.</p>
 <h2 id="122-metodos-de-acceso">1.2.2 MÉTODOS DE ACCESO</h2>
 <p>El método de acceso es el procedimiento para localizar registros en un fichero. Para optimizar esta costosa operación se emplean índices: estructuras que vinculan valores de un campo (normalmente la clave) con su dirección de memoria.</p>
@@ -894,7 +894,7 @@
 </li>
 </ul>
 <p><strong>Índices primarios</strong></p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image3.png" style="width:6.38252in;height:3.40771in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image3.png" style="width:6.38252in;height:3.40771in" /></p>
 <p>Un índice primario es un fichero ordenado de registros de longitud fija con dos campos: la clave de ordenamiento del archivo de datos y un puntero al bloque de disco. Cada entrada vincula un valor clave con un bloque, apuntando así a un grupo de registros.</p>
 <p>Por ejemplo, en un fichero de jugadores de baloncesto indizado por su ID secuencial, el índice solo registra el primer identificador de cada bloque.</p>
 <p>Estos índices son no densos porque cada entrada se asocia a varios registros, a diferencia de los índices densos (relación uno a uno). Al contener sólo dos campos y una entrada por bloque, son mucho más pequeños que el fichero de datos original.</p>
@@ -904,21 +904,21 @@
 <p>Un ejemplo práctico es la creación de este índice en un fichero de jugadores utilizando el número de equipo como criterio de ordenación.</p>
 <p>En este caso el índice es sobre un campo que no es clave y se puede repetir, como es el número de equipo de los jugadores.</p>
 <p>Hay una entrada de índice por cada equipo que apunta al bloque en el que se encuentra dicho equipo.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image11.png" style="width:6.07292in;height:3.0275in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image11.png" style="width:6.07292in;height:3.0275in" /></p>
 <p><strong>Índices secundarios</strong></p>
 <p>Estos archivos ordenados vinculan campos clave con apuntadores a bloques. Es posible definir múltiples índices sobre distintos campos de un mismo archivo de datos.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image23.png" style="width:5.78462in;height:5.50146in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image23.png" style="width:5.78462in;height:5.50146in" /></p>
 <p>Existen índices sobre campos clave (índices densos con una entrada por registro) y sobre campos no clave. Un ejemplo común es el uso del DNI como clave secundaria para identificar jugadores.</p>
 <p>Aunque consumen más espacio por su volumen de entradas, optimizan las búsquedas; al estar ordenados, permiten aplicar búsquedas binarias mucho más rápidas que el acceso lineal al archivo de datos original.</p>
 <p><strong>Otros tipos de índice</strong></p>
 <p>Existen estructuras de índice más complejas.</p>
 <p><strong>Arboles By B+ :</strong> Son estructuras de árbol muy utilizadas en programación y en índices de bases de datos. En este caso, un árbol es un fichero en el que hay unos nodos (padres) que apuntan a otros (hijos), los cuales a su vez tienen apuntadores a otros nodos y, así sucesivamente, con tantos nodos como entradas de índice requeridas.</p>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image13.png" style="width:4.18555in;height:1.56958in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image13.png" style="width:4.18555in;height:1.56958in" /></p>
 </blockquote>
 <p>Los nodos hijos no pueden apuntar a nodos padre, de modo que se forma una estructura con un nodo raíz sin padre cuyos nodos hijos son padres de otros hasta llegar a los nodos hoja, o nodos sin hijos.</p>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image1.png" style="width:4.18034in;height:1.66264in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image1.png" style="width:4.18034in;height:1.66264in" /></p>
 </blockquote>
 <p>Estos nodos almacenan apuntadores a nodos hijo, apuntadores a registros de datos y valores de campos de los registros de datos y la estructura que forman hace muy eficiente la búsqueda de datos.</p>
 <p><strong>Índices hash:</strong> Es posible crear estructuras de acceso de tipo índice usando técnicas de dispersión vistas en la sección anterior. En este caso, cada entrada de índice se organiza como un archivo de dispersión y contiene registros formados por el valor de dispersión y un apuntador al bloque de datos. Así, el acceso a una de ellas requiere aplicar la función hash correspondiente al valor buscado y obtener así el valor del apuntador.</p>
@@ -981,7 +981,7 @@
 <li><strong>Dato</strong>: El dato es un trozo de información concreta sobre algún concepto o suceso. Por ejemplo, 1996 es un número que representa el año de nacimiento de una persona. Los datos se caracterizan por pertenecer a un tipo.</li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image12.png" style="width:5.67253in;height:2.16403in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image12.png" style="width:5.67253in;height:2.16403in" /></p>
 </blockquote>
 <ul>
 <li>
@@ -1029,7 +1029,7 @@
 </li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image16.png" style="width:4.76628in;height:2.66874in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image16.png" style="width:4.76628in;height:2.66874in" /></p>
 </blockquote>
 <ul>
 <li><strong>Nivel externo.</strong> Se describen varios esquemas externos o vistas de usuario. Cada esquema externo describe la parte de la base de datos que interesa a un grupo de usuarios determinados y oculta a ese grupo el resto de la base de datos. En este nivel se puede utilizar un modelo conceptual o un modelo lógico para especificar los esquemas. Ese es el que percibe el usuario final mediante el uso de aplicaciones. Por ejemplo, cuando accedo a la página web de la liga de baloncesto estoy consultando una parte de los datos de sus bases de datos. Son lo que denominamos vistas.</li>
@@ -1066,7 +1066,7 @@
 <p><strong>Modelos conceptuales</strong></p>
 <p>Se usan para describir datos a nivel global. Con este modelo representamos los datos de forma parecida a como nosotros los captamos en el mundo real. Este tipo de modelos tienen una capacidad de estructuración bastante flexible y permiten especificar restricciones de datos explícitamente. Existen diferentes modelos de este tipo, pero el más utilizado por su sencillez y eficiencia es el modelo Entidad-Relación.</p>
 <p>Denominado por sus siglas MER, este modelo representa la realidad a través de entidades, que son objetos que existen y que se distinguen de otros por sus características. Por ejemplo, un jugador es una entidad con características como su altura, nombre, etc.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image20.png" style="width:4.28679in;height:2.34521in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image20.png" style="width:4.28679in;height:2.34521in" /></p>
 <p>Estas características de las entidades en base de datos se llaman atributos. A su vez, una entidad se puede asociar o relacionar con más entidades a través de relaciones. Así un jugador está vinculado o relacionado con un equipo en virtud de la relación pertenece (jugador pertenece a equipo).</p>
 <p>Este tipo de modelos utiliza una simbología para representar cada elemento. Lo estudiaremos más adelante.</p>
 <p><strong>Modelos lógicos tradicionales</strong></p>
@@ -1075,14 +1075,14 @@
 <li><strong>Modelo relacional.</strong> En este modelo se representan los datos y las relaciones entre estos, a través de una colección de tablas, en las cuales las filas (tuplas) equivalen a cada uno de los registros que contendrá la base de datos y las columnas corresponden a las características (atributos) de cada registro localizado en la tupla.</li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image9.png" style="width:3.75554in;height:2.0058in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image9.png" style="width:3.75554in;height:2.0058in" /></p>
 <p>También sirven para representar el nivel externo (vistas) de una base de datos.</p>
 </blockquote>
 <ul>
 <li><strong>Modelo de red.</strong> Éste es un modelo ligeramente distinto del jerárquico; su diferencia fundamental es la modificación del concepto de nodo: se permite que un mismo nodo tenga varios padres (posibilidad no permitida en el modelo jerárquico).</li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image21.png" style="width:3.34613in;height:3.08917in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image21.png" style="width:3.34613in;height:3.08917in" /></p>
 <p>Fue una gran mejora con respecto al modelo jerárquico, ya que ofrecía una solución eficiente al problema de redundancia de datos; pero, aun así, la dificultad que significa administrar la información en una base de datos de red ha significado que sea un modelo utilizado en su mayoría por programadores más que por usuarios finales.</p>
 </blockquote>
 <ul>
@@ -1091,7 +1091,7 @@
 <blockquote>
 <p>Las bases de datos jerárquicas son especialmente útiles en el caso de aplicaciones que manejan un gran volumen de información y datos muy compartidos, permitiendo crear estructuras estables y de gran rendimiento a la hora de acceder a los mismos.</p>
 <p>Es similar al modelo de red en cuanto a las relaciones y datos, ya que estos se representan por medio de registros de vínculos entre los mismos. La diferencia radica en que están organizados por gráficos de tipo árbol en lugar de gráficos arbitrarios.</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image5.png" style="width:3.81107in;height:2.75392in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image5.png" style="width:3.81107in;height:2.75392in" /></p>
 </blockquote>
 <p><strong>Modelos lógicos avanzados</strong></p>
 <p>Son modelos de datos relativamente recientes y cada vez más utilizados, sobre todo en aplicaciones específicas que manejan nuevos y más complejos tipos de datos.</p>
@@ -1108,9 +1108,9 @@
 <h2 id="141-definicion-y-objetivos">1.4.1 DEFINICIÓN Y OBJETIVOS</h2>
 <p>El <strong>sistema de gestión de la base de datos (SGBD)</strong> es una aplicación que permite a los usuarios definir, crear y mantener la base de datos y proporciona acceso controlado a la misma. Es una herramienta que sirve de interfaz entre el usuario y las bases de datos.</p>
 <p>En el siguiente esquema se representa el funcionamiento de un sistema de información en el que los usuarios acceden a la información usando aplicaciones (por ejemplo, un formulario web) que, a su vez, se comunican con sistemas gestores, que son los que en última instancia acceden a los datos almacenados en las bases de datos mediante la interacción con el sistema operativo:</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image19.png" style="width:4.63656in;height:2.61313in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image19.png" style="width:4.63656in;height:2.61313in" /></p>
 <p>Figura 1.5. Esquema de los niveles de abstracción en un SGBD</p>
-<p><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image17.png" style="width:5.25587in;height:3.00335in" /></p>
+<p><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image17.png" style="width:5.25587in;height:3.00335in" /></p>
 <p>Se observa como en el nivel externo se encuentran los usuarios finales que tienen acceso a distintos esquemas, los cuales a su vez se derivan del esquema o representación lógica que, a su vez, se traduce a un esquema físico o forma de almacenamiento de los datos.</p>
 <p>Los objetivos de un SGBD se pueden resumir en los siguientes:</p>
 <ul>
@@ -1146,7 +1146,7 @@
 <p>9. Ofrecen conectividad con el exterior. De esta manera, se puede replicar y distribuir bases de datos. Además, todos los SGBD incorporan herramientas estándar de conectividad. El protocolo ODBC está muy extendido como forma de comunicación entre bases de datos y aplicaciones externas.</p>
 <p>10. Incorporan herramientas para la salvaguarda y restauración de la información en caso de desastre. Algunos gestores, tienen sofisticados mecanismos para poder establecer el estado de una base de datos en cualquier punto anterior en el tiempo. Además, deben ofrecer sencillas herramientas para la importación y exportación automática de la información.</p>
 <h2 id="143-componentes-de-un-sgbd">1.4.3 COMPONENTES DE UN SGBD</h2>
-<h3 id="_1"><img src="./docs/images/UT1. Teoría. Almacenamiento de la información/media/image15.png" style="width:5.44337in;height:4.22251in" /></h3>
+<h3 id="_1"><img src="./images/UT1. Teoría. Almacenamiento de la información/media/image15.png" style="width:5.44337in;height:4.22251in" /></h3>
 <p>Son los elementos que deben proporcionar los servicios comentados en la sección anterior. No se pueden generalizar ya que varían mucho según la tecnología. Sin embargo, normalmente todo SGBD incluye los siguientes:</p>
 <p><strong>Diccionario de datos</strong></p>
 <p>Esquemas que describen el contenido del SGBD incluyendo los distintos objetos con sus propiedades.</p>

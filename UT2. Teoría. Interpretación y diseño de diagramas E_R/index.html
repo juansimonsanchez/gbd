@@ -894,7 +894,7 @@
 <p>2. El <strong>modelo lógico.</strong> Este modelo es más técnico que el anterior. Los conceptos expresados por este modelo, suelen ser difíciles de entender por los usuarios y generalmente tienen traducción directa al modelo físico que entiende el SGBD.</p>
 <p>El modelo lógico elegido dependerá de la implementación de la base de datos, así, no es lo mismo modelizar una base de datos orientada a objetos, que modelizar una base de datos relacional. El modelo que se usará en este libro será el Modelo Relacional.</p>
 <p>3. El <strong>modelo físico</strong>. Es el resultado de aplicar el modelo lógico a un SGBD concreto. Generalmente está expresado en un lenguaje de programación de BBDD tipo SQL. Este libro transformará el Modelo Relacional en modelo físico a través del sublenguaje DDL de SQL.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image24.png" style="width:4.52604in;height:2.69908in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image24.png" style="width:4.52604in;height:2.69908in" /></p>
 <h4 id="a-modelos-logicos-basados-en-objetos">A. Modelos Lógicos Basados en Objetos</h4>
 <p>Se emplean para describir los datos en los niveles conceptual y externo. Permiten representar la realidad de forma muy cercana a cómo la captamos en el mundo real, ofreciendo una gran flexibilidad para especificar restricciones de integridad.</p>
 <ul>
@@ -932,7 +932,7 @@
 <p><strong>Entidad:</strong> Es la definición genérica de la estructura y características comunes de dichas ocurrencias (ej. la entidad EMPLEADO).</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image17.png" style="width:4.51042in;height:0.75in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image17.png" style="width:4.51042in;height:0.75in" /></p>
 <h4 id="clasificacion-segun-su-autonomia-de-existencia">Clasificación según su autonomía de existencia:</h4>
 <ol>
 <li>
@@ -942,7 +942,7 @@
 <p><strong>Entidades Débiles:</strong> Su existencia o identificación depende directamente de otra entidad (denominada <em>entidad fuerte</em> o <em>propietaria</em>). Se representan gráficamente con un <strong>rectángulo de línea doble</strong>.</p>
 </li>
 </ol>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image28.png" style="width:3.36458in;height:0.92708in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image28.png" style="width:3.36458in;height:0.92708in" /></p>
 <p>La asociación entre una entidad fuerte y una débil se establece mediante una <strong>relación de dependencia</strong>, representada con un <strong>rombo de línea doble</strong>. Existen dos tipos de dependencia:</p>
 <ul>
 <li>
@@ -958,7 +958,7 @@
 </li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image33.png" style="width:6.26772in;height:1.26389in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image33.png" style="width:6.26772in;height:1.26389in" /></p>
 </blockquote>
 <ul>
 <li>
@@ -973,7 +973,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image26.png" style="width:6.26772in;height:1.15278in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image26.png" style="width:6.26772in;height:1.15278in" /></p>
 <h3 id="22-atributos-y-su-clasificacion">2.2. Atributos y su Clasificación</h3>
 <p>Los atributos describen las propiedades puntuales que caracterizan a una entidad o a una relación. Se grafican mediante <strong>elipses</strong> conectadas al elemento correspondiente.</p>
 <ul>
@@ -1008,7 +1008,7 @@
 <p><strong>Valor Nulo (NULL):</strong> Concepto utilizado cuando un atributo no tiene un valor aplicable para una ocurrencia en concreto (ej. un empleado que no tiene segundo apellido) o cuando el valor se desconoce temporalmente.</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image1.png" style="width:4.61458in;height:2in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image1.png" style="width:4.61458in;height:2in" /></p>
 <h3 id="23-relaciones-interrelaciones">2.3. Relaciones (Interrelaciones)</h3>
 <p>Una <strong>relación</strong> es una asociación o correspondencia conceptual entre dos o más entidades. Se representa mediante un <strong>rombo de línea simple</strong> que se conecta a las entidades mediante líneas.</p>
 <h4 id="231-grado-de-la-relacion">2.3.1. Grado de la Relación</h4>
@@ -1016,7 +1016,7 @@
 <ul>
 <li><strong>Grado 1 (Reflexivas o Recursivas):</strong> Relación donde una entidad se asocia consigo misma bajo diferentes roles.</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image18.png" style="width:2.28125in;height:1.01042in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image18.png" style="width:2.28125in;height:1.01042in" /></p>
 <ul>
 <li><em>Ejemplo:</em> En la entidad EMPLEADO, una relación supervisa asocia a un empleado en calidad de "supervisor" con otros empleados en calidad de "supervisados".</li>
 </ul>
@@ -1025,25 +1025,25 @@
 <ul>
 <li><strong>Grado 2 (Binarias):</strong> Relaciona a dos entidades distintas (es el caso más común).</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image30.png" style="width:5.14583in;height:0.67708in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image30.png" style="width:5.14583in;height:0.67708in" /></p>
 <ul>
 <li><strong>Grado 3 (Ternarias):</strong> Relaciona a tres entidades de forma simultánea.</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image7.png" style="width:4.3125in;height:1.51042in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image7.png" style="width:4.3125in;height:1.51042in" /></p>
 <h4 id="232-cardinalidad-y-participacion">2.3.2. Cardinalidad y participación</h4>
 <p>La <strong>cardinalidad</strong> expresa el número máximo de ocurrencias de una entidad que pueden asociarse con una ocurrencia de otra entidad participante. Las conectividades binarias estándar son:</p>
 <ul>
 <li><strong>Uno a Uno (1:1):</strong> Cada ocurrencia de la entidad A se asocia con un máximo de una ocurrencia de B, y viceversa.</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image23.png" style="width:4.50521in;height:2.39176in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image23.png" style="width:4.50521in;height:2.39176in" /></p>
 <ul>
 <li><strong>Uno a Muchos (1:N):</strong> Una ocurrencia de A puede asociarse con múltiples ocurrencias de B, pero una ocurrencia de B solo puede asociarse con un único registro de A.</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image5.png" style="width:4.2674in;height:2.40104in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image5.png" style="width:4.2674in;height:2.40104in" /></p>
 <ul>
 <li><strong>Muchos a Muchos (N:M):</strong> Cualquier ocurrencia de A puede asociarse con múltiples de B, e inversamente, cualquier ocurrencia de B con múltiples de A.</li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image32.png" style="width:4.24635in;height:2.16874in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image32.png" style="width:4.24635in;height:2.16874in" /></p>
 <p>La <strong>participación</strong> o <strong>cardinalidad de ocurrencias</strong> se escribe formalmente en el extremo de la línea de conexión como un intervalo (min, max):</p>
 <ul>
 <li>
@@ -1053,8 +1053,8 @@
 <p><strong>Cardinalidad Máxima:</strong> El número máximo de veces que una ocurrencia puede participar en la relación (1 o n).</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image31.png" style="width:4.11093in;height:1.25041in" /></p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image15.png" style="width:4.28281in;height:1.08566in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image31.png" style="width:4.11093in;height:1.25041in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image15.png" style="width:4.28281in;height:1.08566in" /></p>
 <h1 id="3-relaciones-ternarias-y-de-grado-superior">3. RELACIONES TERNARIAS Y DE GRADO SUPERIOR</h1>
 <p>Las relaciones de grado superior a dos (habitualmente ternarias) requieren un análisis metodológico formal muy estricto para determinar correctamente sus conectividades y cardinalidades.</p>
 <p>Para averiguar la cardinalidad de la entidad C en una relación que asocia a las entidades A, B y C, debemos fijar mentalmente una ocurrencia de A y una ocurrencia de B simultáneamente, y preguntarnos: <em>¿Con cuántas ocurrencias de C se pueden relacionar en este escenario?</em></p>
@@ -1107,8 +1107,8 @@
 <p><strong>Resultado conceptual:</strong> La relación es de conectividad M:N:1 (el "1" se ubica en el extremo de ESCUELA).</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image27.png" style="width:6.26772in;height:2.06944in" /></p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image9.png" style="width:6.26772in;height:2.40278in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image27.png" style="width:6.26772in;height:2.06944in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image9.png" style="width:6.26772in;height:2.40278in" /></p>
 <h3 id="escenario-3-cardinalidad-uno-a-uno-a-muchos-11n">Escenario 3: Cardinalidad Uno a Uno a Muchos (1:1:N)</h3>
 <p>Se produce cuando dos de las combinaciones cruzadas devuelven una única ocurrencia de salida, y solo una combinación permite multiplicidad.</p>
 <ul>
@@ -1133,7 +1133,7 @@
 <p><strong>Resultado conceptual:</strong> La relación es de conectividad 1:1:N.</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image16.png" style="width:6.26772in;height:4.59722in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image16.png" style="width:6.26772in;height:4.59722in" /></p>
 <h3 id="escenario-4-cardinalidad-uno-a-uno-a-uno-111">Escenario 4: Cardinalidad Uno a Uno a Uno (1:1:1)</h3>
 <p>Es un caso extremadamente restrictivo donde cualquier combinación biunívoca de dos entidades determina de forma única y obligatoria una sola ocurrencia de la tercera.</p>
 <ul>
@@ -1163,7 +1163,7 @@
 <h2 id="41-generalizacion-y-especializacion">4.1. Generalización y Especialización</h2>
 <p>Por ejemplo, imaginemos la siguiente situación.</p>
 <p>Queremos hacer una BD sobre los animales de un Zoo. Tenemos las entidades ANIMAL, FELINO, AVE, REPTIL, INSECTO. FELINO, AVE, REPTIL e INSECTO tendrían el mismo tipo de relación con ANIMAL: «son un tipo de». Ahora bien, su representación mediante el E/R clásico sería bastante engorrosa:</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image4.png" style="width:6.26772in;height:2.45833in" />Consiste en agrupar o subdividir entidades para modelar relaciones de jerarquía y herencia de atributos.</p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image4.png" style="width:6.26772in;height:2.45833in" />Consiste en agrupar o subdividir entidades para modelar relaciones de jerarquía y herencia de atributos.</p>
 <ul>
 <li>
 <p><strong>Superentidad (Clase Padre):</strong> Es la entidad genérica que almacena los atributos comunes a todas las subdivisiones (ej. EMPLEADO con atributos DNI, Nombre, Salario).</p>
@@ -1172,14 +1172,14 @@
 <p><strong>Subentidades (Clases Hijas):</strong> Son las entidades especializadas que heredan automáticamente todos los atributos de la superentidad y, además, añaden atributos particulares y exclusivos propios (ej. INGENIERO añade Especialidad; SECRETARIO añade PulsacionesPorMinuto).</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image10.png" style="width:5.19271in;height:2.35483in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image10.png" style="width:5.19271in;height:2.35483in" /></p>
 <h2 id="42-restricciones-de-cobertura-en-jerarquias">4.2. Restricciones de Cobertura en Jerarquías</h2>
 <p>Al definir una especialización de una superentidad en varias subentidades, se deben especificar obligatoriamente dos tipos de restricciones ortogonales (cobertura total/parcial y exclusión/solapamiento):</p>
 <p><strong>Total</strong>: Subdividimos la entidad Empleado en: Ingeniero, Secretario y Técnico y en nuestra BD no hay ningún otro empleado que no pertenezca a uno de estos tres tipos.</p>
 <p><strong>Parcial</strong>: Subdividimos la entidad Empleado en: Ingeniero, Secretario y Técnico pero en nuestra BD puede haber empleados que no pertenezcan a ninguno de estos tres tipos.</p>
 <p><strong>Solapada</strong>: Subdividimos la entidad Empleado, en: Ingeniero, Secretario y Técnico y en nuestra BD puede haber empleados que sean a la vez Ingenieros y secretarios, o secretarios y técnicos, etc.</p>
 <p><strong>Exclusiva</strong>: Subdividimos la entidad Empleado en: Ingeniero, Secretario y Técnico. En nuestra BD ningún empleado pertenece a más de una subentidad.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image22.png" style="width:6.26772in;height:1.41667in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image22.png" style="width:6.26772in;height:1.41667in" /></p>
 <p>Las cuatro combinaciones posibles se detallan a continuación utilizando la entidad EMPLEADO:</p>
 <p><strong>1. Jerarquía Solapada y Parcial</strong></p>
 <ul>
@@ -1194,7 +1194,7 @@
 </li>
 </ul>
 <blockquote>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image12.png" style="width:3.29197in;height:1.59896in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image12.png" style="width:3.29197in;height:1.59896in" /></p>
 </blockquote>
 <p><strong>2. Jerarquía Solapada y Total</strong></p>
 <ul>
@@ -1208,7 +1208,7 @@
 <p><strong>Ejemplo:</strong> Un empleado espacial que debe estar asignado por lo menos a un rol técnico, científico o de astronauta de forma obligatoria, pudiendo compaginar varios roles a la vez.</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image8.png" style="width:3.49114in;height:1.65713in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image8.png" style="width:3.49114in;height:1.65713in" /></p>
 <p><strong>3. Jerarquía Exclusiva y Parcial</strong></p>
 <ul>
 <li>
@@ -1221,7 +1221,7 @@
 <p><strong>Ejemplo:</strong> Un empleado de un centro médico puede estar especializado en MÉDICO o ENFERMERO, pero nunca en ambos a la vez. Sin embargo, hay personal de limpieza que no pertenece a ninguna de esas subentidades (parcial).</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image20.png" style="width:3.39063in;height:1.60284in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image20.png" style="width:3.39063in;height:1.60284in" /></p>
 <p><strong>4. Jerarquía Exclusiva y Total</strong></p>
 <ul>
 <li>
@@ -1234,17 +1234,17 @@
 <p><strong>Ejemplo:</strong> Subdividimos la entidad EMPLEADO en las subentidades INGENIERO, SECRETARIO y TÉCNICO. En las reglas de la empresa, un empleado realiza únicamente una de estas funciones de forma excluyente y no se contrata a nadie que no encaje en alguna de ellas.</p>
 </li>
 </ul>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image14.png" style="width:3.41146in;height:1.57509in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image14.png" style="width:3.41146in;height:1.57509in" /></p>
 <h1 id="5-exclusividad-o-inclusividad-entre-relaciones">5. Exclusividad o inclusividad entre relaciones</h1>
 <p>Otros símbolos usados en el modelo E/R son los siguientes:</p>
 <p>Restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1. Significa que E1 está relacionada, o bien con E2 o bien con E3, pero no pueden darse ambas relaciones simultáneamente.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image25.png" style="width:6.26772in;height:3.77778in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image25.png" style="width:6.26772in;height:3.77778in" /></p>
 <p>Restricción de inclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1. Para que la entidad E1 participe en la relación R2 debe participar previamente en la relación R1.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image3.png" style="width:6.26772in;height:3.47222in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image3.png" style="width:6.26772in;height:3.47222in" /></p>
 <p>Restricción de exclusión entre dos tipos de relaciones R1 y R2. Significa que E1 está relacionada con E2 bien mediante R1, o bien mediante R2 pero que no pueden darse ambas relaciones simultáneamente.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image21.png" style="width:6.26772in;height:3.91667in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image21.png" style="width:6.26772in;height:3.91667in" /></p>
 <p>Restricción de inclusión entre dos tipos de relaciones R1 y R2. Para que la entidad E1 participe en la relación R2 con E2 debe participar previamente en la relación R1.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image29.png" style="width:6.26772in;height:4.04167in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image29.png" style="width:6.26772in;height:4.04167in" /></p>
 <h1 id="6-notaciones-del-diagrama-er">6. NOTACIONES DEL DIAGRAMA E/R</h1>
 <p>Aunque la <strong>Notación de Chen</strong> es excelente para comprender los fundamentos teóricos del diseño de datos de forma muy gráfica, existen otras notaciones industriales de amplio uso tanto en software de diseño (DIA, draw.io, Visio) como en herramientas integradas de ingeniería de software (CASE).</p>
 <h2 id="61-estilo-notacion-de-chen">6.1. Estilo Notación de Chen</h2>
@@ -1280,14 +1280,14 @@
 </li>
 </ul>
 <p><strong>Notación E/R más utilizadas (Notación de Chen y Notación patas de gallo)</strong></p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image6.png" style="width:4.97917in;height:3.25in" /></p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image19.png" style="width:5.20927in;height:2.43243in" /><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image11.png" style="width:5.17032in;height:2.84895in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image6.png" style="width:4.97917in;height:3.25in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image19.png" style="width:5.20927in;height:2.43243in" /><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image11.png" style="width:5.17032in;height:2.84895in" /></p>
 <h2 id="63-estilo-notacion-de-bachman">6.3. Estilo Notación de Bachman</h2>
 <p>Caracterizada porque las relaciones se representan como flechas dirigidas donde la punta de la flecha indica el sentido del "Muchos" (N) y el origen de la línea representa el "Uno" (1). Los atributos se listan directamente dentro del rectángulo de la entidad en lugar de usar globos independientes.</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image13.png" style="width:1.85181in;height:1.52596in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image13.png" style="width:1.85181in;height:1.52596in" /></p>
 <h2 id="64-estilo-notacion-de-barker">6.4. Estilo Notación de Barker</h2>
 <p>Es la notación nativa adoptada por las herramientas de diseño de <strong>Oracle</strong>. Las entidades se dibujan como rectángulos de esquinas redondeadas. Utiliza líneas continuas para denotar relaciones obligatorias y líneas discontinuas para representar relaciones opcionales, indicando el lado de "Muchos" con una pequeña pata de gallo clásica. Los atributos clave se marcan internamente con un símbolo de almohadilla (#) o asterisco (*).</p>
-<p><img src="./docs/images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image2.png" style="width:3.45313in;height:2.68187in" /></p>
+<p><img src="./images/UT2. Teoría. Interpretación y diseño de diagramas E_R/media/image2.png" style="width:3.45313in;height:2.68187in" /></p>
 <h3 id="65-tabla-resumen-de-equivalencias-graficas">6.5. Tabla Resumen de Equivalencias Gráficas</h3>
 <table>
 <thead>

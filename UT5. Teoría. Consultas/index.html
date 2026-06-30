@@ -1743,7 +1743,7 @@
 <p><strong>Advertencia:</strong> Si la subconsulta interna invocada mediante un operador NOT IN devuelve, en su conjunto de datos, al menos un solo registro con valor NULL, <strong>la consulta externa completa no devolverá ninguna fila</strong>.</p>
 </blockquote>
 <p>Esto se debe a que SQL evalúa la condición de exclusión como:</p>
-<p><img src="./docs/images/UT5. Teoría. Consultas/media/image2.png" style="width:4.80208in;height:0.31667in" /></p>
+<p><img src="./images/UT5. Teoría. Consultas/media/image2.png" style="width:4.80208in;height:0.31667in" /></p>
 <p>Cualquier comparación de desigualdad física con NULL resulta en UNKNOWN, invalidando toda la expresión lógica conectorizada con AND. Para mitigar esto, es obligatorio filtrar explícitamente los valores nulos en el filtro de la subconsulta interna:</p>
 <p>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS</p>
 <p>SELECT nombre</p>
